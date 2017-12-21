@@ -1,0 +1,12 @@
+2017-12-21 9:02:59 - PHP Notice:  Undefined variable: modules in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 1062
+2017-12-21 9:02:59 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 1062
+2017-12-21 10:18:22 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:22:40 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:24:25 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:26:48 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:29:25 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:29:33 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:33:06 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:38:35 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 10:39:39 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 201
+2017-12-21 12:08:31 - PHP Notice:  Undefined variable: categories in D:\usr\www\opencart\catalog\view\theme\default\template\common\home.tpl on line 457
