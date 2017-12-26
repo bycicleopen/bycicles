@@ -49,8 +49,8 @@
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">О магазине</a></li>
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Доставка и оплата</a></li>
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Новости</a></li>
-												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Контакты</a></li>
-
+												<li class="footer-menu_item"><a href="<?php echo $contact; ?>" class="footer-menu_link"><?php echo $text_contact; ?></a></li>
+									
 											</menu>
 										</div>
 										
@@ -60,7 +60,7 @@
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Гарантия на товар</a></li>
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Как покупать в интернет магазине</a></li>
 												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Вопросы и ответы</a></li>
-												<li class="footer-menu_item"><a href="#" class="footer-menu_link">Обмен и возврат товара</a></li>
+												<li class="footer-menu_item"><a href="<?php echo $return; ?>" class="footer-menu_link"><?php echo $text_return; ?></a></li>
 											</menu>
 										</div>
 									</div>
@@ -176,12 +176,7 @@
 	</footer>
 	
 	
-	
-	
-	
-	
-	
-	
+
 <!-- Scripts -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/scripts.js"></script>

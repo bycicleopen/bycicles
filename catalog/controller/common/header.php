@@ -45,6 +45,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
 		$this->data['text_account'] = $this->language->get('text_account');
     	$this->data['text_checkout'] = $this->language->get('text_checkout');
+	
 				
 		$this->data['home'] = $this->url->link('common/home');
 		$this->data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
@@ -52,6 +53,7 @@ class ControllerCommonHeader extends Controller {
 		$this->data['account'] = $this->url->link('account/account', '', 'SSL');
 		$this->data['shopping_cart'] = $this->url->link('checkout/cart');
 		$this->data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+
 		
 		// Daniel's robot detector
 		$status = true;
@@ -89,6 +91,28 @@ class ControllerCommonHeader extends Controller {
 		} else {
 			$this->data['search'] = '';
 		}
+		
+		
+		/*Add information for bycicles*/
+		$this->data['text_information'] = $this->language->get('text_information');
+		
+				$this->data['informations'] = array();
+
+		foreach ($this->model_catalog_information->getInformations() as $result) {
+			if ($result['bottom']) {
+				$this->data['informations'][] = array(
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
+				);
+			}
+    	}
+		
+		
+		/*Add contact for bycicle here*/
+		$this->data['contact'] = $this->url->link('information/contact');	
+		$this->data['text_contact'] = $this->language->get('text_contact');
+
+		$this->load->model('catalog/information');
 		
 		// Menu
 		if (isset($this->request->get['path'])) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <head>
 	<meta charset="utf-8">
 	<title>Интернет-магазин Велосклад</title>
@@ -30,18 +30,22 @@
 								<option value="ru">RU</option>
 								<option value="ua">UA</option>
 								<option value="en">EN</option>
+								 <?php echo $language."lang"; ?>
 							</select>
 						</form>
+						<!--?php echo"inf="; var_dump($informations);?-->
 						<nav class="header-nav header-devider">
 							<menu class="header-nav_items">
+									
+									<?php foreach ($informations as $information) { ?>
+										<li class="header-nav_item"><a href="<?php echo $information['href']; ?>" class="header-nav_link"><?php echo $information['title']; ?></a></li>
+									<?php } ?>	
+									
 								<li class="header-nav_item">
-									<a href="#" class="header-nav_link">О магазине</a></li>
+									<a href="#" class="header-nav_link">Новости</a></li>								
 								<li class="header-nav_item">
-									<a href="#" class="header-nav_link">Доставка и оплата</a></li>
-								<li class="header-nav_item">
-									<a href="#" class="header-nav_link">Новости</a></li>
-								<li class="header-nav_item">
-									<a href="#" class="header-nav_link">Контакты</a></li>
+									<a href="<?php echo $contact; ?>" class="header-nav_link"><?php echo $text_contact; ?></a></li>
+								
 							</menu>
 						</nav>
 					</div>
@@ -141,7 +145,7 @@
 								</menu>
 							</div>
 							<form id="search" action="" method="" class="header-search">
-								<input id="search" type="text" name="search" class="input input_search" placeholder="Быстрый поиск товара">
+								<input id="search" type="text" name="search" class="input input_search" placeholder="<?php echo $text_search."search_me"; ?>" value="<?php echo $search; ?>" >
 								<button type="submit" class="btn-search">
 									<span class="icon">
 										<svg>

@@ -31,3 +31,8 @@
 2017-12-22 10:27:52 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\common\home.tpl on line 108
 2017-12-22 10:28:51 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\common\home.tpl on line 108
 2017-12-22 10:41:56 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\common\home.tpl on line 108
+2017-12-22 11:48:35 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\common\home.tpl on line 108
+2017-12-22 14:22:12 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\common\home.tpl on line 108
+2017-12-26 13:12:03 - PHP Notice:  Undefined variable: contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
+2017-12-26 13:12:03 - PHP Notice:  Undefined variable: text_contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
+2017-12-26 13:33:22 - PHP Notice:  Undefined variable: text_contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
