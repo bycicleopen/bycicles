@@ -38,17 +38,8 @@
 			<div class="container">
 			
 				<div class="row">
-
 				
-					<div class="col-md-6">
-				
-						<nav class="header-nav header-devider">
-							<menu class="header-nav_items">
-									<li class="header-nav_item"><?php echo $language; ?></li>
-							</menu>
-						</nav>
-					</div>
-					
+						
 					<div class="col-md-6">
 					
 						<nav class="header-nav header-devider">
@@ -58,9 +49,7 @@
 									<?php foreach ($informations as $information) { ?>
 										<li class="header-nav_item"><a href="<?php echo $information['href']; ?>" class="header-nav_link"><?php echo $information['title']; ?></a></li>
 									<?php } ?>	
-									
-							<li class="header-nav_item">
-									<a href="#" class="header-nav_link">Новости</a></li>								
+							
 								<li class="header-nav_item">
 									<a href="<?php echo $contact; ?>" class="header-nav_link"><?php echo $text_contact; ?></a></li>
 								
