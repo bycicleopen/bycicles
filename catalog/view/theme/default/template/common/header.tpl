@@ -39,12 +39,14 @@
 			
 				<div class="row">
 				
-						
+			        
+				
+			
 					<div class="col-md-6">
-					
+					    <?php echo $language; ?>
 						<nav class="header-nav header-devider">
 							<menu class="header-nav_items">
-									<li class="header-nav_item"><?php echo $language; ?></li>
+									
 									
 									<?php foreach ($informations as $information) { ?>
 										<li class="header-nav_item"><a href="<?php echo $information['href']; ?>" class="header-nav_link"><?php echo $information['title']; ?></a></li>
