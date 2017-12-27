@@ -1,38 +1,8 @@
-<?php echo $header; ?>
-<div id="content"><?php echo $content_top; ?>
 
-
-
-
-
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  
-  
-
-  <div class="product-info">
-
-    <?php if ($thumb || $images) { ?>
-    <div class="left">
-      <?php if ($thumb) { ?>
-      <div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>
-      <?php } ?>
-      <?php if ($images) { ?>
-      <div class="image-additional">
-        <?php foreach ($images as $image) { ?>
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
-        <?php } ?>
-      </div>
-      <?php } ?>
-    </div>
-    <?php } ?>
 	
 	
-    <div class="right">
-	<h1><?php echo $heading_title; ?></h1>
+	
+	
       <div class="description">
         <?php if ($manufacturer) { ?>
         <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
@@ -44,34 +14,17 @@
         <span><?php echo $text_stock; ?></span> <?php echo $stock; ?></div>
       <?php if ($price) { ?>
       <div class="price"><?php echo $text_price; ?>
-       
-	   <?php if (!$special) { ?>
-        <?php echo $price; ?>
-        <?php } else { ?>
-        <span class="price-old"><?php echo $price; ?></span> <span class="price-new"><?php echo $special; ?></span>
-        <?php } ?>
+	  
+	  
+
 		
 		
 		
-        <br />
-        <?php if ($tax) { ?>
-        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $tax; ?></span><br />
-        <?php } ?>
-        <?php if ($points) { ?>
-        <span class="reward"><small><?php echo $text_points; ?> <?php echo $points; ?></small></span><br />
-        <?php } ?>
-        <?php if ($discounts) { ?>
-        <br />
-        <div class="discount">
-          <?php foreach ($discounts as $discount) { ?>
-          <?php echo sprintf($text_discount, $discount['quantity'], $discount['price']); ?><br />
-          <?php } ?>
-        </div>
-        <?php } ?>
+
+		
+
       </div>
       <?php } ?>
-	  
-	 
       <?php if ($options) { ?>
       <div class="options">
         <h2><?php echo $text_option; ?></h2>
@@ -154,8 +107,6 @@
         </div>
         <br />
         <?php } ?>
-		
-		
         <?php if ($option['type'] == 'text') { ?>
         <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
           <?php if ($option['required']) { ?>
@@ -220,8 +171,6 @@
         <?php } ?>
       </div>
       <?php } ?>
-	  
-	  
       <div class="cart">
         <div><?php echo $text_qty; ?>
           <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" />
@@ -248,258 +197,6 @@
       <?php } ?>
     </div>
   </div>
-  
-  
-	<!-- Item Content -->
-	<div class="page-content">
-		<div class="container">
-			<main class="content">
-				<div class="item-title">
-					<h1 class="title main-title"><?php echo $heading_title; ?></h1>
-					<div class="item-addition">
-						<div class="item-addition-article"><?php echo $text_model; ?>				
-							<span class="item-addition-article-number"><?php echo $model; ?></span>
-						</div>
-						<div class="item-addition-rating">
-							<ul class="rating">
-								<li class="rating-list">
-									<span class="icon icon_rating icon_rating-fill">
-										<svg>
-											<use xlink:href="#icon_star"></use>
-										</svg>
-									</span>
-								</li>
-								<li class="rating-list">
-									<span class="icon icon_rating icon_rating-fill">
-										<svg>
-											<use xlink:href="#icon_star"></use>
-										</svg>
-									</span>
-								</li>
-								<li class="rating-list">
-									<span class="icon icon_rating icon_rating-fill">
-										<svg>
-											<use xlink:href="#icon_star"></use>
-										</svg>
-									</span>
-								</li>
-								<li class="rating-list">
-									<span class="icon icon_rating icon_rating-fill">
-										<svg>
-											<use xlink:href="#icon_star"></use>
-										</svg>
-									</span>
-								</li>
-								<li class="rating-list">
-									<span class="icon icon_rating">
-										<svg>
-											<use xlink:href="#icon_star"></use>
-										</svg>
-									</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="item-content">
-					<div class="row">
-
-						<div class="col-lg-9">
-							<!-- item top -->
-							<div class="item-top">
-								<div class="row">
-									<!-- item photo -->
-									
-									
-									
-									
-									  <?php if ($thumb || $images) { ?>
-									
-									<div class="col-lg-7 col-md-6 col-sm-6">
-										
-										
-										  
-    
-      <?php if ($thumb) { ?>
-		<div class="item-photo"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" class="item-photo-image" /></a></div>
-      <?php } ?>
-	  
-	  
-	  
-      <?php if ($images) { ?>
-	  	<!-- item photo mini -->
-										<ul class="popup-gallery item-photo-items">
-      
-        <?php foreach ($images as $image) { ?>
-		<li class="item-photo-item">
-        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $image['thumb']; ?>" class="item-photo-link_min" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
-        </li>
-		<?php } ?>
-      
-	  </ul>
-	  
-      <?php } ?>
-  
-									</div>
-									
-									<?php } ?>
-									<!-- item information -->
-									<div class="col-lg-5 col-md-6 col-sm-6">
-										<div class="item-info">
-											<!-- size and color -->
-											<div class="item-info-type">
-												<div class="row">
-													<!-- size -->
-													<div class="col-md-6 col-sm-6">
-														<span class="info-type-label">Размер рамы:</span>
-														<!-- select -->
-														<div class="select-wrap select-size">
-															<select id="item-size" name="size" class="input input_select">
-																<option value="150">150-165 (15-16.5)</option>
-																<option value="165">165-180 (17-18.5)</option>
-																<option value="175">175-190 (19-20.5)</option>
-															</select>
-														</div>
-													</div>
-													<!-- color -->
-													<div class="col-md-6 col-sm-6">
-														<span class="info-type-label">Цвет:</span>
-														<span class="info-type-color">
-															<span style="background-color: #06f64c"></span>
-															<span style="background-color: #019cf8"></span>
-															<span style="background-color: #fc4b19"></span>
-														</span>
-													</div>
-												</div>
-											</div>
-											<!-- price -->
-											<div class="item-info-price">
-												<div class="row">
-													<div class="col-md-6 col-sm-6">
-														<!-- price bonus -->
-														<div class="info-price-bonus-wrap">
-
-		
-														
-															<span class="info-price-bonus-sum"> <?php echo $reward; ?><span class="info-price-bonus-currancy">грн</span>
-															</span>
-															<span class="info-price-bonus-descr"><?php echo $text_reward; ?> до 14.09.2017</span>
-															<span class="info-price-bonus-descr"><?php echo $text_stock; ?> <?php echo $stock; ?></span>
-															
-															
-														</div>
-													</div>
-													<div class="col-md-6 col-sm-6">
-														<!-- item price -->
-														
-														<div class="info-price-wrap">
-															   <?php if (!$special) { ?>
-															   <?php } else { ?>
-																	<span class="info-price"><?php echo $special; ?></span>
-																	<span class="info-price-old"><?php echo $price; ?></span>												
-															   <?php } ?>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- purchase form-->
-											<div class="item-info-purchase">
-												<form action="" method="" class="item-purchase">
-													<div class="row">
-														<!-- amount -->
-														<div class="col-md-6 col-sm-6">
-															<div class="info-purchase-count">
-																<button class="input_control input_minus">
-																	<span class="icon icon_control">
-																		<svg>
-																			<use xlink:href="#icon_minus"></use>
-																		</svg>
-																	</span>
-																</button>
-
-																<input type="text" class="input input_count" value="1">
-
-																<button class="input_control input_plus">
-																	<span class="icon icon_control">
-																		<svg>
-																			<use xlink:href="#icon_plus"></use>
-																		</svg>
-																	</span>
-																</button>
-															</div>
-														</div>
-														<!-- button -->
-														<div class="col-md-6 col-sm-6">
-															<button type="submit" class="btn btn_act btn_purchase">
-																<span class="btn-icon">
-																	<span class="icon">
-																		<svg>
-																			<use xlink:href="#icon_cart"></use>
-																		</svg>
-																	</span>
-																</span>
-																<span class="btn-text">Купить</span>
-															</button>
-														</div>
-													</div>
-												</form>
-											</div>
-											<!-- actions -->
-											<div class="item-info-actions">
-												<div class="row">
-													<!-- add to fav and compare -->
-													<div class="col-md-6 col-sm-6">
-														<div class="info-actions-wrap">
-															<a href="#" class="info-actions-link">
-																<span class="btn-icon">
-																	<span class="icon">
-																		<svg>
-																			<use xlink:href="#icon_favourite"></use>
-																		</svg>
-																	</span>
-																</span>
-																<span class="btn-text">В избранные</span>
-															</a>
-															<a href="#" class="info-actions-link">
-																<span class="btn-icon">
-																	<span class="icon">
-																		<svg>
-																			<use xlink:href="#icon_compare"></use>
-																		</svg>
-																	</span>
-																</span>
-																<span class="btn-text">К сравнению</span>
-															</a>
-														</div>
-													</div>
-													<!-- one click cta -->
-													<div class="col-md-6 col-sm-6">
-														<div class="item-info-oneclick">
-															<a href="#" class="link info-oneclick-link">Купить в 1 клик</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- item bonus -->
-											<div class="item-info-bonus">
-												<div class="info-bonus-title">
-													<span class="btn-icon">
-														<span class="icon">
-															<svg>
-																<use xlink:href="#icon_gift"></use>
-															</svg>
-														</span>
-													</span>
-													<span class="info-bonus-text">Специальное предложение</span>
-												</div>
-												<p class="info-bonus-descr">При покупке велосипеда — в подарок замок!</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- item tabs -->
-							  <h1>tab</h1>
   <div id="tabs" class="htabs"><a href="#tab-description"><?php echo $tab_description; ?></a>
     <?php if ($attribute_groups) { ?>
     <a href="#tab-attribute"><?php echo $tab_attribute; ?></a>
@@ -533,8 +230,6 @@
     </table>
   </div>
   <?php } ?>
-  
-  
   <?php if ($review_status) { ?>
   <div id="tab-review" class="tab-content">
     <div id="review"></div>
@@ -607,29 +302,6 @@
   </div>
   <?php } ?>
   <?php echo $content_bottom; ?></div>
-  
-  <h1>/tab</h1>
-
-								</div>
-							</div>
-						</div>
-
-						<!-- item aside -->
-
-					</div>
-				</div>
-			</main>
-		</div>
-	</div>
-  
-  
-  
-  
-  
- 
-  
-  
-  
 <script type="text/javascript"><!--
 $(document).ready(function() {
 	$('.colorbox').colorbox({

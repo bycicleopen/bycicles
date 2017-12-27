@@ -6,49 +6,73 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="icon" type="image/png" href="images/favicon.png?v=2">
 	<!-- font -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,700&amp;subset=cyrillic" rel="stylesheet">
 	<!-- style -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="js/magnific-popup/magnific-popup.css">
 	<link rel="stylesheet" href="css/general.css">
-	<link rel="stylesheet" href="css/styles.css?v=1">
+	<link rel="stylesheet" href="css/styles.css?v=3">
+	<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/stylesheet.css" />
+<?php foreach ($styles as $style) { ?>
+<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
+<?php } ?>
+<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
+<?php foreach ($scripts as $script) { ?>
+<script type="text/javascript" src="<?php echo $script; ?>"></script>
+<?php } ?>
+	
+	
 </head>
 <body>
-	
+
 	<!-- Header -->
 	<header class="header">
 		<!-- header top -->
 		<div class="header-top hidden-sm hidden-xs">
 			<div class="container">
+			
 				<div class="row">
 
+				
 					<div class="col-md-6">
-						<form id="lang" action="" method="" class="form-select form-select_lang">
-							<select class="input_select input_lang">
-								<option value="ru">RU</option>
-								<option value="ua">UA</option>
-								<option value="en">EN</option>
-								 <?php echo $language."lang"; ?>
-							</select>
-						</form>
-						<!--?php echo"inf="; var_dump($informations);?-->
+				
 						<nav class="header-nav header-devider">
 							<menu class="header-nav_items">
+									<li class="header-nav_item"><?php echo $language; ?></li>
+							</menu>
+						</nav>
+					</div>
+					
+					<div class="col-md-6">
+					
+						<nav class="header-nav header-devider">
+							<menu class="header-nav_items">
+									<li class="header-nav_item"><?php echo $language; ?></li>
 									
 									<?php foreach ($informations as $information) { ?>
 										<li class="header-nav_item"><a href="<?php echo $information['href']; ?>" class="header-nav_link"><?php echo $information['title']; ?></a></li>
 									<?php } ?>	
 									
-								<li class="header-nav_item">
+							<li class="header-nav_item">
 									<a href="#" class="header-nav_link">Новости</a></li>								
 								<li class="header-nav_item">
 									<a href="<?php echo $contact; ?>" class="header-nav_link"><?php echo $text_contact; ?></a></li>
 								
+								
 							</menu>
 						</nav>
 					</div>
+					
+	
+					
+					
+					
 
 					<div class="col-md-6">
 
@@ -104,6 +128,7 @@
 												</svg>
 											</span>
 										</span>
+										
 										<span class="header-user-text">Корзина</span>
 										<span class="add-count add-count_cart header-user-count" data-value="3"></span>
 									</a>
