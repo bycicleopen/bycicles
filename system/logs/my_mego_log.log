@@ -36,3 +36,51 @@
 2017-12-26 13:12:03 - PHP Notice:  Undefined variable: contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
 2017-12-26 13:12:03 - PHP Notice:  Undefined variable: text_contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
 2017-12-26 13:33:22 - PHP Notice:  Undefined variable: text_contact in D:\usr\www\bycicles\catalog\view\theme\default\template\common\header.tpl on line 44
+2017-12-28 9:06:24 - PHP Warning:  mysql_query(): Unable to save result set in D:\usr\www\bycicles\system\database\mysql.php on line 22
+2017-12-28 9:06:24 - PHP Notice:  Error: Got error 28 from storage engine<br />Error No: 1030<br />SELECT p.*, pd.*,  m.name as 'm_name' FROM product p LEFT JOIN product_description pd ON (p.product_id = pd.product_id) LEFT JOIN manufacturer m ON (p.manufacturer_id = m.manufacturer_id) WHERE pd.language_id = '1' GROUP BY p.product_id ORDER BY pd.name ASC LIMIT 0,20 in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 9:06:51 - PHP Warning:  mysql_query(): Unable to save result set in D:\usr\www\bycicles\system\database\mysql.php on line 22
+2017-12-28 9:06:51 - PHP Notice:  Error: Got error 28 from storage engine<br />Error No: 1030<br />SELECT p.*, pd.*,  m.name as 'm_name' FROM product p LEFT JOIN product_description pd ON (p.product_id = pd.product_id) LEFT JOIN manufacturer m ON (p.manufacturer_id = m.manufacturer_id) WHERE pd.language_id = '1' GROUP BY p.product_id ORDER BY pd.name ASC LIMIT 0,20 in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 10:30:47 - PHP Notice:  Undefined variable: banner in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 51
+2017-12-28 11:42:36 - PHP Notice:  Undefined variable: banner in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 52
+2017-12-28 12:00:57 - PHP Notice:  Undefined index: link in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 50
+2017-12-28 12:00:57 - PHP Notice:  Undefined index: image in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 52
+2017-12-28 12:01:18 - PHP Notice:  Undefined variable: banner in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 44
+2017-12-28 12:01:18 - PHP Notice:  Undefined index: link in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 50
+2017-12-28 12:01:18 - PHP Notice:  Undefined index: image in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 52
+2017-12-28 12:01:18 - PHP Notice:  Undefined variable: banner in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 52
+2017-12-28 12:21:06 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 68
+2017-12-28 12:21:29 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 68
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 28
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:32:20 - PHP Notice:  Undefined index: title in D:\usr\www\bycicles\catalog\controller\module\carousel.php on line 27
+2017-12-28 13:42:12 - PHP Notice:  Error: Unknown table 'bir'<br />Error No: 1051<br />SELECT bir.*, bid.*, p.price FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id),product p WHERE bi.banner_id = '7' AND bid.language_id = '1' in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 13:44:57 - PHP Unknown:  Object of class stdClass could not be converted to string in D:\usr\www\bycicles\catalog\model\design\banner.php on line 7
+2017-12-28 13:44:57 - PHP Unknown:  Object of class stdClass could not be converted to string in D:\usr\www\bycicles\catalog\model\design\banner.php on line 7
+2017-12-28 13:49:20 - PHP Notice:  Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN product p WHERE bi.banner_id = '7' on p.product_id = 7 AND bid.languag' at line 1<br />Error No: 1064<br />SELECT bi.*, bid.*, p.price FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id),LEFT JOIN product p WHERE bi.banner_id = '7' on p.product_id = 7 AND bid.language_id = '1' in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 13:50:11 - PHP Notice:  Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LEFT JOIN product p  on p.product_id = 7 WHERE bi.banner_id = '7' AND bid.langua' at line 1<br />Error No: 1064<br />SELECT bi.*, bid.*, p.price FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id),LEFT JOIN product p  on p.product_id = 7 WHERE bi.banner_id = '7' AND bid.language_id = '1' in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 14:05:31 - PHP Notice:  Error: Column 'product_id' in on clause is ambiguous<br />Error No: 1052<br />SELECT bi.*, bid.*, p.price FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id)
+		LEFT JOIN product p ON (p.product_id  = product_id)
+		WHERE bi.banner_id = '7' AND bid.language_id = '1' in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 14:06:13 - PHP Notice:  Error: Unknown column 'bid.product_id' in 'on clause'<br />Error No: 1054<br />SELECT bi.*, bid.*, p.price FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id)
+		LEFT JOIN product p ON (p.product_id  = bid.product_id)
+		WHERE bi.banner_id = '7' AND bid.language_id = '1' in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 14:14:19 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:15:16 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:15:38 - PHP Notice:  Undefined variable: query_txt in D:\usr\www\bycicles\catalog\model\design\banner.php on line 14
+2017-12-28 14:15:38 - PHP Notice:  Error: Query was empty<br />Error No: 1065<br /> in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2017-12-28 14:16:01 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:16:08 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:21:23 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:21:53 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:22:50 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:00 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:02 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:27 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:29 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:29 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:30 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47
+2017-12-28 14:24:30 - PHP Notice:  Undefined index: price in D:\usr\www\bycicles\catalog\view\theme\default\template\module\slideshow.tpl on line 47

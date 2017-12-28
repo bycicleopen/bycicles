@@ -38,10 +38,7 @@
 			<div class="container">
 			
 				<div class="row">
-				
-			        
-				
-			
+					
 					<div class="col-md-6">
 					    <?php echo $language; ?>
 						<nav class="header-nav header-devider">
@@ -58,6 +55,7 @@
 								
 							</menu>
 						</nav>
+						
 					</div>
 					
 	
@@ -120,7 +118,7 @@
 											</span>
 										</span>
 										
-										<span class="header-user-text">Корзина</span>
+										<span class="header-user-text"><?php echo $cart; ?></span>
 										<span class="add-count add-count_cart header-user-count" data-value="3"></span>
 									</a>
 								</li>
