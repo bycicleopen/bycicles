@@ -1,45 +1,44 @@
-<?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-<div id="content"><?php echo $content_top; ?>
-  <div class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-    <?php } ?>
-  </div>
-  <h1><?php echo $heading_title; ?></h1>
-  <?php if ($thumb || $description) { ?>
-  <div class="category-info">
-    <?php if ($thumb) { ?>
-    <div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
-    <?php } ?>
-    <?php if ($description) { ?>
-    <?php echo $description; ?>
-    <?php } ?>
-  </div>
-  <?php } ?>
-  <?php if ($categories) { ?>
-  <h2><?php echo $text_refine; ?></h2>
-  <div class="category-list">
-    <?php if (count($categories) <= 5) { ?>
-    <ul>
-      <?php foreach ($categories as $category) { ?>
-      <li><a href="<?php echo $category['href']; ?>"><img src="<?php echo $category['thumb']; ?>"><span><?php echo $category['name']; ?></a></span></li>
-      <?php } ?>
-    </ul>
-    <?php } else { ?>
-    <?php for ($i = 0; $i < count($categories);) { ?>
-    <ul>
-      <?php $j = $i + ceil(count($categories) / 4); ?>
-      <?php for (; $i < $j; $i++) { ?>
-      <?php if (isset($categories[$i])) { ?>
-      <li><a href="<?php echo $categories[$i]['href']; ?>"><img src="<?php echo $categories[$i]['thumb']; ?>"><span><?php echo $categories[$i]['name']; ?></span></a></li>
-      <?php } ?>
-      <?php } ?>
-    </ul>
-    <?php } ?>
-    <?php } ?>
-  </div>
-  <?php } ?>
+<?php echo $header; ?>
+  	<!-- Category -->
+	<section class="category">
+		<div class="container">
+			<div id="content"><?php echo $content_top; ?>
+			<div class="breadcrumb">
+				<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+				<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+				<?php } ?>
+			</div>
+			<h1><?php echo $heading_title; ?></h1>
+				<?php if ($thumb || $description) { ?>
+				<div class="category-info">
+				<?php if ($thumb) { ?>
+					<div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
+						<?php } ?>
+						<?php if ($description) { ?>
+						<?php echo $description; ?>
+						<?php } ?>
+					</div>
+				<?php } ?>
+		    <?php if ($categories) { ?>
+			<div class="row">
+				<div class="category-list">
+				<?php foreach ($categories as $category) { ?>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<div class="category-item">
+							<a href="<?php echo $category['href']; ?>"  class="category-item_link"></a>
+							<div class="category-item_image">
+							<img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>">
+							</div>
+						<span class="category-item_title"><?php echo $category['name']; ?></span>
+						</div>
+					</div>
+				<?php } ?>
+				</div>
+			</div>
+			<?php } ?>
+			  
   <?php if ($products) { ?>
+ 
   <div class="product-filter">
     <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
     <div class="limit"><b><?php echo $text_limit; ?></b>
@@ -66,7 +65,9 @@
       </select>
     </div>
   </div>
+  
   <div class="product-list">
+ 
     <?php foreach ($products as $product) { ?>
     <div>
       <?php if ($product['thumb']) { ?>
@@ -107,6 +108,8 @@
   </div>
   <?php } ?>
   <?php echo $content_bottom; ?></div>
+ </div> 
+	</section>
 <script type="text/javascript"><!--
 function display(view) {
 	if (view == 'list') {

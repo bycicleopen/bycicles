@@ -1,3 +1,4 @@
+<h1>special</h1>
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
 <div id="content"><?php echo $content_top; ?>
   <div class="breadcrumb">
