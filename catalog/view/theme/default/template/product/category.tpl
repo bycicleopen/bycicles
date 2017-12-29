@@ -110,6 +110,9 @@
   <?php echo $content_bottom; ?></div>
  </div> 
 	</section>
+	
+	
+	
 <script type="text/javascript"><!--
 function display(view) {
 	if (view == 'list') {

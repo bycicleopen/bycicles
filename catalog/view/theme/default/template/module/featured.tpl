@@ -2,7 +2,7 @@
 	<section class="popular">
 		<div class="container">
 			<div class="section-title">
-				<h2 class="title">Популярные модели</h2>
+				<h2 class="title"><?php echo $heading_title; ?></h2>
 				<div class="section-paginator hidden-xs">
 					<a href="#" class="link section-link">Посмотреть все</a>
 					<div class="paginator-list">

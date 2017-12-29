@@ -152,9 +152,7 @@ CREATE TABLE `address` (
   `city` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
   `postcode` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
   `country_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `zone_id` INTEGER(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`address_id`),
-  KEY `customer_id` (`customer_id`)
+  `zone_id` INTEGER(11) NOT NULL DEFAULT 0
 )ENGINE=MyISAM
 AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
@@ -195,8 +193,7 @@ CREATE TABLE `affiliate` (
   `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
   `status` TINYINT(1) NOT NULL,
   `approved` TINYINT(1) NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`affiliate_id`)
+  `date_added` DATETIME NOT NULL
 )ENGINE=MyISAM
 AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
@@ -212,8 +209,7 @@ CREATE TABLE `affiliate_transaction` (
   `order_id` INTEGER(11) NOT NULL,
   `description` TEXT COLLATE utf8_general_ci NOT NULL,
   `amount` DECIMAL(15,4) NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`affiliate_transaction_id`)
+  `date_added` DATETIME NOT NULL
 )ENGINE=MyISAM
 AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
@@ -226,1850 +222,9 @@ COMMENT=''
 CREATE TABLE `attribute` (
   `attribute_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
   `attribute_group_id` INTEGER(11) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`attribute_id`)
+  `sort_order` INTEGER(3) NOT NULL
 )ENGINE=MyISAM
 AUTO_INCREMENT=12 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `attribute_description`: 
-#
-
-CREATE TABLE `attribute_description` (
-  `attribute_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`attribute_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=21 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `attribute_group`: 
-#
-
-CREATE TABLE `attribute_group` (
-  `attribute_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`attribute_group_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=10 AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `attribute_group_description`: 
-#
-
-CREATE TABLE `attribute_group_description` (
-  `attribute_group_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`attribute_group_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=25 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `banner`: 
-#
-
-CREATE TABLE `banner` (
-  `banner_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `status` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`banner_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=9 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `banner_image`: 
-#
-
-CREATE TABLE `banner_image` (
-  `banner_image_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `banner_id` INTEGER(11) NOT NULL,
-  `link` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `product_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`banner_image_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=85 AVG_ROW_LENGTH=104 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `banner_image_description`: 
-#
-
-CREATE TABLE `banner_image_description` (
-  `banner_image_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `banner_id` INTEGER(11) NOT NULL,
-  `title` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`banner_image_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=27 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category`: 
-#
-
-CREATE TABLE `category` (
-  `category_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
-  `parent_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `top` TINYINT(1) NOT NULL,
-  `column` INTEGER(3) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
-  `status` TINYINT(1) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`category_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=64 AVG_ROW_LENGTH=33 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category_description`: 
-#
-
-CREATE TABLE `category_description` (
-  `category_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`category_id`, `language_id`),
-  KEY `name` (`name`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=52 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category_filter`: 
-#
-
-CREATE TABLE `category_filter` (
-  `category_id` INTEGER(11) NOT NULL,
-  `filter_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`category_id`, `filter_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category_path`: 
-#
-
-CREATE TABLE `category_path` (
-  `category_id` INTEGER(11) NOT NULL,
-  `path_id` INTEGER(11) NOT NULL,
-  `level` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`category_id`, `path_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category_to_layout`: 
-#
-
-CREATE TABLE `category_to_layout` (
-  `category_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  `layout_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`category_id`, `store_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `category_to_store`: 
-#
-
-CREATE TABLE `category_to_store` (
-  `category_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`category_id`, `store_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `country`: 
-#
-
-CREATE TABLE `country` (
-  `country_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `iso_code_2` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
-  `iso_code_3` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `address_format` TEXT COLLATE utf8_general_ci NOT NULL,
-  `postcode_required` TINYINT(1) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`country_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=240 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `coupon`: 
-#
-
-CREATE TABLE `coupon` (
-  `coupon_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `type` CHAR(1) COLLATE utf8_general_ci NOT NULL,
-  `discount` DECIMAL(15,4) NOT NULL,
-  `logged` TINYINT(1) NOT NULL,
-  `shipping` TINYINT(1) NOT NULL,
-  `total` DECIMAL(15,4) NOT NULL,
-  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
-  `date_end` DATE NOT NULL DEFAULT '0000-00-00',
-  `uses_total` INTEGER(11) NOT NULL,
-  `uses_customer` VARCHAR(11) COLLATE utf8_general_ci NOT NULL,
-  `status` TINYINT(1) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`coupon_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=7 AVG_ROW_LENGTH=78 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `coupon_category`: 
-#
-
-CREATE TABLE `coupon_category` (
-  `coupon_id` INTEGER(11) NOT NULL,
-  `category_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`coupon_id`, `category_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `coupon_history`: 
-#
-
-CREATE TABLE `coupon_history` (
-  `coupon_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `coupon_id` INTEGER(11) NOT NULL,
-  `order_id` INTEGER(11) NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL,
-  `amount` DECIMAL(15,4) NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`coupon_history_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `coupon_product`: 
-#
-
-CREATE TABLE `coupon_product` (
-  `coupon_product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `coupon_id` INTEGER(11) NOT NULL,
-  `product_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`coupon_product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `currency`: 
-#
-
-CREATE TABLE `currency` (
-  `currency_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `symbol_left` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
-  `symbol_right` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
-  `decimal_place` CHAR(1) COLLATE utf8_general_ci NOT NULL,
-  `value` FLOAT(15,8) NOT NULL,
-  `status` TINYINT(1) NOT NULL,
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`currency_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=4 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `custom_field`: 
-#
-
-CREATE TABLE `custom_field` (
-  `custom_field_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `required` TINYINT(1) NOT NULL,
-  `location` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `position` INTEGER(3) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`custom_field_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `custom_field_description`: 
-#
-
-CREATE TABLE `custom_field_description` (
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`custom_field_id`, `language_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `custom_field_to_customer_group`: 
-#
-
-CREATE TABLE `custom_field_to_customer_group` (
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `customer_group_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`custom_field_id`, `customer_group_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `custom_field_value`: 
-#
-
-CREATE TABLE `custom_field_value` (
-  `custom_field_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`custom_field_value_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `custom_field_value_description`: 
-#
-
-CREATE TABLE `custom_field_value_description` (
-  `custom_field_value_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`custom_field_value_id`, `language_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer`: 
-#
-
-CREATE TABLE `customer` (
-  `customer_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `fax` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `password` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `salt` VARCHAR(9) COLLATE utf8_general_ci NOT NULL,
-  `cart` TEXT COLLATE utf8_general_ci,
-  `wishlist` TEXT COLLATE utf8_general_ci,
-  `newsletter` TINYINT(1) NOT NULL DEFAULT 0,
-  `address_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `customer_group_id` INTEGER(11) NOT NULL,
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
-  `status` TINYINT(1) NOT NULL,
-  `approved` TINYINT(1) NOT NULL,
-  `token` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`customer_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_ban_ip`: 
-#
-
-CREATE TABLE `customer_ban_ip` (
-  `customer_ban_ip_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`customer_ban_ip_id`),
-  KEY `ip` (`ip`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_field`: 
-#
-
-CREATE TABLE `customer_field` (
-  `customer_id` INTEGER(11) NOT NULL,
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `custom_field_value_id` INTEGER(11) NOT NULL,
-  `name` INTEGER(128) NOT NULL,
-  `value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`customer_id`, `custom_field_id`, `custom_field_value_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_group`: 
-#
-
-CREATE TABLE `customer_group` (
-  `customer_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `approval` INTEGER(1) NOT NULL,
-  `company_id_display` INTEGER(1) NOT NULL,
-  `company_id_required` INTEGER(1) NOT NULL,
-  `tax_id_display` INTEGER(1) NOT NULL,
-  `tax_id_required` INTEGER(1) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`customer_group_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=2 AVG_ROW_LENGTH=29 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_group_description`: 
-#
-
-CREATE TABLE `customer_group_description` (
-  `customer_group_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`customer_group_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_history`: 
-#
-
-CREATE TABLE `customer_history` (
-  `customer_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` INTEGER(11) NOT NULL,
-  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`customer_history_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_ip`: 
-#
-
-CREATE TABLE `customer_ip` (
-  `customer_ip_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` INTEGER(11) NOT NULL,
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`customer_ip_id`),
-  KEY `ip` (`ip`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_online`: 
-#
-
-CREATE TABLE `customer_online` (
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL,
-  `url` TEXT COLLATE utf8_general_ci NOT NULL,
-  `referer` TEXT COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`ip`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_reward`: 
-#
-
-CREATE TABLE `customer_reward` (
-  `customer_reward_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `order_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `points` INTEGER(8) NOT NULL DEFAULT 0,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`customer_reward_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `customer_transaction`: 
-#
-
-CREATE TABLE `customer_transaction` (
-  `customer_transaction_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` INTEGER(11) NOT NULL,
-  `order_id` INTEGER(11) NOT NULL,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `amount` DECIMAL(15,4) NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`customer_transaction_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `download`: 
-#
-
-CREATE TABLE `download` (
-  `download_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `filename` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `mask` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `remaining` INTEGER(11) NOT NULL DEFAULT 0,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`download_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `download_description`: 
-#
-
-CREATE TABLE `download_description` (
-  `download_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`download_id`, `language_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `extension`: 
-#
-
-CREATE TABLE `extension` (
-  `extension_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`extension_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=431 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `filter`: 
-#
-
-CREATE TABLE `filter` (
-  `filter_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `filter_group_id` INTEGER(11) NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`filter_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `filter_description`: 
-#
-
-CREATE TABLE `filter_description` (
-  `filter_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `filter_group_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`filter_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=44 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `filter_group`: 
-#
-
-CREATE TABLE `filter_group` (
-  `filter_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`filter_group_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=2 AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `filter_group_description`: 
-#
-
-CREATE TABLE `filter_group_description` (
-  `filter_group_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`filter_group_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=54 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `geo_zone`: 
-#
-
-CREATE TABLE `geo_zone` (
-  `geo_zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`geo_zone_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=4 AVG_ROW_LENGTH=56 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `information`: 
-#
-
-CREATE TABLE `information` (
-  `information_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `bottom` INTEGER(1) NOT NULL DEFAULT 0,
-  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
-  `status` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`information_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=7 AVG_ROW_LENGTH=14 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `information_description`: 
-#
-
-CREATE TABLE `information_description` (
-  `information_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `title` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`information_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=131 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `information_to_layout`: 
-#
-
-CREATE TABLE `information_to_layout` (
-  `information_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  `layout_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`information_id`, `store_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `information_to_store`: 
-#
-
-CREATE TABLE `information_to_store` (
-  `information_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`information_id`, `store_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `language`: 
-#
-
-CREATE TABLE `language` (
-  `language_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(5) COLLATE utf8_general_ci NOT NULL,
-  `locale` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `image` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `directory` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `filename` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
-  `status` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`language_id`),
-  KEY `name` (`name`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3 AVG_ROW_LENGTH=78 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `layout`: 
-#
-
-CREATE TABLE `layout` (
-  `layout_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`layout_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=15 AVG_ROW_LENGTH=32 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `layout_route`: 
-#
-
-CREATE TABLE `layout_route` (
-  `layout_route_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `layout_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  `route` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`layout_route_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=37 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `length_class`: 
-#
-
-CREATE TABLE `length_class` (
-  `length_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `value` DECIMAL(15,8) NOT NULL,
-  PRIMARY KEY (`length_class_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=4 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `length_class_description`: 
-#
-
-CREATE TABLE `length_class_description` (
-  `length_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL,
-  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `unit` VARCHAR(4) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`length_class_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3 AVG_ROW_LENGTH=32 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `manufacturer`: 
-#
-
-CREATE TABLE `manufacturer` (
-  `manufacturer_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`manufacturer_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=11 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `manufacturer_description`: 
-#
-
-CREATE TABLE `manufacturer_description` (
-  `manufacturer_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`manufacturer_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=20 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `manufacturer_to_store`: 
-#
-
-CREATE TABLE `manufacturer_to_store` (
-  `manufacturer_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`manufacturer_id`, `store_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `option`: 
-#
-
-CREATE TABLE `option` (
-  `option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`option_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=14 AVG_ROW_LENGTH=21 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `option_description`: 
-#
-
-CREATE TABLE `option_description` (
-  `option_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`option_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=22 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `option_value`: 
-#
-
-CREATE TABLE `option_value` (
-  `option_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `option_id` INTEGER(11) NOT NULL,
-  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`option_value_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=50 AVG_ROW_LENGTH=20 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `option_value_description`: 
-#
-
-CREATE TABLE `option_value_description` (
-  `option_value_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `option_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`option_value_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order`: 
-#
-
-CREATE TABLE `order` (
-  `order_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `invoice_no` INTEGER(11) NOT NULL DEFAULT 0,
-  `invoice_prefix` VARCHAR(26) COLLATE utf8_general_ci NOT NULL,
-  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `store_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `store_url` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `customer_group_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `fax` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_company` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_company_id` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_tax_id` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `payment_address_1` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_address_2` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_city` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_postcode` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `payment_country` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_country_id` INTEGER(11) NOT NULL,
-  `payment_zone` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_zone_id` INTEGER(11) NOT NULL,
-  `payment_address_format` TEXT COLLATE utf8_general_ci NOT NULL,
-  `payment_method` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `payment_code` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `shipping_lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `shipping_company` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `shipping_address_1` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_address_2` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_city` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_postcode` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `shipping_country` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_country_id` INTEGER(11) NOT NULL,
-  `shipping_zone` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_zone_id` INTEGER(11) NOT NULL,
-  `shipping_address_format` TEXT COLLATE utf8_general_ci NOT NULL,
-  `shipping_method` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `shipping_code` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
-  `total` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `order_status_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `affiliate_id` INTEGER(11) NOT NULL,
-  `commission` DECIMAL(15,4) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `currency_id` INTEGER(11) NOT NULL,
-  `currency_code` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `currency_value` DECIMAL(15,8) NOT NULL DEFAULT 1.00000000,
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `forwarded_ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `user_agent` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `accept_language` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  `date_modified` DATETIME NOT NULL,
-  PRIMARY KEY (`order_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_download`: 
-#
-
-CREATE TABLE `order_download` (
-  `order_download_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `order_product_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `filename` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `mask` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `remaining` INTEGER(3) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`order_download_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_field`: 
-#
-
-CREATE TABLE `order_field` (
-  `order_id` INTEGER(11) NOT NULL,
-  `custom_field_id` INTEGER(11) NOT NULL,
-  `custom_field_value_id` INTEGER(11) NOT NULL,
-  `name` INTEGER(128) NOT NULL,
-  `value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`order_id`, `custom_field_id`, `custom_field_value_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_fraud`: 
-#
-
-CREATE TABLE `order_fraud` (
-  `order_id` INTEGER(11) NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL,
-  `country_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `country_code` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
-  `high_risk_country` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `distance` INTEGER(11) NOT NULL,
-  `ip_region` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_city` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_latitude` DECIMAL(10,6) NOT NULL,
-  `ip_longitude` DECIMAL(10,6) NOT NULL,
-  `ip_isp` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_org` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_asnum` INTEGER(11) NOT NULL,
-  `ip_user_type` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_country_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `ip_region_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `ip_city_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `ip_postal_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `ip_postal_code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `ip_accuracy_radius` INTEGER(11) NOT NULL,
-  `ip_net_speed_cell` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_metro_code` INTEGER(3) NOT NULL,
-  `ip_area_code` INTEGER(3) NOT NULL,
-  `ip_time_zone` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_region_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_domain` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_country_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ip_continent_code` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
-  `ip_corporate_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `anonymous_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `proxy_score` INTEGER(3) NOT NULL,
-  `is_trans_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `free_mail` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `carder_email` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `high_risk_username` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `high_risk_password` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `bin_match` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `bin_country` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
-  `bin_name_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `bin_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `bin_phone_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `bin_phone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `customer_phone_in_billing_location` VARCHAR(8) COLLATE utf8_general_ci NOT NULL,
-  `ship_forward` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `city_postal_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `ship_city_postal_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
-  `score` DECIMAL(10,5) NOT NULL,
-  `explanation` TEXT COLLATE utf8_general_ci NOT NULL,
-  `risk_score` DECIMAL(10,5) NOT NULL,
-  `queries_remaining` INTEGER(11) NOT NULL,
-  `maxmind_id` VARCHAR(8) COLLATE utf8_general_ci NOT NULL,
-  `error` TEXT COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`order_id`)
-)ENGINE=MyISAM
-CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_history`: 
-#
-
-CREATE TABLE `order_history` (
-  `order_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `order_status_id` INTEGER(5) NOT NULL,
-  `notify` TINYINT(1) NOT NULL DEFAULT 0,
-  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`order_history_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_option`: 
-#
-
-CREATE TABLE `order_option` (
-  `order_option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `order_product_id` INTEGER(11) NOT NULL,
-  `product_option_id` INTEGER(11) NOT NULL,
-  `product_option_value_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`order_option_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_product`: 
-#
-
-CREATE TABLE `order_product` (
-  `order_product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `product_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `quantity` INTEGER(4) NOT NULL,
-  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `total` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `tax` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `reward` INTEGER(8) NOT NULL,
-  PRIMARY KEY (`order_product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_status`: 
-#
-
-CREATE TABLE `order_status` (
-  `order_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`order_status_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=14 AVG_ROW_LENGTH=31 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_total`: 
-#
-
-CREATE TABLE `order_total` (
-  `order_total_id` INTEGER(10) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `value` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `sort_order` INTEGER(3) NOT NULL,
-  PRIMARY KEY (`order_total_id`),
-  KEY `idx_orders_total_orders_id` (`order_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `order_voucher`: 
-#
-
-CREATE TABLE `order_voucher` (
-  `order_voucher_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `voucher_id` INTEGER(11) NOT NULL,
-  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `from_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `from_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `to_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `to_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `voucher_theme_id` INTEGER(11) NOT NULL,
-  `message` TEXT COLLATE utf8_general_ci NOT NULL,
-  `amount` DECIMAL(15,4) NOT NULL,
-  PRIMARY KEY (`order_voucher_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product`: 
-#
-
-CREATE TABLE `product` (
-  `product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `sku` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `upc` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
-  `ean` VARCHAR(14) COLLATE utf8_general_ci NOT NULL,
-  `jan` VARCHAR(13) COLLATE utf8_general_ci NOT NULL,
-  `isbn` VARCHAR(13) COLLATE utf8_general_ci NOT NULL,
-  `mpn` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `location` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `quantity` INTEGER(4) NOT NULL DEFAULT 0,
-  `stock_status_id` INTEGER(11) NOT NULL,
-  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
-  `manufacturer_id` INTEGER(11) NOT NULL,
-  `shipping` TINYINT(1) NOT NULL DEFAULT 1,
-  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `points` INTEGER(8) NOT NULL DEFAULT 0,
-  `tax_class_id` INTEGER(11) NOT NULL,
-  `date_available` DATE NOT NULL,
-  `weight` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
-  `weight_class_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `length` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
-  `width` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
-  `height` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
-  `length_class_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `subtract` TINYINT(1) NOT NULL DEFAULT 1,
-  `minimum` INTEGER(11) NOT NULL DEFAULT 1,
-  `sort_order` INTEGER(11) NOT NULL DEFAULT 0,
-  `status` TINYINT(1) NOT NULL DEFAULT 0,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `viewed` INTEGER(5) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=65 AVG_ROW_LENGTH=150 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_attribute`: 
-#
-
-CREATE TABLE `product_attribute` (
-  `product_id` INTEGER(11) NOT NULL,
-  `attribute_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `text` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`product_id`, `attribute_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=25 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_description`: 
-#
-
-CREATE TABLE `product_description` (
-  `product_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `description` TEXT COLLATE utf8_general_ci NOT NULL,
-  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `tag` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`product_id`, `language_id`),
-  KEY `name` (`name`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=1511 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_discount`: 
-#
-
-CREATE TABLE `product_discount` (
-  `product_discount_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL,
-  `customer_group_id` INTEGER(11) NOT NULL,
-  `quantity` INTEGER(4) NOT NULL DEFAULT 0,
-  `priority` INTEGER(5) NOT NULL DEFAULT 1,
-  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
-  `date_end` DATE NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`product_discount_id`),
-  KEY `product_id` (`product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=450 AVG_ROW_LENGTH=34 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_filter`: 
-#
-
-CREATE TABLE `product_filter` (
-  `product_id` INTEGER(11) NOT NULL,
-  `filter_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`product_id`, `filter_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_image`: 
-#
-
-CREATE TABLE `product_image` (
-  `product_image_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL,
-  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
-  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`product_image_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=2423 AVG_ROW_LENGTH=41 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_option`: 
-#
-
-CREATE TABLE `product_option` (
-  `product_option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL,
-  `option_id` INTEGER(11) NOT NULL,
-  `option_value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `required` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`product_option_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=228 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_option_value`: 
-#
-
-CREATE TABLE `product_option_value` (
-  `product_option_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_option_id` INTEGER(11) NOT NULL,
-  `product_id` INTEGER(11) NOT NULL,
-  `option_id` INTEGER(11) NOT NULL,
-  `option_value_id` INTEGER(11) NOT NULL,
-  `quantity` INTEGER(3) NOT NULL,
-  `subtract` TINYINT(1) NOT NULL,
-  `price` DECIMAL(15,4) NOT NULL,
-  `price_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL,
-  `points` INTEGER(8) NOT NULL,
-  `points_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL,
-  `weight` DECIMAL(15,8) NOT NULL,
-  `weight_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`product_option_value_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=18 AVG_ROW_LENGTH=53 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_related`: 
-#
-
-CREATE TABLE `product_related` (
-  `product_id` INTEGER(11) NOT NULL,
-  `related_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`product_id`, `related_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_reward`: 
-#
-
-CREATE TABLE `product_reward` (
-  `product_reward_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `customer_group_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `points` INTEGER(8) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`product_reward_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=558 AVG_ROW_LENGTH=17 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_special`: 
-#
-
-CREATE TABLE `product_special` (
-  `product_special_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL,
-  `customer_group_id` INTEGER(11) NOT NULL,
-  `priority` INTEGER(5) NOT NULL DEFAULT 1,
-  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
-  `date_end` DATE NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`product_special_id`),
-  KEY `product_id` (`product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=446 AVG_ROW_LENGTH=30 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_to_category`: 
-#
-
-CREATE TABLE `product_to_category` (
-  `product_id` INTEGER(11) NOT NULL,
-  `category_id` INTEGER(11) NOT NULL,
-  `main_category` TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`product_id`, `category_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=10 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_to_download`: 
-#
-
-CREATE TABLE `product_to_download` (
-  `product_id` INTEGER(11) NOT NULL,
-  `download_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`product_id`, `download_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_to_layout`: 
-#
-
-CREATE TABLE `product_to_layout` (
-  `product_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL,
-  `layout_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`product_id`, `store_id`)
-)ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `product_to_store`: 
-#
-
-CREATE TABLE `product_to_store` (
-  `product_id` INTEGER(11) NOT NULL,
-  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`product_id`, `store_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `return`: 
-#
-
-CREATE TABLE `return` (
-  `return_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `product_id` INTEGER(11) NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL,
-  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `product` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `quantity` INTEGER(4) NOT NULL,
-  `opened` TINYINT(1) NOT NULL,
-  `return_reason_id` INTEGER(11) NOT NULL,
-  `return_action_id` INTEGER(11) NOT NULL,
-  `return_status_id` INTEGER(11) NOT NULL,
-  `comment` TEXT COLLATE utf8_general_ci,
-  `date_ordered` DATE NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  `date_modified` DATETIME NOT NULL,
-  PRIMARY KEY (`return_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `return_action`: 
-#
-
-CREATE TABLE `return_action` (
-  `return_action_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`return_action_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=4 AVG_ROW_LENGTH=48 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `return_history`: 
-#
-
-CREATE TABLE `return_history` (
-  `return_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `return_id` INTEGER(11) NOT NULL,
-  `return_status_id` INTEGER(11) NOT NULL,
-  `notify` TINYINT(1) NOT NULL,
-  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`return_history_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `return_reason`: 
-#
-
-CREATE TABLE `return_reason` (
-  `return_reason_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`return_reason_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=6 AVG_ROW_LENGTH=70 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `return_status`: 
-#
-
-CREATE TABLE `return_status` (
-  `return_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`return_status_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=4 AVG_ROW_LENGTH=48 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `review`: 
-#
-
-CREATE TABLE `review` (
-  `review_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `product_id` INTEGER(11) NOT NULL,
-  `customer_id` INTEGER(11) NOT NULL,
-  `author` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `text` TEXT COLLATE utf8_general_ci NOT NULL,
-  `rating` INTEGER(1) NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT 0,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`review_id`),
-  KEY `product_id` (`product_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=5 AVG_ROW_LENGTH=100 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `setting`: 
-#
-
-CREATE TABLE `setting` (
-  `setting_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `group` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `key` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `value` TEXT COLLATE utf8_general_ci NOT NULL,
-  `serialized` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`setting_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=273 AVG_ROW_LENGTH=96 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `stock_status`: 
-#
-
-CREATE TABLE `stock_status` (
-  `stock_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`stock_status_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=9 AVG_ROW_LENGTH=30 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `store`: 
-#
-
-CREATE TABLE `store` (
-  `store_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `url` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `ssl` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`store_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `tax_class`: 
-#
-
-CREATE TABLE `tax_class` (
-  `tax_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`tax_class_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=10 AVG_ROW_LENGTH=68 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `tax_rate`: 
-#
-
-CREATE TABLE `tax_rate` (
-  `tax_rate_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `geo_zone_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `rate` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
-  `type` CHAR(1) COLLATE utf8_general_ci NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`tax_rate_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=88 AVG_ROW_LENGTH=46 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `tax_rate_to_customer_group`: 
-#
-
-CREATE TABLE `tax_rate_to_customer_group` (
-  `tax_rate_id` INTEGER(11) NOT NULL,
-  `customer_group_id` INTEGER(11) NOT NULL,
-  PRIMARY KEY (`tax_rate_id`, `customer_group_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `tax_rule`: 
-#
-
-CREATE TABLE `tax_rule` (
-  `tax_rule_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `tax_class_id` INTEGER(11) NOT NULL,
-  `tax_rate_id` INTEGER(11) NOT NULL,
-  `based` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `priority` INTEGER(5) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`tax_rule_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=129 AVG_ROW_LENGTH=29 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `url_alias`: 
-#
-
-CREATE TABLE `url_alias` (
-  `url_alias_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `query` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  `keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`url_alias_id`),
-  KEY `query` (`query`(64))
-)ENGINE=MyISAM
-AUTO_INCREMENT=818 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `user`: 
-#
-
-CREATE TABLE `user` (
-  `user_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `user_group_id` INTEGER(11) NOT NULL,
-  `username` VARCHAR(20) COLLATE utf8_general_ci NOT NULL,
-  `password` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `salt` VARCHAR(9) COLLATE utf8_general_ci NOT NULL,
-  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
-  `status` TINYINT(1) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`user_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=2 AVG_ROW_LENGTH=116 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `user_group`: 
-#
-
-CREATE TABLE `user_group` (
-  `user_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `permission` TEXT COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`user_group_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=11 AVG_ROW_LENGTH=4036 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `voucher`: 
-#
-
-CREATE TABLE `voucher` (
-  `voucher_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `order_id` INTEGER(11) NOT NULL,
-  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
-  `from_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `from_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `to_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
-  `to_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
-  `voucher_theme_id` INTEGER(11) NOT NULL,
-  `message` TEXT COLLATE utf8_general_ci NOT NULL,
-  `amount` DECIMAL(15,4) NOT NULL,
-  `status` TINYINT(1) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`voucher_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `voucher_history`: 
-#
-
-CREATE TABLE `voucher_history` (
-  `voucher_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `voucher_id` INTEGER(11) NOT NULL,
-  `order_id` INTEGER(11) NOT NULL,
-  `amount` DECIMAL(15,4) NOT NULL,
-  `date_added` DATETIME NOT NULL,
-  PRIMARY KEY (`voucher_history_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `voucher_theme`: 
-#
-
-CREATE TABLE `voucher_theme` (
-  `voucher_theme_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`voucher_theme_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=9 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `voucher_theme_description`: 
-#
-
-CREATE TABLE `voucher_theme_description` (
-  `voucher_theme_id` INTEGER(11) NOT NULL,
-  `language_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`voucher_theme_id`, `language_id`)
-)ENGINE=MyISAM
-AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `weight_class`: 
-#
-
-CREATE TABLE `weight_class` (
-  `weight_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `value` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
-  PRIMARY KEY (`weight_class_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `weight_class_description`: 
-#
-
-CREATE TABLE `weight_class_description` (
-  `weight_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `language_id` INTEGER(11) NOT NULL,
-  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `unit` VARCHAR(4) COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`weight_class_id`, `language_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `zone`: 
-#
-
-CREATE TABLE `zone` (
-  `zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `country_id` INTEGER(11) NOT NULL,
-  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
-  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
-  `status` TINYINT(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`zone_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=3971 AVG_ROW_LENGTH=29 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
-COMMENT=''
-;
-
-#
-# ????????? ??? ??????? `zone_to_geo_zone`: 
-#
-
-CREATE TABLE `zone_to_geo_zone` (
-  `zone_to_geo_zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
-  `country_id` INTEGER(11) NOT NULL,
-  `zone_id` INTEGER(11) NOT NULL DEFAULT 0,
-  `geo_zone_id` INTEGER(11) NOT NULL,
-  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`zone_to_geo_zone_id`)
-)ENGINE=MyISAM
-AUTO_INCREMENT=58 AVG_ROW_LENGTH=27 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2092,6 +247,19 @@ INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VAL
 COMMIT;
 
 #
+# ????????? ??? ??????? `attribute_description`: 
+#
+
+CREATE TABLE `attribute_description` (
+  `attribute_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=21 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `attribute_description` table  (LIMIT -488,500)
 #
 
@@ -2110,6 +278,18 @@ INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALU
 COMMIT;
 
 #
+# ????????? ??? ??????? `attribute_group`: 
+#
+
+CREATE TABLE `attribute_group` (
+  `attribute_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=10 AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `attribute_group` table  (LIMIT -492,500)
 #
 
@@ -2122,6 +302,19 @@ INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
   (8,2),
   (9,3);
 COMMIT;
+
+#
+# ????????? ??? ??????? `attribute_group_description`: 
+#
+
+CREATE TABLE `attribute_group_description` (
+  `attribute_group_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=25 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `attribute_group_description` table  (LIMIT -485,500)
@@ -2145,6 +338,19 @@ INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, 
 COMMIT;
 
 #
+# ????????? ??? ??????? `banner`: 
+#
+
+CREATE TABLE `banner` (
+  `banner_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `status` TINYINT(1) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=9 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `banner` table  (LIMIT -496,500)
 #
 
@@ -2153,6 +359,21 @@ INSERT INTO `banner` (`banner_id`, `name`, `status`) VALUES
   (7,'Samsung Tab',1),
   (8,'Manufacturers',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `banner_image`: 
+#
+
+CREATE TABLE `banner_image` (
+  `banner_image_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `banner_id` INTEGER(11) NOT NULL,
+  `link` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `product_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=85 AVG_ROW_LENGTH=104 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `banner_image` table  (LIMIT -491,500)
@@ -2168,6 +389,20 @@ INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `pr
   (77,6,'index.php?route=product/manufacturer/info&amp;manufacturer_id=7','data/demo/hp_banner.jpg',0),
   (84,7,'index.php?route=product/product&amp;path=57&amp;product_id=49','data/slider/slider-bike.png',49);
 COMMIT;
+
+#
+# ????????? ??? ??????? `banner_image_description`: 
+#
+
+CREATE TABLE `banner_image_description` (
+  `banner_image_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `banner_id` INTEGER(11) NOT NULL,
+  `title` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=27 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `banner_image_description` table  (LIMIT -483,500)
@@ -2193,11 +428,30 @@ INSERT INTO `banner_image_description` (`banner_image_id`, `language_id`, `banne
 COMMIT;
 
 #
-# Data for the `category` table  (LIMIT -471,500)
+# ????????? ??? ??????? `category`: 
+#
+
+CREATE TABLE `category` (
+  `category_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `parent_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `top` TINYINT(1) NOT NULL,
+  `column` INTEGER(3) NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
+  `status` TINYINT(1) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=72 AVG_ROW_LENGTH=44 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `category` table  (LIMIT -463,500)
 #
 
 INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES 
-  (25,'',0,1,1,0,1,'2009-01-31 01:04:25','2017-12-21 12:05:54'),
+  (25,'',0,1,1,0,1,'2009-01-31 01:04:25','2017-12-29 13:59:51'),
   (28,'',33,0,0,1,1,'2009-02-02 13:11:12','2017-12-21 11:22:50'),
   (32,'',33,0,0,1,1,'2009-02-03 14:17:34','2017-12-21 11:21:09'),
   (33,'',0,1,1,1,1,'2009-02-03 14:17:55','2017-12-21 12:06:27'),
@@ -2224,16 +478,42 @@ INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `s
   (59,'',0,1,1,3,1,'2017-12-21 11:23:42','2017-12-21 12:07:06'),
   (60,'',33,1,1,0,1,'2017-12-21 11:47:15','2017-12-21 11:47:15'),
   (61,'',0,1,1,4,1,'2017-12-21 12:04:10','2017-12-21 12:07:23'),
-  (62,'',0,1,1,5,1,'2017-12-21 12:04:52','2017-12-21 12:07:52');
+  (62,'',0,1,1,5,1,'2017-12-21 12:04:52','2017-12-21 12:07:52'),
+  (64,'data/category/main/cross.jpg',25,1,1,0,1,'2017-12-29 09:53:22','2017-12-29 10:11:23'),
+  (65,'data/category/main/woman.jpg',25,0,1,1,1,'2017-12-29 09:54:34','2017-12-29 10:07:55'),
+  (66,'data/category/main/kids.jpg',25,0,1,2,1,'2017-12-29 09:55:18','2017-12-29 10:06:44'),
+  (67,'data/category/main/kids.jpg',25,0,1,3,1,'2017-12-29 09:55:54','2017-12-29 10:09:51'),
+  (68,'data/category/main/city.jpg',25,0,1,4,1,'2017-12-29 09:56:51','2017-12-29 10:07:15'),
+  (69,'data/category/main/portable.jpg',25,0,1,5,1,'2017-12-29 09:57:19','2017-12-29 10:10:23'),
+  (70,'data/category/main/road.jpg',25,0,1,6,1,'2017-12-29 09:58:30','2017-12-29 10:10:43'),
+  (71,'data/category/main/other.jpg',25,0,1,7,1,'2017-12-29 09:59:00','2017-12-29 10:07:35');
 COMMIT;
 
 #
-# Data for the `category_description` table  (LIMIT -443,500)
+# ????????? ??? ??????? `category_description`: 
+#
+
+CREATE TABLE `category_description` (
+  `category_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=54 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `category_description` table  (LIMIT -427,500)
 #
 
 INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `seo_title`, `seo_h1`) VALUES 
   (25,1,'??????????','','','','',''),
-  (25,2,'Components','','','','',''),
+  (25,2,'Bycicles','','','','',''),
   (28,1,'????????? ?????????','','','','',''),
   (28,2,'Holders of telephones','','','','',''),
   (32,1,'?????????','','','','',''),
@@ -2287,11 +567,52 @@ INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `descr
   (61,1,'??????????','','','','',''),
   (61,2,'Equipment','','','','',''),
   (62,1,'???????? ?????','','','','',''),
-  (62,2,'Leisure','','','','','');
+  (62,2,'Leisure','','','','',''),
+  (64,1,'?????? ??????????','','','','',''),
+  (64,2,'Mountain bikes','','','','',''),
+  (65,1,'??????? ??????????','','','','',''),
+  (65,2,'Women''s bicycles','','','','',''),
+  (66,1,'??????? ??????????','','','','',''),
+  (66,2,'Children''s bicycles','','','','',''),
+  (67,1,'???????????? ??????????','','','','',''),
+  (67,2,'Bicycles for teenagers','','','','',''),
+  (68,1,'???????? ??????????','','','','',''),
+  (68,2,'Road bicycles','','','','',''),
+  (69,1,'???????? ??????????','','','','',''),
+  (69,2,'Folding bicycles','','','','',''),
+  (70,1,'????????? ??????????','','','','',''),
+  (70,2,'Road Bikes','','','','',''),
+  (71,1,'??????','','','','',''),
+  (71,2,'Other','','','','','');
 COMMIT;
 
 #
-# Data for the `category_path` table  (LIMIT -448,500)
+# ????????? ??? ??????? `category_filter`: 
+#
+
+CREATE TABLE `category_filter` (
+  `category_id` INTEGER(11) NOT NULL,
+  `filter_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `category_path`: 
+#
+
+CREATE TABLE `category_path` (
+  `category_id` INTEGER(11) NOT NULL,
+  `path_id` INTEGER(11) NOT NULL,
+  `level` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `category_path` table  (LIMIT -432,500)
 #
 
 INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES 
@@ -2345,11 +666,52 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
   (60,33,0),
   (60,60,1),
   (61,61,0),
-  (62,62,0);
+  (62,62,0),
+  (64,25,0),
+  (64,64,1),
+  (65,25,0),
+  (65,65,1),
+  (66,25,0),
+  (66,66,1),
+  (67,25,0),
+  (67,67,1),
+  (68,25,0),
+  (68,68,1),
+  (69,25,0),
+  (69,69,1),
+  (70,25,0),
+  (70,70,1),
+  (71,25,0),
+  (71,71,1);
 COMMIT;
 
 #
-# Data for the `category_to_store` table  (LIMIT -471,500)
+# ????????? ??? ??????? `category_to_layout`: 
+#
+
+CREATE TABLE `category_to_layout` (
+  `category_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL,
+  `layout_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `category_to_store`: 
+#
+
+CREATE TABLE `category_to_store` (
+  `category_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `category_to_store` table  (LIMIT -463,500)
 #
 
 INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES 
@@ -2380,8 +742,33 @@ INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
   (59,0),
   (60,0),
   (61,0),
-  (62,0);
+  (62,0),
+  (64,0),
+  (65,0),
+  (66,0),
+  (67,0),
+  (68,0),
+  (69,0),
+  (70,0),
+  (71,0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `country`: 
+#
+
+CREATE TABLE `country` (
+  `country_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `iso_code_2` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
+  `iso_code_3` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `address_format` TEXT COLLATE utf8_general_ci NOT NULL,
+  `postcode_required` TINYINT(1) NOT NULL,
+  `status` TINYINT(1) NOT NULL DEFAULT 1
+)ENGINE=MyISAM
+AUTO_INCREMENT=240 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `country` table  (LIMIT -260,500)
@@ -2630,6 +1017,30 @@ INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `addres
 COMMIT;
 
 #
+# ????????? ??? ??????? `coupon`: 
+#
+
+CREATE TABLE `coupon` (
+  `coupon_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `type` CHAR(1) COLLATE utf8_general_ci NOT NULL,
+  `discount` DECIMAL(15,4) NOT NULL,
+  `logged` TINYINT(1) NOT NULL,
+  `shipping` TINYINT(1) NOT NULL,
+  `total` DECIMAL(15,4) NOT NULL,
+  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
+  `date_end` DATE NOT NULL DEFAULT '0000-00-00',
+  `uses_total` INTEGER(11) NOT NULL,
+  `uses_customer` VARCHAR(11) COLLATE utf8_general_ci NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=7 AVG_ROW_LENGTH=78 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `coupon` table  (LIMIT -496,500)
 #
 
@@ -2638,6 +1049,66 @@ INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`,
   (5,'?????????? ????????','3333','P',0.0000,0,1,100.0000,'2009-03-01','2009-08-31',10,'10',1,'2009-03-14 21:13:53'),
   (6,'-10.00 ??????','1111','F',10.0000,0,0,10.0000,'1970-11-01','2020-11-01',100000,'10000',1,'2009-03-14 21:15:18');
 COMMIT;
+
+#
+# ????????? ??? ??????? `coupon_category`: 
+#
+
+CREATE TABLE `coupon_category` (
+  `coupon_id` INTEGER(11) NOT NULL,
+  `category_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `coupon_history`: 
+#
+
+CREATE TABLE `coupon_history` (
+  `coupon_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `coupon_id` INTEGER(11) NOT NULL,
+  `order_id` INTEGER(11) NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL,
+  `amount` DECIMAL(15,4) NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `coupon_product`: 
+#
+
+CREATE TABLE `coupon_product` (
+  `coupon_product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `coupon_id` INTEGER(11) NOT NULL,
+  `product_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `currency`: 
+#
+
+CREATE TABLE `currency` (
+  `currency_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `symbol_left` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
+  `symbol_right` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
+  `decimal_place` CHAR(1) COLLATE utf8_general_ci NOT NULL,
+  `value` FLOAT(15,8) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=4 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `currency` table  (LIMIT -496,500)
@@ -2650,6 +1121,149 @@ INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_r
 COMMIT;
 
 #
+# ????????? ??? ??????? `custom_field`: 
+#
+
+CREATE TABLE `custom_field` (
+  `custom_field_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `required` TINYINT(1) NOT NULL,
+  `location` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `position` INTEGER(3) NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `custom_field_description`: 
+#
+
+CREATE TABLE `custom_field_description` (
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `custom_field_to_customer_group`: 
+#
+
+CREATE TABLE `custom_field_to_customer_group` (
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `customer_group_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `custom_field_value`: 
+#
+
+CREATE TABLE `custom_field_value` (
+  `custom_field_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `custom_field_value_description`: 
+#
+
+CREATE TABLE `custom_field_value_description` (
+  `custom_field_value_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer`: 
+#
+
+CREATE TABLE `customer` (
+  `customer_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `fax` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `password` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `salt` VARCHAR(9) COLLATE utf8_general_ci NOT NULL,
+  `cart` TEXT COLLATE utf8_general_ci,
+  `wishlist` TEXT COLLATE utf8_general_ci,
+  `newsletter` TINYINT(1) NOT NULL DEFAULT 0,
+  `address_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `customer_group_id` INTEGER(11) NOT NULL,
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL DEFAULT '0',
+  `status` TINYINT(1) NOT NULL,
+  `approved` TINYINT(1) NOT NULL,
+  `token` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_ban_ip`: 
+#
+
+CREATE TABLE `customer_ban_ip` (
+  `customer_ban_ip_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_field`: 
+#
+
+CREATE TABLE `customer_field` (
+  `customer_id` INTEGER(11) NOT NULL,
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `custom_field_value_id` INTEGER(11) NOT NULL,
+  `name` INTEGER(128) NOT NULL,
+  `value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_group`: 
+#
+
+CREATE TABLE `customer_group` (
+  `customer_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `approval` INTEGER(1) NOT NULL,
+  `company_id_display` INTEGER(1) NOT NULL,
+  `company_id_required` INTEGER(1) NOT NULL,
+  `tax_id_display` INTEGER(1) NOT NULL,
+  `tax_id_required` INTEGER(1) NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=2 AVG_ROW_LENGTH=29 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `customer_group` table  (LIMIT -498,500)
 #
 
@@ -2658,12 +1272,142 @@ INSERT INTO `customer_group` (`customer_group_id`, `approval`, `company_id_displ
 COMMIT;
 
 #
+# ????????? ??? ??????? `customer_group_description`: 
+#
+
+CREATE TABLE `customer_group_description` (
+  `customer_group_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `customer_group_description` table  (LIMIT -498,500)
 #
 
 INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `name`, `description`) VALUES 
   (1,1,'Default','test');
 COMMIT;
+
+#
+# ????????? ??? ??????? `customer_history`: 
+#
+
+CREATE TABLE `customer_history` (
+  `customer_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` INTEGER(11) NOT NULL,
+  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_ip`: 
+#
+
+CREATE TABLE `customer_ip` (
+  `customer_ip_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` INTEGER(11) NOT NULL,
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_online`: 
+#
+
+CREATE TABLE `customer_online` (
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL,
+  `url` TEXT COLLATE utf8_general_ci NOT NULL,
+  `referer` TEXT COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_reward`: 
+#
+
+CREATE TABLE `customer_reward` (
+  `customer_reward_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `order_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `points` INTEGER(8) NOT NULL DEFAULT 0,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `customer_transaction`: 
+#
+
+CREATE TABLE `customer_transaction` (
+  `customer_transaction_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` INTEGER(11) NOT NULL,
+  `order_id` INTEGER(11) NOT NULL,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `amount` DECIMAL(15,4) NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `download`: 
+#
+
+CREATE TABLE `download` (
+  `download_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `filename` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `mask` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `remaining` INTEGER(11) NOT NULL DEFAULT 0,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `download_description`: 
+#
+
+CREATE TABLE `download_description` (
+  `download_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `extension`: 
+#
+
+CREATE TABLE `extension` (
+  `extension_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=437 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `extension` table  (LIMIT -476,500)
@@ -2685,15 +1429,28 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
   (407,'payment','free_checkout'),
   (408,'module','account'),
   (410,'module','banner'),
-  (411,'module','affiliate'),
   (413,'module','category'),
   (419,'module','slideshow'),
   (426,'module','carousel'),
   (427,'module','featured'),
-  (428,'module','bestseller'),
   (429,'module','information'),
-  (430,'module','filter');
+  (432,'module','special'),
+  (435,'module','maincategory'),
+  (436,'module','maincategory');
 COMMIT;
+
+#
+# ????????? ??? ??????? `filter`: 
+#
+
+CREATE TABLE `filter` (
+  `filter_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `filter_group_id` INTEGER(11) NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=3 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `filter` table  (LIMIT -497,500)
@@ -2703,6 +1460,20 @@ INSERT INTO `filter` (`filter_id`, `filter_group_id`, `sort_order`) VALUES
   (1,1,1),
   (2,1,2);
 COMMIT;
+
+#
+# ????????? ??? ??????? `filter_description`: 
+#
+
+CREATE TABLE `filter_description` (
+  `filter_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `filter_group_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=44 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `filter_description` table  (LIMIT -495,500)
@@ -2716,12 +1487,37 @@ INSERT INTO `filter_description` (`filter_id`, `language_id`, `filter_group_id`,
 COMMIT;
 
 #
+# ????????? ??? ??????? `filter_group`: 
+#
+
+CREATE TABLE `filter_group` (
+  `filter_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=2 AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `filter_group` table  (LIMIT -498,500)
 #
 
 INSERT INTO `filter_group` (`filter_group_id`, `sort_order`) VALUES 
   (1,5);
 COMMIT;
+
+#
+# ????????? ??? ??????? `filter_group_description`: 
+#
+
+CREATE TABLE `filter_group_description` (
+  `filter_group_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=54 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `filter_group_description` table  (LIMIT -497,500)
@@ -2733,12 +1529,41 @@ INSERT INTO `filter_group_description` (`filter_group_id`, `language_id`, `name`
 COMMIT;
 
 #
+# ????????? ??? ??????? `geo_zone`: 
+#
+
+CREATE TABLE `geo_zone` (
+  `geo_zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=4 AVG_ROW_LENGTH=56 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `geo_zone` table  (LIMIT -498,500)
 #
 
 INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `date_added`) VALUES 
   (3,'???','?????????? ???','2010-02-26 22:33:24','2009-01-06 23:26:25');
 COMMIT;
+
+#
+# ????????? ??? ??????? `information`: 
+#
+
+CREATE TABLE `information` (
+  `information_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `bottom` INTEGER(1) NOT NULL DEFAULT 0,
+  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
+  `status` TINYINT(1) NOT NULL DEFAULT 1
+)ENGINE=MyISAM
+AUTO_INCREMENT=7 AVG_ROW_LENGTH=14 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `information` table  (LIMIT -495,500)
@@ -2750,6 +1575,24 @@ INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) V
   (5,1,4,0),
   (6,1,2,1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `information_description`: 
+#
+
+CREATE TABLE `information_description` (
+  `information_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `title` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=131 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `information_description` table  (LIMIT -491,500)
@@ -2767,6 +1610,31 @@ INSERT INTO `information_description` (`information_id`, `language_id`, `title`,
 COMMIT;
 
 #
+# ????????? ??? ??????? `information_to_layout`: 
+#
+
+CREATE TABLE `information_to_layout` (
+  `information_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL,
+  `layout_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `information_to_store`: 
+#
+
+CREATE TABLE `information_to_store` (
+  `information_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `information_to_store` table  (LIMIT -495,500)
 #
 
@@ -2778,6 +1646,25 @@ INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `language`: 
+#
+
+CREATE TABLE `language` (
+  `language_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(5) COLLATE utf8_general_ci NOT NULL,
+  `locale` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `image` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `directory` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `filename` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
+  `status` TINYINT(1) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=3 AVG_ROW_LENGTH=78 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `language` table  (LIMIT -497,500)
 #
 
@@ -2785,6 +1672,18 @@ INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `direc
   (1,'Russian','ru','ru_RU.UTF-8,ru_RU,russian','ru.png','russian','russian',1,1),
   (2,'English','en','en_US.UTF-8,en_US,en-gb,english','gb.png','english','english',2,1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `layout`: 
+#
+
+CREATE TABLE `layout` (
+  `layout_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=15 AVG_ROW_LENGTH=32 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `layout` table  (LIMIT -485,500)
@@ -2808,6 +1707,20 @@ INSERT INTO `layout` (`layout_id`, `name`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `layout_route`: 
+#
+
+CREATE TABLE `layout_route` (
+  `layout_route_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `layout_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL,
+  `route` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=37 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `layout_route` table  (LIMIT -486,500)
 #
 
@@ -2828,6 +1741,18 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 COMMIT;
 
 #
+# ????????? ??? ??????? `length_class`: 
+#
+
+CREATE TABLE `length_class` (
+  `length_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `value` DECIMAL(15,8) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=4 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `length_class` table  (LIMIT -496,500)
 #
 
@@ -2836,6 +1761,20 @@ INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
   (2,10.00000000),
   (3,0.39370000);
 COMMIT;
+
+#
+# ????????? ??? ??????? `length_class_description`: 
+#
+
+CREATE TABLE `length_class_description` (
+  `length_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL,
+  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `unit` VARCHAR(4) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=3 AVG_ROW_LENGTH=32 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `length_class_description` table  (LIMIT -495,500)
@@ -2849,6 +1788,20 @@ INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title
 COMMIT;
 
 #
+# ????????? ??? ??????? `manufacturer`: 
+#
+
+CREATE TABLE `manufacturer` (
+  `manufacturer_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=11 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `manufacturer` table  (LIMIT -493,500)
 #
 
@@ -2860,6 +1813,23 @@ INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VA
   (9,'Canon','data/demo/canon_logo.jpg',0),
   (10,'Sony','data/demo/sony_logo.jpg',0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `manufacturer_description`: 
+#
+
+CREATE TABLE `manufacturer_description` (
+  `manufacturer_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=20 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `manufacturer_description` table  (LIMIT -487,500)
@@ -2881,6 +1851,18 @@ INSERT INTO `manufacturer_description` (`manufacturer_id`, `language_id`, `descr
 COMMIT;
 
 #
+# ????????? ??? ??????? `manufacturer_to_store`: 
+#
+
+CREATE TABLE `manufacturer_to_store` (
+  `manufacturer_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `manufacturer_to_store` table  (LIMIT -493,500)
 #
 
@@ -2892,6 +1874,19 @@ INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
   (9,0),
   (10,0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `option`: 
+#
+
+CREATE TABLE `option` (
+  `option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=14 AVG_ROW_LENGTH=21 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `option` table  (LIMIT -487,500)
@@ -2911,6 +1906,19 @@ INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
   (12,'date',1),
   (13,'radio',12);
 COMMIT;
+
+#
+# ????????? ??? ??????? `option_description`: 
+#
+
+CREATE TABLE `option_description` (
+  `option_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=22 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `option_description` table  (LIMIT -475,500)
@@ -2944,6 +1952,20 @@ INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `option_value`: 
+#
+
+CREATE TABLE `option_value` (
+  `option_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `option_id` INTEGER(11) NOT NULL,
+  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=50 AVG_ROW_LENGTH=20 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `option_value` table  (LIMIT -484,500)
 #
 
@@ -2964,6 +1986,20 @@ INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order
   (48,11,'',3),
   (49,13,'',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `option_value_description`: 
+#
+
+CREATE TABLE `option_value_description` (
+  `option_value_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `option_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `option_value_description` table  (LIMIT -469,500)
@@ -3003,6 +2039,237 @@ INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `optio
 COMMIT;
 
 #
+# ????????? ??? ??????? `order`: 
+#
+
+CREATE TABLE `order` (
+  `order_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `invoice_no` INTEGER(11) NOT NULL DEFAULT 0,
+  `invoice_prefix` VARCHAR(26) COLLATE utf8_general_ci NOT NULL,
+  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `store_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `store_url` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `customer_group_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `fax` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_company` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_company_id` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_tax_id` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `payment_address_1` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_address_2` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_city` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_postcode` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `payment_country` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_country_id` INTEGER(11) NOT NULL,
+  `payment_zone` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_zone_id` INTEGER(11) NOT NULL,
+  `payment_address_format` TEXT COLLATE utf8_general_ci NOT NULL,
+  `payment_method` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `payment_code` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `shipping_lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `shipping_company` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `shipping_address_1` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_address_2` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_city` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_postcode` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `shipping_country` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_country_id` INTEGER(11) NOT NULL,
+  `shipping_zone` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_zone_id` INTEGER(11) NOT NULL,
+  `shipping_address_format` TEXT COLLATE utf8_general_ci NOT NULL,
+  `shipping_method` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `shipping_code` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
+  `total` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `order_status_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `affiliate_id` INTEGER(11) NOT NULL,
+  `commission` DECIMAL(15,4) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `currency_id` INTEGER(11) NOT NULL,
+  `currency_code` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `currency_value` DECIMAL(15,8) NOT NULL DEFAULT 1.00000000,
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `forwarded_ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `user_agent` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `accept_language` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL,
+  `date_modified` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_download`: 
+#
+
+CREATE TABLE `order_download` (
+  `order_download_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `order_product_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `filename` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `mask` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `remaining` INTEGER(3) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_field`: 
+#
+
+CREATE TABLE `order_field` (
+  `order_id` INTEGER(11) NOT NULL,
+  `custom_field_id` INTEGER(11) NOT NULL,
+  `custom_field_value_id` INTEGER(11) NOT NULL,
+  `name` INTEGER(128) NOT NULL,
+  `value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_fraud`: 
+#
+
+CREATE TABLE `order_fraud` (
+  `order_id` INTEGER(11) NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL,
+  `country_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `country_code` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
+  `high_risk_country` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `distance` INTEGER(11) NOT NULL,
+  `ip_region` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_city` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_latitude` DECIMAL(10,6) NOT NULL,
+  `ip_longitude` DECIMAL(10,6) NOT NULL,
+  `ip_isp` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_org` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_asnum` INTEGER(11) NOT NULL,
+  `ip_user_type` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_country_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `ip_region_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `ip_city_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `ip_postal_confidence` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `ip_postal_code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `ip_accuracy_radius` INTEGER(11) NOT NULL,
+  `ip_net_speed_cell` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_metro_code` INTEGER(3) NOT NULL,
+  `ip_area_code` INTEGER(3) NOT NULL,
+  `ip_time_zone` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_region_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_domain` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_country_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ip_continent_code` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
+  `ip_corporate_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `anonymous_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `proxy_score` INTEGER(3) NOT NULL,
+  `is_trans_proxy` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `free_mail` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `carder_email` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `high_risk_username` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `high_risk_password` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `bin_match` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `bin_country` VARCHAR(2) COLLATE utf8_general_ci NOT NULL,
+  `bin_name_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `bin_name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `bin_phone_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `bin_phone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `customer_phone_in_billing_location` VARCHAR(8) COLLATE utf8_general_ci NOT NULL,
+  `ship_forward` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `city_postal_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `ship_city_postal_match` VARCHAR(3) COLLATE utf8_general_ci NOT NULL,
+  `score` DECIMAL(10,5) NOT NULL,
+  `explanation` TEXT COLLATE utf8_general_ci NOT NULL,
+  `risk_score` DECIMAL(10,5) NOT NULL,
+  `queries_remaining` INTEGER(11) NOT NULL,
+  `maxmind_id` VARCHAR(8) COLLATE utf8_general_ci NOT NULL,
+  `error` TEXT COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_history`: 
+#
+
+CREATE TABLE `order_history` (
+  `order_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `order_status_id` INTEGER(5) NOT NULL,
+  `notify` TINYINT(1) NOT NULL DEFAULT 0,
+  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_option`: 
+#
+
+CREATE TABLE `order_option` (
+  `order_option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `order_product_id` INTEGER(11) NOT NULL,
+  `product_option_id` INTEGER(11) NOT NULL,
+  `product_option_value_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_product`: 
+#
+
+CREATE TABLE `order_product` (
+  `order_product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `product_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `quantity` INTEGER(4) NOT NULL,
+  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `total` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `tax` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `reward` INTEGER(8) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_status`: 
+#
+
+CREATE TABLE `order_status` (
+  `order_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=14 AVG_ROW_LENGTH=31 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `order_status` table  (LIMIT -477,500)
 #
 
@@ -3032,31 +2299,127 @@ INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES
 COMMIT;
 
 #
-# Data for the `product` table  (LIMIT -479,500)
+# ????????? ??? ??????? `order_total`: 
+#
+
+CREATE TABLE `order_total` (
+  `order_total_id` INTEGER(10) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `text` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `value` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `sort_order` INTEGER(3) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `order_voucher`: 
+#
+
+CREATE TABLE `order_voucher` (
+  `order_voucher_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `voucher_id` INTEGER(11) NOT NULL,
+  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `from_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `from_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `to_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `to_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `voucher_theme_id` INTEGER(11) NOT NULL,
+  `message` TEXT COLLATE utf8_general_ci NOT NULL,
+  `amount` DECIMAL(15,4) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `product`: 
+#
+
+CREATE TABLE `product` (
+  `product_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `sku` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `upc` VARCHAR(12) COLLATE utf8_general_ci NOT NULL,
+  `ean` VARCHAR(14) COLLATE utf8_general_ci NOT NULL,
+  `jan` VARCHAR(13) COLLATE utf8_general_ci NOT NULL,
+  `isbn` VARCHAR(13) COLLATE utf8_general_ci NOT NULL,
+  `mpn` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `location` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `quantity` INTEGER(4) NOT NULL DEFAULT 0,
+  `stock_status_id` INTEGER(11) NOT NULL,
+  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `manufacturer_id` INTEGER(11) NOT NULL,
+  `shipping` TINYINT(1) NOT NULL DEFAULT 1,
+  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `points` INTEGER(8) NOT NULL DEFAULT 0,
+  `tax_class_id` INTEGER(11) NOT NULL,
+  `date_available` DATE NOT NULL,
+  `weight` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
+  `weight_class_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `length` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
+  `width` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
+  `height` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000,
+  `length_class_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `subtract` TINYINT(1) NOT NULL DEFAULT 1,
+  `minimum` INTEGER(11) NOT NULL DEFAULT 1,
+  `sort_order` INTEGER(11) NOT NULL DEFAULT 0,
+  `status` TINYINT(1) NOT NULL DEFAULT 0,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `viewed` INTEGER(5) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AUTO_INCREMENT=67 AVG_ROW_LENGTH=149 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `product` table  (LIMIT -477,500)
 #
 
 INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `date_added`, `date_modified`, `viewed`) VALUES 
   (28,'????? 1','','','','','','','',939,7,'data/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:06:50','2011-09-30 01:05:39',0),
   (29,'????? 2','','','','','','','',999,6,'data/demo/palm_treo_pro_1.jpg',6,1,279.9900,0,9,'2009-02-03',133.00000000,2,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 16:42:17','2011-09-30 01:06:08',1),
-  (30,'????? 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:59:00','2011-09-30 01:05:23',0),
+  (30,'????? 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:59:00','2011-09-30 01:05:23',2),
   (31,'????? 4','','','','','','','',1000,6,'data/demo/nikon_d300_1.jpg',0,1,80.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 17:00:10','2011-09-30 01:06:00',0),
   (32,'????? 5','','','','','','','',999,6,'data/demo/ipod_touch_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 17:07:26','2011-09-30 01:07:22',0),
   (33,'????? 6','','','','','','','',1000,6,'data/demo/samsung_syncmaster_941bw.jpg',0,1,200.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 17:08:31','2011-09-30 01:06:29',10),
   (34,'????? 7','','','','','','','',1000,6,'data/demo/ipod_shuffle_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:07:54','2011-09-30 01:07:17',0),
   (35,'????? 8','','','','','','','',1000,5,'',0,0,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 18:08:31','2011-09-30 01:06:17',0),
   (36,'????? 9','','','','','','','',994,6,'data/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:09:19','2011-09-30 01:07:12',0),
-  (40,'????? 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',2),
+  (40,'????? 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',3),
   (41,'????? 14','','','','','','','',977,5,'data/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:26','2011-09-30 01:06:44',0),
-  (42,'????? 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,1,0,1,'2009-02-03 21:07:37','2017-12-28 10:32:48',139),
-  (43,'????? 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:07:49','2011-09-30 01:05:46',58),
+  (42,'????? 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,1,0,1,'2009-02-03 21:07:37','2017-12-28 10:32:48',145),
+  (43,'????? 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:07:49','2011-09-30 01:05:46',63),
   (44,'????? 17','','','','','','','',1000,5,'data/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:00','2011-09-30 01:05:53',0),
   (45,'????? 18','','','','','','','',998,5,'data/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:17','2011-09-15 22:22:01',0),
   (46,'????? 19','','','','','','','',1000,5,'data/demo/sony_vaio_1.jpg',10,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:29','2011-09-30 01:06:39',6),
   (47,'????? 21','','','','','','','',1000,5,'data/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,'2009-02-03 21:08:40','2011-09-30 01:05:28',0),
   (48,'????? 20','test 1','','','','','','test 2',995,5,'data/demo/ipod_classic_1.jpg',8,1,100.0000,0,9,'2009-02-08',1.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-08 17:21:51','2011-09-30 01:07:06',0),
-  (49,'12576890','SAM1_1','','','','','','',10,8,'data/slider/slider-bike.png',0,1,3600.0000,100,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2011-04-26 08:57:34','2017-12-28 16:51:27',55),
-  (64,'????? 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,500.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0);
+  (49,'12576890','SAM1_1','','','','','','',10,8,'data/slider/slider-bike.png',0,1,3600.0000,100,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2011-04-26 08:57:34','2017-12-28 16:51:27',70),
+  (64,'????? 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,500.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0),
+  (65,'11233123','','','','','','','',1,7,'data/category/main/cross.jpg',0,1,1000.0000,0,0,'2017-12-28',12.00000000,1,1.00000000,2.00000000,3.00000000,1,1,1,1,1,'2017-12-29 10:52:20','2017-12-29 10:57:00',4),
+  (66,'11111111','','','','','','','',1,5,'',0,1,0.0000,0,0,'2017-12-28',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2017-12-29 10:55:45','0000-00-00 00:00:00',0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `product_attribute`: 
+#
+
+CREATE TABLE `product_attribute` (
+  `product_id` INTEGER(11) NOT NULL,
+  `attribute_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `text` TEXT COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=25 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `product_attribute` table  (LIMIT -489,500)
@@ -3076,7 +2439,26 @@ INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `t
 COMMIT;
 
 #
-# Data for the `product_description` table  (LIMIT -459,500)
+# ????????? ??? ??????? `product_description`: 
+#
+
+CREATE TABLE `product_description` (
+  `product_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `description` TEXT COLLATE utf8_general_ci NOT NULL,
+  `meta_description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `meta_keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `tag` TEXT COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=1378 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `product_description` table  (LIMIT -455,500)
 #
 
 INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `seo_title`, `seo_h1`, `tag`) VALUES 
@@ -3119,8 +2501,30 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
   (49,1,'Kinetic Sniper Disk 24','&lt;p&gt;\r\n\t&lt;span style=&quot;color: rgb(0, 0, 0); font-family: monospace; font-size: medium; white-space: pre-wrap;&quot;&gt;? ????????????? ?????????? ??????????? ?? 18 ???????, ?????????????? ?????, ??????? ??????? ??????? ???? ??????? ????? ??????????, ???????? ? ??????? ???????? ???????!&lt;/span&gt;&lt;/p&gt;\r\n','','','','',''),
   (49,2,'Samsung Galaxy Tab 10.1','&lt;p&gt;\r\n\tThe teenage bike has a transmission for 18 gears, a shock-absorbing fork that will make driving a lot more comfortable, reliable and simple disc brakes! &amp;lt;&lt;/p&gt;\r\n','','','','',''),
   (64,1,'HTC Touch HD','&lt;p&gt;\r\n\tHTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high definition clarity for a mobile experience you never thought possible. Seductively sleek, the HTC Touch HD provides the next generation of mobile functionality, all at a simple touch. Fully integrated with Windows Mobile Professional 6.1, ultrafast 3.5G, GPS, 5MP camera, plus lots more - all delivered on a breathtakingly crisp 3.8&amp;quot; WVGA touchscreen - you can take control of your mobile world with the HTC Touch HD.&lt;/p&gt;\r\n&lt;p&gt;\r\n\t&lt;strong&gt;Features&lt;/strong&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tProcessor Qualcomm&amp;reg; MSM 7201A&amp;trade; 528 MHz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows Mobile&amp;reg; 6.1 Professional Operating System&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMemory: 512 MB ROM, 288 MB RAM&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tQuad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDevice Control via HTC TouchFLO&amp;trade; 3D &amp;amp; Touch-sensitive front panel buttons&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tGPS and A-GPS ready&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBluetooth&amp;reg; 2.0 with Enhanced Data Rate and A2DP for wireless stereo headsets&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWi-Fi&amp;reg;: IEEE 802.11 b/g&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHTC ExtUSB&amp;trade; (11-pin mini-USB 2.0)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t5 megapixel color camera with auto focus&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVGA CMOS color camera&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in 3.5 mm audio jack, microphone, speaker, and FM radio&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRing tone formats: AAC, AAC+, eAAC+, AMR-NB, AMR-WB, QCP, MP3, WMA, WAV&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t40 polyphonic and standard MIDI format 0 and 1 (SMF)/SP MIDI&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRechargeable Lithium-ion or Lithium-ion polymer 1350 mAh battery&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tExpansion Slot: microSD&amp;trade; memory card (SD 2.0 compatible)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSpecial Features: FM Radio, G-Sensor&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
-  (64,2,'HTC Touch HD','&lt;p&gt;\r\n\tHTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high definition clarity for a mobile experience you never thought possible. Seductively sleek, the HTC Touch HD provides the next generation of mobile functionality, all at a simple touch. Fully integrated with Windows Mobile Professional 6.1, ultrafast 3.5G, GPS, 5MP camera, plus lots more - all delivered on a breathtakingly crisp 3.8&amp;quot; WVGA touchscreen - you can take control of your mobile world with the HTC Touch HD.&lt;/p&gt;\r\n&lt;p&gt;\r\n\t&lt;strong&gt;Features&lt;/strong&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tProcessor Qualcomm&amp;reg; MSM 7201A&amp;trade; 528 MHz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows Mobile&amp;reg; 6.1 Professional Operating System&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMemory: 512 MB ROM, 288 MB RAM&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tQuad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDevice Control via HTC TouchFLO&amp;trade; 3D &amp;amp; Touch-sensitive front panel buttons&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tGPS and A-GPS ready&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBluetooth&amp;reg; 2.0 with Enhanced Data Rate and A2DP for wireless stereo headsets&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWi-Fi&amp;reg;: IEEE 802.11 b/g&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHTC ExtUSB&amp;trade; (11-pin mini-USB 2.0)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t5 megapixel color camera with auto focus&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVGA CMOS color camera&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in 3.5 mm audio jack, microphone, speaker, and FM radio&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRing tone formats: AAC, AAC+, eAAC+, AMR-NB, AMR-WB, QCP, MP3, WMA, WAV&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t40 polyphonic and standard MIDI format 0 and 1 (SMF)/SP MIDI&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRechargeable Lithium-ion or Lithium-ion polymer 1350 mAh battery&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tExpansion Slot: microSD&amp;trade; memory card (SD 2.0 compatible)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSpecial Features: FM Radio, G-Sensor&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','','');
+  (64,2,'HTC Touch HD','&lt;p&gt;\r\n\tHTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high definition clarity for a mobile experience you never thought possible. Seductively sleek, the HTC Touch HD provides the next generation of mobile functionality, all at a simple touch. Fully integrated with Windows Mobile Professional 6.1, ultrafast 3.5G, GPS, 5MP camera, plus lots more - all delivered on a breathtakingly crisp 3.8&amp;quot; WVGA touchscreen - you can take control of your mobile world with the HTC Touch HD.&lt;/p&gt;\r\n&lt;p&gt;\r\n\t&lt;strong&gt;Features&lt;/strong&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tProcessor Qualcomm&amp;reg; MSM 7201A&amp;trade; 528 MHz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows Mobile&amp;reg; 6.1 Professional Operating System&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMemory: 512 MB ROM, 288 MB RAM&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tQuad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDevice Control via HTC TouchFLO&amp;trade; 3D &amp;amp; Touch-sensitive front panel buttons&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tGPS and A-GPS ready&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBluetooth&amp;reg; 2.0 with Enhanced Data Rate and A2DP for wireless stereo headsets&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWi-Fi&amp;reg;: IEEE 802.11 b/g&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHTC ExtUSB&amp;trade; (11-pin mini-USB 2.0)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t5 megapixel color camera with auto focus&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVGA CMOS color camera&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in 3.5 mm audio jack, microphone, speaker, and FM radio&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRing tone formats: AAC, AAC+, eAAC+, AMR-NB, AMR-WB, QCP, MP3, WMA, WAV&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t40 polyphonic and standard MIDI format 0 and 1 (SMF)/SP MIDI&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRechargeable Lithium-ion or Lithium-ion polymer 1350 mAh battery&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tExpansion Slot: microSD&amp;trade; memory card (SD 2.0 compatible)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSpecial Features: FM Radio, G-Sensor&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
+  (65,1,'?????? 1','','','','','',''),
+  (65,2,'Mount 1','','','','','',''),
+  (66,1,'??????1','','','','','',''),
+  (66,2,'Mount1','','','','','','');
 COMMIT;
+
+#
+# ????????? ??? ??????? `product_discount`: 
+#
+
+CREATE TABLE `product_discount` (
+  `product_discount_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL,
+  `customer_group_id` INTEGER(11) NOT NULL,
+  `quantity` INTEGER(4) NOT NULL DEFAULT 0,
+  `priority` INTEGER(5) NOT NULL DEFAULT 1,
+  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
+  `date_end` DATE NOT NULL DEFAULT '0000-00-00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=450 AVG_ROW_LENGTH=34 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `product_discount` table  (LIMIT -495,500)
@@ -3132,6 +2536,32 @@ INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_g
   (443,42,1,30,1,66.0000,'0000-00-00','0000-00-00'),
   (449,49,1,2,1,500.0000,'2018-01-28','2018-01-28');
 COMMIT;
+
+#
+# ????????? ??? ??????? `product_filter`: 
+#
+
+CREATE TABLE `product_filter` (
+  `product_id` INTEGER(11) NOT NULL,
+  `filter_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `product_image`: 
+#
+
+CREATE TABLE `product_image` (
+  `product_image_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL,
+  `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
+  `sort_order` INTEGER(3) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AUTO_INCREMENT=2423 AVG_ROW_LENGTH=41 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `product_image` table  (LIMIT -436,500)
@@ -3204,6 +2634,21 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
 COMMIT;
 
 #
+# ????????? ??? ??????? `product_option`: 
+#
+
+CREATE TABLE `product_option` (
+  `product_option_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL,
+  `option_id` INTEGER(11) NOT NULL,
+  `option_value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `required` TINYINT(1) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=228 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `product_option` table  (LIMIT -486,500)
 #
 
@@ -3222,6 +2667,29 @@ INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `o
   (226,30,5,'',1),
   (227,49,11,'',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `product_option_value`: 
+#
+
+CREATE TABLE `product_option_value` (
+  `product_option_value_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_option_id` INTEGER(11) NOT NULL,
+  `product_id` INTEGER(11) NOT NULL,
+  `option_id` INTEGER(11) NOT NULL,
+  `option_value_id` INTEGER(11) NOT NULL,
+  `quantity` INTEGER(3) NOT NULL,
+  `subtract` TINYINT(1) NOT NULL,
+  `price` DECIMAL(15,4) NOT NULL,
+  `price_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL,
+  `points` INTEGER(8) NOT NULL,
+  `points_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL,
+  `weight` DECIMAL(15,8) NOT NULL,
+  `weight_prefix` VARCHAR(1) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=18 AVG_ROW_LENGTH=53 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `product_option_value` table  (LIMIT -482,500)
@@ -3248,6 +2716,18 @@ INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_i
 COMMIT;
 
 #
+# ????????? ??? ??????? `product_related`: 
+#
+
+CREATE TABLE `product_related` (
+  `product_id` INTEGER(11) NOT NULL,
+  `related_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `product_related` table  (LIMIT -495,500)
 #
 
@@ -3259,7 +2739,21 @@ INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
 COMMIT;
 
 #
-# Data for the `product_reward` table  (LIMIT -480,500)
+# ????????? ??? ??????? `product_reward`: 
+#
+
+CREATE TABLE `product_reward` (
+  `product_reward_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `customer_group_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `points` INTEGER(8) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AUTO_INCREMENT=561 AVG_ROW_LENGTH=17 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `product_reward` table  (LIMIT -478,500)
 #
 
 INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES 
@@ -3281,8 +2775,27 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
   (539,30,1,200),
   (545,41,1,0),
   (546,42,1,100),
-  (557,49,1,1000);
+  (557,49,1,1000),
+  (559,66,1,0),
+  (560,65,1,0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `product_special`: 
+#
+
+CREATE TABLE `product_special` (
+  `product_special_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL,
+  `customer_group_id` INTEGER(11) NOT NULL,
+  `priority` INTEGER(5) NOT NULL DEFAULT 1,
+  `price` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `date_start` DATE NOT NULL DEFAULT '0000-00-00',
+  `date_end` DATE NOT NULL DEFAULT '0000-00-00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=446 AVG_ROW_LENGTH=30 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `product_special` table  (LIMIT -495,500)
@@ -3296,7 +2809,20 @@ INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_gro
 COMMIT;
 
 #
-# Data for the `product_to_category` table  (LIMIT -491,500)
+# ????????? ??? ??????? `product_to_category`: 
+#
+
+CREATE TABLE `product_to_category` (
+  `product_id` INTEGER(11) NOT NULL,
+  `category_id` INTEGER(11) NOT NULL,
+  `main_category` TINYINT(1) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=10 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `product_to_category` table  (LIMIT -490,500)
 #
 
 INSERT INTO `product_to_category` (`product_id`, `category_id`, `main_category`) VALUES 
@@ -3307,11 +2833,49 @@ INSERT INTO `product_to_category` (`product_id`, `category_id`, `main_category`)
   (34,34,0),
   (36,34,0),
   (42,28,1),
-  (48,34,0);
+  (48,34,0),
+  (65,64,1);
 COMMIT;
 
 #
-# Data for the `product_to_store` table  (LIMIT -479,500)
+# ????????? ??? ??????? `product_to_download`: 
+#
+
+CREATE TABLE `product_to_download` (
+  `product_id` INTEGER(11) NOT NULL,
+  `download_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `product_to_layout`: 
+#
+
+CREATE TABLE `product_to_layout` (
+  `product_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL,
+  `layout_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `product_to_store`: 
+#
+
+CREATE TABLE `product_to_store` (
+  `product_id` INTEGER(11) NOT NULL,
+  `store_id` INTEGER(11) NOT NULL DEFAULT 0
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `product_to_store` table  (LIMIT -477,500)
 #
 
 INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES 
@@ -3334,8 +2898,52 @@ INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
   (47,0),
   (48,0),
   (49,0),
-  (64,0);
+  (64,0),
+  (65,0),
+  (66,0);
 COMMIT;
+
+#
+# ????????? ??? ??????? `return`: 
+#
+
+CREATE TABLE `return` (
+  `return_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `product_id` INTEGER(11) NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL,
+  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `telephone` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `product` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `model` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `quantity` INTEGER(4) NOT NULL,
+  `opened` TINYINT(1) NOT NULL,
+  `return_reason_id` INTEGER(11) NOT NULL,
+  `return_action_id` INTEGER(11) NOT NULL,
+  `return_status_id` INTEGER(11) NOT NULL,
+  `comment` TEXT COLLATE utf8_general_ci,
+  `date_ordered` DATE NOT NULL,
+  `date_added` DATETIME NOT NULL,
+  `date_modified` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `return_action`: 
+#
+
+CREATE TABLE `return_action` (
+  `return_action_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=4 AVG_ROW_LENGTH=48 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `return_action` table  (LIMIT -493,500)
@@ -3349,6 +2957,35 @@ INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES
   (3,1,'?????????? ?????? (????????? ?????? ????? ??? ??????)'),
   (3,2,'Replacement Sent');
 COMMIT;
+
+#
+# ????????? ??? ??????? `return_history`: 
+#
+
+CREATE TABLE `return_history` (
+  `return_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `return_id` INTEGER(11) NOT NULL,
+  `return_status_id` INTEGER(11) NOT NULL,
+  `notify` TINYINT(1) NOT NULL,
+  `comment` TEXT COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `return_reason`: 
+#
+
+CREATE TABLE `return_reason` (
+  `return_reason_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=6 AVG_ROW_LENGTH=70 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `return_reason` table  (LIMIT -491,500)
@@ -3366,6 +3003,19 @@ INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `return_status`: 
+#
+
+CREATE TABLE `return_status` (
+  `return_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=4 AVG_ROW_LENGTH=48 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `return_status` table  (LIMIT -493,500)
 #
 
@@ -3379,6 +3029,25 @@ INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `review`: 
+#
+
+CREATE TABLE `review` (
+  `review_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `product_id` INTEGER(11) NOT NULL,
+  `customer_id` INTEGER(11) NOT NULL,
+  `author` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `text` TEXT COLLATE utf8_general_ci NOT NULL,
+  `rating` INTEGER(1) NOT NULL,
+  `status` TINYINT(1) NOT NULL DEFAULT 0,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=5 AVG_ROW_LENGTH=100 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `review` table  (LIMIT -495,500)
 #
 
@@ -3390,7 +3059,23 @@ INSERT INTO `review` (`review_id`, `product_id`, `customer_id`, `author`, `text`
 COMMIT;
 
 #
-# Data for the `setting` table  (LIMIT -344,500)
+# ????????? ??? ??????? `setting`: 
+#
+
+CREATE TABLE `setting` (
+  `setting_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `store_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `group` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `key` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `value` TEXT COLLATE utf8_general_ci NOT NULL,
+  `serialized` TINYINT(1) NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=310 AVG_ROW_LENGTH=95 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# Data for the `setting` table  (LIMIT -343,500)
 #
 
 INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `serialized`) VALUES 
@@ -3411,20 +3096,15 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `seria
   (15,0,'shipping','shipping_estimator','1',0),
   (27,0,'coupon','coupon_sort_order','4',0),
   (28,0,'coupon','coupon_status','1',0),
-  (39,0,'featured','featured_product','43,40,42,49,46,47,28',0),
-  (40,0,'featured','featured_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:3:\"160\";s:12:\"image_height\";s:3:\"160\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"2\";}}',1),
   (42,0,'credit','credit_sort_order','7',0),
   (43,0,'credit','credit_status','1',0),
   (53,0,'reward','reward_sort_order','2',0),
   (54,0,'reward','reward_status','1',0),
-  (56,0,'affiliate','affiliate_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:2:\"10\";s:8:\"position\";s:12:\"column_right\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
-  (57,0,'category','category_module','a:2:{i:0;a:5:{s:9:\"layout_id\";s:1:\"3\";s:8:\"position\";s:11:\"column_left\";s:5:\"count\";s:1:\"0\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}i:1;a:5:{s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:11:\"column_left\";s:5:\"count\";s:1:\"0\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
   (60,0,'account','account_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"6\";s:8:\"position\";s:12:\"column_right\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
   (93,0,'voucher','voucher_sort_order','8',0),
   (94,0,'voucher','voucher_status','1',0),
   (102,0,'free_checkout','free_checkout_status','1',0),
   (103,0,'free_checkout','free_checkout_order_status_id','1',0),
-  (142,0,'bestseller','bestseller_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:2:\"80\";s:12:\"image_height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
   (145,0,'config','config_name','?????????',0),
   (146,0,'config','config_owner','??? ???',0),
   (147,0,'config','config_address','?????',0),
@@ -3545,11 +3225,30 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `seria
   (262,0,'flat','flat_geo_zone_id','0',0),
   (263,0,'flat','flat_status','1',0),
   (264,0,'flat','flat_sort_order','1',0),
-  (267,0,'information','information_module','a:2:{i:0;a:4:{s:9:\"layout_id\";s:2:\"11\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:2:\"10\";}i:1;a:4:{s:9:\"layout_id\";s:2:\"12\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:0:\"\";}}',1),
-  (269,0,'banner','banner_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"182\";s:6:\"height\";s:3:\"182\";s:9:\"layout_id\";s:1:\"3\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"3\";}}',1),
-  (271,0,'carousel','carousel_module','a:1:{i:0;a:9:{s:9:\"banner_id\";s:1:\"8\";s:5:\"limit\";s:1:\"5\";s:6:\"scroll\";s:1:\"3\";s:5:\"width\";s:2:\"80\";s:6:\"height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:2:\"-1\";}}',1),
-  (272,0,'slideshow','slideshow_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"980\";s:6:\"height\";s:3:\"280\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1);
+  (272,0,'slideshow','slideshow_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"980\";s:6:\"height\";s:3:\"280\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
+  (286,0,'information','information_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"10\";}}',1),
+  (290,0,'special','special_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:2:\"80\";s:12:\"image_height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"4\";}}',1),
+  (292,0,'featured','product','',0),
+  (293,0,'featured','featured_product','43,40,42,49,46,47,28',0),
+  (294,0,'featured','featured_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:3:\"160\";s:12:\"image_height\";s:3:\"160\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"2\";}}',1),
+  (298,0,'carousel','carousel_module','a:1:{i:0;a:9:{s:9:\"banner_id\";s:1:\"8\";s:5:\"limit\";s:1:\"5\";s:6:\"scroll\";s:1:\"3\";s:5:\"width\";s:2:\"80\";s:6:\"height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"0\";}}',1),
+  (299,0,'banner','banner_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"182\";s:6:\"height\";s:3:\"182\";s:9:\"layout_id\";s:1:\"3\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"0\";}}',1),
+  (300,0,'category','category_module','a:1:{i:1;a:4:{s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
+  (309,0,'maincategory','maincategory_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"-2\";}}',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `stock_status`: 
+#
+
+CREATE TABLE `stock_status` (
+  `stock_status_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=9 AVG_ROW_LENGTH=30 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `stock_status` table  (LIMIT -491,500)
@@ -3567,12 +3266,58 @@ INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `store`: 
+#
+
+CREATE TABLE `store` (
+  `store_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `url` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `ssl` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `tax_class`: 
+#
+
+CREATE TABLE `tax_class` (
+  `tax_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `description` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=10 AVG_ROW_LENGTH=68 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `tax_class` table  (LIMIT -498,500)
 #
 
 INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES 
   (9,'??????','?????????? ???????','2009-01-06 23:21:53','2011-03-09 21:17:10');
 COMMIT;
+
+#
+# ????????? ??? ??????? `tax_rate`: 
+#
+
+CREATE TABLE `tax_rate` (
+  `tax_rate_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `geo_zone_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `rate` DECIMAL(15,4) NOT NULL DEFAULT 0.0000,
+  `type` CHAR(1) COLLATE utf8_general_ci NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=88 AVG_ROW_LENGTH=46 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `tax_rate` table  (LIMIT -497,500)
@@ -3584,6 +3329,18 @@ INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `d
 COMMIT;
 
 #
+# ????????? ??? ??????? `tax_rate_to_customer_group`: 
+#
+
+CREATE TABLE `tax_rate_to_customer_group` (
+  `tax_rate_id` INTEGER(11) NOT NULL,
+  `customer_group_id` INTEGER(11) NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=9 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `tax_rate_to_customer_group` table  (LIMIT -497,500)
 #
 
@@ -3591,6 +3348,21 @@ INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VA
   (86,1),
   (87,1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `tax_rule`: 
+#
+
+CREATE TABLE `tax_rule` (
+  `tax_rule_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `tax_class_id` INTEGER(11) NOT NULL,
+  `tax_rate_id` INTEGER(11) NOT NULL,
+  `based` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `priority` INTEGER(5) NOT NULL DEFAULT 1
+)ENGINE=MyISAM
+AUTO_INCREMENT=129 AVG_ROW_LENGTH=29 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `tax_rule` table  (LIMIT -495,500)
@@ -3602,6 +3374,19 @@ INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `
   (127,9,87,'shipping',2),
   (128,9,86,'shipping',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `url_alias`: 
+#
+
+CREATE TABLE `url_alias` (
+  `url_alias_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `query` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
+  `keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=818 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `url_alias` table  (LIMIT -456,500)
@@ -3654,6 +3439,28 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 COMMIT;
 
 #
+# ????????? ??? ??????? `user`: 
+#
+
+CREATE TABLE `user` (
+  `user_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `user_group_id` INTEGER(11) NOT NULL,
+  `username` VARCHAR(20) COLLATE utf8_general_ci NOT NULL,
+  `password` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `salt` VARCHAR(9) COLLATE utf8_general_ci NOT NULL,
+  `firstname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `lastname` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `ip` VARCHAR(40) COLLATE utf8_general_ci NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=2 AVG_ROW_LENGTH=116 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `user` table  (LIMIT -498,500)
 #
 
@@ -3662,13 +3469,75 @@ INSERT INTO `user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, 
 COMMIT;
 
 #
+# ????????? ??? ??????? `user_group`: 
+#
+
+CREATE TABLE `user_group` (
+  `user_group_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `permission` TEXT COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=11 AVG_ROW_LENGTH=4212 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `user_group` table  (LIMIT -497,500)
 #
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES 
-  (1,'??????? ?????????????','a:2:{s:6:\"access\";a:131:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";}s:6:\"modify\";a:131:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";}}'),
+  (1,'??????? ?????????????','a:2:{s:6:\"access\";a:137:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";}s:6:\"modify\";a:137:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";}}'),
   (10,'????????????','');
 COMMIT;
+
+#
+# ????????? ??? ??????? `voucher`: 
+#
+
+CREATE TABLE `voucher` (
+  `voucher_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `order_id` INTEGER(11) NOT NULL,
+  `code` VARCHAR(10) COLLATE utf8_general_ci NOT NULL,
+  `from_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `from_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `to_name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
+  `to_email` VARCHAR(96) COLLATE utf8_general_ci NOT NULL,
+  `voucher_theme_id` INTEGER(11) NOT NULL,
+  `message` TEXT COLLATE utf8_general_ci NOT NULL,
+  `amount` DECIMAL(15,4) NOT NULL,
+  `status` TINYINT(1) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `voucher_history`: 
+#
+
+CREATE TABLE `voucher_history` (
+  `voucher_history_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `voucher_id` INTEGER(11) NOT NULL,
+  `order_id` INTEGER(11) NOT NULL,
+  `amount` DECIMAL(15,4) NOT NULL,
+  `date_added` DATETIME NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=1 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
+# ????????? ??? ??????? `voucher_theme`: 
+#
+
+CREATE TABLE `voucher_theme` (
+  `voucher_theme_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `image` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=9 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `voucher_theme` table  (LIMIT -496,500)
@@ -3679,6 +3548,19 @@ INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
   (7,'data/demo/gift-voucher-birthday.jpg'),
   (8,'data/demo/canon_eos_5d_2.jpg');
 COMMIT;
+
+#
+# ????????? ??? ??????? `voucher_theme_description`: 
+#
+
+CREATE TABLE `voucher_theme_description` (
+  `voucher_theme_id` INTEGER(11) NOT NULL,
+  `language_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `voucher_theme_description` table  (LIMIT -493,500)
@@ -3694,6 +3576,18 @@ INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `nam
 COMMIT;
 
 #
+# ????????? ??? ??????? `weight_class`: 
+#
+
+CREATE TABLE `weight_class` (
+  `weight_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `value` DECIMAL(15,8) NOT NULL DEFAULT 0.00000000
+)ENGINE=MyISAM
+AUTO_INCREMENT=3 AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
+
+#
 # Data for the `weight_class` table  (LIMIT -497,500)
 #
 
@@ -3701,6 +3595,20 @@ INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
   (1,1.00000000),
   (2,1000.00000000);
 COMMIT;
+
+#
+# ????????? ??? ??????? `weight_class_description`: 
+#
+
+CREATE TABLE `weight_class_description` (
+  `weight_class_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `language_id` INTEGER(11) NOT NULL,
+  `title` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `unit` VARCHAR(4) COLLATE utf8_general_ci NOT NULL
+)ENGINE=MyISAM
+AUTO_INCREMENT=3 AVG_ROW_LENGTH=28 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `weight_class_description` table  (LIMIT -495,500)
@@ -3712,6 +3620,21 @@ INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title
   (2,1,'??????','?'),
   (2,2,'Gram','g');
 COMMIT;
+
+#
+# ????????? ??? ??????? `zone`: 
+#
+
+CREATE TABLE `zone` (
+  `zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `country_id` INTEGER(11) NOT NULL,
+  `name` VARCHAR(128) COLLATE utf8_general_ci NOT NULL,
+  `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
+  `status` TINYINT(1) NOT NULL DEFAULT 1
+)ENGINE=MyISAM
+AUTO_INCREMENT=3971 AVG_ROW_LENGTH=29 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `zone` table  (LIMIT 1,500)
@@ -7713,6 +7636,22 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (3969,101,'Alborz','ALB',1),
   (3970,220,'??????','KE',1);
 COMMIT;
+
+#
+# ????????? ??? ??????? `zone_to_geo_zone`: 
+#
+
+CREATE TABLE `zone_to_geo_zone` (
+  `zone_to_geo_zone_id` INTEGER(11) NOT NULL AUTO_INCREMENT,
+  `country_id` INTEGER(11) NOT NULL,
+  `zone_id` INTEGER(11) NOT NULL DEFAULT 0,
+  `geo_zone_id` INTEGER(11) NOT NULL,
+  `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
+)ENGINE=MyISAM
+AUTO_INCREMENT=58 AVG_ROW_LENGTH=27 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+COMMENT=''
+;
 
 #
 # Data for the `zone_to_geo_zone` table  (LIMIT -498,500)

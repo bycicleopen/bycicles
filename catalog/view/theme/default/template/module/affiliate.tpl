@@ -1,22 +1,62 @@
-<div class="box">
-  <div class="box-heading"><?php echo $heading_title; ?></div>
-  <div class="box-content">
-    <ul>
-      <?php if (!$logged) { ?>
-      <li><a href="<?php echo $login; ?>"><?php echo $text_login; ?></a> / <a href="<?php echo $register; ?>"><?php echo $text_register; ?></a></li>
-      <li><a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a></li>
-      <?php } ?>
-      <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-      <?php if ($logged) { ?>
-      <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
-      <li><a href="<?php echo $password; ?>"><?php echo $text_password; ?></a></li>
-      <?php } ?>
-      <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>
-      <li><a href="<?php echo $tracking; ?>"><?php echo $text_tracking; ?></a></li>
-      <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-      <?php if ($logged) { ?>
-      <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-      <?php } ?>
-    </ul>
-  </div>
-</div>
+	<!-- Features -->
+	<section class="features">
+		<div class="container">
+			<div class="features-wrap">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="feature-item">
+							<div class="feature-icon">
+								<div class="feature-icon-bg">
+									<span class="icon">
+										<svg>
+											<use xlink:href="#icon_delivery"></use>
+										</svg>
+									</span>
+								</div>
+							</div>
+							<div class="feature-text">
+								<h5 class="title feature-title">Бесплатная доставка</h5>
+								<p class="feature-descr">Бесплатная доставка всех велосипедов по Украине</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="feature-item">
+							<div class="feature-icon">
+								<div class="feature-icon-bg">
+									<span class="icon">
+										<svg>
+											<use xlink:href="#icon_service"></use>
+										</svg>
+									</span>
+								</div>
+							</div>
+							<div class="feature-text">
+								<h5 class="title feature-title">Официальная гарантия</h5>
+								<p class="feature-descr">Действует сеть сервисных центров по Украине</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="feature-item">
+							<div class="feature-icon">
+								<div class="feature-icon-bg">
+									<span class="icon">
+										<svg>
+											<use xlink:href="#icon_price"></use>
+										</svg>
+									</span>
+								</div>
+							</div>
+							<div class="feature-text">
+								<h5 class="title feature-title">Самая низкая цена</h5>
+								<p class="feature-descr">Нашли дешевлее? Оставьте ссылку и мы сделаем Вам скидку.</p>
+							</div>
+						</div>
+					</div>				
+				</div>
+			</div>
+		</div>
+	</section>
+
+

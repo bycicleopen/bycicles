@@ -148,3 +148,75 @@
 2017-12-29 8:38:45 - PHP Notice:  Undefined variable: category in D:\usr\www\bycicles\catalog\view\theme\default\template\product\category.tpl on line 60
 2017-12-29 8:38:45 - PHP Notice:  Undefined variable: category in D:\usr\www\bycicles\catalog\view\theme\default\template\product\category.tpl on line 60
 2017-12-29 8:38:45 - PHP Notice:  Undefined variable: category in D:\usr\www\bycicles\catalog\view\theme\default\template\product\category.tpl on line 62
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: header in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 31
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: content_top in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 35
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: breadcrumbs in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 37
+2017-12-29 12:06:21 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 37
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: thumb in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 42
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 42
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 52
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_display in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 73
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_list in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 73
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_grid in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 73
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_limit in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 74
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: limits in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 76
+2017-12-29 12:06:21 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 76
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 85
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 85
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_sort in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 86
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: sorts in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 88
+2017-12-29 12:06:21 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 88
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 107
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: tax in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 115
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_wishlist in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 127
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 128
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 107
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: tax in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 115
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_wishlist in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 127
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 128
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 107
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: tax in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 115
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_wishlist in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 127
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 128
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 107
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: tax in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 115
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_wishlist in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 127
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 128
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 107
+2017-12-29 12:06:21 - PHP Notice:  Undefined index: tax in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 115
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_wishlist in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 127
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: button_compare in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 128
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: pagination in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 132
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 134
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: content_bottom in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 140
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_display in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 183
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_list in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 183
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_grid in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 183
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_display in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 220
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_list in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 220
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: text_grid in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 220
+2017-12-29 12:06:21 - PHP Notice:  Undefined variable: footer in D:\usr\www\bycicles\catalog\view\theme\default\template\module\latest.tpl on line 234
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: content_top in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 35
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: breadcrumbs in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 37
+2017-12-29 12:11:23 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 37
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: thumb in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 42
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 42
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 52
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 134
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: text_empty in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 135
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: continue in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 137
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: button_continue in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 137
+2017-12-29 12:11:23 - PHP Notice:  Undefined variable: content_bottom in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 140
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: thumb in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 37
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: description in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 37
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 47
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: categories in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 129
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: text_empty in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 130
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: continue in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 132
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: button_continue in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 132
+2017-12-29 12:12:00 - PHP Notice:  Undefined variable: content_bottom in D:\usr\www\bycicles\catalog\view\theme\default\template\module\bestseller.tpl on line 135
+2017-12-29 12:52:27 - PHP Notice:  Undefined variable: entry_limit in D:\usr\www\bycicles\admin\view\template\module\maincategory.tpl on line 21
+2017-12-29 12:52:27 - PHP Notice:  Undefined variable: entry_image in D:\usr\www\bycicles\admin\view\template\module\maincategory.tpl on line 22
+2017-12-29 13:04:29 - PHP Notice:  Error: Could not load template D:\usr\www\bycicles/admin/view/template/module/mainmaincategory.tpl! in D:\usr\www\bycicles\system\engine\controller.php on line 70
+2017-12-29 13:15:51 - PHP Notice:  Error: Could not load model catalog/MainCategory! in D:\usr\www\bycicles\system\engine\loader.php on line 48
+2017-12-29 13:16:28 - PHP Notice:  Error: Could not load model catalog/MainCategory! in D:\usr\www\bycicles\system\engine\loader.php on line 48
