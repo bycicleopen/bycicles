@@ -250,3 +250,10 @@
 2018-01-02 12:45:40 - PHP Notice:  Undefined variable: product_info in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 31
 2018-01-02 12:45:40 - PHP Notice:  Undefined variable: product_info in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 32
 2018-01-02 12:58:36 - PHP Notice:  Undefined variable: benefit in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 156
+2018-01-02 15:33:25 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:34:31 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:34:39 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:37:56 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:40:06 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:47:46 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-02 15:48:06 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216

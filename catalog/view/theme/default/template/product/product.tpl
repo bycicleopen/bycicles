@@ -213,7 +213,7 @@
 													</div>
 													<!-- button -->
 													<div class="col-md-6 col-sm-6">
-														<a href="#addtocart" class="btn btn_act btn_purchase popup-btn">
+														<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="btn btn_act btn_purchase popup-btn">
 															<span class="btn-icon">
 																<span class="icon">
 																	<svg>
@@ -221,7 +221,10 @@
 																	</svg>
 																</span>
 															</span>
-															<span class="btn-text">Купить</span>
+															<span class="btn-text"><?php echo $button_cart; ?></span>
+															
+														
+															
 														</a>
 													</div>
 												</div>
@@ -307,8 +310,47 @@
 								<div class="tabs-content-wrap">
 									<div id="tab1" class="tabs-content is-active">
 										<div class="tab-table-wrap">
+										
+										
+										  
+  <div id="tab-attribute" class="tab-content">
+  
+  
+    <table class="attribute">
+      <?php foreach ($attribute_groups as $attribute_group) { ?>
+	  
+	  
+	  
+      <thead>
+        <tr>
+          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+        <tr>
+          <td><?php echo $attribute['name']; ?></td>
+          <td><?php echo $attribute['text']; ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+      
+    </table>
+	
+	
+  </div>
+
+										
+										
+										    <?php if ($attribute_groups) { ?>
 											<table class="tab-table">
 												<tbody class="tab-table-body">
+												<?php foreach ($attribute_groups as $attribute_group) { ?>
+											         <tr>
+												        <td colspan="2"><?php echo $attribute_group['name']; ?></td>
+													 </tr>
+												
+												
 													<tr>
 														<td class="tab-table-property">Рама</td>
 														<td>Алюминий</td>
@@ -385,15 +427,19 @@
 														<td class="tab-table-property">Диаметр колес</td>
 														<td>27.5 дюймов</td>
 													</tr>
+												<?php } ?>
 												</tbody>
+										    
 											</table>
+											<?php } ?>
+											
+											
+											
 										</div>
 									</div>
 									<div id="tab2" class="tabs-content">
 										<div class="tab-description">
-											<p class="text">Горный велосипед для взрослых. Данная модель стала компромиссом среди любителей найнеров и фанатов колёс шириной 26 дюймов. Большие колёса легкие и в то же время прочные.</p>
-											<p class="text">Хардтейл для езды в стиле кросс-кантри с оборудованием предпрофессионального класса Shimano, 27 скоростей. Технические особенности: прочная алюминиевая рама, амортизационная вилка SR Suntour XCR, двойные обода Weinmann, дисковые гидравлические тормоза Tektro Draco. Подходит для активной езды по различным дорогам и пересеченной местности. Диаметр колес - 27,5 дюймов. Вес - 15,5 кг.</p>
-											<p class="text">Стальная амортизационная вилка помогает комфортно преодолевать неровности на дороге. Большие колёса легкие и в то же время прочные. Дисковые тормоза обеспечивают плавную остановку велосипеда. Он нужен для тех кто любит скорость и накат по-полной. С ним вам не страшны дороги любых сложностей, так как этот велосипед был придуман для дорог в Украине.</p>
+										    <p><?php echo $description; ?>."descr"</p>
 										</div>
 									</div>
 									<div id="tab3" class="tabs-content">
@@ -1704,5 +1750,152 @@
 		</div>
 
 	</section>
+
+<!--Old scripts>
+ 
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('.colorbox').colorbox({
+		overlayClose: true,
+		opacity: 0.5,
+		rel: "colorbox"
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#button-cart').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/add',
+		type: 'post',
+		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+		dataType: 'json',
+		success: function(json) {
+			$('.success, .warning, .attention, information, .error').remove();
+			
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+					}
+				}
+			} 
+			
+			if (json['success']) {
+				$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+					
+				$('.success').fadeIn('slow');
+					
+				$('#cart-total').html(json['total']);
+				
+				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
+			}	
+		}
+	});
+});
+//--></script>
+<?php if ($options) { ?>
+<script type="text/javascript" src="catalog/view/javascript/jquery/ajaxupload.js"></script>
+<?php foreach ($options as $option) { ?>
+<?php if ($option['type'] == 'file') { ?>
+<script type="text/javascript"><!--
+new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
+	action: 'index.php?route=product/product/upload',
+	name: 'file',
+	autoSubmit: true,
+	responseType: 'json',
+	onSubmit: function(file, extension) {
+		$('#button-option-<?php echo $option['product_option_id']; ?>').after('<img src="catalog/view/theme/default/image/loading.gif" class="loading" style="padding-left: 5px;" />');
+		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', true);
+	},
+	onComplete: function(file, json) {
+		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', false);
+		
+		$('.error').remove();
+		
+		if (json['success']) {
+			alert(json['success']);
+			
+			$('input[name=\'option[<?php echo $option['product_option_id']; ?>]\']').attr('value', json['file']);
+		}
+		
+		if (json['error']) {
+			$('#option-<?php echo $option['product_option_id']; ?>').after('<span class="error">' + json['error'] + '</span>');
+		}
+		
+		$('.loading').remove();	
+	}
+});
+//--></script>
+<?php } ?>
+<?php } ?>
+<?php } ?>
+<script type="text/javascript"><!--
+$('#review .pagination a').live('click', function() {
+	$('#review').fadeOut('slow');
+		
+	$('#review').load(this.href);
+	
+	$('#review').fadeIn('slow');
+	
+	return false;
+});			
+
+$('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+
+$('#button-review').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
+		type: 'post',
+		dataType: 'json',
+		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
+		beforeSend: function() {
+			$('.success, .warning').remove();
+			$('#button-review').attr('disabled', true);
+			$('#review-title').after('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
+		},
+		complete: function() {
+			$('#button-review').attr('disabled', false);
+			$('.attention').remove();
+		},
+		success: function(data) {
+			if (data['error']) {
+				$('#review-title').after('<div class="warning">' + data['error'] + '</div>');
+			}
+			
+			if (data['success']) {
+				$('#review-title').after('<div class="success">' + data['success'] + '</div>');
+								
+				$('input[name=\'name\']').val('');
+				$('textarea[name=\'text\']').val('');
+				$('input[name=\'rating\']:checked').attr('checked', '');
+				$('input[name=\'captcha\']').val('');
+			}
+		}
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#tabs a').tabs();
+//--></script> 
+<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if ($.browser.msie && $.browser.version == 6) {
+		$('.date, .datetime, .time').bgIframe();
+	}
+
+	$('.date').datepicker({dateFormat: 'yy-mm-dd'});
+	$('.datetime').datetimepicker({
+		dateFormat: 'yy-mm-dd',
+		timeFormat: 'h:m'
+	});
+	$('.time').timepicker({timeFormat: 'h:m'});
+});
+//--></script> 
+
+<!--/Olds cripts>	
+	
+	
+	
 	
 	<?php echo $footer; ?>
