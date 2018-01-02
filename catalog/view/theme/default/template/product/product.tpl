@@ -17,8 +17,6 @@
 				</li>	
 			<?php } ?>
 
-			
-
 				<li class="breadcrumbs-item"><?php echo $heading_title; ?>
 					<span class="breadcrumbs-link_next">
 						<span class="icon">
@@ -150,9 +148,12 @@
 											<!-- price -->
 											<div class="item-info-price">
 												<div class="row">
+												    <?php if ($special) { ?>
 													<div class="col-md-6 col-sm-6">
 														<!-- price bonus -->
 														<div class="info-price-bonus-wrap">
+														
+														
 															<span class="info-price-bonus-sum">+<?php echo $benefit; ?><span class="info-price-bonus-currancy"></span>
 															</span>
 															<span class="info-price-bonus-descr">бонус до <?php echo $date_end; ?></span>
@@ -161,10 +162,28 @@
 													<div class="col-md-6 col-sm-6">
 														<!-- item price -->
 														<div class="info-price-wrap">
+														    
 															<span class="info-price"><?php echo $special; ?></span>
 															<span class="info-price-old"><?php echo $price; ?></span>
+											
+														</div>
+													</div>					
+													<?php } else{ ?>
+													<div class="col-md-6 col-sm-6">
+														<!-- price bonus -->
+														<div class="info-price-bonus-wrap">
+														
 														</div>
 													</div>
+													<div class="col-md-6 col-sm-6">
+														<!-- item price -->
+														<div class="info-price-wrap">    
+															<span class="info-price"><?php echo $price; ?></span>		
+														</div>
+													</div>
+													
+													<?php } ?>
+
 												</div>
 											</div>
 											<!-- purchase form-->

@@ -341,6 +341,7 @@ class ControllerProductProduct extends Controller {
 			
 			} else {
 				$this->data['special'] = false;
+				$this->data['benefit'] = false;
 			}
 			
 			if ($this->config->get('config_tax')) {

@@ -249,3 +249,4 @@
 2018-01-02 12:44:04 - PHP Notice:  Undefined variable: product_info in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 32
 2018-01-02 12:45:40 - PHP Notice:  Undefined variable: product_info in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 31
 2018-01-02 12:45:40 - PHP Notice:  Undefined variable: product_info in D:\usr\www\bycicles\catalog\controller\module\slideshow.php on line 32
+2018-01-02 12:58:36 - PHP Notice:  Undefined variable: benefit in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 156
