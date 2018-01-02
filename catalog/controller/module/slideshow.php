@@ -27,9 +27,9 @@ class ControllerModuleSlideshow extends Controller {
 					$this->data['banners'][] = array(
 						'title' => $result['title'],
 						'link'  => $result['link'],
-						'price'  => $result['price'],
-						'psprice'  => $result['psprice'],
-						'benefit'  => $result['benefit'],
+						'price'  => $this->currency->format($this->tax->calculate($result['price'], NULL, $this->config->get('config_tax'))),
+						'psprice'  => $this->currency->format($this->tax->calculate($result['psprice'], NULL, $this->config->get('config_tax'))),
+						'benefit'  => $this->currency->format($this->tax->calculate($result['benefit'], NULL, $this->config->get('config_tax'))),
 						'date_end'  => $result['date_end'],
 						'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height'])
 					);

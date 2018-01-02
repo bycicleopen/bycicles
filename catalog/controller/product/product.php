@@ -284,6 +284,9 @@ class ControllerProductProduct extends Controller {
 			$this->data['manufacturer'] = $product_info['manufacturer'];
 			$this->data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
 			$this->data['model'] = $product_info['model'];
+			
+			$this->data['date_end'] = $product_info['date_end'];//modified 02.01.18 
+			
 			$this->data['reward'] = $product_info['reward'];
 			$this->data['points'] = $product_info['points'];
 			
@@ -322,13 +325,20 @@ class ControllerProductProduct extends Controller {
 			}	
 						
 			if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-				$this->data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+				//$this->data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+				$this->data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], NULL, $this->config->get('config_tax')));//modified 02.01.18
 			} else {
 				$this->data['price'] = false;
 			}
 						
 			if ((float)$product_info['special']) {
 				$this->data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')));
+				/*modified 02.01.18  getting benefit between price and action price*/
+				$mySpecial = $product_info['special'];
+			    $myPrice = $product_info['price'];
+	            $myBenefit =  $myPrice - $mySpecial;		   
+			    $this->data['benefit'] = $this->currency->format($this->tax->calculate($myBenefit, $product_info['tax_class_id'], $this->config->get('config_tax')));
+			
 			} else {
 				$this->data['special'] = false;
 			}
@@ -434,8 +444,8 @@ class ControllerProductProduct extends Controller {
 					$rating = (int)$result['rating'];
 				} else {
 					$rating = false;
-				}
-							
+				}	
+					
 				$this->data['products'][] = array(
 					'product_id' => $result['product_id'],
 					'thumb'   	 => $image,

@@ -176,13 +176,26 @@
 	</footer>
 	
 	
-
-<!-- Scripts -->
+	<!-- Script for Google map in Popup -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWM9qYoD8XEn70oc8kFnR1lzXnV2223vA&amp;callback=initMap" async="" defer=""></script>
+	
+	<!-- Scripts -->
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/scripts.js"></script>
 
 	<!-- SVG Icons -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<!-- Filter Arrow -->
+		<symbol id="icon_filterarr" viewBox="0 0 11 6.9">
+		  <path d="M11 1.4L6.9 5.5 5.5 6.9 4.1 5.5 0 1.4 1.4 0l4.1 4.1L9.6 0 11 1.4z"/>
+		</symbol>
+		<!-- Crumb Arrow -->
+		<symbol id="icon_crumbarr" viewBox="0 0 4 6.2">
+		  <path d="M4 3.2l-3.3 3-.7-.8 2.5-2.2L.1.7.8 0 4 3.2z"/>
+		</symbol>
 		<!-- Arrow Left -->
 		<symbol id="icon_arwleft" viewBox="0 0 9 17.03">
 			<path d="M9.88 1.4L2.96 8.33l6.78 7.34-1.47 1.36L1.4 9.9 0 8.46l1.6-1.62L8.47 0z"></path>

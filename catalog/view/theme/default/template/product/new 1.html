@@ -1,10 +1,356 @@
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-
+<div id="content"><?php echo $content_top; ?>
+  <div class="breadcrumb">
+    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+    <?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+    <?php } ?>
+  </div>
+  
+  
+  <div class="product-info">
+    <?php if ($thumb || $images) { ?>
+    <div class="left">
+	
+	
+      <?php if ($thumb) { ?>
+      <div class="image"><a href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" id="image" /></a></div>
+      <?php } ?>
+	  
+	  
+	  
+      <?php if ($images) { ?>
+      <div class="image-additional">
+        <?php foreach ($images as $image) { ?>
+        <a href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>" class="colorbox"><img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+        <?php } ?>
+      </div>
+      <?php } ?>
+    </div>
+	
+	
+	
+    <?php } ?>
+    <div class="right">
+	<h1><?php echo $heading_title; ?></h1>
+      <div class="description">
+        <?php if ($manufacturer) { ?>
+        <span><?php echo $text_manufacturer; ?></span> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a><br />
+        <?php } ?>
+        <span><?php echo $text_model; ?></span> <?php echo $model; ?><br />
+        <?php if ($reward) { ?>
+        <span><?php echo $text_reward; ?></span> <?php echo $reward; ?><br />
+        <?php } ?>
+        <span><?php echo $text_stock; ?></span> <?php echo $stock; ?></div>
+      <?php if ($price) { ?>
+      <div class="price"><?php echo $text_price; ?>
+        <?php if (!$special) { ?>
+        <?php echo $price; ?>
+        <?php } else { ?>
+        <span class="price-old"><?php echo $price; ?></span> <span class="price-new"><?php echo $special; ?></span>
+        <?php } ?>
+        <br />
+        <?php if ($tax) { ?>
+        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $tax; ?></span><br />
+        <?php } ?>
+        <?php if ($points) { ?>
+        <span class="reward"><small><?php echo $text_points; ?> <?php echo $points; ?></small></span><br />
+        <?php } ?>
+        <?php if ($discounts) { ?>
+        <br />
+        <div class="discount">
+          <?php foreach ($discounts as $discount) { ?>
+          <?php echo sprintf($text_discount, $discount['quantity'], $discount['price']); ?><br />
+          <?php } ?>
+        </div>
+        <?php } ?>
+      </div>
+      <?php } ?>
+      <?php if ($options) { ?>
+      <div class="options">
+        <h2><?php echo $text_option; ?></h2>
+        <br />
+        <?php foreach ($options as $option) { ?>
+        <?php if ($option['type'] == 'select') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <select name="option[<?php echo $option['product_option_id']; ?>]">
+            <option value=""><?php echo $text_select; ?></option>
+            <?php foreach ($option['option_value'] as $option_value) { ?>
+            <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+            <?php if ($option_value['price']) { ?>
+            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+            <?php } ?>
+            </option>
+            <?php } ?>
+          </select>
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'radio') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <?php foreach ($option['option_value'] as $option_value) { ?>
+          <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" />
+          <label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+            <?php if ($option_value['price']) { ?>
+            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+            <?php } ?>
+          </label>
+          <br />
+          <?php } ?>
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'checkbox') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <?php foreach ($option['option_value'] as $option_value) { ?>
+          <input type="checkbox" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" />
+          <label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+            <?php if ($option_value['price']) { ?>
+            (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+            <?php } ?>
+          </label>
+          <br />
+          <?php } ?>
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'image') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <table class="option-image">
+            <?php foreach ($option['option_value'] as $option_value) { ?>
+            <tr>
+              <td style="width: 1px;"><input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" id="option-value-<?php echo $option_value['product_option_value_id']; ?>" /></td>
+              <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" /></label></td>
+              <td><label for="option-value-<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
+                  <?php if ($option_value['price']) { ?>
+                  (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
+                  <?php } ?>
+                </label></td>
+            </tr>
+            <?php } ?>
+          </table>
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'text') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['option_value']; ?>" />
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'textarea') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <textarea name="option[<?php echo $option['product_option_id']; ?>]" cols="40" rows="5"><?php echo $option['option_value']; ?></textarea>
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'file') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <input type="button" value="<?php echo $button_upload; ?>" id="button-option-<?php echo $option['product_option_id']; ?>" class="button">
+          <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" />
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'date') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['option_value']; ?>" class="date" />
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'datetime') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['option_value']; ?>" class="datetime" />
+        </div>
+        <br />
+        <?php } ?>
+        <?php if ($option['type'] == 'time') { ?>
+        <div id="option-<?php echo $option['product_option_id']; ?>" class="option">
+          <?php if ($option['required']) { ?>
+          <span class="required">*</span>
+          <?php } ?>
+          <b><?php echo $option['name']; ?>:</b><br />
+          <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['option_value']; ?>" class="time" />
+        </div>
+        <br />
+        <?php } ?>
+        <?php } ?>
+      </div>
+      <?php } ?>
+      <div class="cart">
+        <div><?php echo $text_qty; ?>
+          <input type="text" name="quantity" size="2" value="<?php echo $minimum; ?>" />
+          <input type="hidden" name="product_id" size="2" value="<?php echo $product_id; ?>" />
+          &nbsp;
+          <input type="button" value="<?php echo $button_cart; ?>" id="button-cart" class="button" />
+          <span>&nbsp;&nbsp;<?php echo $text_or; ?>&nbsp;&nbsp;</span>
+          <span class="links"><a onclick="addToWishList('<?php echo $product_id; ?>');"><?php echo $button_wishlist; ?></a><br />
+            <a onclick="addToCompare('<?php echo $product_id; ?>');"><?php echo $button_compare; ?></a></span>
+        </div>
+        <?php if ($minimum > 1) { ?>
+        <div class="minimum"><?php echo $text_minimum; ?></div>
+        <?php } ?>
+      </div>
+      <?php if ($review_status) { ?>
+      <div class="review">
+        <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
+        <div class="share"><!-- AddThis Button BEGIN -->
+          <script type="text/javascript" src="http://yraaa.ru/share/share_16x16.d3sn"></script>
+		  <style type="text/css">#hidden_tags {display:none}</style>
+          <!-- AddThis Button END --> 
+        </div>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+  <div id="tabs" class="htabs"><a href="#tab-description"><?php echo $tab_description; ?></a>
+    <?php if ($attribute_groups) { ?>
+    <a href="#tab-attribute"><?php echo $tab_attribute; ?></a>
+    <?php } ?>
+    <?php if ($review_status) { ?>
+    <a href="#tab-review"><?php echo $tab_review; ?></a>
+    <?php } ?>
+    <?php if ($products) { ?>
+    <a href="#tab-related"><?php echo $tab_related; ?> (<?php echo count($products); ?>)</a>
+    <?php } ?>
+  </div>
+  <div id="tab-description" class="tab-content"><?php echo $description; ?></div>
+  <?php if ($attribute_groups) { ?>
+  <div id="tab-attribute" class="tab-content">
+    <table class="attribute">
+      <?php foreach ($attribute_groups as $attribute_group) { ?>
+      <thead>
+        <tr>
+          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+        <tr>
+          <td><?php echo $attribute['name']; ?></td>
+          <td><?php echo $attribute['text']; ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+      <?php } ?>
+    </table>
+  </div>
+  <?php } ?>
+  <?php if ($review_status) { ?>
+  <div id="tab-review" class="tab-content">
+    <div id="review"></div>
+    <h2 id="review-title"><?php echo $text_write; ?></h2>
+    <b><?php echo $entry_name; ?></b><br />
+    <input type="text" name="name" value="" />
+    <br />
+    <br />
+    <b><?php echo $entry_review; ?></b>
+    <textarea name="text" cols="40" rows="8" style="width: 98%;"></textarea>
+    <span style="font-size: 11px;"><?php echo $text_note; ?></span><br />
+    <br />
+    <b><?php echo $entry_rating; ?></b> <span><?php echo $entry_bad; ?></span>&nbsp;
+    <input type="radio" name="rating" value="1" />
+    &nbsp;
+    <input type="radio" name="rating" value="2" />
+    &nbsp;
+    <input type="radio" name="rating" value="3" />
+    &nbsp;
+    <input type="radio" name="rating" value="4" />
+    &nbsp;
+    <input type="radio" name="rating" value="5" />
+    &nbsp;<span><?php echo $entry_good; ?></span><br />
+    <br />
+    <b><?php echo $entry_captcha; ?></b><br />
+    <input type="text" name="captcha" value="" />
+    <br />
+    <img src="index.php?route=product/product/captcha" alt="" id="captcha" /><br />
+    <br />
+    <div class="buttons">
+      <div class="right"><a id="button-review" class="button"><?php echo $button_continue; ?></a></div>
+    </div>
+  </div>
+  <?php } ?>
+  <?php if ($products) { ?>
+  <div id="tab-related" class="tab-content">
+    <div class="box-product">
+      <?php foreach ($products as $product) { ?>
+      <div>
+        <?php if ($product['thumb']) { ?>
+        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
+        <?php } ?>
+        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
+        <?php if ($product['price']) { ?>
+        <div class="price">
+          <?php if (!$product['special']) { ?>
+          <?php echo $product['price']; ?>
+          <?php } else { ?>
+          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
+          <?php } ?>
+        </div>
+        <?php } ?>
+        <?php if ($product['rating']) { ?>
+        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
+        <?php } ?>
+        <a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button"><?php echo $button_cart; ?></a></div>
+      <?php } ?>
+    </div>
+  </div>
+  <?php } ?>
+  <?php if ($tags) { ?>
+  <div class="tags"><b><?php echo $text_tags; ?></b>
+    <?php for ($i = 0; $i < count($tags); $i++) { ?>
+    <?php if ($i < (count($tags) - 1)) { ?>
+    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
+    <?php } else { ?>
+    <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
+    <?php } ?>
+    <?php } ?>
+  </div>
+  <?php } ?>
+  <?php echo $content_bottom; ?></div>
+  
+  
+  	
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
 		<div class="container">
-			<ul class="breadcrumbs-items">	
+			<ul class="breadcrumbs-items">
 			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+
 				<li class="breadcrumbs-item">
 					<a href="<?php echo $breadcrumb['href']; ?>" class="link breadcrumbs-link"><?php echo $breadcrumb['text']; ?></a>
 					<span class="breadcrumbs-link_next">
@@ -16,32 +362,25 @@
 					</span>
 				</li>	
 			<?php } ?>
-
-			
-
-				<li class="breadcrumbs-item"><?php echo $heading_title; ?>
-					<span class="breadcrumbs-link_next">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_crumbarr"></use>
-							</svg>
-						</span>
-					</span>
-				</li>
 			</ul>
 		</div>
 	</div>
 
+	
+	
+	
+	
+	
+	
 	<!-- Item Content -->
 	<div class="page-content">
 		<div class="container">
 			<main class="content">
-			<?php if ($thumb || $images) { ?>
 				<div class="item-title">
-					<h1 class="title main-title"><?php echo $heading_title; ?></h1>
+					<h1 class="title main-title">Optimabikes Motion DD 29" 2017</h1>
 					<div class="item-addition">
-						<div class="item-addition-article"><?php echo $text_model; ?> 
-							<span class="item-addition-article-number"><?php echo $model; ?></span>
+						<div class="item-addition-article">Артикул: 
+							<span class="item-addition-article-number">53175667</span>
 						</div>
 						<div class="item-addition-rating">
 							<ul class="rating">
@@ -94,28 +433,40 @@
 									<!-- item photo -->
 									<div class="col-lg-7 col-md-6 col-sm-6">
 										<div class="item-photo">
-										
-								               <?php if ($thumb) { ?> 		
-												<img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" class="item-photo-image">
-											   <?php } ?>
-											
+											<img src="images/item/1-big.jpg" alt="green" class="item-photo-image">
 										</div>
 										<!-- item photo mini -->
 										<ul class="popup-gallery item-photo-items">
-										
-										
-										      <?php if ($images) { ?>
- 
-        <?php foreach ($images as $image) { ?>
 											<li class="item-photo-item">
-												<a href="<?php echo $image['popup']; ?>" class="item-photo-link_min">
-													<img src="<?php echo $image['thumb']; ?>" alt="<?php echo $heading_title; ?>" class="item-photo-image_min">
+												<a href="images/item/1-big.jpg" class="item-photo-link_min">
+													<img src="images/item/1-min.jpg" alt="green" class="item-photo-image_min">
 												</a>
-											</li>		
-      <?php } ?>
-	   <?php } ?>
-										
-			
+											</li>
+											<li class="item-photo-item">
+												<a href="images/item/2-big.jpg" class="item-photo-link_min">
+													<img src="images/item/2-min.jpg" alt="blue" class="item-photo-image_min">
+												</a>
+											</li>
+											<li class="item-photo-item">
+												<a href="images/item/3-big.jpg" class="item-photo-link_min">
+													<img src="images/item/3-min.jpg" alt="orange" class="item-photo-image_min">
+												</a>
+											</li>
+											<li class="item-photo-item">
+												<a href="images/item/4-big.jpg" class="item-photo-link_min">
+													<img src="images/item/4-min.jpg" alt="frame" class="item-photo-image_min">
+												</a>
+											</li>
+											<li class="item-photo-item">
+												<a href="images/item/5-big.jpg" class="item-photo-link_min">
+													<img src="images/item/5-min.jpg" alt="breaks" class="item-photo-image_min">
+												</a>
+											</li>
+											<li class="item-photo-item">
+												<a href="images/item/6-big.jpg" class="item-photo-link_min">
+													<img src="images/item/6-min.jpg" alt="saddle" class="item-photo-image_min">
+												</a>
+											</li>
 										</ul>
 									</div>
 									<!-- item information -->
@@ -153,16 +504,16 @@
 													<div class="col-md-6 col-sm-6">
 														<!-- price bonus -->
 														<div class="info-price-bonus-wrap">
-															<span class="info-price-bonus-sum">+<?php echo $benefit; ?><span class="info-price-bonus-currancy"></span>
+															<span class="info-price-bonus-sum">+263<span class="info-price-bonus-currancy">грн</span>
 															</span>
-															<span class="info-price-bonus-descr">бонус до <?php echo $date_end; ?></span>
+															<span class="info-price-bonus-descr">бонус до 14.09.2017</span>
 														</div>
 													</div>
 													<div class="col-md-6 col-sm-6">
 														<!-- item price -->
 														<div class="info-price-wrap">
-															<span class="info-price"><?php echo $special; ?></span>
-															<span class="info-price-old"><?php echo $price; ?></span>
+															<span class="info-price">5259 грн</span>
+															<span class="info-price-old">6573 грн</span>
 														</div>
 													</div>
 												</div>
@@ -731,7 +1082,6 @@
 						</div>
 					</div>
 				</div>
-		    <?php } ?>
 			</main>
 			<section class="viewed">
 				<div class="section-title">
@@ -1017,673 +1367,153 @@
 		</div>
 	</div>
 
-
-
-	<!-- Navbar -->
-	<div id="navbar" class="nav navbar">
-		<div class="container">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('.colorbox').colorbox({
+		overlayClose: true,
+		opacity: 0.5,
+		rel: "colorbox"
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#button-cart').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=checkout/cart/add',
+		type: 'post',
+		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+		dataType: 'json',
+		success: function(json) {
+			$('.success, .warning, .attention, information, .error').remove();
 			
-				<div class="navbar-logo-wrap">
-					<a href="/" class="navbar-logo">
-						<picture>
-							<img src="images/logo-small.svg" alt="ВЕЛОСКЛАД">
-						</picture>
-					</a>
-				</div>
-		
-				<div class="nav-wrap navbar-wrap">
-					<a href="#" class="nav-link nav-link_navbar link-discount link-discount_navbar">
-						<span class="btn-icon">
-							<span class="icon">
-								<svg>
-									<use xlink:href="#icon_discount"></use>
-								</svg>
-							</span>
-						</span>
-						<span class="btn-text">Скидки</span>
-					</a>
-					<nav class="nav-list">
-						<menu class="nav-items nav-items_navbar">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-								<span>Велосипеды</span>
-								</a>
-								<ul class="nav-items_sub">
-									<li class="nav-item_sub"><a href="#" class="nav-link_sub">Багажники</a></li>
-									<li class="nav-item_sub"><a href="#" class="nav-link_sub">Держатели телефонов</a></li>
-									<li class="nav-item_sub"><a href="#" class="nav-link_sub">Звонки</a></li>
-									<li class="nav-item_sub"><a href="#" class="nav-link_sub last-link">Все товары</a></li>
-								</ul>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link nav-link_navbar">
-									<span>Аксесуары</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link nav-link_navbar">
-									<span>Запчасти</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link nav-link_navbar">
-									<span>Инструменты и ремонт</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link nav-link_navbar">
-									<span>Экипировка</span>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link nav-link_navbar">
-									<span>Активный отдых</span>
-								</a>
-							</li>
-						</menu>
-					</nav>
-				</div>
-
-				<div class="navbar-user-wrap">
-					<ul class="navbar-user">
-						<li class="navbar-user_item">
-							<a href="#" class="navbar-user_link">
-								<span class="icon">
-									<svg>
-										<use xlink:href="#icon_favourite"></use>
-									</svg>
-								</span>
-								<span class="add-count add-count_favourite" data-value="19"></span>
-							</a>
-						</li>
-						<li class="navbar-user_item">
-							<a href="#" class="navbar-user_link">
-								<span class="icon">
-									<svg>
-										<use xlink:href="#icon_compare"></use>
-									</svg>
-								</span>
-								<span class="add-count add-count_compare" data-value="7"></span>
-								<span class="count">7</span>
-							</a>
-						</li>
-						<li class="navbar-user_item">
-							<a href="#addtocart" class="navbar-user_link popup-btn">
-								<span class="icon">
-									<svg>
-										<use xlink:href="#icon_cart"></use>
-									</svg>
-								</span>
-								<span class="add-count add-count_cart" data-value="3"></span>
-							</a>
-						</li>
-					</ul>
-				</div>
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+					}
+				}
+			} 
+			
+			if (json['success']) {
+				$('#notification').html('<div class="success" style="display: none;">' + json['success'] + '<img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>');
+					
+				$('.success').fadeIn('slow');
+					
+				$('#cart-total').html(json['total']);
 				
-		</div>
-	</div>
-
-	<!-- POPUPS -->
-	<section class="popup" style="display: none;">
-
-		<!-- order  -->
-		<div id="order" class="modal modal-offer">
-			<h3 class="title modal-title">Оформление заказа</h3>
-			<div class="form-order-wrap">
-				<form id="order-info" action="" method="" class="ajax-form">
-
-					<!-- name and phone -->
-					<div class="order-step">
-						<span class="order-step-title">1. Ваши данные</span>
-						<div class="order-step-row">
-							<div class="row min">
-								<div class="col-sm-2">
-									<div class="order-step-label">Ваше ФИО*</div>
-								</div>
-								<div class="col-sm-10">
-									<div class="row min">
-										<div class="col-sm-4">
-											<input type="text" name="surmane" class="input input_order" placeholder="Фамилия" required>
-										</div>
-										<div class="col-sm-4">
-											<input type="text" name="name" class="input input_order" placeholder="Имя" required>
-										</div>
-										<div class="col-sm-4">
-											<input type="text" name="fathername" class="input input_order" placeholder="Отчество" required>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="order-step-row">
-							<div class="row min">
-								<div class="col-sm-2">
-									<div class="order-step-label">Телефон*</div>
-								</div>
-								<div class="col-sm-10">
-									<input type="text" name="phone" class="input input_order" placeholder="" required>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<!-- delivery -->
-					<div class="order-step">
-						<span class="order-step-title">2. Доставка</span>
-						<p class="modal-text">Бесплатная доставка Новой Почтой в течении 1-3 дней</p>
-						<div class="order-list-type">
-							<div class="row min">
-								<div class="col-sm-2"></div>
-								<div class="col-sm10">
-									<ul class="check-radio">
-										<li>
-											<input type="radio" id="himself" value="himself" name="delivery" class="input_radio" checked>
-											<label for="himself" class="input_label">Самовывоз</label>
-										</li>
-										<li>
-											<input type="radio" id="np-warehouse" value="np-warehouse" name="delivery" class="input_radio">
-											<label for="np-warehouse" class="input_label">Новая Почта - Склад</label>
-										</li>
-										<li>
-											<input type="radio" id="np-corier" value="np-corier" name="delivery" class="input_radio">
-											<label for="np-corier" class="input_label">Новая Почта - Курьер</label>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-						<!-- nova poshta - warehouse -->
-						<div id="warehouse-info" class="order-delivery-details">
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Область</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="region" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Город</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="city" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">№ склада*</div>
-									</div>
-									<div class="col-sm-10">
-										<div class="row min">
-											<div class="col-sm-6">
-												<input type="text" name="warehouse" class="input input_order" placeholder="" required>
-												<span class="modal-text_small">* - укажите грузовое отделение</span>
-											</div>
-											<div class="col-sm-6">
-												<a href="#" class="link order-warehouse-map">Карта складов</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- nova poshta - corier -->
-						<div id="warehouse-corier" class="order-delivery-details">
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Город</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="city" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Улица</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="street" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Дом</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="house" class="input input_order" placeholder="" required>
-									</div>
-									<div class="col-sm-2">
-										<div class="order-step-label">Квартира</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="room" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Подъезд</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="entrance" class="input input_order" placeholder="" required>
-									</div>
-									<div class="col-sm-2">
-										<div class="order-step-label">Этаж</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="floor" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- payment -->
-					<div class="order-step">
-						<span class="order-step-title">3. Метод оплаты</span>
-						<div class="order-list-type">
-							<div class="row min">
-								<div class="col-sm-2"></div>
-								<div class="col-sm-10">
-									<ul class="check-radio">
-										<li>
-											<input type="radio" id="paybefore" value="paybefore" name="payment" class="input_radio" checked>
-											<label for="paybefore" class="input_label">Полная предоплата</label>
-										</li>
-										<li>
-											<input type="radio" id="cod" value="cod" name="payment" class="input_radio">
-											<label for="cod" class="input_label">Наложеный платеж<span class="input_label-info">( 2% от суммы товара )</span></label>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- add comment -->
-					<div class="order-step">
-						<div class="order-comment">
-							<a href="javascript:void(0);" class="link order-comment-link">Добавить комментарий к заказу</a>
-							 <textarea id="ordermssg" placeholder="Сообщение" name="comment" class="input input_area"></textarea>
-						</div>
-					</div>
-					
-					<!-- order button -->
-					<div class="order-btn">
-						<a href="#ordersuccess" class="btn btn_act popup-btn">Оформить заказ</a>
-					</div>
-
-				</form>
-			</div>
-		</div>
-
-		<!-- add to cart -->
-		<div id="addtocart" class="modal modal-big modal-cart">
-			<h3 class="title modal-title">Моя корзина</h3>
-			<!-- show when the catr is empty -->
-			<p class="modal-text text-center hidden">В корзине пока нет товаров</p>
-			<!-- show added items -->
-			<div class="cart-items-wrap">
-				<div class="mini-titles hidden-xs">
-					<div class="row min">
-						<div class="col-sm-7"><span>Название товара</span></div>
-						<div class="col-sm-3 text-center"><span>Количество</span></div>
-						<div class="col-sm-2 text-right"><span>Сума</span></div>
-					</div>
-				</div>
-				<!-- item in cart -->
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-1.jpg" alt="Formula Spark DD 29 2017">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Formula Spark DD 29" 2017</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">4873 грн</span>
-										<span class="cart-item-price_old">3324 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">4873 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-2.jpg" alt="Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">3899 грн</span>
-										<span class="cart-item-price_old">4125 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">3899 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-3.jpg" alt="Флягодержатель алюминиевый, Simpla Alu-Star">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Флягодержатель алюминиевый, Simpla Alu-Star</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">75 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">75 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-
-				<!-- total sum -->
-				<div class="cart-total-wrap">
-					<span class="cart-total-text">Итого:</span>
-					<span class="cart-total-sum">27599 грн</span>
-				</div>
-
-				<!-- Action Buttons -->
-				<div class="row min">
-					<div class="col-sm-6">
-						<div class="modal-btn">
-							<a href="javascript:void(0);" class="btn btn_default popup-close">Продолжить покупки</a>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="modal-btn text-right">
-							<a href="#order" class="btn btn_act popup-btn">Оформить заказ</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- callback -->
-		<div id="callback" class="modal">
-			<form action="" method="" class="ajax-form">
-				<h3 class="title modal-title">Заказать консультацию</h3>
-				<div class="form-group">
-					<input type="text" name="callbackname" class="input input_modal" placeholder="Ваше имя*" required>
-					<input type="text" name="callbacktel" class="input input_modal" placeholder="Ваш телефон*" required>
-				</div>
-				<p class="modal-text_small">* - поля, обязательные для заполнения</p>
-				<input type="submit" name="callbackbtn" class="btn btn_act btn_submit" value="Отправить">
-			</form>
-		</div>
+				$('html, body').animate({ scrollTop: 0 }, 'slow'); 
+			}	
+		}
+	});
+});
+//--></script>
+<?php if ($options) { ?>
+<script type="text/javascript" src="catalog/view/javascript/jquery/ajaxupload.js"></script>
+<?php foreach ($options as $option) { ?>
+<?php if ($option['type'] == 'file') { ?>
+<script type="text/javascript"><!--
+new AjaxUpload('#button-option-<?php echo $option['product_option_id']; ?>', {
+	action: 'index.php?route=product/product/upload',
+	name: 'file',
+	autoSubmit: true,
+	responseType: 'json',
+	onSubmit: function(file, extension) {
+		$('#button-option-<?php echo $option['product_option_id']; ?>').after('<img src="catalog/view/theme/default/image/loading.gif" class="loading" style="padding-left: 5px;" />');
+		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', true);
+	},
+	onComplete: function(file, json) {
+		$('#button-option-<?php echo $option['product_option_id']; ?>').attr('disabled', false);
 		
-		<!-- enter promocode -->
-		<div id="promocode" class="modal">
-			<form action="" method="" class="ajax-form">
-				<h3 class="title modal-title">Введите промокод</h3>
-				<p class="modal-text">Вход для владельцев дисконтных карт</p>
-				<div class="form-group">
-					<input type="text" name="cardnumber" class="input input_modal" placeholder="Номер карты" required>
-				</div>
-				<input type="submit" name="cardnumberbtn" class="btn btn_act btn_submit" value="Войти">
-			</form>
-		</div>
-
-		<!-- one click -->
-		<div id="oneclick" class="modal-oneclick">
-			<form action="" method="" class="ajax-form">
-				<h4 class="title modal-title modal-title_min">Купить в 1 клик</h4>
-				<p class="modal-text">Укажите свой номер телефона и наш менеджер свяжется с вами для оформления заказа на эту модель</p>		
-				<div class="row min">
-					<div class="col-sm-7">
-						<div class="form-group_oneclick">
-							<input type="text" name="oneclicktel" class="input input_modal" placeholder="Введите номер телефона" required>
-						</div>
-					</div>
-
-					<div class="col-sm-5">
-						<div class="form-group_oneclick">
-							<input type="submit" name="oneclickbtn" class="btn btn_act btn_submit" value="Отправить">
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- order success -->
-		<div id="ordersuccess" class="modal text-center">
-			<div class="icon-success">
-				<span class="icon icon_success">
-					<svg>
-						<use xlink:href="#icon_done"></use>
-					</svg>
-				</span>
-			</div>
-			<h4 class="title modal-title modal-title_min">Спасибо! Мы получили ваш заказ</h4>
-			<p class="modal-text">Номер вашего заказа:
-				<span id="ordernumber" class="order-number">46498798</span>
-			</p>
-			<div class="user-bonus">
-				<span class="user-bonus-text">Ваш бонус:</span>
-				<span class="user-bonus-count">+265
-					<span class="user-bonus-currency">грн</span>
-				</span>
-			</div>
-			<p class="modal-text">Мы отправили вам письмо на ваш электронный адрес с детальной информацией о заказе.</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="/" class="btn btn_default">На главную страницу</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#promocode" class="btn btn_act popup-btn">Мой баланс</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- how to get googlemap -->
-		<div id="googlemap" class="modal modal-big">
-			<h3 class="title modal-title">Мы находимся на карте</h3>
-			<div class="google-map">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.1405255210357!2d26.936219815695278!3d49.44406097934922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473206d56669263d%3A0x347411acabf6cb4e!2z0YPQuy4g0JrRg9GA0YfQsNGC0L7QstCwLCA1OCwg0KXQvNC10LvRjNC90LjRhtC60LjQuSwg0KXQvNC10LvRjNC90LjRhtC60LDRjyDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sua!4v1512762641043" frameborder="0" allowfullscreen></iframe>
-			</div>
-		</div>
-
-		<!-- add to favourite -->
-		<div id="addtofav" class="modal modal-add">
-			<h3 class="title modal-title">Избранные</h3>
-			<p class="modal-text text-center">Товар успешно добавлен в избранные!</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#" class="btn btn_act">К избранным</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- add to compare -->
-		<div id="addtocompare" class="modal modal-add">
-			<h3 class="title modal-title">Сравнения</h3>
-			<p class="modal-text text-center">Товар успешно добавлен к сравнению!</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#" class="btn btn_act">К сравненным</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
+		$('.error').remove();
+		
+		if (json['success']) {
+			alert(json['success']);
+			
+			$('input[name=\'option[<?php echo $option['product_option_id']; ?>]\']').attr('value', json['file']);
+		}
+		
+		if (json['error']) {
+			$('#option-<?php echo $option['product_option_id']; ?>').after('<span class="error">' + json['error'] + '</span>');
+		}
+		
+		$('.loading').remove();	
+	}
+});
+//--></script>
+<?php } ?>
+<?php } ?>
+<?php } ?>
+<script type="text/javascript"><!--
+$('#review .pagination a').live('click', function() {
+	$('#review').fadeOut('slow');
+		
+	$('#review').load(this.href);
 	
-	<?php echo $footer; ?>
+	$('#review').fadeIn('slow');
+	
+	return false;
+});			
+
+$('#review').load('index.php?route=product/product/review&product_id=<?php echo $product_id; ?>');
+
+$('#button-review').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id=<?php echo $product_id; ?>',
+		type: 'post',
+		dataType: 'json',
+		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
+		beforeSend: function() {
+			$('.success, .warning').remove();
+			$('#button-review').attr('disabled', true);
+			$('#review-title').after('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> <?php echo $text_wait; ?></div>');
+		},
+		complete: function() {
+			$('#button-review').attr('disabled', false);
+			$('.attention').remove();
+		},
+		success: function(data) {
+			if (data['error']) {
+				$('#review-title').after('<div class="warning">' + data['error'] + '</div>');
+			}
+			
+			if (data['success']) {
+				$('#review-title').after('<div class="success">' + data['success'] + '</div>');
+								
+				$('input[name=\'name\']').val('');
+				$('textarea[name=\'text\']').val('');
+				$('input[name=\'rating\']:checked').attr('checked', '');
+				$('input[name=\'captcha\']').val('');
+			}
+		}
+	});
+});
+//--></script> 
+<script type="text/javascript"><!--
+$('#tabs a').tabs();
+//--></script> 
+<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if ($.browser.msie && $.browser.version == 6) {
+		$('.date, .datetime, .time').bgIframe();
+	}
+
+	$('.date').datepicker({dateFormat: 'yy-mm-dd'});
+	$('.datetime').datetimepicker({
+		dateFormat: 'yy-mm-dd',
+		timeFormat: 'h:m'
+	});
+	$('.time').timepicker({timeFormat: 'h:m'});
+});
+//--></script> 
+<?php echo $footer; ?>

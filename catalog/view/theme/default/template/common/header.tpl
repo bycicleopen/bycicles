@@ -14,8 +14,10 @@
 	<link rel="stylesheet" href="css/normal.css">
 	<link rel="stylesheet" href="js/magnific-popup/magnific-popup.css">
 	<link rel="stylesheet" href="css/general.css">
-	<link rel="stylesheet" href="css/styles.css?v=3">
-	<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/stylesheet.css" />
+	<link rel="stylesheet" href="css/styles.css?v=5">
+	
+	
+	
 <?php foreach ($styles as $style) { ?>
 <link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
