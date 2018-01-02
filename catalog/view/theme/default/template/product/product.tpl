@@ -313,32 +313,7 @@
 										
 										
 										  
-  <div id="tab-attribute" class="tab-content">
-  
-  
-    <table class="attribute">
-      <?php foreach ($attribute_groups as $attribute_group) { ?>
-	  
-	  
-	  
-      <thead>
-        <tr>
-          <td colspan="2"><?php echo $attribute_group['name']; ?></td>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-        <tr>
-          <td><?php echo $attribute['name']; ?></td>
-          <td><?php echo $attribute['text']; ?></td>
-        </tr>
-        <?php } ?>
-      </tbody>
-      
-    </table>
-	
-	
-  </div>
+
 
 										
 										
@@ -350,83 +325,15 @@
 												        <td colspan="2"><?php echo $attribute_group['name']; ?></td>
 													 </tr>
 												
+												            <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
+																<tr>
+																	<td class="tab-table-property"><?php echo $attribute['name']; ?></td>
+																	<td><?php echo $attribute['text']; ?></td>
+																</tr>
+															<?php } ?>
 												
-													<tr>
-														<td class="tab-table-property">Рама</td>
-														<td>Алюминий</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Вилка</td>
-														<td>SR Suntour XCR, масляно-пружинная, ход 100мм</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Манетки</td>
-														<td>Shimano Alivio, SL-M4000</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Тормоза</td>
-														<td>Tektro Draco, гидравлический дисковый, ротор 180/160 мм</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Передний переключатель</td>
-														<td>Shimano Alivio, FD-T4000</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Задний переключатель</td>
-														<td>Shimano Alivio, RD-T4000</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Передняя втулка</td>
-														<td>KT, алюминий</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Задняя втулка</td>
-														<td>KT, алюминий</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Система</td>
-														<td>Shimano, сталь 22/32/44T</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Каретка</td>
-														<td>Shimano, картридж</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Кассета</td>
-														<td>Shimano Altus, CS-HG40</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Педали</td>
-														<td>алюминий/сталь</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Рулевая колонка</td>
-														<td>Neco, алюминий/сталь</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Седло</td>
-														<td>спортивное</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Обода</td>
-														<td>Weinmann, алюминий, двойные</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Покрышки</td>
-														<td>Chao Yang, 27.5</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Скорости</td>
-														<td>21 (3*7)</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Вес</td>
-														<td>15.5 кг</td>
-													</tr>
-													<tr>
-														<td class="tab-table-property">Диаметр колес</td>
-														<td>27.5 дюймов</td>
-													</tr>
+												
+	
 												<?php } ?>
 												</tbody>
 										    
@@ -439,7 +346,7 @@
 									</div>
 									<div id="tab2" class="tabs-content">
 										<div class="tab-description">
-										    <p><?php echo $description; ?>."descr"</p>
+										    <p><?php echo $description ."descr"; ?></p>
 										</div>
 									</div>
 									<div id="tab3" class="tabs-content">
