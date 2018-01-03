@@ -1,12 +1,16 @@
 <?php echo $header; ?><?php echo $column_left; ?><?php echo $column_right; ?>
-
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
 		<div class="container">
-			<ul class="breadcrumbs-items">	
+			<ul class="breadcrumbs-items">
+			
+			<?php $i = 1; $j = count($breadcrumbs) ?>
 			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
-				<li class="breadcrumbs-item">
-					<a href="<?php echo $breadcrumb['href']; ?>" class="link breadcrumbs-link"><?php echo $breadcrumb['text']; ?></a>
+				<?php if($i!=$j) {?>
+				<li class="breadcrumbs-item">				
+						<a href="<?php echo $breadcrumb['href']; ?>" class="link breadcrumbs-link"><?php echo $breadcrumb['text']; ?></a>
+						<?php $i++ ?>
+					
 					<span class="breadcrumbs-link_next">
 						<span class="icon">
 							<svg>
@@ -15,6 +19,7 @@
 						</span>
 					</span>
 				</li>	
+				<?php } ?>
 			<?php } ?>
 
 				<li class="breadcrumbs-item"><?php echo $heading_title; ?>
@@ -42,6 +47,9 @@
 							<span class="item-addition-article-number"><?php echo $model; ?></span>
 						</div>
 						<div class="item-addition-rating">
+							
+
+							
 							<ul class="rating">
 								<li class="rating-list">
 									<span class="icon icon_rating icon_rating-fill">
@@ -78,6 +86,8 @@
 										</svg>
 									</span>
 								</li>
+								
+								
 							</ul>
 						</div>
 					</div>
@@ -213,18 +223,17 @@
 													</div>
 													<!-- button -->
 													<div class="col-md-6 col-sm-6">
-														<a onclick="addToCart('<?php echo $product['product_id']; ?>');" class="btn btn_act btn_purchase popup-btn">
+														<a  href="#addtocart" class="btn btn_act btn_purchase popup-btn">
 															<span class="btn-icon">
 																<span class="icon">
 																	<svg>
 																		<use xlink:href="#icon_cart"></use>
+																		
 																	</svg>
 																</span>
 															</span>
 															<span class="btn-text"><?php echo $button_cart; ?></span>
-															
-														
-															
+	
 														</a>
 													</div>
 												</div>
@@ -291,17 +300,17 @@
 									<ul class="tabs-items">
 										<li class="tabs-item">
 											<a href="#tab1" class="btn btn_default tabs-link is-active">
-												<span class="btn-text">Характеристики</span>
+												<span class="btn-text"><?php echo $tab_attribute; ?></span>
 											</a>
 										</li>
 										<li class="tabs-item">
 											<a href="#tab2" class="btn btn_default tabs-link">
-												<span class="btn-text">Описание</span>
+												<span class="btn-text"><?php echo $tab_description; ?></span>
 											</a>
 										</li>
 										<li class="tabs-item">
 											<a href="#tab3" class="btn btn_default tabs-link">
-												<span class="btn-text">Отзывы</span>
+												<span class="btn-text"><?php echo $tab_review; ?></span>
 											</a>
 										</li>
 									</ul>
@@ -349,8 +358,21 @@
 										    <p><?php echo $description ."descr"; ?></p>
 										</div>
 									</div>
+									
 									<div id="tab3" class="tabs-content">
 										<div class="tab-coments-wrap">
+										
+										      <?php if ($review_status) { ?>
+      <div class="review">
+        <div><img src="catalog/view/theme/default/image/stars-<?php echo $rating; ?>.png" alt="<?php echo $reviews; ?>" />&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $reviews; ?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a onclick="$('a[href=\'#tab-review\']').trigger('click');"><?php echo $text_write; ?></a></div>
+        <div class="share"><!-- AddThis Button BEGIN -->
+          <script type="text/javascript" src="http://yraaa.ru/share/share_16x16.d3sn"></script>
+		  <style type="text/css">#hidden_tags {display:none}</style>
+          <!-- AddThis Button END --> 
+        </div>
+      </div>
+      <?php } ?>
+										
 											<!-- comments -->
 											<div class="tab-coments">
 												<!-- coment item -->
@@ -705,287 +727,9 @@
 				</div>
 		    <?php } ?>
 			</main>
-			<section class="viewed">
-				<div class="section-title">
-					<h2 class="title">Просмотренные товары</h2>
-					<div class="section-paginator hidden-xs">
-						<div class="paginator-list">
-							<button class="paginator-item">
-								<span class="icon">
-									<svg>
-										<use xlink:href="#icon_arwleft"></use>
-									</svg>
-								</span>
-							</button>
-							<button class="paginator-item">
-								<span class="icon">
-									<svg>
-										<use xlink:href="#icon_arwright"></use>
-									</svg>
-								</span>
-							</button>
-						</div>
-					</div>
-				</div>
+	        <?php echo $content_bottom; ?></div>
 
-				<div class="row">
-					<div class="slider-items">
-						<!-- product-item -->
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<article class="product-item">
-								<div class="product-image">
-									<span class="product-label product-label_bonus">
-										<span class="product-label-price">+244
-											<span class="product-label-price-currancy">грн</span>
-										</span>
-										<span class="product-label-descr">бонус до 14.09</span>
-									</span>
-									<span class="product-color">
-										<span style="background-color: #06f64c"></span>
-										<span style="background-color: #019cf8"></span>
-										<span style="background-color: #fc4b19"></span>
-									</span>
-									<a href="#" class="product-image-link">
-										<img src="images/popular/item-1.jpg" alt="Spark DD 29 2017">
-									</a>
-								</div>
-								<div class="product-text">
-									<h3 class="product-title">
-										<a href="#" class="product-title-link">Spark DD 29" 2017</a>
-									</h3>
-									<span class="product-brand">Formula</span>
-								</div>
-								<div class="product-info">
-									<div class="product-price">
-										<span class="product-price_old">3324 грн</span>
-										<span class="product-price_new">4873 грн</span>
-									</div>
-									<div class="product-buy">
-										<a href="#addtocart" class="btn btn_act popup-btn">
-											<span class="btn-icon">
-												<span class="icon">
-													<svg>
-														<use xlink:href="#icon_cart"></use>
-													</svg>
-												</span>
-											</span>
-											<span class="btn-text">Купить</span>
-										</a>
-									</div>
-								</div>
-								<div class="product-act">
-									<a href="#addtofav" class="product-act-link popup-btn">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_favourite"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">Добавить в избранные</span>
-									</a>
-									<a href="#addtocompare" class="product-act-link popup-btn">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_compare"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">Добавить к сравнению</span>
-									</a>
-								</div>
-							</article>
-						</div>
-						<!-- product-item -->
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<article class="product-item">
-								<div class="product-image">
-									<span class="product-label product-label_discount">
-										<span class="product-label-price">-1749
-											<span class="product-label-price-currancy">грн</span>
-										</span>
-										<span class="product-label-descr">до 14.09.2017</span>
-									</span>
-									<span class="product-color">
-										<span style="background-color: #06f64c"></span>
-										<span style="background-color: #019cf8"></span>
-										<span style="background-color: #fc4b19"></span>
-									</span>
-									<a href="#" class="product-image-link">
-										<img src="images/discount/item-2.jpg" alt="XC 80 27.5 2017">
-									</a>
-								</div>
-								<div class="product-text">
-									<h3 class="product-title">
-										<a href="#" class="product-title-link">XC 80 27.5” 2017</a>
-									</h3>
-									<span class="product-brand">Leon</span>
-								</div>
-								<div class="product-info">
-									<div class="product-price">
-										<span class="product-price_old">9969 грн</span>
-										<span class="product-price_new">8220 грн</span>
-									</div>
-									<div class="product-buy">
-										<a href="#" class="btn btn_disabled">
-											<span class="btn-text">Нет в наличии</span>
-										</a>
-									</div>
-								</div>
-								<div class="product-act">
-									<a href="#addtofav" class="product-act-link popup-btn">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_favourite"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">Добавить в избранные</span>
-									</a>
-									<a href="#addtocompare" class="product-act-link popup-btn">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_compare"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">Добавить к сравнению</span>
-									</a>
-								</div>
-							</article>
-						</div>
-						<!-- product-item -->
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<article class="product-item">
-								<div class="product-image">
-									<span class="product-label product-label_discount">
-										<span class="product-label-price">-621
-											<span class="product-label-price-currancy">грн</span>
-										</span>
-										<span class="product-label-descr">до 14.09.2017</span>
-									</span>
-									<span class="product-color">
-										<span style="background-color: #06f64c"></span>
-										<span style="background-color: #019cf8"></span>
-										<span style="background-color: #fc4b19"></span>
-									</span>
-									<a href="#" class="product-image-link">
-										<img src="images/discount/item-3.jpg" alt="Smart 20 2017">
-									</a>
-								</div>
-								<div class="product-text">
-									<h3 class="product-title">
-										<a href="#" class="product-title-link">Smart 20” 2017</a>
-									</h3>
-									<span class="product-brand">Formula</span>
-								</div>
-								<div class="product-info">
-									<div class="product-price">
-										<span class="product-price_old">3111 грн</span>
-										<span class="product-price_new">2590 грн</span>
-									</div><div class="product-buy">
-										<a href="#addtocart" class="btn btn_act popup-btn">
-											<span class="btn-icon">
-												<span class="icon">
-													<svg>
-														<use xlink:href="#icon_cart"></use>
-													</svg>
-												</span>
-											</span>
-											<span class="btn-text">Купить</span>
-										</a>
-									</div>
-								</div>
-								<div class="product-act">
-									<a href="#" class="product-act-link">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_favourite"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">В избранных</span>
-									</a>
-									<a href="#" class="product-act-link">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_compare"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">В сравнении</span>
-									</a>
-								</div>
-							</article>
-						</div>
-						<!-- product-item -->
-						<div class="col-lg-3 col-md-4 col-sm-6">
-							<article class="product-item">
-								<div class="product-image">
-									<span class="product-label product-label_bonus">
-										<span class="product-label-price">+170
-											<span class="product-label-price-currancy">грн</span>
-										</span>
-										<span class="product-label-descr">бонус до 14.09</span>
-									</span>
-									<span class="product-color">
-										<span style="background-color: #06f64c"></span>
-										<span style="background-color: #019cf8"></span>
-										<span style="background-color: #fc4b19"></span>
-									</span>
-									<a href="#" class="product-image-link">
-										<img src="images/popular/item-4.jpg" alt="Prestige Woman 26 2017">
-									</a>
-								</div>
-								<div class="product-text">
-									<h3 class="product-title">
-										<a href="#" class="product-title-link">Prestige Woman 26" 2017</a>
-									</h3>
-									<span class="product-brand">Discovery</span>
-								</div>
-								<div class="product-info">
-									<div class="product-price">
-										<span class="product-price_old">3699 грн</span>
-										<span class="product-price_new">3405 грн</span>
-									</div><div class="product-buy">
-										<a href="#" class="btn btn_disabled">
-											<span class="btn-text">Нет в наличии</span>
-										</a>
-									</div>
-								</div>
-								<div class="product-act">
-									<a href="#addtofav" class="product-act-link popup-btn">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_favourite"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">Добавить в избранные</span>
-									</a>
-									<a href="#" class="product-act-link">
-										<span class="btn-icon">
-											<span class="icon">
-												<svg>
-													<use xlink:href="#icon_compare"></use>
-												</svg>
-											</span>
-										</span>
-										<span class="btn-text">В сравнении</span>
-									</a>
-								</div>
-							</article>
-						</div>
 
-					</div>
-				</div>
-			</section>
 		</div>
 	</div>
 
@@ -1095,569 +839,9 @@
 		</div>
 	</div>
 
-	<!-- POPUPS -->
-	<section class="popup" style="display: none;">
+	
 
-		<!-- order  -->
-		<div id="order" class="modal modal-offer">
-			<h3 class="title modal-title">Оформление заказа</h3>
-			<div class="form-order-wrap">
-				<form id="order-info" action="" method="" class="ajax-form">
-
-					<!-- name and phone -->
-					<div class="order-step">
-						<span class="order-step-title">1. Ваши данные</span>
-						<div class="order-step-row">
-							<div class="row min">
-								<div class="col-sm-2">
-									<div class="order-step-label">Ваше ФИО*</div>
-								</div>
-								<div class="col-sm-10">
-									<div class="row min">
-										<div class="col-sm-4">
-											<input type="text" name="surmane" class="input input_order" placeholder="Фамилия" required>
-										</div>
-										<div class="col-sm-4">
-											<input type="text" name="name" class="input input_order" placeholder="Имя" required>
-										</div>
-										<div class="col-sm-4">
-											<input type="text" name="fathername" class="input input_order" placeholder="Отчество" required>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="order-step-row">
-							<div class="row min">
-								<div class="col-sm-2">
-									<div class="order-step-label">Телефон*</div>
-								</div>
-								<div class="col-sm-10">
-									<input type="text" name="phone" class="input input_order" placeholder="" required>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<!-- delivery -->
-					<div class="order-step">
-						<span class="order-step-title">2. Доставка</span>
-						<p class="modal-text">Бесплатная доставка Новой Почтой в течении 1-3 дней</p>
-						<div class="order-list-type">
-							<div class="row min">
-								<div class="col-sm-2"></div>
-								<div class="col-sm10">
-									<ul class="check-radio">
-										<li>
-											<input type="radio" id="himself" value="himself" name="delivery" class="input_radio" checked>
-											<label for="himself" class="input_label">Самовывоз</label>
-										</li>
-										<li>
-											<input type="radio" id="np-warehouse" value="np-warehouse" name="delivery" class="input_radio">
-											<label for="np-warehouse" class="input_label">Новая Почта - Склад</label>
-										</li>
-										<li>
-											<input type="radio" id="np-corier" value="np-corier" name="delivery" class="input_radio">
-											<label for="np-corier" class="input_label">Новая Почта - Курьер</label>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						
-						<!-- nova poshta - warehouse -->
-						<div id="warehouse-info" class="order-delivery-details">
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Область</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="region" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Город</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="city" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">№ склада*</div>
-									</div>
-									<div class="col-sm-10">
-										<div class="row min">
-											<div class="col-sm-6">
-												<input type="text" name="warehouse" class="input input_order" placeholder="" required>
-												<span class="modal-text_small">* - укажите грузовое отделение</span>
-											</div>
-											<div class="col-sm-6">
-												<a href="#" class="link order-warehouse-map">Карта складов</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- nova poshta - corier -->
-						<div id="warehouse-corier" class="order-delivery-details">
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Город</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="city" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Улица</div>
-									</div>
-									<div class="col-sm-10">
-										<input type="text" name="street" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Дом</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="house" class="input input_order" placeholder="" required>
-									</div>
-									<div class="col-sm-2">
-										<div class="order-step-label">Квартира</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="room" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-							<div class="order-step-row">
-								<div class="row min">
-									<div class="col-sm-2">
-										<div class="order-step-label">Подъезд</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="entrance" class="input input_order" placeholder="" required>
-									</div>
-									<div class="col-sm-2">
-										<div class="order-step-label">Этаж</div>
-									</div>
-									<div class="col-sm-4">
-										<input type="text" name="floor" class="input input_order" placeholder="" required>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- payment -->
-					<div class="order-step">
-						<span class="order-step-title">3. Метод оплаты</span>
-						<div class="order-list-type">
-							<div class="row min">
-								<div class="col-sm-2"></div>
-								<div class="col-sm-10">
-									<ul class="check-radio">
-										<li>
-											<input type="radio" id="paybefore" value="paybefore" name="payment" class="input_radio" checked>
-											<label for="paybefore" class="input_label">Полная предоплата</label>
-										</li>
-										<li>
-											<input type="radio" id="cod" value="cod" name="payment" class="input_radio">
-											<label for="cod" class="input_label">Наложеный платеж<span class="input_label-info">( 2% от суммы товара )</span></label>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- add comment -->
-					<div class="order-step">
-						<div class="order-comment">
-							<a href="javascript:void(0);" class="link order-comment-link">Добавить комментарий к заказу</a>
-							 <textarea id="ordermssg" placeholder="Сообщение" name="comment" class="input input_area"></textarea>
-						</div>
-					</div>
-					
-					<!-- order button -->
-					<div class="order-btn">
-						<a href="#ordersuccess" class="btn btn_act popup-btn">Оформить заказ</a>
-					</div>
-
-				</form>
-			</div>
-		</div>
-
-		<!-- add to cart -->
-		<div id="addtocart" class="modal modal-big modal-cart">
-			<h3 class="title modal-title">Моя корзина</h3>
-			<!-- show when the catr is empty -->
-			<p class="modal-text text-center hidden">В корзине пока нет товаров</p>
-			<!-- show added items -->
-			<div class="cart-items-wrap">
-				<div class="mini-titles hidden-xs">
-					<div class="row min">
-						<div class="col-sm-7"><span>Название товара</span></div>
-						<div class="col-sm-3 text-center"><span>Количество</span></div>
-						<div class="col-sm-2 text-right"><span>Сума</span></div>
-					</div>
-				</div>
-				<!-- item in cart -->
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-1.jpg" alt="Formula Spark DD 29 2017">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Formula Spark DD 29" 2017</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">4873 грн</span>
-										<span class="cart-item-price_old">3324 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">4873 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-2.jpg" alt="Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">3899 грн</span>
-										<span class="cart-item-price_old">4125 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">3899 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-				<div class="cart-item">
-					<div class="row min">
-						<!-- item info -->
-						<div class="col-sm-7">
-							<div class="cart-item-content">
-
-								<div class="cart-item-img">
-									<img src="images/cart/item-3.jpg" alt="Флягодержатель алюминиевый, Simpla Alu-Star">
-								</div>
-
-								<div class="cart-item-text">
-									<a href="#" class="cart-item-title">Флягодержатель алюминиевый, Simpla Alu-Star</a>
-									<span class="cart-item-price-wrap">
-										<span class="cart-item-price">75 грн</span>
-									</span>
-								</div>
-
-							</div>
-						</div>
-
-						<!-- item quantity -->
-						<div class="col-sm-3 col-xs-6">
-							<div class="cart-item-count">
-								<form class="form-counter">
-									<button class="input_control input_minus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_minus"></use>
-											</svg>
-										</span>
-									</button>
-
-									<input type="text" class="input input_count" value="1">
-
-									<button class="input_control input_plus">
-										<span class="icon icon_control">
-											<svg>
-												<use xlink:href="#icon_plus"></use>
-											</svg>
-										</span>
-									</button>
-								</form>
-							</div>				
-						</div>
-							
-						<!-- item sum -->
-						<div class="col-sm-2 col-xs-6">
-							<div class="cart-item-sum">
-								<span class="cart-item-sum-text">75 грн</span>
-							</div>							
-						</div>
-					
-					<!-- item delete button -->
-					<button class="delete-item" title="Удалить">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_cross"></use>
-							</svg>
-						</span>
-					</button>
-
-					</div>
-				</div>
-
-				<!-- total sum -->
-				<div class="cart-total-wrap">
-					<span class="cart-total-text">Итого:</span>
-					<span class="cart-total-sum">27599 грн</span>
-				</div>
-
-				<!-- Action Buttons -->
-				<div class="row min">
-					<div class="col-sm-6">
-						<div class="modal-btn">
-							<a href="javascript:void(0);" class="btn btn_default popup-close">Продолжить покупки</a>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="modal-btn text-right">
-							<a href="#order" class="btn btn_act popup-btn">Оформить заказ</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- callback -->
-		<div id="callback" class="modal">
-			<form action="" method="" class="ajax-form">
-				<h3 class="title modal-title">Заказать консультацию</h3>
-				<div class="form-group">
-					<input type="text" name="callbackname" class="input input_modal" placeholder="Ваше имя*" required>
-					<input type="text" name="callbacktel" class="input input_modal" placeholder="Ваш телефон*" required>
-				</div>
-				<p class="modal-text_small">* - поля, обязательные для заполнения</p>
-				<input type="submit" name="callbackbtn" class="btn btn_act btn_submit" value="Отправить">
-			</form>
-		</div>
-		
-		<!-- enter promocode -->
-		<div id="promocode" class="modal">
-			<form action="" method="" class="ajax-form">
-				<h3 class="title modal-title">Введите промокод</h3>
-				<p class="modal-text">Вход для владельцев дисконтных карт</p>
-				<div class="form-group">
-					<input type="text" name="cardnumber" class="input input_modal" placeholder="Номер карты" required>
-				</div>
-				<input type="submit" name="cardnumberbtn" class="btn btn_act btn_submit" value="Войти">
-			</form>
-		</div>
-
-		<!-- one click -->
-		<div id="oneclick" class="modal-oneclick">
-			<form action="" method="" class="ajax-form">
-				<h4 class="title modal-title modal-title_min">Купить в 1 клик</h4>
-				<p class="modal-text">Укажите свой номер телефона и наш менеджер свяжется с вами для оформления заказа на эту модель</p>		
-				<div class="row min">
-					<div class="col-sm-7">
-						<div class="form-group_oneclick">
-							<input type="text" name="oneclicktel" class="input input_modal" placeholder="Введите номер телефона" required>
-						</div>
-					</div>
-
-					<div class="col-sm-5">
-						<div class="form-group_oneclick">
-							<input type="submit" name="oneclickbtn" class="btn btn_act btn_submit" value="Отправить">
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<!-- order success -->
-		<div id="ordersuccess" class="modal text-center">
-			<div class="icon-success">
-				<span class="icon icon_success">
-					<svg>
-						<use xlink:href="#icon_done"></use>
-					</svg>
-				</span>
-			</div>
-			<h4 class="title modal-title modal-title_min">Спасибо! Мы получили ваш заказ</h4>
-			<p class="modal-text">Номер вашего заказа:
-				<span id="ordernumber" class="order-number">46498798</span>
-			</p>
-			<div class="user-bonus">
-				<span class="user-bonus-text">Ваш бонус:</span>
-				<span class="user-bonus-count">+265
-					<span class="user-bonus-currency">грн</span>
-				</span>
-			</div>
-			<p class="modal-text">Мы отправили вам письмо на ваш электронный адрес с детальной информацией о заказе.</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="/" class="btn btn_default">На главную страницу</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#promocode" class="btn btn_act popup-btn">Мой баланс</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- how to get googlemap -->
-		<div id="googlemap" class="modal modal-big">
-			<h3 class="title modal-title">Мы находимся на карте</h3>
-			<div class="google-map">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.1405255210357!2d26.936219815695278!3d49.44406097934922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473206d56669263d%3A0x347411acabf6cb4e!2z0YPQuy4g0JrRg9GA0YfQsNGC0L7QstCwLCA1OCwg0KXQvNC10LvRjNC90LjRhtC60LjQuSwg0KXQvNC10LvRjNC90LjRhtC60LDRjyDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sua!4v1512762641043" frameborder="0" allowfullscreen></iframe>
-			</div>
-		</div>
-
-		<!-- add to favourite -->
-		<div id="addtofav" class="modal modal-add">
-			<h3 class="title modal-title">Избранные</h3>
-			<p class="modal-text text-center">Товар успешно добавлен в избранные!</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#" class="btn btn_act">К избранным</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- add to compare -->
-		<div id="addtocompare" class="modal modal-add">
-			<h3 class="title modal-title">Сравнения</h3>
-			<p class="modal-text text-center">Товар успешно добавлен к сравнению!</p>
-			<div class="row min">
-				<div class="col-sm-6">
-					<div class="modal-btn">
-						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<div class="modal-btn text-right">
-						<a href="#" class="btn btn_act">К сравненным</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
+	
 <!--Old scripts>
  
 <script type="text/javascript"><!--

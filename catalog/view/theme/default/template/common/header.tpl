@@ -16,19 +16,7 @@
 	<link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" href="css/styles.css?v=5">
 	
-	
-	
-<?php foreach ($styles as $style) { ?>
-<link rel="<?php echo $style['rel']; ?>" type="text/css" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
-<?php } ?>
-<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
-<link rel="stylesheet" type="text/css" href="catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
-<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
-<?php foreach ($scripts as $script) { ?>
-<script type="text/javascript" src="<?php echo $script; ?>"></script>
-<?php } ?>
-	
+
 	
 </head>
 <body>
@@ -111,7 +99,7 @@
 								</li>
 
 								<li class="header-user_item">
-									<a href="#" class="header-user_link">
+									<a href="#addtocart" class="header-user_link popup-btn">
 										<span class="header-user-icon">
 											<span class="icon">
 												<svg>
@@ -120,9 +108,10 @@
 											</span>
 										</span>
 										
-										<span class="header-user-text"><?php echo $cart; ?></span>
+										<span class="header-user-text"></span>
 										<span class="add-count add-count_cart header-user-count" data-value="3"></span>
 									</a>
+										
 								</li>
 							</ul>
 
@@ -185,7 +174,7 @@
 								<time class="phone-time">с 9:00 до 18:00 без выходных</time>
 							</div>
 
-							<a href="#" class="btn btn_cta header-cta visible-lg">
+							<a href="#callback" class="btn btn_cta header-cta popup-btn visible-lg">
 								<span class="btn-icon">
 									<span class="icon">
 										<svg>
@@ -195,6 +184,7 @@
 								</span>
 								<span class="btn-text">Заказать звонок</span>
 							</a>
+
 						</div>
 					</div>
 
@@ -321,8 +311,6 @@
 					
 </section>		
 	
-	
-
 
 					
 				

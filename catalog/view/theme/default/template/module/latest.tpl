@@ -1,31 +1,113 @@
-<h1>module.latest</h1>
-<div class="box">
-  <div class="box-heading"><?php echo $heading_title; ?></div>
-  <div class="box-content">
-    <div class="box-product">
-      <?php foreach ($products as $product) { ?>
-      <div>
-        <?php if ($product['thumb']) { ?>
-        <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-        <?php } ?>
-        <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-        <?php if ($product['price']) { ?>
-        <div class="price">
-          <?php if (!$product['special']) { ?>
-          <?php echo $product['price']; ?>
-          <?php } else { ?>
-          <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-          <?php } ?>
-        </div>
-        <?php } ?>
-        <?php if ($product['rating']) { ?>
-        <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-        <?php } ?>
-        <div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div>
-      </div>
-      <?php } ?>
-    </div>
-  </div>
-</div>
+			<section class="viewed">
+				<div class="section-title">
+					<h2 class="title"><?php echo $heading_title; ?></h2>
+					<div class="section-paginator hidden-xs">
+						<div class="paginator-list">
+							<button class="paginator-item">
+								<span class="icon">
+									<svg>
+										<use xlink:href="#icon_arwleft"></use>
+									</svg>
+								</span>
+							</button>
+							<button class="paginator-item">
+								<span class="icon">
+									<svg>
+										<use xlink:href="#icon_arwright"></use>
+									</svg>
+								</span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="slider-items">
+					<?php foreach ($products as $product) { ?>
+						<!-- product-item -->
+						<div class="col-lg-3 col-md-4 col-sm-6">
+							<article class="product-item">
+								<div class="product-image">
+									<span class="product-label product-label_bonus">
+										<span class="product-label-price">+244
+											<span class="product-label-price-currancy">грн</span>
+										</span>
+										<span class="product-label-descr">бонус до 14.09</span>
+									</span>
+									<span class="product-color">
+										<span style="background-color: #06f64c"></span>
+										<span style="background-color: #019cf8"></span>
+										<span style="background-color: #fc4b19"></span>
+									</span>
+											
+									<?php if ($product['thumb']) { ?>
+									<a href="<?php echo $product['href']; ?>" class="product-image-link">
+										<img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+									</a>
+									<?php } ?>
+				
+								</div>
+								<div class="product-text">
+									<h3 class="product-title">
+										<a href="<?php echo $product['href']; ?>" class="product-title-link"><?php echo $product['name']; ?></a>
+									</h3>
+									<span class="product-brand">Formula</span>
+								</div>
+								<div class="product-info">
+									<div class="product-price">
+									          <?php if (!$product['special']) { ?>
+													<span class="product-price_new"> <?php echo $product['price']; ?></span>
+											  <?php } else { ?>
+												<span class="product-price_old"><?php echo $product['price']; ?></span>
+													<span class="product-price_new"><?php echo $product['special']; ?></span>
+											  <?php } ?>
+									</div>
+									<div class="product-buy">
+										<a href="#addtocart" class="btn btn_act popup-btn">
+											<span class="btn-icon">
+												<span class="icon">
+													<svg>
+														<use xlink:href="#icon_cart"></use>
+													</svg>
+												</span>
+											</span>
+											<span class="btn-text"><?php echo $button_cart; ?></span>
+										
+										
+										</a>
+									</div>
+								</div>
+								<div class="product-act">
+									<a href="#addtofav" class="product-act-link popup-btn">
+										<span class="btn-icon">
+											<span class="icon">
+												<svg>
+													<use xlink:href="#icon_favourite"></use>
+												</svg>
+											</span>
+										</span>
+										<span class="btn-text">Добавить в избранные</span>
+									</a>
+									<a href="#addtocompare" class="product-act-link popup-btn">
+										<span class="btn-icon">
+											<span class="icon">
+												<svg>
+													<use xlink:href="#icon_compare"></use>
+												</svg>
+											</span>
+										</span>
+										<span class="btn-text">Добавить к сравнению</span>
+									</a>
+								</div>
+							</article>
+						</div>
+						 <?php } ?>
+						 
+
+					</div>
+			
+				</div>
+			</section>
 
 

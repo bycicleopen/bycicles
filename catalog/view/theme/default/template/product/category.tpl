@@ -1,115 +1,156 @@
 <?php echo $header; ?>
-  	<!-- Category -->
-	<section class="category">
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs">
 		<div class="container">
-			<div id="content"><?php echo $content_top; ?>
-			<div class="breadcrumb">
-				<?php foreach ($breadcrumbs as $breadcrumb) { ?>
-				<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
-				<?php } ?>
-			</div>
-			<h1><?php echo $heading_title; ?></h1>
-				<?php if ($thumb || $description) { ?>
-				<div class="category-info">
-				<?php if ($thumb) { ?>
-					<div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
-						<?php } ?>
-						<?php if ($description) { ?>
-						<?php echo $description; ?>
-						<?php } ?>
+			<ul class="breadcrumbs-items">	
+			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+				<li class="breadcrumbs-item">
+					<a href="<?php echo $breadcrumb['href']; ?>" class="link breadcrumbs-link"><?php echo $breadcrumb['text']; ?></a>
+					<span class="breadcrumbs-link_next">
+						<span class="icon">
+							<svg>
+								<use xlink:href="#icon_crumbarr"></use>
+							</svg>
+						</span>
+					</span>
+				</li>	
+			<?php } ?>
+
+				<li class="breadcrumbs-item"><?php echo $heading_title; ?>
+					<span class="breadcrumbs-link_next">
+						<span class="icon">
+							<svg>
+								<use xlink:href="#icon_crumbarr"></use>
+							</svg>
+						</span>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	
+	
+	
+	<!-- Discount Items -->
+	<div class="page-content">
+		<div class="container">
+			<div class="section-title">
+				<h2 class="title"><?php echo $heading_title; ?></h2>
+				<div class="section-paginator hidden-xs">
+					<a href="#" class="link section-link">Посмотреть все</a>
+					<div class="paginator-list">
+						<button class="paginator-item">
+							<span class="icon">
+								<svg>
+									<use xlink:href="#icon_arwleft"></use>
+								</svg>
+							</span>
+						</button>
+						<button class="paginator-item">
+							<span class="icon">
+								<svg>
+									<use xlink:href="#icon_arwright"></use>
+								</svg>
+							</span>
+						</button>
 					</div>
-				<?php } ?>
-		    <?php if ($categories) { ?>
-			<div class="row">
-				<div class="category-list">
-				<?php foreach ($categories as $category) { ?>
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="category-item">
-							<a href="<?php echo $category['href']; ?>"  class="category-item_link"></a>
-							<div class="category-item_image">
-							<img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>">
-							</div>
-						<span class="category-item_title"><?php echo $category['name']; ?></span>
-						</div>
-					</div>
-				<?php } ?>
 				</div>
 			</div>
-			<?php } ?>
-			  
-  <?php if ($products) { ?>
- 
-  <div class="product-filter">
-    <div class="display"><b><?php echo $text_display; ?></b> <?php echo $text_list; ?> <b>/</b> <a onclick="display('grid');"><?php echo $text_grid; ?></a></div>
-    <div class="limit"><b><?php echo $text_limit; ?></b>
-      <select onchange="location = this.value;">
-        <?php foreach ($limits as $limits) { ?>
-        <?php if ($limits['value'] == $limit) { ?>
-        <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </div>
-	<div class="product-compare"><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></div>
-    <div class="sort"><b><?php echo $text_sort; ?></b>
-      <select onchange="location = this.value;">
-        <?php foreach ($sorts as $sorts) { ?>
-        <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-        <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-        <?php } else { ?>
-        <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-        <?php } ?>
-        <?php } ?>
-      </select>
-    </div>
-  </div>
-  
-  <div class="product-list">
- 
-    <?php foreach ($products as $product) { ?>
-    <div>
-      <?php if ($product['thumb']) { ?>
-      <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" title="<?php echo $product['name']; ?>" alt="<?php echo $product['name']; ?>" /></a></div>
-      <?php } ?>
-      <div class="name"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></div>
-      <div class="description"><?php echo $product['description']; ?></div>
-      <?php if ($product['price']) { ?>
-      <div class="price">
-        <?php if (!$product['special']) { ?>
-        <?php echo $product['price']; ?>
-        <?php } else { ?>
-        <span class="price-old"><?php echo $product['price']; ?></span> <span class="price-new"><?php echo $product['special']; ?></span>
-        <?php } ?>
-        <?php if ($product['tax']) { ?>
-        <br />
-        <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php if ($product['rating']) { ?>
-      <div class="rating"><img src="catalog/view/theme/default/image/stars-<?php echo $product['rating']; ?>.png" alt="<?php echo $product['reviews']; ?>" /></div>
-      <?php } ?>
-      <div class="cart">
-        <input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" />
-      </div>
-      <div class="wishlist"><a onclick="addToWishList('<?php echo $product['product_id']; ?>');"><?php echo $button_wishlist; ?></a></div>
-      <div class="compare"><a onclick="addToCompare('<?php echo $product['product_id']; ?>');"><?php echo $button_compare; ?></a></div>
-    </div>
-    <?php } ?>
-  </div>
-  <div class="pagination"><?php echo $pagination; ?></div>
-  <?php } ?>
-  <?php if (!$categories && !$products) { ?>
-  <div class="content"><?php echo $text_empty; ?></div>
-  <div class="buttons">
-    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
-  </div>
-  <?php } ?>
-  <?php echo $content_bottom; ?></div>
- </div> 
-	</section>
+
+			<div class="row">
+				<div class="slider-items">
+					<!-- product-item -->
+					<?php foreach ($products as $product) { ?>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<article class="product-item">
+							<div class="product-image">
+								<span class="product-label product-label_discount">
+									<span class="product-label-price">-1007
+										<span class="product-label-price-currancy">грн</span>
+									</span>
+									<span class="product-label-descr">до 14.09.2017</span>
+								</span>
+								<span class="product-color">
+									<span style="background-color: #06f64c"></span>
+									<span style="background-color: #019cf8"></span>
+									<span style="background-color: #fc4b19"></span>
+								</span>
+								<a href="<?php echo $product['href']; ?>" class="product-image-link">
+								     <?php if ($product['thumb']) { ?>
+										<img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>">
+									 <?php } ?>	
+								</a>
+							</div>
+							<div class="product-text">
+								<h3 class="product-title">
+									<a href="#" class="product-title-link"><?php echo $product['name']; ?></a>
+								</h3>
+								<span class="product-brand">Dorozhnik</span>
+							</div>
+							<div class="product-info">
+								<div class="product-price">
+									<span class="product-price_old"><?php echo $product['price']; ?></span>
+									<span class="product-price_new"><?php echo $product['special']; ?> </span>
+								</div>
+								<div class="product-buy">
+								
+								<a  href="#addtocart" class="btn btn_act btn_purchase popup-btn">
+															<span class="btn-icon">
+																<span class="icon">
+																	<svg>
+																		<use xlink:href="#icon_cart"></use>
+																		
+																	</svg>
+																</span>
+															</span>
+															<span class="btn-text"><?php echo $button_cart; ?></span>
+	
+														</a>
+									<!--a href="#" class="btn btn_in-cart">
+										<span class="btn-icon">
+											<span class="icon">
+												<svg>
+													<use xlink:href="#icon_cart"></use>
+												</svg>
+											</span>
+										</span>
+										<span class="btn-text"><div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
+									</a-->
+								</div>
+							</div>
+							<div class="product-act">
+								<a href="#" class="product-act-link">
+									<span class="btn-icon">
+										<span class="icon">
+											<svg>
+												<use xlink:href="#icon_favourite"></use>
+											</svg>
+										</span>
+									</span>
+									<span class="btn-text">В избранных</span>
+								</a>
+								<a href="#" class="product-act-link">
+									<span class="btn-icon">
+										<span class="icon">
+											<svg>
+												<use xlink:href="#icon_compare"></use>
+											</svg>
+										</span>
+									</span>
+									<span class="btn-text">Добавить к сравнению</span>
+								</a>
+							</div>
+						</article>
+					</div>
+					
+				  <?php } ?>	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 	
 	
 	

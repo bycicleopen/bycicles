@@ -72,7 +72,7 @@
 					
 								</div>
 								<div class="product-buy">
-									<a href="#" class="btn btn_act"  onclick="addToCart('<?php echo $product['product_id']; ?>');">
+									<a href="#addtocart" class="btn btn_act btn_purchase popup-btn">
 										<span class="btn-icon">
 											<span class="icon">
 												<svg>

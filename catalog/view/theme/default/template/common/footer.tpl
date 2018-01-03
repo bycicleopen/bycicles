@@ -22,7 +22,8 @@
 												<time class="phone-time phone-time_footer">с 9:00 до 18:00 без выходных</time>
 											</div>
 
-											<a href="#" class="btn btn_act btn_cta-footer">Заказать обратный звонок</a>
+											<a href="#callback" class="btn btn_act btn_cta-footer popup-btn">Заказать обратный звонок</a>
+
 										</div>
 
 										<div class="col-md-12 col-sm-6">
@@ -175,6 +176,571 @@
 			</div>
 	</footer>
 	
+	<!-- POPUPS -->
+	<section class="popup" style="display: none;">
+
+		<!-- order  -->
+		<div id="order" class="modal modal-offer">
+			<h3 class="title modal-title">Оформление заказа</h3>
+			<div class="form-order-wrap">
+				<form id="order-info" action="" method="" class="ajax-form">
+
+					<!-- name and phone -->
+					<div class="order-step">
+						<span class="order-step-title">1. Ваши данные</span>
+						<div class="order-step-row">
+							<div class="row min">
+								<div class="col-sm-2">
+									<div class="order-step-label">Ваше ФИО*</div>
+								</div>
+								<div class="col-sm-10">
+									<div class="row min">
+										<div class="col-sm-4">
+											<input type="text" name="surmane" class="input input_order" placeholder="Фамилия" required>
+										</div>
+										<div class="col-sm-4">
+											<input type="text" name="name" class="input input_order" placeholder="Имя" required>
+										</div>
+										<div class="col-sm-4">
+											<input type="text" name="fathername" class="input input_order" placeholder="Отчество" required>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="order-step-row">
+							<div class="row min">
+								<div class="col-sm-2">
+									<div class="order-step-label">Телефон*</div>
+								</div>
+								<div class="col-sm-10">
+									<input type="text" name="phone" class="input input_order" placeholder="" required>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- delivery -->
+					<div class="order-step">
+						<span class="order-step-title">2. Доставка</span>
+						<p class="modal-text">Бесплатная доставка Новой Почтой в течении 1-3 дней</p>
+						<div class="order-list-type">
+							<div class="row min">
+								<div class="col-sm-2"></div>
+								<div class="col-sm10">
+									<ul class="check-radio">
+										<li>
+											<input type="radio" id="himself" value="himself" name="delivery" class="input_radio" checked>
+											<label for="himself" class="input_label">Самовывоз</label>
+										</li>
+										<li>
+											<input type="radio" id="np-warehouse" value="np-warehouse" name="delivery" class="input_radio">
+											<label for="np-warehouse" class="input_label">Новая Почта - Склад</label>
+										</li>
+										<li>
+											<input type="radio" id="np-corier" value="np-corier" name="delivery" class="input_radio">
+											<label for="np-corier" class="input_label">Новая Почта - Курьер</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<!-- nova poshta - warehouse -->
+						<div id="warehouse-info" class="order-delivery-details">
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Область</div>
+									</div>
+									<div class="col-sm-10">
+										<input type="text" name="region" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Город</div>
+									</div>
+									<div class="col-sm-10">
+										<input type="text" name="city" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">№ склада*</div>
+									</div>
+									<div class="col-sm-10">
+										<div class="row min">
+											<div class="col-sm-6">
+												<input type="text" name="warehouse" class="input input_order" placeholder="" required>
+												<span class="modal-text_small">* - укажите грузовое отделение</span>
+											</div>
+											<div class="col-sm-6">
+												<a href="#" class="link order-warehouse-map">Карта складов</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- nova poshta - corier -->
+						<div id="warehouse-corier" class="order-delivery-details">
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Город</div>
+									</div>
+									<div class="col-sm-10">
+										<input type="text" name="city" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Улица</div>
+									</div>
+									<div class="col-sm-10">
+										<input type="text" name="street" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Дом</div>
+									</div>
+									<div class="col-sm-4">
+										<input type="text" name="house" class="input input_order" placeholder="" required>
+									</div>
+									<div class="col-sm-2">
+										<div class="order-step-label">Квартира</div>
+									</div>
+									<div class="col-sm-4">
+										<input type="text" name="room" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+							<div class="order-step-row">
+								<div class="row min">
+									<div class="col-sm-2">
+										<div class="order-step-label">Подъезд</div>
+									</div>
+									<div class="col-sm-4">
+										<input type="text" name="entrance" class="input input_order" placeholder="" required>
+									</div>
+									<div class="col-sm-2">
+										<div class="order-step-label">Этаж</div>
+									</div>
+									<div class="col-sm-4">
+										<input type="text" name="floor" class="input input_order" placeholder="" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- payment -->
+					<div class="order-step">
+						<span class="order-step-title">3. Метод оплаты</span>
+						<div class="order-list-type">
+							<div class="row min">
+								<div class="col-sm-2"></div>
+								<div class="col-sm-10">
+									<ul class="check-radio">
+										<li>
+											<input type="radio" id="paybefore" value="paybefore" name="payment" class="input_radio" checked>
+											<label for="paybefore" class="input_label">Полная предоплата</label>
+										</li>
+										<li>
+											<input type="radio" id="cod" value="cod" name="payment" class="input_radio">
+											<label for="cod" class="input_label">Наложеный платеж<span class="input_label-info">( 2% от суммы товара )</span></label>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- add comment -->
+					<div class="order-step">
+						<div class="order-comment">
+							<a href="javascript:void(0);" class="link order-comment-link">Добавить комментарий к заказу</a>
+							 <textarea id="ordermssg" placeholder="Сообщение" name="comment" class="input input_area"></textarea>
+						</div>
+					</div>
+					
+					<!-- order button -->
+					<div class="order-btn">
+						<a href="#ordersuccess" class="btn btn_act popup-btn">Оформить заказ</a>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<!-- add to cart -->
+		<div id="addtocart" class="modal modal-big modal-cart">
+			<h3 class="title modal-title">Моя корзина</h3>
+			<!-- show when the catr is empty -->
+			<p class="modal-text text-center hidden">В корзине пока нет товаров</p>
+			<!-- show added items -->
+			<div class="cart-items-wrap">
+				<div class="mini-titles hidden-xs">
+					<div class="row min">
+						<div class="col-sm-7"><span>Название товара</span></div>
+						<div class="col-sm-3 text-center"><span>Количество</span></div>
+						<div class="col-sm-2 text-right"><span>Сума</span></div>
+					</div>
+				</div>
+				<!-- item in cart -->
+				<div class="cart-item">
+					<div class="row min">
+						<!-- item info -->
+						<div class="col-sm-7">
+							<div class="cart-item-content">
+
+								<div class="cart-item-img">
+									<img src="images/cart/item-1.jpg" alt="Formula Spark DD 29 2017">
+								</div>
+
+								<div class="cart-item-text">
+									<a href="#" class="cart-item-title">Formula Spark DD 29" 2017</a>
+									<span class="cart-item-price-wrap">
+										<span class="cart-item-price">4873 грн</span>
+										<span class="cart-item-price_old">3324 грн</span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- item quantity -->
+						<div class="col-sm-3 col-xs-6">
+							<div class="cart-item-count">
+								<form class="form-counter">
+									<button class="input_control input_minus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_minus"></use>
+											</svg>
+										</span>
+									</button>
+
+									<input type="text" class="input input_count" value="1">
+
+									<button class="input_control input_plus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_plus"></use>
+											</svg>
+										</span>
+									</button>
+								</form>
+							</div>				
+						</div>
+							
+						<!-- item sum -->
+						<div class="col-sm-2 col-xs-6">
+							<div class="cart-item-sum">
+								<span class="cart-item-sum-text">4873 грн</span>
+							</div>							
+						</div>
+					
+					<!-- item delete button -->
+					<button class="delete-item" title="Удалить">
+						<span class="icon">
+							<svg>
+								<use xlink:href="#icon_cross"></use>
+							</svg>
+						</span>
+					</button>
+
+					</div>
+				</div>
+				<div class="cart-item">
+					<div class="row min">
+						<!-- item info -->
+						<div class="col-sm-7">
+							<div class="cart-item-content">
+
+								<div class="cart-item-img">
+									<img src="images/cart/item-2.jpg" alt="Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)">
+								</div>
+
+								<div class="cart-item-text">
+									<a href="#" class="cart-item-title">Шлем Abus TEC-TICAL Pro v.2 Nutrixxion L (58-62)</a>
+									<span class="cart-item-price-wrap">
+										<span class="cart-item-price">3899 грн</span>
+										<span class="cart-item-price_old">4125 грн</span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- item quantity -->
+						<div class="col-sm-3 col-xs-6">
+							<div class="cart-item-count">
+								<form class="form-counter">
+									<button class="input_control input_minus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_minus"></use>
+											</svg>
+										</span>
+									</button>
+
+									<input type="text" class="input input_count" value="1">
+
+									<button class="input_control input_plus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_plus"></use>
+											</svg>
+										</span>
+									</button>
+								</form>
+							</div>				
+						</div>
+							
+						<!-- item sum -->
+						<div class="col-sm-2 col-xs-6">
+							<div class="cart-item-sum">
+								<span class="cart-item-sum-text">3899 грн</span>
+							</div>							
+						</div>
+					
+					<!-- item delete button -->
+					<button class="delete-item" title="Удалить">
+						<span class="icon">
+							<svg>
+								<use xlink:href="#icon_cross"></use>
+							</svg>
+						</span>
+					</button>
+
+					</div>
+				</div>
+				<div class="cart-item">
+					<div class="row min">
+						<!-- item info -->
+						<div class="col-sm-7">
+							<div class="cart-item-content">
+
+								<div class="cart-item-img">
+									<img src="images/cart/item-3.jpg" alt="Флягодержатель алюминиевый, Simpla Alu-Star">
+								</div>
+
+								<div class="cart-item-text">
+									<a href="#" class="cart-item-title">Флягодержатель алюминиевый, Simpla Alu-Star</a>
+									<span class="cart-item-price-wrap">
+										<span class="cart-item-price">75 грн</span>
+									</span>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- item quantity -->
+						<div class="col-sm-3 col-xs-6">
+							<div class="cart-item-count">
+								<form class="form-counter">
+									<button class="input_control input_minus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_minus"></use>
+											</svg>
+										</span>
+									</button>
+
+									<input type="text" class="input input_count" value="1">
+
+									<button class="input_control input_plus">
+										<span class="icon icon_control">
+											<svg>
+												<use xlink:href="#icon_plus"></use>
+											</svg>
+										</span>
+									</button>
+								</form>
+							</div>				
+						</div>
+							
+						<!-- item sum -->
+						<div class="col-sm-2 col-xs-6">
+							<div class="cart-item-sum">
+								<span class="cart-item-sum-text">75 грн</span>
+							</div>							
+						</div>
+					
+					<!-- item delete button -->
+					<button class="delete-item" title="Удалить">
+						<span class="icon">
+							<svg>
+								<use xlink:href="#icon_cross"></use>
+							</svg>
+						</span>
+					</button>
+
+					</div>
+				</div>
+
+				<!-- total sum -->
+				<div class="cart-total-wrap">
+					<span class="cart-total-text">Итого:</span>
+					<span class="cart-total-sum">27599 грн</span>
+				</div>
+
+				<!-- Action Buttons -->
+				<div class="row min">
+					<div class="col-sm-6">
+						<div class="modal-btn">
+							<a href="javascript:void(0);" class="btn btn_default popup-close">Продолжить покупки</a>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="modal-btn text-right">
+							<a href="#order" class="btn btn_act popup-btn">Оформить заказ</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- callback -->
+		<div id="callback" class="modal">
+			<form action="" method="" class="ajax-form">
+				<h3 class="title modal-title">Заказать консультацию</h3>
+				<div class="form-group">
+					<input type="text" name="callbackname" class="input input_modal" placeholder="Ваше имя*" required>
+					<input type="text" name="callbacktel" class="input input_modal" placeholder="Ваш телефон*" required>
+				</div>
+				<p class="modal-text_small">* - поля, обязательные для заполнения</p>
+				<input type="submit" name="callbackbtn" class="btn btn_act btn_submit" value="Отправить">
+			</form>
+		</div>
+		
+		<!-- enter promocode -->
+		<div id="promocode" class="modal">
+			<form action="" method="" class="ajax-form">
+				<h3 class="title modal-title">Введите промокод</h3>
+				<p class="modal-text">Вход для владельцев дисконтных карт</p>
+				<div class="form-group">
+					<input type="text" name="cardnumber" class="input input_modal" placeholder="Номер карты" required>
+				</div>
+				<input type="submit" name="cardnumberbtn" class="btn btn_act btn_submit" value="Войти">
+			</form>
+		</div>
+
+		<!-- one click -->
+		<div id="oneclick" class="modal-oneclick">
+			<form action="" method="" class="ajax-form">
+				<h4 class="title modal-title modal-title_min">Купить в 1 клик</h4>
+				<p class="modal-text">Укажите свой номер телефона и наш менеджер свяжется с вами для оформления заказа на эту модель</p>		
+				<div class="row min">
+					<div class="col-sm-7">
+						<div class="form-group_oneclick">
+							<input type="text" name="oneclicktel" class="input input_modal" placeholder="Введите номер телефона" required>
+						</div>
+					</div>
+
+					<div class="col-sm-5">
+						<div class="form-group_oneclick">
+							<input type="submit" name="oneclickbtn" class="btn btn_act btn_submit" value="Отправить">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- order success -->
+		<div id="ordersuccess" class="modal text-center">
+			<div class="icon-success">
+				<span class="icon icon_success">
+					<svg>
+						<use xlink:href="#icon_done"></use>
+					</svg>
+				</span>
+			</div>
+			<h4 class="title modal-title modal-title_min">Спасибо! Мы получили ваш заказ</h4>
+			<p class="modal-text">Номер вашего заказа:
+				<span id="ordernumber" class="order-number">46498798</span>
+			</p>
+			<div class="user-bonus">
+				<span class="user-bonus-text">Ваш бонус:</span>
+				<span class="user-bonus-count">+265
+					<span class="user-bonus-currency">грн</span>
+				</span>
+			</div>
+			<p class="modal-text">Мы отправили вам письмо на ваш электронный адрес с детальной информацией о заказе.</p>
+			<div class="row min">
+				<div class="col-sm-6">
+					<div class="modal-btn">
+						<a href="/" class="btn btn_default">На главную страницу</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="modal-btn text-right">
+						<a href="#promocode" class="btn btn_act popup-btn">Мой баланс</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- how to get googlemap -->
+		<div id="googlemap" class="modal modal-big">
+			<h3 class="title modal-title">Мы находимся на карте</h3>
+			<div class="google-map">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2594.1405255210357!2d26.936219815695278!3d49.44406097934922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473206d56669263d%3A0x347411acabf6cb4e!2z0YPQuy4g0JrRg9GA0YfQsNGC0L7QstCwLCA1OCwg0KXQvNC10LvRjNC90LjRhtC60LjQuSwg0KXQvNC10LvRjNC90LjRhtC60LDRjyDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sua!4v1512762641043" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<!-- add to favourite -->
+		<div id="addtofav" class="modal modal-add">
+			<h3 class="title modal-title">Избранные</h3>
+			<p class="modal-text text-center">Товар успешно добавлен в избранные!</p>
+			<div class="row min">
+				<div class="col-sm-6">
+					<div class="modal-btn">
+						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="modal-btn text-right">
+						<a href="#" class="btn btn_act">К избранным</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- add to compare -->
+		<div id="addtocompare" class="modal modal-add">
+			<h3 class="title modal-title">Сравнения</h3>
+			<p class="modal-text text-center">Товар успешно добавлен к сравнению!</p>
+			<div class="row min">
+				<div class="col-sm-6">
+					<div class="modal-btn">
+						<a href="javascript:void(0);" class="btn btn_default popup-close">Закрыть</a>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="modal-btn text-right">
+						<a href="#" class="btn btn_act">К сравненным</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	
+	
 	
 	<!-- Script for Google map in Popup -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWM9qYoD8XEn70oc8kFnR1lzXnV2223vA&amp;callback=initMap" async="" defer=""></script>
@@ -185,6 +751,11 @@
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="js/magnific-popup/jquery.magnific-popup.min.js"></script>
 	<script src="js/scripts.js"></script>
+	
+	
+	
+	
+	
 
 	<!-- SVG Icons -->
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

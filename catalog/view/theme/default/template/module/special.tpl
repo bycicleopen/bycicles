@@ -56,11 +56,24 @@
 							</div>
 							<div class="product-info">
 								<div class="product-price">
-									<span class="product-price_old"><?php echo $product['price']; ?>грн</span>
-									<span class="product-price_new"><?php echo $product['special']; ?> грн</span>
+									<span class="product-price_old"><?php echo $product['price']; ?></span>
+									<span class="product-price_new"><?php echo $product['special']; ?> </span>
 								</div>
 								<div class="product-buy">
-									<a href="#" class="btn btn_in-cart">
+								
+								<a  href="#addtocart" class="btn btn_act btn_purchase popup-btn">
+															<span class="btn-icon">
+																<span class="icon">
+																	<svg>
+																		<use xlink:href="#icon_cart"></use>
+																		
+																	</svg>
+																</span>
+															</span>
+															<span class="btn-text"><?php echo $button_cart; ?></span>
+	
+														</a>
+									<!--a href="#" class="btn btn_in-cart">
 										<span class="btn-icon">
 											<span class="icon">
 												<svg>
@@ -69,7 +82,7 @@
 											</span>
 										</span>
 										<span class="btn-text"><div class="cart"><input type="button" value="<?php echo $button_cart; ?>" onclick="addToCart('<?php echo $product['product_id']; ?>');" class="button" /></div></span>
-									</a>
+									</a-->
 								</div>
 							</div>
 							<div class="product-act">

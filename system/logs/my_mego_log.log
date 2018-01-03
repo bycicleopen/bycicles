@@ -263,3 +263,40 @@
 2018-01-02 16:07:21 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
 2018-01-02 16:07:35 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
 2018-01-02 16:09:38 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:34:18 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:36:46 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:40:01 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:41:44 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:45:40 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:50:05 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:52:01 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:52:22 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:53:02 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:57:37 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:58:02 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 10:58:32 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:01:00 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:01:14 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:01:20 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:07:56 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:08:30 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:11:02 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:13:21 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:17:25 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:17:29 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:17:40 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:17:51 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 216
+2018-01-03 11:21:11 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 218
+2018-01-03 11:22:16 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 221
+2018-01-03 11:56:19 - PHP Notice:  Undefined variable: product in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 46
+2018-01-03 12:24:55 - PHP Notice:  Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '//AND ((ps.date_start = '0000-00-00' OR ps.date_start < '2018-01-03') AND (ps.da' at line 7<br />Error No: 1064<br />SELECT distinct bi.*, bid.*, p.price 'price', ps.price 'psprice',p.price-ps.price 'benefit', ps.date_end FROM banner_image bi LEFT JOIN banner_image_description bid ON (bi.banner_image_id  = bid.banner_image_id)
+		
+	    LEFT JOIN product p ON (p.product_id  = bi.product_id)
+	    LEFT JOIN product_special ps ON (ps.product_id  = bi.product_id)
+		
+		WHERE bi.banner_id = '7' AND bid.language_id = '1';
+		//AND ((ps.date_start = '0000-00-00' OR ps.date_start < '2018-01-03') AND (ps.date_end = '0000-00-00' OR ps.date_end > '2018-01-03')) in D:\usr\www\bycicles\system\database\mysql.php on line 50
+2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
+2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
+2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
+2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11

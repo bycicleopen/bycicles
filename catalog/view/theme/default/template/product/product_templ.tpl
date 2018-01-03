@@ -246,8 +246,13 @@
     <?php } ?>
   </div>
   <div id="tab-description" class="tab-content"><?php echo $description; ?></div>
+  
+  
+  
   <?php if ($attribute_groups) { ?>
   <div id="tab-attribute" class="tab-content">
+  
+  
     <table class="attribute">
       <?php foreach ($attribute_groups as $attribute_group) { ?>
       <thead>
@@ -265,6 +270,8 @@
       </tbody>
       <?php } ?>
     </table>
+	
+	
   </div>
   <?php } ?>
   
@@ -343,6 +350,8 @@
   <?php echo $content_bottom; ?></div>
   
   <h1>/tab</h1>
+  
+  
 <script type="text/javascript"><!--
 $(document).ready(function() {
 	$('.colorbox').colorbox({
