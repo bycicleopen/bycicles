@@ -1,39 +1,60 @@
 <?php echo $header; ?>
-	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
+  	<!-- Category -->
+	<section class="category">
 		<div class="container">
-			<ul class="breadcrumbs-items">	
-			<?php foreach ($breadcrumbs as $breadcrumb) { ?>
-				<li class="breadcrumbs-item">
-					<a href="<?php echo $breadcrumb['href']; ?>" class="link breadcrumbs-link"><?php echo $breadcrumb['text']; ?></a>
-					<span class="breadcrumbs-link_next">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_crumbarr"></use>
-							</svg>
-						</span>
-					</span>
-				</li>	
+			<div id="content"><?php echo $content_top; ?>
+			<div class="breadcrumb">
+				<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+				<?php echo $breadcrumb['separator']; ?><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a>
+				<?php } ?>
+			</div>
+			<h1><?php echo $heading_title; ?></h1>
+				<?php if ($thumb || $description) { ?>
+				<div class="category-info">
+				<?php if ($thumb) { ?>
+					<div class="image"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" /></div>
+						<?php } ?>
+						<?php if ($description) { ?>
+						<?php echo $description; ?>
+						<?php } ?>
+					</div>
+				<?php } ?>
+		    <?php if ($categories) { ?>
+			<div class="row">
+				<div class="category-list">
+				<?php foreach ($categories as $category) { ?>
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<div class="category-item">
+							<a href="<?php echo $category['href']; ?>"  class="category-item_link"></a>
+							<div class="category-item_image">
+							<img src="<?php echo $category['thumb']; ?>" alt="<?php echo $category['name']; ?>">
+							</div>
+						<span class="category-item_title"><?php echo $category['name']; ?></span>
+						</div>
+					</div>
+				<?php } ?>
+				</div>
+			</div>
 			<?php } ?>
+			  
 
-				<li class="breadcrumbs-item"><?php echo $heading_title; ?>
-					<span class="breadcrumbs-link_next">
-						<span class="icon">
-							<svg>
-								<use xlink:href="#icon_crumbarr"></use>
-							</svg>
-						</span>
-					</span>
-				</li>
-			</ul>
-		</div>
-	</div>
-
+  
+  <?php if (!$categories && !$products) { ?>
+  <div class="content"><?php echo $text_empty; ?></div>
+  <div class="buttons">
+    <div class="right"><a href="<?php echo $continue; ?>" class="button"><?php echo $button_continue; ?></a></div>
+  </div>
+  <?php } ?>
+ </div>
+ </div> 
 	
 	
+	
+	
+	</section>
 	
 	<!-- Discount Items -->
-	<div class="page-content">
+	<section class="discounts">
 		<div class="container">
 			<div class="section-title">
 				<h2 class="title"><?php echo $heading_title; ?></h2>
@@ -148,10 +169,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	
 	
-	
+ <?php echo $content_bottom; ?>
 	
 	
 <script type="text/javascript"><!--
