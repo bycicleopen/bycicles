@@ -300,3 +300,8 @@
 2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
 2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
 2018-01-03 13:03:04 - PHP Notice:  Use of undefined constant j - assumed 'j' in D:\usr\www\bycicles\catalog\view\theme\default\template\product\product.tpl on line 11
+2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
+2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
+2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
+2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
+2018-01-09 13:03:04 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 5

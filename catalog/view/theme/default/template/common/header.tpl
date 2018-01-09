@@ -20,7 +20,7 @@
 	
 </head>
 <body>
-
+<?php var_dump($informations); ?>
 	<!-- Header -->
 	<header class="header">
 		<!-- header top -->
@@ -36,7 +36,15 @@
 									
 									
 									<?php foreach ($informations as $information) { ?>
+										<?php if ($information['sort_order']<'900'){?>
 										<li class="header-nav_item"><a href="<?php echo $information['href']; ?>" class="header-nav_link"><?php echo $information['title']; ?></a></li>
+										<?php }else {?>	
+											<?php if ($information['sort_order']=='910'){ $bycicleInf = $information['title']; $bycicleInfHref = $information['href']; } ?>
+										    <?php if ($information['sort_order']=='920'){ $mountainInf = $information['title']; $mountainInfHref = $information['href']; } ?>
+											<?php if ($information['sort_order']=='930'){ $partsInf = $information['title']; $partsInfHref = $information['href']; } ?>
+											<?php if ($information['sort_order']=='940'){ $helmetInf = $information['title']; $helmetInfHref = $information['href']; } ?>						
+										<?php } ?>	
+										
 									<?php } ?>	
 							
 								<li class="header-nav_item">
@@ -140,13 +148,13 @@
 								Популярное:
 								<menu class="header-popular_list">
 									<li class="header-popular_item">
-										<a href="#" class="header-popular_link link">велосипед</a></li>
+										<a href="<?php echo $bycicleInfHref ?>" class="header-popular_link link"><?php echo $bycicleInf ?></a></li>
 									<li class="header-popular_item">
-										<a href="#" class="header-popular_link link">горные</a></li>
+										<a href="<?php echo $mountainInfHref ?>" class="header-popular_link link"><?php echo $mountainInf ?></a></li>
 									<li class="header-popular_item">
-										<a href="#" class="header-popular_link link">велозапчасти</a></li>
+										<a href="<?php echo $partsInfHref ?>" class="header-popular_link link"><?php echo $partsInf ?></a></li>
 									<li class="header-popular_item">
-										<a href="#" class="header-popular_link link">шлем</a></li>
+										<a href="<?php echo $helmetInfHref ?>" class="header-popular_link link"><?php echo $helmetInf ?></a></li>												
 								</menu>
 							</div>
 							<form id="search" action="" method="" class="header-search">

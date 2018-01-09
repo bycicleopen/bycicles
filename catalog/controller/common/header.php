@@ -97,11 +97,12 @@ class ControllerCommonHeader extends Controller {
 		$this->data['text_information'] = $this->language->get('text_information');
 		
 				$this->data['informations'] = array();
-
+		/*Add information for bycicles sort_order*/
 		foreach ($this->model_catalog_information->getInformations() as $result) {
 			if ($result['bottom']) {
 				$this->data['informations'][] = array(
 					'title' => $result['title'],
+					'sort_order' => $result['sort_order'], 	
 					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
 				);
 			}

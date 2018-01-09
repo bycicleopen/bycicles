@@ -1,4 +1,4 @@
-# SQL Manager 2011 for MySQL 5.1.0.2
+﻿# SQL Manager 2011 for MySQL 5.1.0.2
 # ---------------------------------------
 # Host     : localhost
 # Port     : 3306
@@ -8,11 +8,9 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES latin1 */;
+/*!40101 SET NAMES utf8 */;
 
 SET FOREIGN_KEY_CHECKS=0;
-
-DROP DATABASE IF EXISTS `gold`;
 
 CREATE DATABASE `gold`
     CHARACTER SET 'utf8'
@@ -20,123 +18,10 @@ CREATE DATABASE `gold`
 
 USE `gold`;
 
-#
-# ???????? ???????? ??
-#
-
-DROP TABLE IF EXISTS `zone_to_geo_zone`;
-DROP TABLE IF EXISTS `zone`;
-DROP TABLE IF EXISTS `weight_class_description`;
-DROP TABLE IF EXISTS `weight_class`;
-DROP TABLE IF EXISTS `voucher_theme_description`;
-DROP TABLE IF EXISTS `voucher_theme`;
-DROP TABLE IF EXISTS `voucher_history`;
-DROP TABLE IF EXISTS `voucher`;
-DROP TABLE IF EXISTS `user_group`;
-DROP TABLE IF EXISTS `user`;
-DROP TABLE IF EXISTS `url_alias`;
-DROP TABLE IF EXISTS `tax_rule`;
-DROP TABLE IF EXISTS `tax_rate_to_customer_group`;
-DROP TABLE IF EXISTS `tax_rate`;
-DROP TABLE IF EXISTS `tax_class`;
-DROP TABLE IF EXISTS `store`;
-DROP TABLE IF EXISTS `stock_status`;
-DROP TABLE IF EXISTS `setting`;
-DROP TABLE IF EXISTS `review`;
-DROP TABLE IF EXISTS `return_status`;
-DROP TABLE IF EXISTS `return_reason`;
-DROP TABLE IF EXISTS `return_history`;
-DROP TABLE IF EXISTS `return_action`;
-DROP TABLE IF EXISTS `return`;
-DROP TABLE IF EXISTS `product_to_store`;
-DROP TABLE IF EXISTS `product_to_layout`;
-DROP TABLE IF EXISTS `product_to_download`;
-DROP TABLE IF EXISTS `product_to_category`;
-DROP TABLE IF EXISTS `product_special`;
-DROP TABLE IF EXISTS `product_reward`;
-DROP TABLE IF EXISTS `product_related`;
-DROP TABLE IF EXISTS `product_option_value`;
-DROP TABLE IF EXISTS `product_option`;
-DROP TABLE IF EXISTS `product_image`;
-DROP TABLE IF EXISTS `product_filter`;
-DROP TABLE IF EXISTS `product_discount`;
-DROP TABLE IF EXISTS `product_description`;
-DROP TABLE IF EXISTS `product_attribute`;
-DROP TABLE IF EXISTS `product`;
-DROP TABLE IF EXISTS `order_voucher`;
-DROP TABLE IF EXISTS `order_total`;
-DROP TABLE IF EXISTS `order_status`;
-DROP TABLE IF EXISTS `order_product`;
-DROP TABLE IF EXISTS `order_option`;
-DROP TABLE IF EXISTS `order_history`;
-DROP TABLE IF EXISTS `order_fraud`;
-DROP TABLE IF EXISTS `order_field`;
-DROP TABLE IF EXISTS `order_download`;
-DROP TABLE IF EXISTS `order`;
-DROP TABLE IF EXISTS `option_value_description`;
-DROP TABLE IF EXISTS `option_value`;
-DROP TABLE IF EXISTS `option_description`;
-DROP TABLE IF EXISTS `option`;
-DROP TABLE IF EXISTS `manufacturer_to_store`;
-DROP TABLE IF EXISTS `manufacturer_description`;
-DROP TABLE IF EXISTS `manufacturer`;
-DROP TABLE IF EXISTS `length_class_description`;
-DROP TABLE IF EXISTS `length_class`;
-DROP TABLE IF EXISTS `layout_route`;
-DROP TABLE IF EXISTS `layout`;
-DROP TABLE IF EXISTS `language`;
-DROP TABLE IF EXISTS `information_to_store`;
-DROP TABLE IF EXISTS `information_to_layout`;
-DROP TABLE IF EXISTS `information_description`;
-DROP TABLE IF EXISTS `information`;
-DROP TABLE IF EXISTS `geo_zone`;
-DROP TABLE IF EXISTS `filter_group_description`;
-DROP TABLE IF EXISTS `filter_group`;
-DROP TABLE IF EXISTS `filter_description`;
-DROP TABLE IF EXISTS `filter`;
-DROP TABLE IF EXISTS `extension`;
-DROP TABLE IF EXISTS `download_description`;
-DROP TABLE IF EXISTS `download`;
-DROP TABLE IF EXISTS `customer_transaction`;
-DROP TABLE IF EXISTS `customer_reward`;
-DROP TABLE IF EXISTS `customer_online`;
-DROP TABLE IF EXISTS `customer_ip`;
-DROP TABLE IF EXISTS `customer_history`;
-DROP TABLE IF EXISTS `customer_group_description`;
-DROP TABLE IF EXISTS `customer_group`;
-DROP TABLE IF EXISTS `customer_field`;
-DROP TABLE IF EXISTS `customer_ban_ip`;
-DROP TABLE IF EXISTS `customer`;
-DROP TABLE IF EXISTS `custom_field_value_description`;
-DROP TABLE IF EXISTS `custom_field_value`;
-DROP TABLE IF EXISTS `custom_field_to_customer_group`;
-DROP TABLE IF EXISTS `custom_field_description`;
-DROP TABLE IF EXISTS `custom_field`;
-DROP TABLE IF EXISTS `currency`;
-DROP TABLE IF EXISTS `coupon_product`;
-DROP TABLE IF EXISTS `coupon_history`;
-DROP TABLE IF EXISTS `coupon_category`;
-DROP TABLE IF EXISTS `coupon`;
-DROP TABLE IF EXISTS `country`;
-DROP TABLE IF EXISTS `category_to_store`;
-DROP TABLE IF EXISTS `category_to_layout`;
-DROP TABLE IF EXISTS `category_path`;
-DROP TABLE IF EXISTS `category_filter`;
-DROP TABLE IF EXISTS `category_description`;
-DROP TABLE IF EXISTS `category`;
-DROP TABLE IF EXISTS `banner_image_description`;
-DROP TABLE IF EXISTS `banner_image`;
-DROP TABLE IF EXISTS `banner`;
-DROP TABLE IF EXISTS `attribute_group_description`;
-DROP TABLE IF EXISTS `attribute_group`;
-DROP TABLE IF EXISTS `attribute_description`;
-DROP TABLE IF EXISTS `attribute`;
-DROP TABLE IF EXISTS `affiliate_transaction`;
-DROP TABLE IF EXISTS `affiliate`;
-DROP TABLE IF EXISTS `address`;
+SET sql_mode = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 
 #
-# ????????? ??? ??????? `address`: 
+# Структура для таблицы `address`: 
 #
 
 CREATE TABLE `address` (
@@ -159,7 +44,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `affiliate`: 
+# Структура для таблицы `affiliate`: 
 #
 
 CREATE TABLE `affiliate` (
@@ -200,7 +85,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `affiliate_transaction`: 
+# Структура для таблицы `affiliate_transaction`: 
 #
 
 CREATE TABLE `affiliate_transaction` (
@@ -216,7 +101,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `attribute`: 
+# Структура для таблицы `attribute`: 
 #
 
 CREATE TABLE `attribute` (
@@ -247,7 +132,7 @@ INSERT INTO `attribute` (`attribute_id`, `attribute_group_id`, `sort_order`) VAL
 COMMIT;
 
 #
-# ????????? ??? ??????? `attribute_description`: 
+# Структура для таблицы `attribute_description`: 
 #
 
 CREATE TABLE `attribute_description` (
@@ -278,7 +163,7 @@ INSERT INTO `attribute_description` (`attribute_id`, `language_id`, `name`) VALU
 COMMIT;
 
 #
-# ????????? ??? ??????? `attribute_group`: 
+# Структура для таблицы `attribute_group`: 
 #
 
 CREATE TABLE `attribute_group` (
@@ -304,7 +189,7 @@ INSERT INTO `attribute_group` (`attribute_group_id`, `sort_order`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `attribute_group_description`: 
+# Структура для таблицы `attribute_group_description`: 
 #
 
 CREATE TABLE `attribute_group_description` (
@@ -321,24 +206,24 @@ COMMENT=''
 #
 
 INSERT INTO `attribute_group_description` (`attribute_group_id`, `language_id`, `name`) VALUES 
-  (3,1,'??????'),
+  (3,1,'Память'),
   (3,2,'Memory'),
   (4,1,'Technical'),
   (4,2,'Technical'),
-  (5,1,'??????????? ?????'),
+  (5,1,'Материнская плата'),
   (5,2,'Motherboard'),
-  (6,1,'?????????'),
+  (6,1,'Процессор'),
   (6,2,'Processor'),
-  (7,1,'?????'),
+  (7,1,'Бренд'),
   (7,2,'Brand'),
-  (8,1,'???'),
+  (8,1,'Тип'),
   (8,2,'Type'),
-  (9,1,'???????'),
+  (9,1,'Диаметр'),
   (9,2,'Diameter');
 COMMIT;
 
 #
-# ????????? ??? ??????? `banner`: 
+# Структура для таблицы `banner`: 
 #
 
 CREATE TABLE `banner` (
@@ -361,7 +246,7 @@ INSERT INTO `banner` (`banner_id`, `name`, `status`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `banner_image`: 
+# Структура для таблицы `banner_image`: 
 #
 
 CREATE TABLE `banner_image` (
@@ -391,7 +276,7 @@ INSERT INTO `banner_image` (`banner_image_id`, `banner_id`, `link`, `image`, `pr
 COMMIT;
 
 #
-# ????????? ??? ??????? `banner_image_description`: 
+# Структура для таблицы `banner_image_description`: 
 #
 
 CREATE TABLE `banner_image_description` (
@@ -423,12 +308,12 @@ INSERT INTO `banner_image_description` (`banner_image_id`, `language_id`, `banne
   (76,2,8,'Hewlett-Packard'),
   (77,1,6,'HP Banner'),
   (77,2,6,'HP Banner'),
-  (84,1,7,'??????? 1'),
+  (84,1,7,'Кінетик 1'),
   (84,2,7,'Kinetik 1');
 COMMIT;
 
 #
-# ????????? ??? ??????? `category`: 
+# Структура для таблицы `category`: 
 #
 
 CREATE TABLE `category` (
@@ -490,7 +375,7 @@ INSERT INTO `category` (`category_id`, `image`, `parent_id`, `top`, `column`, `s
 COMMIT;
 
 #
-# ????????? ??? ??????? `category_description`: 
+# Структура для таблицы `category_description`: 
 #
 
 CREATE TABLE `category_description` (
@@ -512,15 +397,15 @@ COMMENT=''
 #
 
 INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`, `seo_title`, `seo_h1`) VALUES 
-  (25,1,'??????????','','','','',''),
+  (25,1,'Велосипеды','','','','',''),
   (25,2,'Bycicles','','','','',''),
-  (28,1,'????????? ?????????','','','','',''),
+  (28,1,'Держатели телефонов','','','','',''),
   (28,2,'Holders of telephones','','','','',''),
-  (32,1,'?????????','','','','',''),
+  (32,1,'Багажники','','','','',''),
   (32,2,'Luggage carriers','','','','',''),
-  (33,1,'??????????','','','','',''),
+  (33,1,'Аксессуары','','','','',''),
   (33,2,'Accessories','','','','',''),
-  (34,1,'????????','&lt;p&gt;\r\n\tShop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),
+  (34,1,'Запчасти','&lt;p&gt;\r\n\tShop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),
   (34,2,'spare parts','&lt;p&gt;\r\n\tShop Laptop feature only the best laptop deals on the market. By comparing laptop deals from the likes of PC World, Comet, Dixons, The Link and Carphone Warehouse, Shop Laptop has the most comprehensive selection of laptops on the internet. At Shop Laptop, we pride ourselves on offering customers the very best laptop deals. From refurbished laptops to netbooks, Shop Laptop ensures that every laptop - in every colour, style, size and technical spec - is featured on the site at the lowest possible price.&lt;/p&gt;\r\n','','','',''),
   (37,1,'test 5','','','','',''),
   (37,2,'test 5','','','','',''),
@@ -560,34 +445,34 @@ INSERT INTO `category_description` (`category_id`, `language_id`, `name`, `descr
   (56,2,'test 24','','','','',''),
   (58,1,'test 25','','','','',''),
   (58,2,'test 25','','','','',''),
-  (59,1,'??????????? ? ??????','','','','',''),
+  (59,1,'Инструменты и ремонт','','','','',''),
   (59,2,'Tools and repair','','','','',''),
-  (60,1,'??????','','','','',''),
+  (60,1,'Звонки','','','','',''),
   (60,2,'Balls','','','','',''),
-  (61,1,'??????????','','','','',''),
+  (61,1,'Экипировка','','','','',''),
   (61,2,'Equipment','','','','',''),
-  (62,1,'???????? ?????','','','','',''),
+  (62,1,'Активный Отдых','','','','',''),
   (62,2,'Leisure','','','','',''),
-  (64,1,'?????? ??????????','','','','',''),
+  (64,1,'Горные велосипеды','','','','',''),
   (64,2,'Mountain bikes','','','','',''),
-  (65,1,'??????? ??????????','','','','',''),
+  (65,1,'Женские велосипеды','','','','',''),
   (65,2,'Women''s bicycles','','','','',''),
-  (66,1,'??????? ??????????','','','','',''),
+  (66,1,'Детские велосипеды','','','','',''),
   (66,2,'Children''s bicycles','','','','',''),
-  (67,1,'???????????? ??????????','','','','',''),
+  (67,1,'Подгостковые велосипеды','','','','',''),
   (67,2,'Bicycles for teenagers','','','','',''),
-  (68,1,'???????? ??????????','','','','',''),
+  (68,1,'Дорожные велосипеды','','','','',''),
   (68,2,'Road bicycles','','','','',''),
-  (69,1,'???????? ??????????','','','','',''),
+  (69,1,'Складные велосипеды','','','','',''),
   (69,2,'Folding bicycles','','','','',''),
-  (70,1,'????????? ??????????','','','','',''),
+  (70,1,'Шоссейные велосипеды','','','','',''),
   (70,2,'Road Bikes','','','','',''),
-  (71,1,'??????','','','','',''),
+  (71,1,'Другие','','','','',''),
   (71,2,'Other','','','','','');
 COMMIT;
 
 #
-# ????????? ??? ??????? `category_filter`: 
+# Структура для таблицы `category_filter`: 
 #
 
 CREATE TABLE `category_filter` (
@@ -599,7 +484,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `category_path`: 
+# Структура для таблицы `category_path`: 
 #
 
 CREATE TABLE `category_path` (
@@ -686,7 +571,7 @@ INSERT INTO `category_path` (`category_id`, `path_id`, `level`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `category_to_layout`: 
+# Структура для таблицы `category_to_layout`: 
 #
 
 CREATE TABLE `category_to_layout` (
@@ -699,7 +584,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `category_to_store`: 
+# Структура для таблицы `category_to_store`: 
 #
 
 CREATE TABLE `category_to_store` (
@@ -754,7 +639,7 @@ INSERT INTO `category_to_store` (`category_id`, `store_id`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `country`: 
+# Структура для таблицы `country`: 
 #
 
 CREATE TABLE `country` (
@@ -775,249 +660,249 @@ COMMENT=''
 #
 
 INSERT INTO `country` (`country_id`, `name`, `iso_code_2`, `iso_code_3`, `address_format`, `postcode_required`, `status`) VALUES 
-  (1,'??????????','AF','AFG','',0,1),
-  (2,'???????','AL','ALB','',0,1),
-  (3,'?????','DZ','DZA','',0,1),
-  (4,'????????? ?????','AS','ASM','',0,1),
-  (5,'???????','AD','AND','',0,1),
-  (6,'??????','AO','AGO','',0,1),
-  (7,'???????','AI','AIA','',0,1),
-  (8,'??????????','AQ','ATA','',0,1),
-  (9,'??????? ? ???????','AG','ATG','',0,1),
-  (10,'?????????','AR','ARG','',0,1),
-  (11,'???????','AM','ARM','',0,1),
-  (12,'?????','AW','ABW','',0,1),
-  (13,'?????????','AU','AUS','',0,1),
-  (14,'???????','AT','AUT','',0,1),
-  (15,'???????????','AZ','AZE','',0,1),
-  (16,'????????? ???????','BS','BHS','',0,1),
-  (17,'???????','BH','BHR','',0,1),
-  (18,'?????????','BD','BGD','',0,1),
-  (19,'????????','BB','BRB','',0,1),
-  (20,'?????????? (????????)','BY','BLR','',0,1),
-  (21,'???????','BE','BEL','',0,1),
-  (22,'?????','BZ','BLZ','',0,1),
-  (23,'?????','BJ','BEN','',0,1),
-  (24,'?????????? ???????','BM','BMU','',0,1),
-  (25,'?????','BT','BTN','',0,1),
-  (26,'???????','BO','BOL','',0,1),
-  (27,'?????? ? ???????????','BA','BIH','',0,1),
-  (28,'????????','BW','BWA','',0,1),
-  (29,'?????? ????','BV','BVT','',0,1),
-  (30,'????????','BR','BRA','',0,1),
-  (31,'?????????? ?????????? ? ????????? ??????','IO','IOT','',0,1),
-  (32,'??????','BN','BRN','',0,1),
-  (33,'????????','BG','BGR','',0,1),
-  (34,'???????-????','BF','BFA','',0,1),
-  (35,'???????','BI','BDI','',0,1),
-  (36,'????????','KH','KHM','',0,1),
-  (37,'???????','CM','CMR','',0,1),
-  (38,'??????','CA','CAN','',0,1),
-  (39,'????-?????','CV','CPV','',0,1),
-  (40,'????????? ???????','KY','CYM','',0,1),
-  (41,'??????????-??????????? ??????????','CF','CAF','',0,1),
-  (42,'???','TD','TCD','',0,1),
-  (43,'????','CL','CHL','',0,1),
-  (44,'????????? ???????? ??????????','CN','CHN','',0,1),
-  (45,'?????? ?????????','CX','CXR','',0,1),
-  (46,'????????? ???????','CC','CCK','',0,1),
-  (47,'????????','CO','COL','',0,1),
-  (48,'????????? ???????','KM','COM','',0,1),
-  (49,'?????','CG','COG','',0,1),
-  (50,'??????? ????','CK','COK','',0,1),
-  (51,'?????-????','CR','CRI','',0,1),
-  (52,'??? ?''?????','CI','CIV','',0,1),
-  (53,'????????','HR','HRV','',0,1),
-  (54,'????','CU','CUB','',0,1),
-  (55,'????','CY','CYP','',0,1),
-  (56,'?????','CZ','CZE','',0,1),
-  (57,'?????','DK','DNK','',0,1),
-  (58,'???????','DJ','DJI','',0,1),
-  (59,'????????','DM','DMA','',0,1),
-  (60,'????????????? ??????????','DO','DOM','',0,1),
-  (61,'????????? ?????','TP','TMP','',0,1),
-  (62,'???????','EC','ECU','',0,1),
-  (63,'??????','EG','EGY','',0,1),
-  (64,'?????????','SV','SLV','',0,1),
-  (65,'?????????????? ??????','GQ','GNQ','',0,1),
-  (66,'???????','ER','ERI','',0,1),
-  (67,'???????','EE','EST','',0,1),
-  (68,'???????','ET','ETH','',0,1),
-  (69,'???????????? (???????????) ???????','FK','FLK','',0,1),
-  (70,'????????? ???????','FO','FRO','',0,1),
-  (71,'?????','FJ','FJI','',0,1),
-  (72,'?????????','FI','FIN','',0,1),
-  (73,'???????','FR','FRA','',0,1),
-  (74,'???????, ??????????','FX','FXX','',0,1),
-  (75,'??????????? ??????','GF','GUF','',0,1),
-  (76,'??????????? ?????????','PF','PYF','',0,1),
-  (77,'??????????? ????? ??????????','TF','ATF','',0,1),
-  (78,'?????','GA','GAB','',0,1),
-  (79,'??????','GM','GMB','',0,1),
-  (80,'??????','GE','GEO','',0,1),
-  (81,'????????','DE','DEU','{company}\r\n{firstname} {lastname}\r\n{address_1}\r\n{address_2}\r\n{postcode} {city}\r\n{country}',0,1),
-  (82,'????','GH','GHA','',0,1),
-  (83,'?????????','GI','GIB','',0,1),
-  (84,'??????','GR','GRC','',0,1),
-  (85,'??????????','GL','GRL','',0,1),
-  (86,'???????','GD','GRD','',0,1),
-  (87,'?????????','GP','GLP','',0,1),
-  (88,'????','GU','GUM','',0,1),
-  (89,'?????????','GT','GTM','',0,1),
-  (90,'??????','GN','GIN','',0,1),
-  (91,'??????-?????','GW','GNB','',0,1),
-  (92,'??????','GY','GUY','',0,1),
-  (93,'?????','HT','HTI','',0,1),
-  (94,'???? ? ??????????, ???????','HM','HMD','',0,1),
-  (95,'????????','HN','HND','',0,1),
-  (96,'???????','HK','HKG','',0,1),
-  (97,'???????','HU','HUN','',0,1),
-  (98,'????????','IS','ISL','',0,1),
-  (99,'?????','IN','IND','',0,1),
-  (100,'?????????','ID','IDN','',0,1),
-  (101,'????','IR','IRN','',0,1),
-  (102,'????','IQ','IRQ','',0,1),
-  (103,'????????','IE','IRL','',0,1),
-  (104,'???????','IL','ISR','',0,1),
-  (105,'??????','IT','ITA','',0,1),
-  (106,'??????','JM','JAM','',0,1),
-  (107,'??????','JP','JPN','',0,1),
-  (108,'????????','JO','JOR','',0,1),
-  (109,'?????????','KZ','KAZ','',0,1),
-  (110,'?????','KE','KEN','',0,1),
-  (111,'????????','KI','KIR','',0,1),
-  (112,'????????? ???????-??????????????? ??????????','KP','PRK','',0,1),
-  (113,'?????????? ?????','KR','KOR','',0,1),
-  (114,'??????','KW','KWT','',0,1),
-  (115,'???????? (??????????)','KG','KGZ','',0,1),
-  (116,'????','LA','LAO','',0,1),
-  (117,'??????','LV','LVA','',0,1),
-  (118,'?????','LB','LBN','',0,1),
-  (119,'??????','LS','LSO','',0,1),
-  (120,'???????','LR','LBR','',0,1),
-  (121,'?????','LY','LBY','',0,1),
-  (122,'???????????','LI','LIE','',0,1),
-  (123,'?????','LT','LTU','',0,1),
-  (124,'??????????','LU','LUX','',0,1),
-  (125,'?????','MO','MAC','',0,1),
-  (126,'?????????','MK','MKD','',0,1),
-  (127,'??????????','MG','MDG','',0,1),
-  (128,'??????','MW','MWI','',0,1),
-  (129,'????????','MY','MYS','',0,1),
-  (130,'????????','MV','MDV','',0,1),
-  (131,'????','ML','MLI','',0,1),
-  (132,'??????','MT','MLT','',0,1),
-  (133,'?????????? ???????','MH','MHL','',0,1),
-  (134,'?????????','MQ','MTQ','',0,1),
-  (135,'??????????','MR','MRT','',0,1),
-  (136,'????????','MU','MUS','',0,1),
-  (137,'???????','YT','MYT','',0,1),
-  (138,'???????','MX','MEX','',0,1),
-  (139,'??????????','FM','FSM','',0,1),
-  (140,'???????','MD','MDA','',0,1),
-  (141,'??????','MC','MCO','',0,1),
-  (142,'????????','MN','MNG','',0,1),
-  (143,'??????????','MS','MSR','',0,1),
-  (144,'???????','MA','MAR','',0,1),
-  (145,'????????','MZ','MOZ','',0,1),
-  (146,'??????','MM','MMR','',0,1),
-  (147,'???????','NA','NAM','',0,1),
-  (148,'?????','NR','NRU','',0,1),
-  (149,'?????','NP','NPL','',0,1),
-  (150,'??????????','NL','NLD','',0,1),
-  (151,'?????????? (?????????????) ???????','AN','ANT','',0,1),
-  (152,'????? ?????????','NC','NCL','',0,1),
-  (153,'????? ????????','NZ','NZL','',0,1),
-  (154,'?????????','NI','NIC','',0,1),
-  (155,'?????','NE','NER','',0,1),
-  (156,'???????','NG','NGA','',0,1),
-  (157,'????','NU','NIU','',0,1),
-  (158,'?????? ???????','NF','NFK','',0,1),
-  (159,'???????? ?????????? ???????','MP','MNP','',0,1),
-  (160,'????????','NO','NOR','',0,1),
-  (161,'????','OM','OMN','',0,1),
-  (162,'????????','PK','PAK','',0,1),
-  (163,'?????','PW','PLW','',0,1),
-  (164,'??????','PA','PAN','',0,1),
-  (165,'????? - ????? ??????','PG','PNG','',0,1),
-  (166,'????????','PY','PRY','',0,1),
-  (167,'????','PE','PER','',0,1),
-  (168,'?????????','PH','PHL','',0,1),
-  (169,'??????? ???????','PN','PCN','',0,1),
-  (170,'??????','PL','POL','',0,1),
-  (171,'??????????','PT','PRT','',0,1),
-  (172,'??????-????','PR','PRI','',0,1),
-  (173,'?????','QA','QAT','',0,1),
-  (174,'???????','RE','REU','',0,1),
-  (175,'???????','RO','ROM','',0,1),
-  (176,'?????????? ?????????','RU','RUS','',0,1),
-  (177,'??????','RW','RWA','',0,1),
-  (178,'????-???? ? ?????','KN','KNA','',0,1),
-  (179,'????-?????','LC','LCA','',0,1),
-  (180,'????-??????? ? ?????????','VC','VCT','',0,1),
-  (181,'???????? ?????','WS','WSM','',0,1),
-  (182,'???-??????','SM','SMR','',0,1),
-  (183,'???-???? ? ????????','ST','STP','',0,1),
-  (184,'?????????? ??????','SA','SAU','',0,1),
-  (185,'???????','SN','SEN','',0,1),
-  (186,'??????????? ???????','SC','SYC','',0,1),
-  (187,'??????-?????','SL','SLE','',0,1),
-  (188,'????????','SG','SGP','',0,1),
-  (189,'????????','SK','SVK','{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city} {postcode}\r\n{zone}\r\n{country}',0,1),
-  (190,'????????','SI','SVN','',0,1),
-  (191,'?????????? ???????','SB','SLB','',0,1),
-  (192,'??????','SO','SOM','',0,1),
-  (193,'????-??????????? ??????????','ZA','ZAF','',0,1),
-  (194,'????? ???????? ? ????? ?????????? ???????','GS','SGS','',0,1),
-  (195,'???????','ES','ESP','',0,1),
-  (196,'???-?????','LK','LKA','',0,1),
-  (197,'?????? ?????? ?????','SH','SHN','',0,1),
-  (198,'???-???? ? ???????','PM','SPM','',0,1),
-  (199,'?????','SD','SDN','',0,1),
-  (200,'???????','SR','SUR','',0,1),
-  (201,'?????????? ? ?? ?????','SJ','SJM','',0,1),
-  (202,'?????????','SZ','SWZ','',0,1),
-  (203,'??????','SE','SWE','',0,1),
-  (204,'?????????','CH','CHE','',0,1),
-  (205,'?????','SY','SYR','',0,1),
-  (206,'??????? (????????? ?????)','TW','TWN','',0,1),
-  (207,'???????????','TJ','TJK','',0,1),
-  (208,'????????','TZ','TZA','',0,1),
-  (209,'???????','TH','THA','',0,1),
-  (210,'????','TG','TGO','',0,1),
-  (211,'???????','TK','TKL','',0,1),
-  (212,'?????','TO','TON','',0,1),
-  (213,'???????? ? ??????','TT','TTO','',0,1),
-  (214,'?????','TN','TUN','',0,1),
-  (215,'??????','TR','TUR','',0,1),
-  (216,'????????????','TM','TKM','',0,1),
-  (217,'??????? ????? ? ??????','TC','TCA','',0,1),
-  (218,'??????','TV','TUV','',0,1),
-  (219,'??????','UG','UGA','',0,1),
-  (220,'???????','UA','UKR','',0,1),
-  (221,'???????????? ???????? ???????','AE','ARE','',0,1),
-  (222,'??????????????','GB','GBR','',1,1),
-  (223,'??????????? ????? ???????','US','USA','{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}',0,1),
-  (224,'?????? ?????????? ??????? ???','UM','UMI','',0,1),
-  (225,'???????','UY','URY','',0,1),
-  (226,'??????????','UZ','UZB','',0,1),
-  (227,'???????','VU','VUT','',0,1),
-  (228,'???????','VA','VAT','',0,1),
-  (229,'?????????','VE','VEN','',0,1),
-  (230,'???????','VN','VNM','',0,1),
-  (231,'?????????? ??????? (??????????)','VG','VGB','',0,1),
-  (232,'?????????? ??????? (???)','VI','VIR','',0,1),
-  (233,'?????? ? ??????','WF','WLF','',0,1),
-  (234,'???????? ??????','EH','ESH','',0,1),
-  (235,'?????','YE','YEM','',0,1),
-  (236,'?????? ? ??????????','CS','SCG','',0,1),
-  (237,'????','ZR','ZAR','',0,1),
-  (238,'??????','ZM','ZMB','',0,1),
-  (239,'????????','ZW','ZWE','',0,1);
+  (1,'Афганистан','AF','AFG','',0,1),
+  (2,'Албания','AL','ALB','',0,1),
+  (3,'Алжир','DZ','DZA','',0,1),
+  (4,'Восточное Самоа','AS','ASM','',0,1),
+  (5,'Андорра','AD','AND','',0,1),
+  (6,'Ангола','AO','AGO','',0,1),
+  (7,'Ангилья','AI','AIA','',0,1),
+  (8,'Антарктида','AQ','ATA','',0,1),
+  (9,'Антигуа и Барбуда','AG','ATG','',0,1),
+  (10,'Аргентина','AR','ARG','',0,1),
+  (11,'Армения','AM','ARM','',0,1),
+  (12,'Аруба','AW','ABW','',0,1),
+  (13,'Австралия','AU','AUS','',0,1),
+  (14,'Австрия','AT','AUT','',0,1),
+  (15,'Азербайджан','AZ','AZE','',0,1),
+  (16,'Багамские острова','BS','BHS','',0,1),
+  (17,'Бахрейн','BH','BHR','',0,1),
+  (18,'Бангладеш','BD','BGD','',0,1),
+  (19,'Барбадос','BB','BRB','',0,1),
+  (20,'Белоруссия (Беларусь)','BY','BLR','',0,1),
+  (21,'Бельгия','BE','BEL','',0,1),
+  (22,'Белиз','BZ','BLZ','',0,1),
+  (23,'Бенин','BJ','BEN','',0,1),
+  (24,'Бермудские острова','BM','BMU','',0,1),
+  (25,'Бутан','BT','BTN','',0,1),
+  (26,'Боливия','BO','BOL','',0,1),
+  (27,'Босния и Герцеговина','BA','BIH','',0,1),
+  (28,'Ботсвана','BW','BWA','',0,1),
+  (29,'Остров Буве','BV','BVT','',0,1),
+  (30,'Бразилия','BR','BRA','',0,1),
+  (31,'Британская территория в Индийском океане','IO','IOT','',0,1),
+  (32,'Бруней','BN','BRN','',0,1),
+  (33,'Болгария','BG','BGR','',0,1),
+  (34,'Буркина-Фасо','BF','BFA','',0,1),
+  (35,'Бурунди','BI','BDI','',0,1),
+  (36,'Камбоджа','KH','KHM','',0,1),
+  (37,'Камерун','CM','CMR','',0,1),
+  (38,'Канада','CA','CAN','',0,1),
+  (39,'Кабо-Верде','CV','CPV','',0,1),
+  (40,'Каймановы острова','KY','CYM','',0,1),
+  (41,'Центрально-Африканская Республика','CF','CAF','',0,1),
+  (42,'Чад','TD','TCD','',0,1),
+  (43,'Чили','CL','CHL','',0,1),
+  (44,'Китайская Народная Республика','CN','CHN','',0,1),
+  (45,'Остров Рождества','CX','CXR','',0,1),
+  (46,'Кокосовые острова','CC','CCK','',0,1),
+  (47,'Колумбия','CO','COL','',0,1),
+  (48,'Коморские острова','KM','COM','',0,1),
+  (49,'Конго','CG','COG','',0,1),
+  (50,'Острова Кука','CK','COK','',0,1),
+  (51,'Коста-Рика','CR','CRI','',0,1),
+  (52,'Кот д''Ивуар','CI','CIV','',0,1),
+  (53,'Хорватия','HR','HRV','',0,1),
+  (54,'Куба','CU','CUB','',0,1),
+  (55,'Кипр','CY','CYP','',0,1),
+  (56,'Чехия','CZ','CZE','',0,1),
+  (57,'Дания','DK','DNK','',0,1),
+  (58,'Джибути','DJ','DJI','',0,1),
+  (59,'Доминика','DM','DMA','',0,1),
+  (60,'Доминиканская Республика','DO','DOM','',0,1),
+  (61,'Восточный Тимор','TP','TMP','',0,1),
+  (62,'Эквадор','EC','ECU','',0,1),
+  (63,'Египет','EG','EGY','',0,1),
+  (64,'Сальвадор','SV','SLV','',0,1),
+  (65,'Экваториальная Гвинея','GQ','GNQ','',0,1),
+  (66,'Эритрея','ER','ERI','',0,1),
+  (67,'Эстония','EE','EST','',0,1),
+  (68,'Эфиопия','ET','ETH','',0,1),
+  (69,'Фолклендские (Мальвинские) острова','FK','FLK','',0,1),
+  (70,'Фарерские острова','FO','FRO','',0,1),
+  (71,'Фиджи','FJ','FJI','',0,1),
+  (72,'Финляндия','FI','FIN','',0,1),
+  (73,'Франция','FR','FRA','',0,1),
+  (74,'Франция, Метрополия','FX','FXX','',0,1),
+  (75,'Французская Гвиана','GF','GUF','',0,1),
+  (76,'Французская Полинезия','PF','PYF','',0,1),
+  (77,'Французские Южные территории','TF','ATF','',0,1),
+  (78,'Габон','GA','GAB','',0,1),
+  (79,'Гамбия','GM','GMB','',0,1),
+  (80,'Грузия','GE','GEO','',0,1),
+  (81,'Германия','DE','DEU','{company}\r\n{firstname} {lastname}\r\n{address_1}\r\n{address_2}\r\n{postcode} {city}\r\n{country}',0,1),
+  (82,'Гана','GH','GHA','',0,1),
+  (83,'Гибралтар','GI','GIB','',0,1),
+  (84,'Греция','GR','GRC','',0,1),
+  (85,'Гренландия','GL','GRL','',0,1),
+  (86,'Гренада','GD','GRD','',0,1),
+  (87,'Гваделупа','GP','GLP','',0,1),
+  (88,'Гуам','GU','GUM','',0,1),
+  (89,'Гватемала','GT','GTM','',0,1),
+  (90,'Гвинея','GN','GIN','',0,1),
+  (91,'Гвинея-Бисау','GW','GNB','',0,1),
+  (92,'Гайана','GY','GUY','',0,1),
+  (93,'Гаити','HT','HTI','',0,1),
+  (94,'Херд и Макдональд, острова','HM','HMD','',0,1),
+  (95,'Гондурас','HN','HND','',0,1),
+  (96,'Гонконг','HK','HKG','',0,1),
+  (97,'Венгрия','HU','HUN','',0,1),
+  (98,'Исландия','IS','ISL','',0,1),
+  (99,'Индия','IN','IND','',0,1),
+  (100,'Индонезия','ID','IDN','',0,1),
+  (101,'Иран','IR','IRN','',0,1),
+  (102,'Ирак','IQ','IRQ','',0,1),
+  (103,'Ирландия','IE','IRL','',0,1),
+  (104,'Израиль','IL','ISR','',0,1),
+  (105,'Италия','IT','ITA','',0,1),
+  (106,'Ямайка','JM','JAM','',0,1),
+  (107,'Япония','JP','JPN','',0,1),
+  (108,'Иордания','JO','JOR','',0,1),
+  (109,'Казахстан','KZ','KAZ','',0,1),
+  (110,'Кения','KE','KEN','',0,1),
+  (111,'Кирибати','KI','KIR','',0,1),
+  (112,'Корейская Народно-Демократическая Республика','KP','PRK','',0,1),
+  (113,'Республика Корея','KR','KOR','',0,1),
+  (114,'Кувейт','KW','KWT','',0,1),
+  (115,'Киргизия (Кыргызстан)','KG','KGZ','',0,1),
+  (116,'Лаос','LA','LAO','',0,1),
+  (117,'Латвия','LV','LVA','',0,1),
+  (118,'Ливан','LB','LBN','',0,1),
+  (119,'Лесото','LS','LSO','',0,1),
+  (120,'Либерия','LR','LBR','',0,1),
+  (121,'Ливия','LY','LBY','',0,1),
+  (122,'Лихтенштейн','LI','LIE','',0,1),
+  (123,'Литва','LT','LTU','',0,1),
+  (124,'Люксембург','LU','LUX','',0,1),
+  (125,'Макао','MO','MAC','',0,1),
+  (126,'Македония','MK','MKD','',0,1),
+  (127,'Мадагаскар','MG','MDG','',0,1),
+  (128,'Малави','MW','MWI','',0,1),
+  (129,'Малайзия','MY','MYS','',0,1),
+  (130,'Мальдивы','MV','MDV','',0,1),
+  (131,'Мали','ML','MLI','',0,1),
+  (132,'Мальта','MT','MLT','',0,1),
+  (133,'Маршалловы острова','MH','MHL','',0,1),
+  (134,'Мартиника','MQ','MTQ','',0,1),
+  (135,'Мавритания','MR','MRT','',0,1),
+  (136,'Маврикий','MU','MUS','',0,1),
+  (137,'Майотта','YT','MYT','',0,1),
+  (138,'Мексика','MX','MEX','',0,1),
+  (139,'Микронезия','FM','FSM','',0,1),
+  (140,'Молдова','MD','MDA','',0,1),
+  (141,'Монако','MC','MCO','',0,1),
+  (142,'Монголия','MN','MNG','',0,1),
+  (143,'Монтсеррат','MS','MSR','',0,1),
+  (144,'Марокко','MA','MAR','',0,1),
+  (145,'Мозамбик','MZ','MOZ','',0,1),
+  (146,'Мьянма','MM','MMR','',0,1),
+  (147,'Намибия','NA','NAM','',0,1),
+  (148,'Науру','NR','NRU','',0,1),
+  (149,'Непал','NP','NPL','',0,1),
+  (150,'Нидерланды','NL','NLD','',0,1),
+  (151,'Антильские (Нидерландские) острова','AN','ANT','',0,1),
+  (152,'Новая Каледония','NC','NCL','',0,1),
+  (153,'Новая Зеландия','NZ','NZL','',0,1),
+  (154,'Никарагуа','NI','NIC','',0,1),
+  (155,'Нигер','NE','NER','',0,1),
+  (156,'Нигерия','NG','NGA','',0,1),
+  (157,'Ниуэ','NU','NIU','',0,1),
+  (158,'Остров Норфолк','NF','NFK','',0,1),
+  (159,'Северные Марианские острова','MP','MNP','',0,1),
+  (160,'Норвегия','NO','NOR','',0,1),
+  (161,'Оман','OM','OMN','',0,1),
+  (162,'Пакистан','PK','PAK','',0,1),
+  (163,'Палау','PW','PLW','',0,1),
+  (164,'Панама','PA','PAN','',0,1),
+  (165,'Папуа - Новая Гвинея','PG','PNG','',0,1),
+  (166,'Парагвай','PY','PRY','',0,1),
+  (167,'Перу','PE','PER','',0,1),
+  (168,'Филиппины','PH','PHL','',0,1),
+  (169,'Острова Питкэрн','PN','PCN','',0,1),
+  (170,'Польша','PL','POL','',0,1),
+  (171,'Португалия','PT','PRT','',0,1),
+  (172,'Пуэрто-Рико','PR','PRI','',0,1),
+  (173,'Катар','QA','QAT','',0,1),
+  (174,'Реюньон','RE','REU','',0,1),
+  (175,'Румыния','RO','ROM','',0,1),
+  (176,'Российская Федерация','RU','RUS','',0,1),
+  (177,'Руанда','RW','RWA','',0,1),
+  (178,'Сент-Китс и Невис','KN','KNA','',0,1),
+  (179,'Сент-Люсия','LC','LCA','',0,1),
+  (180,'Сент-Винсент и Гренадины','VC','VCT','',0,1),
+  (181,'Западное Самоа','WS','WSM','',0,1),
+  (182,'Сан-Марино','SM','SMR','',0,1),
+  (183,'Сан-Томе и Принсипи','ST','STP','',0,1),
+  (184,'Саудовская Аравия','SA','SAU','',0,1),
+  (185,'Сенегал','SN','SEN','',0,1),
+  (186,'Сейшельские острова','SC','SYC','',0,1),
+  (187,'Сьерра-Леоне','SL','SLE','',0,1),
+  (188,'Сингапур','SG','SGP','',0,1),
+  (189,'Словакия','SK','SVK','{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city} {postcode}\r\n{zone}\r\n{country}',0,1),
+  (190,'Словения','SI','SVN','',0,1),
+  (191,'Соломоновы острова','SB','SLB','',0,1),
+  (192,'Сомали','SO','SOM','',0,1),
+  (193,'Южно-Африканская Республика','ZA','ZAF','',0,1),
+  (194,'Южная Джорджия и Южные Сандвичевы острова','GS','SGS','',0,1),
+  (195,'Испания','ES','ESP','',0,1),
+  (196,'Шри-Ланка','LK','LKA','',0,1),
+  (197,'Остров Святой Елены','SH','SHN','',0,1),
+  (198,'Сен-Пьер и Микелон','PM','SPM','',0,1),
+  (199,'Судан','SD','SDN','',0,1),
+  (200,'Суринам','SR','SUR','',0,1),
+  (201,'Шпицберген и Ян Майен','SJ','SJM','',0,1),
+  (202,'Свазиленд','SZ','SWZ','',0,1),
+  (203,'Швеция','SE','SWE','',0,1),
+  (204,'Швейцария','CH','CHE','',0,1),
+  (205,'Сирия','SY','SYR','',0,1),
+  (206,'Тайвань (провинция Китая)','TW','TWN','',0,1),
+  (207,'Таджикистан','TJ','TJK','',0,1),
+  (208,'Танзания','TZ','TZA','',0,1),
+  (209,'Таиланд','TH','THA','',0,1),
+  (210,'Того','TG','TGO','',0,1),
+  (211,'Токелау','TK','TKL','',0,1),
+  (212,'Тонга','TO','TON','',0,1),
+  (213,'Тринидад и Тобаго','TT','TTO','',0,1),
+  (214,'Тунис','TN','TUN','',0,1),
+  (215,'Турция','TR','TUR','',0,1),
+  (216,'Туркменистан','TM','TKM','',0,1),
+  (217,'Острова Теркс и Кайкос','TC','TCA','',0,1),
+  (218,'Тувалу','TV','TUV','',0,1),
+  (219,'Уганда','UG','UGA','',0,1),
+  (220,'Украина','UA','UKR','',0,1),
+  (221,'Объединенные Арабские Эмираты','AE','ARE','',0,1),
+  (222,'Великобритания','GB','GBR','',1,1),
+  (223,'Соединенные Штаты Америки','US','USA','{firstname} {lastname}\r\n{company}\r\n{address_1}\r\n{address_2}\r\n{city}, {zone} {postcode}\r\n{country}',0,1),
+  (224,'Мелкие отдаленные острова США','UM','UMI','',0,1),
+  (225,'Уругвай','UY','URY','',0,1),
+  (226,'Узбекистан','UZ','UZB','',0,1),
+  (227,'Вануату','VU','VUT','',0,1),
+  (228,'Ватикан','VA','VAT','',0,1),
+  (229,'Венесуэла','VE','VEN','',0,1),
+  (230,'Вьетнам','VN','VNM','',0,1),
+  (231,'Виргинские острова (Британские)','VG','VGB','',0,1),
+  (232,'Виргинские острова (США)','VI','VIR','',0,1),
+  (233,'Уоллис и Футуна','WF','WLF','',0,1),
+  (234,'Западная Сахара','EH','ESH','',0,1),
+  (235,'Йемен','YE','YEM','',0,1),
+  (236,'Сербия и Черногория','CS','SCG','',0,1),
+  (237,'Заир','ZR','ZAR','',0,1),
+  (238,'Замбия','ZM','ZMB','',0,1),
+  (239,'Зимбабве','ZW','ZWE','',0,1);
 COMMIT;
 
 #
-# ????????? ??? ??????? `coupon`: 
+# Структура для таблицы `coupon`: 
 #
 
 CREATE TABLE `coupon` (
@@ -1045,13 +930,13 @@ COMMENT=''
 #
 
 INSERT INTO `coupon` (`coupon_id`, `name`, `code`, `type`, `discount`, `logged`, `shipping`, `total`, `date_start`, `date_end`, `uses_total`, `uses_customer`, `status`, `date_added`) VALUES 
-  (4,'-10% ??????','2222','P',10.0000,0,0,0.0000,'2011-01-01','2012-01-01',10,'10',1,'2009-01-27 13:55:03'),
-  (5,'?????????? ????????','3333','P',0.0000,0,1,100.0000,'2009-03-01','2009-08-31',10,'10',1,'2009-03-14 21:13:53'),
-  (6,'-10.00 ??????','1111','F',10.0000,0,0,10.0000,'1970-11-01','2020-11-01',100000,'10000',1,'2009-03-14 21:15:18');
+  (4,'-10% скидка','2222','P',10.0000,0,0,0.0000,'2011-01-01','2012-01-01',10,'10',1,'2009-01-27 13:55:03'),
+  (5,'Бесплатная доставка','3333','P',0.0000,0,1,100.0000,'2009-03-01','2009-08-31',10,'10',1,'2009-03-14 21:13:53'),
+  (6,'-10.00 скидка','1111','F',10.0000,0,0,10.0000,'1970-11-01','2020-11-01',100000,'10000',1,'2009-03-14 21:15:18');
 COMMIT;
 
 #
-# ????????? ??? ??????? `coupon_category`: 
+# Структура для таблицы `coupon_category`: 
 #
 
 CREATE TABLE `coupon_category` (
@@ -1063,7 +948,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `coupon_history`: 
+# Структура для таблицы `coupon_history`: 
 #
 
 CREATE TABLE `coupon_history` (
@@ -1079,7 +964,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `coupon_product`: 
+# Структура для таблицы `coupon_product`: 
 #
 
 CREATE TABLE `coupon_product` (
@@ -1092,7 +977,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `currency`: 
+# Структура для таблицы `currency`: 
 #
 
 CREATE TABLE `currency` (
@@ -1115,13 +1000,13 @@ COMMENT=''
 #
 
 INSERT INTO `currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES 
-  (1,'?????','RUB','',' ?.','2',29.37199974,1,'2012-03-31 17:33:53'),
-  (2,'US Dollar','USD','$','','2',1.00000000,1,'2017-12-28 11:45:04'),
-  (3,'Euro','EUR','','?','2',0.74959999,1,'2012-03-31 17:33:53');
+  (1,'Рубль','RUB','',' р.','2',1.00000000,1,'2018-01-09 12:44:04'),
+  (2,'US Dollar','USD','$','','2',1.00000000,1,'2018-01-02 10:49:49'),
+  (3,'Euro','EUR','','€','2',0.74959999,1,'2012-03-31 17:33:53');
 COMMIT;
 
 #
-# ????????? ??? ??????? `custom_field`: 
+# Структура для таблицы `custom_field`: 
 #
 
 CREATE TABLE `custom_field` (
@@ -1138,7 +1023,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `custom_field_description`: 
+# Структура для таблицы `custom_field_description`: 
 #
 
 CREATE TABLE `custom_field_description` (
@@ -1151,7 +1036,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `custom_field_to_customer_group`: 
+# Структура для таблицы `custom_field_to_customer_group`: 
 #
 
 CREATE TABLE `custom_field_to_customer_group` (
@@ -1163,7 +1048,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `custom_field_value`: 
+# Структура для таблицы `custom_field_value`: 
 #
 
 CREATE TABLE `custom_field_value` (
@@ -1176,7 +1061,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `custom_field_value_description`: 
+# Структура для таблицы `custom_field_value_description`: 
 #
 
 CREATE TABLE `custom_field_value_description` (
@@ -1190,7 +1075,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer`: 
+# Структура для таблицы `customer`: 
 #
 
 CREATE TABLE `customer` (
@@ -1219,7 +1104,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_ban_ip`: 
+# Структура для таблицы `customer_ban_ip`: 
 #
 
 CREATE TABLE `customer_ban_ip` (
@@ -1231,7 +1116,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_field`: 
+# Структура для таблицы `customer_field`: 
 #
 
 CREATE TABLE `customer_field` (
@@ -1247,7 +1132,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_group`: 
+# Структура для таблицы `customer_group`: 
 #
 
 CREATE TABLE `customer_group` (
@@ -1272,7 +1157,7 @@ INSERT INTO `customer_group` (`customer_group_id`, `approval`, `company_id_displ
 COMMIT;
 
 #
-# ????????? ??? ??????? `customer_group_description`: 
+# Структура для таблицы `customer_group_description`: 
 #
 
 CREATE TABLE `customer_group_description` (
@@ -1294,7 +1179,7 @@ INSERT INTO `customer_group_description` (`customer_group_id`, `language_id`, `n
 COMMIT;
 
 #
-# ????????? ??? ??????? `customer_history`: 
+# Структура для таблицы `customer_history`: 
 #
 
 CREATE TABLE `customer_history` (
@@ -1308,7 +1193,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_ip`: 
+# Структура для таблицы `customer_ip`: 
 #
 
 CREATE TABLE `customer_ip` (
@@ -1322,7 +1207,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_online`: 
+# Структура для таблицы `customer_online`: 
 #
 
 CREATE TABLE `customer_online` (
@@ -1337,7 +1222,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_reward`: 
+# Структура для таблицы `customer_reward`: 
 #
 
 CREATE TABLE `customer_reward` (
@@ -1353,7 +1238,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `customer_transaction`: 
+# Структура для таблицы `customer_transaction`: 
 #
 
 CREATE TABLE `customer_transaction` (
@@ -1369,7 +1254,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `download`: 
+# Структура для таблицы `download`: 
 #
 
 CREATE TABLE `download` (
@@ -1384,7 +1269,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `download_description`: 
+# Структура для таблицы `download_description`: 
 #
 
 CREATE TABLE `download_description` (
@@ -1397,7 +1282,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `extension`: 
+# Структура для таблицы `extension`: 
 #
 
 CREATE TABLE `extension` (
@@ -1405,12 +1290,12 @@ CREATE TABLE `extension` (
   `type` VARCHAR(32) COLLATE utf8_general_ci NOT NULL,
   `code` VARCHAR(32) COLLATE utf8_general_ci NOT NULL
 )ENGINE=MyISAM
-AUTO_INCREMENT=437 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=438 AVG_ROW_LENGTH=24 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `extension` table  (LIMIT -476,500)
+# Data for the `extension` table  (LIMIT -475,500)
 #
 
 INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES 
@@ -1436,11 +1321,12 @@ INSERT INTO `extension` (`extension_id`, `type`, `code`) VALUES
   (429,'module','information'),
   (432,'module','special'),
   (435,'module','maincategory'),
-  (436,'module','maincategory');
+  (436,'module','maincategory'),
+  (437,'module','latest');
 COMMIT;
 
 #
-# ????????? ??? ??????? `filter`: 
+# Структура для таблицы `filter`: 
 #
 
 CREATE TABLE `filter` (
@@ -1462,7 +1348,7 @@ INSERT INTO `filter` (`filter_id`, `filter_group_id`, `sort_order`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `filter_description`: 
+# Структура для таблицы `filter_description`: 
 #
 
 CREATE TABLE `filter_description` (
@@ -1480,14 +1366,14 @@ COMMENT=''
 #
 
 INSERT INTO `filter_description` (`filter_id`, `language_id`, `filter_group_id`, `name`) VALUES 
-  (1,1,1,'?????'),
+  (1,1,1,'Бренд'),
   (1,2,1,'Brand'),
-  (2,1,1,'??? ??????????'),
+  (2,1,1,'Тип велосипеда'),
   (2,2,1,'Bycicle''s type');
 COMMIT;
 
 #
-# ????????? ??? ??????? `filter_group`: 
+# Структура для таблицы `filter_group`: 
 #
 
 CREATE TABLE `filter_group` (
@@ -1507,7 +1393,7 @@ INSERT INTO `filter_group` (`filter_group_id`, `sort_order`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `filter_group_description`: 
+# Структура для таблицы `filter_group_description`: 
 #
 
 CREATE TABLE `filter_group_description` (
@@ -1524,12 +1410,12 @@ COMMENT=''
 #
 
 INSERT INTO `filter_group_description` (`filter_group_id`, `language_id`, `name`) VALUES 
-  (1,1,'?????? ?????????'),
+  (1,1,'Фильтр Велосклад'),
   (1,2,'Varehouse Filter');
 COMMIT;
 
 #
-# ????????? ??? ??????? `geo_zone`: 
+# Структура для таблицы `geo_zone`: 
 #
 
 CREATE TABLE `geo_zone` (
@@ -1548,11 +1434,11 @@ COMMENT=''
 #
 
 INSERT INTO `geo_zone` (`geo_zone_id`, `name`, `description`, `date_modified`, `date_added`) VALUES 
-  (3,'???','?????????? ???','2010-02-26 22:33:24','2009-01-06 23:26:25');
+  (3,'НДС','Облагаемые НДС','2010-02-26 22:33:24','2009-01-06 23:26:25');
 COMMIT;
 
 #
-# ????????? ??? ??????? `information`: 
+# Структура для таблицы `information`: 
 #
 
 CREATE TABLE `information` (
@@ -1561,23 +1447,27 @@ CREATE TABLE `information` (
   `sort_order` INTEGER(3) NOT NULL DEFAULT 0,
   `status` TINYINT(1) NOT NULL DEFAULT 1
 )ENGINE=MyISAM
-AUTO_INCREMENT=7 AVG_ROW_LENGTH=14 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=11 AVG_ROW_LENGTH=14 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `information` table  (LIMIT -495,500)
+# Data for the `information` table  (LIMIT -491,500)
 #
 
 INSERT INTO `information` (`information_id`, `bottom`, `sort_order`, `status`) VALUES 
   (3,1,3,1),
   (4,1,1,1),
   (5,1,4,0),
-  (6,1,2,1);
+  (6,1,2,1),
+  (7,1,910,1),
+  (8,1,920,1),
+  (9,1,930,1),
+  (10,1,940,1);
 COMMIT;
 
 #
-# ????????? ??? ??????? `information_description`: 
+# Структура для таблицы `information_description`: 
 #
 
 CREATE TABLE `information_description` (
@@ -1590,27 +1480,35 @@ CREATE TABLE `information_description` (
   `seo_title` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
   `seo_h1` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
 )ENGINE=MyISAM
-AVG_ROW_LENGTH=131 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AVG_ROW_LENGTH=114 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `information_description` table  (LIMIT -491,500)
+# Data for the `information_description` table  (LIMIT -483,500)
 #
 
 INSERT INTO `information_description` (`information_id`, `language_id`, `title`, `description`, `meta_description`, `meta_keyword`, `seo_title`, `seo_h1`) VALUES 
-  (3,1,'???????','&lt;p&gt;\r\n\t???????&lt;/p&gt;\r\n&lt;p&gt;\r\n\t???????&lt;/p&gt;\r\n&lt;p&gt;\r\n\t??????&lt;/p&gt;\r\n&lt;p&gt;\r\n\t???????&lt;/p&gt;\r\n','','','',''),
+  (3,1,'Новости','&lt;p&gt;\r\n\tНовости&lt;/p&gt;\r\n&lt;p&gt;\r\n\tНовости&lt;/p&gt;\r\n&lt;p&gt;\r\n\tСвежие&lt;/p&gt;\r\n&lt;p&gt;\r\n\tновости&lt;/p&gt;\r\n','','','',''),
   (3,2,'News','&lt;p&gt;\r\n\tNews&lt;/p&gt;\r\n&lt;p&gt;\r\n\tFresh News&lt;/p&gt;\r\n','','','',''),
-  (4,1,'? ????????','&lt;p&gt;\r\n\t? ???&lt;/p&gt;\r\n&lt;p&gt;\r\n\t? ????????&lt;/p&gt;\r\n&lt;p&gt;\r\n\t? ??????? ? ????????....&lt;/p&gt;\r\n','','','',''),
+  (4,1,'О магазине','&lt;p&gt;\r\n\tО нас&lt;/p&gt;\r\n&lt;p&gt;\r\n\tО магазине&lt;/p&gt;\r\n&lt;p&gt;\r\n\tО товарах в магазине....&lt;/p&gt;\r\n','','','',''),
   (4,2,'About Us','&lt;p&gt;\r\n\tAbout Us&lt;/p&gt;\r\n','','','',''),
-  (5,1,'????????','&lt;p&gt;\r\n\t????????&lt;/p&gt;\r\n','','','',''),
+  (5,1,'Контакты','&lt;p&gt;\r\n\tКонтакты&lt;/p&gt;\r\n','','','',''),
   (5,2,'Contacts','&lt;p&gt;\r\n\tContacts&lt;/p&gt;\r\n','','','',''),
-  (6,1,'???????? ? ??????','&lt;p&gt;\r\n\t?????????? ? ????????&lt;/p&gt;\r\n','','','',''),
-  (6,2,'Shipping and payment','&lt;p&gt;\r\n\tDelivery Information&lt;/p&gt;\r\n','','','','');
+  (6,1,'Доставка и оплата','&lt;p&gt;\r\n\tИнформация о доставке&lt;/p&gt;\r\n','','','',''),
+  (6,2,'Shipping and payment','&lt;p&gt;\r\n\tDelivery Information&lt;/p&gt;\r\n','','','',''),
+  (7,1,'Велосипед','&lt;p&gt;\r\n\tВелосипед статьи...&lt;/p&gt;\r\n','','','',''),
+  (7,2,'bycicle','&lt;p&gt;\r\n\tBycicle articles&lt;/p&gt;\r\n','','','',''),
+  (8,1,'Горные','&lt;p&gt;\r\n\tГорные велосипеды это......&lt;/p&gt;\r\n','','','',''),
+  (8,2,'Mountain','&lt;p&gt;\r\n\tГорные велосипеды это...... the same in English&lt;/p&gt;\r\n','','','',''),
+  (9,1,'Запчасти','&lt;p&gt;\r\n\tЗапчасти к велосипедам....&lt;/p&gt;\r\n','','','',''),
+  (9,2,'Parts','&lt;p&gt;\r\n\tparts for bycicles&lt;/p&gt;\r\n','','','',''),
+  (10,1,'Шлем','&lt;p&gt;\r\n\tСтатья о шлеме....&lt;/p&gt;\r\n','','','',''),
+  (10,2,'helmet','&lt;p&gt;\r\n\tArticle about helmet......&lt;/p&gt;\r\n','','','','');
 COMMIT;
 
 #
-# ????????? ??? ??????? `information_to_layout`: 
+# Структура для таблицы `information_to_layout`: 
 #
 
 CREATE TABLE `information_to_layout` (
@@ -1618,12 +1516,22 @@ CREATE TABLE `information_to_layout` (
   `store_id` INTEGER(11) NOT NULL,
   `layout_id` INTEGER(11) NOT NULL
 )ENGINE=MyISAM
-ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AVG_ROW_LENGTH=13 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `information_to_store`: 
+# Data for the `information_to_layout` table  (LIMIT -496,500)
+#
+
+INSERT INTO `information_to_layout` (`information_id`, `store_id`, `layout_id`) VALUES 
+  (8,0,0),
+  (9,0,0),
+  (10,0,0);
+COMMIT;
+
+#
+# Структура для таблицы `information_to_store`: 
 #
 
 CREATE TABLE `information_to_store` (
@@ -1635,18 +1543,22 @@ COMMENT=''
 ;
 
 #
-# Data for the `information_to_store` table  (LIMIT -495,500)
+# Data for the `information_to_store` table  (LIMIT -491,500)
 #
 
 INSERT INTO `information_to_store` (`information_id`, `store_id`) VALUES 
   (3,0),
   (4,0),
   (5,0),
-  (6,0);
+  (6,0),
+  (7,0),
+  (8,0),
+  (9,0),
+  (10,0);
 COMMIT;
 
 #
-# ????????? ??? ??????? `language`: 
+# Структура для таблицы `language`: 
 #
 
 CREATE TABLE `language` (
@@ -1674,7 +1586,7 @@ INSERT INTO `language` (`language_id`, `name`, `code`, `locale`, `image`, `direc
 COMMIT;
 
 #
-# ????????? ??? ??????? `layout`: 
+# Структура для таблицы `layout`: 
 #
 
 CREATE TABLE `layout` (
@@ -1690,24 +1602,24 @@ COMMENT=''
 #
 
 INSERT INTO `layout` (`layout_id`, `name`) VALUES 
-  (1,'???????'),
-  (2,'???????'),
-  (3,'?????????'),
-  (4,'??-?????????'),
-  (5,'?????????????'),
-  (6,'???????'),
-  (7,'?????????? ?????'),
-  (8,'????????'),
-  (9,'????? ?????'),
-  (10,'??????????? ?????????'),
-  (11,'??????????'),
-  (12,'???????_?'),
-  (13,'?????'),
-  (14,'??? ?????????');
+  (1,'Главная'),
+  (2,'Продукт'),
+  (3,'Категория'),
+  (4,'По-умолчанию'),
+  (5,'Производитель'),
+  (6,'Аккаунт'),
+  (7,'Оформление заказ'),
+  (8,'Контакты'),
+  (9,'Карта сайта'),
+  (10,'Партнерская программа'),
+  (11,'Информация'),
+  (12,'Корзина_М'),
+  (13,'Акции'),
+  (14,'Как управлять');
 COMMIT;
 
 #
-# ????????? ??? ??????? `layout_route`: 
+# Структура для таблицы `layout_route`: 
 #
 
 CREATE TABLE `layout_route` (
@@ -1741,7 +1653,7 @@ INSERT INTO `layout_route` (`layout_route_id`, `layout_id`, `store_id`, `route`)
 COMMIT;
 
 #
-# ????????? ??? ??????? `length_class`: 
+# Структура для таблицы `length_class`: 
 #
 
 CREATE TABLE `length_class` (
@@ -1763,7 +1675,7 @@ INSERT INTO `length_class` (`length_class_id`, `value`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `length_class_description`: 
+# Структура для таблицы `length_class_description`: 
 #
 
 CREATE TABLE `length_class_description` (
@@ -1781,14 +1693,14 @@ COMMENT=''
 #
 
 INSERT INTO `length_class_description` (`length_class_id`, `language_id`, `title`, `unit`) VALUES 
-  (1,1,'?????????','??'),
+  (1,1,'Сантиметр','см'),
   (1,2,'Centimeter','cm'),
-  (2,1,'?????????','??'),
+  (2,1,'Миллиметр','мм'),
   (2,2,'Millimeter','mm');
 COMMIT;
 
 #
-# ????????? ??? ??????? `manufacturer`: 
+# Структура для таблицы `manufacturer`: 
 #
 
 CREATE TABLE `manufacturer` (
@@ -1815,7 +1727,7 @@ INSERT INTO `manufacturer` (`manufacturer_id`, `name`, `image`, `sort_order`) VA
 COMMIT;
 
 #
-# ????????? ??? ??????? `manufacturer_description`: 
+# Структура для таблицы `manufacturer_description`: 
 #
 
 CREATE TABLE `manufacturer_description` (
@@ -1851,7 +1763,7 @@ INSERT INTO `manufacturer_description` (`manufacturer_id`, `language_id`, `descr
 COMMIT;
 
 #
-# ????????? ??? ??????? `manufacturer_to_store`: 
+# Структура для таблицы `manufacturer_to_store`: 
 #
 
 CREATE TABLE `manufacturer_to_store` (
@@ -1876,7 +1788,7 @@ INSERT INTO `manufacturer_to_store` (`manufacturer_id`, `store_id`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `option`: 
+# Структура для таблицы `option`: 
 #
 
 CREATE TABLE `option` (
@@ -1908,7 +1820,7 @@ INSERT INTO `option` (`option_id`, `type`, `sort_order`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `option_description`: 
+# Структура для таблицы `option_description`: 
 #
 
 CREATE TABLE `option_description` (
@@ -1948,11 +1860,11 @@ INSERT INTO `option_description` (`option_id`, `language_id`, `name`) VALUES
   (12,1,'Delivery Date'),
   (12,2,'Delivery Date'),
   (13,1,'brand'),
-  (13,2,'?????');
+  (13,2,'Бренд');
 COMMIT;
 
 #
-# ????????? ??? ??????? `option_value`: 
+# Структура для таблицы `option_value`: 
 #
 
 CREATE TABLE `option_value` (
@@ -1988,7 +1900,7 @@ INSERT INTO `option_value` (`option_value_id`, `option_id`, `image`, `sort_order
 COMMIT;
 
 #
-# ????????? ??? ??????? `option_value_description`: 
+# Структура для таблицы `option_value_description`: 
 #
 
 CREATE TABLE `option_value_description` (
@@ -2035,11 +1947,11 @@ INSERT INTO `option_value_description` (`option_value_id`, `language_id`, `optio
   (48,1,11,'Large'),
   (48,2,11,'Large'),
   (49,1,13,'Brand1'),
-  (49,2,13,'?????1');
+  (49,2,13,'Бренд1');
 COMMIT;
 
 #
-# ????????? ??? ??????? `order`: 
+# Структура для таблицы `order`: 
 #
 
 CREATE TABLE `order` (
@@ -2107,7 +2019,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_download`: 
+# Структура для таблицы `order_download`: 
 #
 
 CREATE TABLE `order_download` (
@@ -2124,7 +2036,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_field`: 
+# Структура для таблицы `order_field`: 
 #
 
 CREATE TABLE `order_field` (
@@ -2140,7 +2052,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_fraud`: 
+# Структура для таблицы `order_fraud`: 
 #
 
 CREATE TABLE `order_fraud` (
@@ -2203,7 +2115,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_history`: 
+# Структура для таблицы `order_history`: 
 #
 
 CREATE TABLE `order_history` (
@@ -2219,7 +2131,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_option`: 
+# Структура для таблицы `order_option`: 
 #
 
 CREATE TABLE `order_option` (
@@ -2237,7 +2149,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_product`: 
+# Структура для таблицы `order_product`: 
 #
 
 CREATE TABLE `order_product` (
@@ -2257,7 +2169,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_status`: 
+# Структура для таблицы `order_status`: 
 #
 
 CREATE TABLE `order_status` (
@@ -2274,32 +2186,32 @@ COMMENT=''
 #
 
 INSERT INTO `order_status` (`order_status_id`, `language_id`, `name`) VALUES 
-  (1,1,'????????'),
+  (1,1,'Ожидание'),
   (1,2,'Pending'),
-  (2,1,'? ?????????'),
+  (2,1,'В обработке'),
   (2,2,'Processing'),
-  (3,1,'??????????'),
+  (3,1,'Доставлено'),
   (3,2,'Shipped'),
-  (5,1,'?????? ?????????'),
+  (5,1,'Сделка завершена'),
   (5,2,'Complete'),
-  (7,1,'????????'),
+  (7,1,'Отменено'),
   (7,2,'Canceled'),
-  (8,1,'???????'),
+  (8,1,'Возврат'),
   (8,2,'Denied'),
-  (9,1,'?????? ? ?????????????'),
+  (9,1,'Отмена и аннулирование'),
   (9,2,'Canceled Reversal'),
-  (10,1,'???????????'),
+  (10,1,'Неудавшийся'),
   (10,2,'Failed'),
-  (11,1,'???????????'),
+  (11,1,'Возмещенный'),
   (11,2,'Refunded'),
-  (12,1,'????????? ??????????'),
+  (12,1,'Полностью измененный'),
   (12,2,'Reversed'),
-  (13,1,'?????? ???????'),
+  (13,1,'Полный возврат'),
   (13,2,'Chargeback');
 COMMIT;
 
 #
-# ????????? ??? ??????? `order_total`: 
+# Структура для таблицы `order_total`: 
 #
 
 CREATE TABLE `order_total` (
@@ -2316,7 +2228,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `order_voucher`: 
+# Структура для таблицы `order_voucher`: 
 #
 
 CREATE TABLE `order_voucher` (
@@ -2338,7 +2250,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `product`: 
+# Структура для таблицы `product`: 
 #
 
 CREATE TABLE `product` (
@@ -2374,7 +2286,7 @@ CREATE TABLE `product` (
   `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   `viewed` INTEGER(5) NOT NULL DEFAULT 0
 )ENGINE=MyISAM
-AUTO_INCREMENT=67 AVG_ROW_LENGTH=149 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=67 AVG_ROW_LENGTH=150 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2383,32 +2295,32 @@ COMMENT=''
 #
 
 INSERT INTO `product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `date_added`, `date_modified`, `viewed`) VALUES 
-  (28,'????? 1','','','','','','','',939,7,'data/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:06:50','2011-09-30 01:05:39',0),
-  (29,'????? 2','','','','','','','',999,6,'data/demo/palm_treo_pro_1.jpg',6,1,279.9900,0,9,'2009-02-03',133.00000000,2,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 16:42:17','2011-09-30 01:06:08',1),
-  (30,'????? 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:59:00','2011-09-30 01:05:23',2),
-  (31,'????? 4','','','','','','','',1000,6,'data/demo/nikon_d300_1.jpg',0,1,80.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 17:00:10','2011-09-30 01:06:00',0),
-  (32,'????? 5','','','','','','','',999,6,'data/demo/ipod_touch_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 17:07:26','2011-09-30 01:07:22',0),
-  (33,'????? 6','','','','','','','',1000,6,'data/demo/samsung_syncmaster_941bw.jpg',0,1,200.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 17:08:31','2011-09-30 01:06:29',10),
-  (34,'????? 7','','','','','','','',1000,6,'data/demo/ipod_shuffle_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:07:54','2011-09-30 01:07:17',0),
-  (35,'????? 8','','','','','','','',1000,5,'',0,0,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 18:08:31','2011-09-30 01:06:17',0),
-  (36,'????? 9','','','','','','','',994,6,'data/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:09:19','2011-09-30 01:07:12',0),
-  (40,'????? 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',3),
-  (41,'????? 14','','','','','','','',977,5,'data/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:26','2011-09-30 01:06:44',0),
-  (42,'????? 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,1,0,1,'2009-02-03 21:07:37','2017-12-28 10:32:48',145),
-  (43,'????? 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:07:49','2011-09-30 01:05:46',63),
-  (44,'????? 17','','','','','','','',1000,5,'data/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:00','2011-09-30 01:05:53',0),
-  (45,'????? 18','','','','','','','',998,5,'data/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:17','2011-09-15 22:22:01',0),
-  (46,'????? 19','','','','','','','',1000,5,'data/demo/sony_vaio_1.jpg',10,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:29','2011-09-30 01:06:39',6),
-  (47,'????? 21','','','','','','','',1000,5,'data/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,'2009-02-03 21:08:40','2011-09-30 01:05:28',0),
-  (48,'????? 20','test 1','','','','','','test 2',995,5,'data/demo/ipod_classic_1.jpg',8,1,100.0000,0,9,'2009-02-08',1.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-08 17:21:51','2011-09-30 01:07:06',0),
-  (49,'12576890','SAM1_1','','','','','','',10,8,'data/slider/slider-bike.png',0,1,3600.0000,100,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2011-04-26 08:57:34','2017-12-28 16:51:27',70),
-  (64,'????? 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,500.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0),
-  (65,'11233123','','','','','','','',1,7,'data/category/main/cross.jpg',0,1,1000.0000,0,0,'2017-12-28',12.00000000,1,1.00000000,2.00000000,3.00000000,1,1,1,1,1,'2017-12-29 10:52:20','2017-12-29 10:57:00',4),
+  (28,'Товар 1','','','','','','','',939,7,'data/demo/htc_touch_hd_1.jpg',5,1,100.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:06:50','2011-09-30 01:05:39',0),
+  (29,'Товар 2','','','','','','','',999,6,'data/demo/palm_treo_pro_1.jpg',6,1,279.9900,0,9,'2009-02-03',133.00000000,2,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 16:42:17','2011-09-30 01:06:08',1),
+  (30,'Товар 3','','','','','','','',7,6,'data/demo/canon_eos_5d_1.jpg',9,1,100.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 16:59:00','2018-01-03 14:10:54',3),
+  (31,'Товар 4','','','','','','','',1000,6,'data/demo/nikon_d300_1.jpg',0,1,80.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,3,1,1,0,1,'2009-02-03 17:00:10','2011-09-30 01:06:00',0),
+  (32,'Товар 5','','','','','','','',999,6,'data/demo/ipod_touch_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 17:07:26','2011-09-30 01:07:22',0),
+  (33,'Товар 6','','','','','','','',1000,6,'data/demo/samsung_syncmaster_941bw.jpg',0,1,200.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 17:08:31','2011-09-30 01:06:29',17),
+  (34,'Товар 7','','','','','','','',1000,6,'data/demo/ipod_shuffle_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:07:54','2011-09-30 01:07:17',0),
+  (35,'Товар 8','','','','','','','',1000,5,'',0,0,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 18:08:31','2011-09-30 01:06:17',0),
+  (36,'Товар 9','','','','','','','',994,6,'data/demo/ipod_nano_1.jpg',8,0,100.0000,100,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 18:09:19','2011-09-30 01:07:12',0),
+  (40,'Товар 11','','','','','','','',970,5,'data/demo/iphone_1.jpg',8,1,101.0000,0,9,'2009-02-03',10.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:12','2011-09-30 01:06:53',4),
+  (41,'Товар 14','','','','','','','',977,5,'data/demo/imac_1.jpg',8,1,100.0000,0,9,'2009-02-03',5.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,0,1,'2009-02-03 21:07:26','2011-09-30 01:06:44',0),
+  (42,'Товар 15','','','','','','','',990,5,'data/demo/apple_cinema_30.jpg',8,1,100.0000,400,9,'2009-02-04',12.50000000,1,1.00000000,2.00000000,3.00000000,1,1,1,0,1,'2009-02-03 21:07:37','2017-12-28 10:32:48',162),
+  (43,'Товар 16','','','','','','','',929,5,'data/demo/macbook_1.jpg',8,0,500.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:07:49','2018-01-02 18:07:10',88),
+  (44,'Товар 17','','','','','','','',1000,5,'data/demo/macbook_air_1.jpg',8,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:00','2011-09-30 01:05:53',0),
+  (45,'Товар 18','','','','','','','',998,5,'data/demo/macbook_pro_1.jpg',8,1,2000.0000,0,100,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:17','2011-09-15 22:22:01',0),
+  (46,'Товар 19','','','','','','','',1000,5,'data/demo/sony_vaio_1.jpg',10,1,1000.0000,0,9,'2009-02-03',0.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-03 21:08:29','2018-01-03 14:12:15',6),
+  (47,'Товар 21','','','','','','','',1000,5,'data/demo/hp_1.jpg',7,1,100.0000,400,9,'2009-02-03',1.00000000,1,0.00000000,0.00000000,0.00000000,1,0,1,0,1,'2009-02-03 21:08:40','2018-01-03 14:12:47',0),
+  (48,'Товар 20','test 1','','','','','','test 2',995,5,'data/demo/ipod_classic_1.jpg',8,1,100.0000,0,9,'2009-02-08',1.00000000,1,0.00000000,0.00000000,0.00000000,2,1,1,0,1,'2009-02-08 17:21:51','2011-09-30 01:07:06',1),
+  (49,'12576890','SAM1_1','','','','','','',10,8,'data/slider/slider-bike.png',0,1,3600.0000,100,9,'2011-04-25',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2011-04-26 08:57:34','2017-12-28 16:51:27',218),
+  (64,'Товар 01','','','','','','','',946,7,'data/demo/htc_touch_hd_1.jpg',5,1,500.0000,200,9,'2009-02-03',146.40000000,2,0.00000000,0.00000000,0.00000000,1,1,1,0,0,'2011-05-24 23:48:34','0000-00-00 00:00:00',0),
+  (65,'11233123','','','','','','','',1,7,'data/category/main/cross.jpg',0,1,1000.0000,0,0,'2017-12-28',12.00000000,1,1.00000000,2.00000000,3.00000000,1,1,1,1,1,'2017-12-29 10:52:20','2018-01-02 18:05:48',63),
   (66,'11111111','','','','','','','',1,5,'',0,1,0.0000,0,0,'2017-12-28',0.00000000,1,0.00000000,0.00000000,0.00000000,1,1,1,1,1,'2017-12-29 10:55:45','0000-00-00 00:00:00',0);
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_attribute`: 
+# Структура для таблицы `product_attribute`: 
 #
 
 CREATE TABLE `product_attribute` (
@@ -2417,7 +2329,7 @@ CREATE TABLE `product_attribute` (
   `language_id` INTEGER(11) NOT NULL,
   `text` TEXT COLLATE utf8_general_ci NOT NULL
 )ENGINE=MyISAM
-AVG_ROW_LENGTH=25 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AVG_ROW_LENGTH=30 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2426,20 +2338,20 @@ COMMENT=''
 #
 
 INSERT INTO `product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) VALUES 
-  (42,3,1,'100???'),
+  (42,3,1,'100мгц'),
   (42,3,2,'100mhz'),
   (43,2,1,'1'),
   (43,2,2,'1'),
-  (43,4,1,'8??'),
+  (43,4,1,'8гб'),
   (43,4,2,'8gb'),
   (47,2,1,'4'),
   (47,2,2,'4'),
-  (47,4,1,'16??'),
+  (47,4,1,'16ГБ'),
   (47,4,2,'16GB');
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_description`: 
+# Структура для таблицы `product_description`: 
 #
 
 CREATE TABLE `product_description` (
@@ -2476,40 +2388,40 @@ INSERT INTO `product_description` (`product_id`, `language_id`, `name`, `descrip
   (33,2,'Samsung SyncMaster 941BW','&lt;div&gt;\r\n\tImagine the advantages of going big without slowing down. The big 19&amp;quot; 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it&amp;#39;s not hard to imagine.&lt;/div&gt;\r\n','','','','',''),
   (34,1,'iPod Shuffle','&lt;div&gt;\r\n\t&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n\t&lt;p&gt;\r\n\t\tClip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tWith iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n\t&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n\t&lt;p&gt;\r\n\t\tCharge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
   (34,2,'iPod Shuffle','&lt;div&gt;\r\n\t&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n\t&lt;p&gt;\r\n\t\tClip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tWith iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n\t&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n\t&lt;p&gt;\r\n\t\tCharge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
-  (35,1,'????? 8','&lt;p&gt;\r\n\t????? 8&lt;/p&gt;\r\n','','','','',''),
+  (35,1,'Товар 8','&lt;p&gt;\r\n\tТовар 8&lt;/p&gt;\r\n','','','','',''),
   (35,2,'Product 8','&lt;p&gt;\r\n\tProduct 8&lt;/p&gt;\r\n','','','','',''),
   (36,1,'iPod Nano','&lt;div&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Video in your pocket.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tIts the small iPod with one very big idea: video. The worlds most popular music player now lets you enjoy movies, TV shows, and more on a two-inch display thats 65% brighter than before.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Cover Flow.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tBrowse through your music collection by flipping through album art. Select an album to turn it over and see the track list.&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Enhanced interface.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tExperience a whole new way to browse and view your music and video.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Sleek and colorful.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tWith an anodized aluminum and polished stainless steel enclosure and a choice of five colors, iPod nano is dressed to impress.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;iTunes.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tAvailable as a free download, iTunes makes it easy to browse and buy millions of songs, movies, TV shows, audiobooks, and games and download free podcasts all at the iTunes Store. And you can import your own music, manage your whole media library, and sync your iPod or iPhone with ease.&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
   (36,2,'iPod Nano','&lt;div&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Video in your pocket.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tIts the small iPod with one very big idea: video. The worlds most popular music player now lets you enjoy movies, TV shows, and more on a two-inch display thats 65% brighter than before.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Cover Flow.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tBrowse through your music collection by flipping through album art. Select an album to turn it over and see the track list.&lt;strong&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Enhanced interface.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tExperience a whole new way to browse and view your music and video.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;Sleek and colorful.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tWith an anodized aluminum and polished stainless steel enclosure and a choice of five colors, iPod nano is dressed to impress.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;strong&gt;iTunes.&lt;/strong&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tAvailable as a free download, iTunes makes it easy to browse and buy millions of songs, movies, TV shows, audiobooks, and games and download free podcasts all at the iTunes Store. And you can import your own music, manage your whole media library, and sync your iPod or iPhone with ease.&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
   (40,1,'iPhone','&lt;p class=&quot;intro&quot;&gt;\r\n\tiPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name or number in your address book, a favorites list, or a call log. It also automatically syncs all your contacts from a PC, Mac, or Internet service. And it lets you select and listen to voicemail messages in whatever order you want just like email.&lt;/p&gt;\r\n','','','','',''),
   (40,2,'iPhone','&lt;p class=&quot;intro&quot;&gt;\r\n\tiPhone is a revolutionary new mobile phone that allows you to make a call by simply tapping a name or number in your address book, a favorites list, or a call log. It also automatically syncs all your contacts from a PC, Mac, or Internet service. And it lets you select and listen to voicemail messages in whatever order you want just like email.&lt;/p&gt;\r\n','','','','',''),
-  (41,1,'iMac','&lt;div&gt;\r\n\tJust when you thought iMac had everything, now there?s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ?08, and it?s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','','','',''),
-  (41,2,'iMac','&lt;div&gt;\r\n\tJust when you thought iMac had everything, now there?s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ?08, and it?s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','','','',''),
-  (42,1,'Apple Cinema 30&quot;','&lt;p&gt;\r\n\t&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n\tFeatures:&lt;/h3&gt;\r\n&lt;p&gt;\r\n\tUnrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIndustry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIncredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tLightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSimple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tSingle cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHuge virtual workspace, very small footprint.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tNarrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUnique hinge design for effortless adjustment&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n\tTechnical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tApple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tThin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t2048 x 1280&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1920 x 1200&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1280 x 800&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t170� horizontal; 170� vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tAntiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDisplay Power,&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSystem sleep, wake&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBrightness&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMonitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n\tCable&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDVI (Digital Visual Interface)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tFireWire 400&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUSB 2.0&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tConnectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tKensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n\tRequires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tCompatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tInput voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum power when operating: 150W&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEnergy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating temperature: 50� to 95� F (10� to 35� C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tStorage temperature: -40� to 116� F (-40� to 47� C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tFCC Part 15 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55022 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55024&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVCCI Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAS/NZS 3548 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCNS 13438 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tICES-003 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tISO 13406 part 2&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMPR II&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIEC 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUL 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCSA 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tENERGY STAR&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n\t30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHeight: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWidth: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDepth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWeight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tMac Pro, all graphic options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMacBook Pro&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
-  (42,2,'Apple Cinema 30&quot;','&lt;p&gt;\r\n\t&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n\tFeatures:&lt;/h3&gt;\r\n&lt;p&gt;\r\n\tUnrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIndustry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIncredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tLightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSimple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tSingle cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHuge virtual workspace, very small footprint.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tNarrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUnique hinge design for effortless adjustment&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n\tTechnical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tApple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tThin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t2048 x 1280&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1920 x 1200&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1280 x 800&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t170� horizontal; 170� vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tAntiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDisplay Power,&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSystem sleep, wake&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBrightness&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMonitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n\tCable&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDVI (Digital Visual Interface)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tFireWire 400&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUSB 2.0&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tConnectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tKensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n\tRequires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tCompatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tInput voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum power when operating: 150W&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEnergy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating temperature: 50� to 95� F (10� to 35� C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tStorage temperature: -40� to 116� F (-40� to 47� C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tFCC Part 15 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55022 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55024&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVCCI Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAS/NZS 3548 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCNS 13438 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tICES-003 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tISO 13406 part 2&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMPR II&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIEC 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUL 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCSA 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tENERGY STAR&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n\t30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHeight: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWidth: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDepth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWeight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tMac Pro, all graphic options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMacBook Pro&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
+  (41,1,'iMac','&lt;div&gt;\r\n\tJust when you thought iMac had everything, now there’s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ’08, and it’s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','','','',''),
+  (41,2,'iMac','&lt;div&gt;\r\n\tJust when you thought iMac had everything, now there’s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ’08, and it’s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n','','','','',''),
+  (42,1,'Apple Cinema 30&quot;','&lt;p&gt;\r\n\t&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n\tFeatures:&lt;/h3&gt;\r\n&lt;p&gt;\r\n\tUnrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIndustry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIncredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tLightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSimple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tSingle cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHuge virtual workspace, very small footprint.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tNarrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUnique hinge design for effortless adjustment&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n\tTechnical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tApple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tThin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t2048 x 1280&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1920 x 1200&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1280 x 800&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t170° horizontal; 170° vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tAntiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDisplay Power,&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSystem sleep, wake&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBrightness&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMonitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n\tCable&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDVI (Digital Visual Interface)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tFireWire 400&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUSB 2.0&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tConnectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tKensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n\tRequires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tCompatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tInput voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum power when operating: 150W&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEnergy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating temperature: 50° to 95° F (10° to 35° C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tStorage temperature: -40° to 116° F (-40° to 47° C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tFCC Part 15 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55022 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55024&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVCCI Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAS/NZS 3548 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCNS 13438 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tICES-003 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tISO 13406 part 2&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMPR II&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIEC 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUL 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCSA 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tENERGY STAR&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n\t30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHeight: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWidth: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDepth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWeight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tMac Pro, all graphic options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMacBook Pro&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
+  (42,2,'Apple Cinema 30&quot;','&lt;p&gt;\r\n\t&lt;font face=&quot;helvetica,geneva,arial&quot; size=&quot;2&quot;&gt;&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there''s no limit to what you can achieve. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it''s designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple''s ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. &lt;/font&gt;&lt;br /&gt;\r\n\t&lt;br /&gt;\r\n\t&lt;font face=&quot;Helvetica&quot; size=&quot;2&quot;&gt;The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.&lt;/font&gt;&lt;/font&gt;&lt;/p&gt;\r\n&lt;h3&gt;\r\n\tFeatures:&lt;/h3&gt;\r\n&lt;p&gt;\r\n\tUnrivaled display performance&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 2560-by-1600 pixel resolution for display of high definition still and video imagery.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWide-format design for simultaneous display of two full pages of text and graphics.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIndustry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIncredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tLightning-fast pixel response for full-motion digital video playback.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for 16.7 million saturated colors, for use in all graphics-intensive applications.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSimple setup and operation&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tSingle cable with elegant breakout for connection to DVI, USB and FireWire ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports to support iSight and other desktop peripherals&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tSleek, elegant design&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHuge virtual workspace, very small footprint.&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tNarrow Bezel design to minimize visual impact of using dual displays&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUnique hinge design for effortless adjustment&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSupport for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;h3&gt;\r\n\tTechnical specifications&lt;/h3&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen size (diagonal viewable image size)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tApple Cinema HD Display: 30 inches (29.7-inch viewable)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen type&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tThin film transistor (TFT) active-matrix liquid crystal display (AMLCD)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Resolutions&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t2560 x 1600 pixels (optimum resolution)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t2048 x 1280&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1920 x 1200&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1280 x 800&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t1024 x 640&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Display colors (maximum)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16.7 million&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Viewing angle (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t170° horizontal; 170° vertical&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Brightness (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 400 cd/m2&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Contrast ratio (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t700:1&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Response time (typical)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t16 ms&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Pixel pitch&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\t30-inch Cinema HD Display: 0.250 mm&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Screen treatment&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tAntiglare hardcoat&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;User controls (hardware and software)&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDisplay Power,&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSystem sleep, wake&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBrightness&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMonitor tilt&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Connectors and cables&lt;/b&gt;&lt;br /&gt;\r\n\tCable&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tDVI (Digital Visual Interface)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tFireWire 400&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUSB 2.0&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDC power (24 V)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\tConnectors&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo-port, self-powered USB 2.0 hub&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTwo FireWire 400 ports&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tKensington security port&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;VESA mount adapter&lt;/b&gt;&lt;br /&gt;\r\n\tRequires optional Cinema Display VESA Mount Adapter (M9649G/A)&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tCompatible with VESA FDMI (MIS-D, 100, C) compliant mounting solutions&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Electrical requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tInput voltage: 100-240 VAC 50-60Hz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum power when operating: 150W&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEnergy saver mode: 3W or less&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Environmental requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating temperature: 50° to 95° F (10° to 35° C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tStorage temperature: -40° to 116° F (-40° to 47° C)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tOperating humidity: 20% to 80% noncondensing&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMaximum operating altitude: 10,000 feet&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Agency approvals&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tFCC Part 15 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55022 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN55024&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVCCI Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAS/NZS 3548 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCNS 13438 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tICES-003 Class B&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tISO 13406 part 2&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMPR II&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tIEC 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tUL 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tCSA 60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tEN60950&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tENERGY STAR&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tTCO ''03&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;Size and weight&lt;/b&gt;&lt;br /&gt;\r\n\t30-inch Apple Cinema HD Display&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tHeight: 21.3 inches (54.3 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWidth: 27.2 inches (68.8 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDepth: 8.46 inches (21.5 cm)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWeight: 27.5 pounds (12.5 kg)&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;\r\n\t&lt;b&gt;System Requirements&lt;/b&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tMac Pro, all graphic options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMacBook Pro&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI-X) with ATI Radeon 9650 or better or NVIDIA GeForce 6800 GT DDL or better&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPower Mac G5 (PCI Express), all graphics options&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tPowerBook G4 with dual-link DVI support&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows PC and graphics card that supports DVI ports with dual-link digital bandwidth and VESA DDC standard for plug-and-play setup&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
   (43,1,'MacBook','&lt;div&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tPowered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tThe new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tMacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tRight out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
   (43,2,'MacBook','&lt;div&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tPowered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tThe new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tMacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\t&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n\t&lt;p&gt;\r\n\t\tRight out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n','','','','',''),
   (44,1,'MacBook Air','&lt;div&gt;\r\n\tMacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don&amp;rsquo;t lose inches and pounds overnight. It&amp;rsquo;s the result of rethinking conventions. Of multiple wireless innovations. And of breakthrough design. With MacBook Air, mobile computing suddenly has a new standard.&lt;/div&gt;\r\n','','','','',''),
   (44,2,'MacBook Air','&lt;div&gt;\r\n\tMacBook Air is ultrathin, ultraportable, and ultra unlike anything else. But you don&amp;rsquo;t lose inches and pounds overnight. It&amp;rsquo;s the result of rethinking conventions. Of multiple wireless innovations. And of breakthrough design. With MacBook Air, mobile computing suddenly has a new standard.&lt;/div&gt;\r\n','','','','',''),
   (45,1,'MacBook Pro','&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n\t&lt;div&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Latest Intel mobile architecture&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tPowered by the most advanced mobile processors from Intel, the new Core 2 Duo MacBook Pro is over 50% faster than the original Core Duo MacBook Pro and now supports up to 4GB of RAM.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Leading-edge graphics&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tThe NVIDIA GeForce 8600M GT delivers exceptional graphics processing power. For the ultimate creative canvas, you can even configure the 17-inch model with a 1920-by-1200 resolution display.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Designed for life on the road&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tInnovations such as a magnetic power connection and an illuminated keyboard with ambient light sensor put the MacBook Pro in a class by itself.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Connect. Create. Communicate.&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tQuickly set up a video conference with the built-in iSight camera. Control presentations and media from up to 30 feet away with the included Apple Remote. Connect to high-bandwidth peripherals with FireWire 800 and DVI.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Next-generation wireless&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tFeaturing 802.11n wireless technology, the MacBook Pro delivers up to five times the performance and up to twice the range of previous-generation technologies.&lt;/p&gt;\r\n\t&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;','','','','',''),
   (45,2,'MacBook Pro','&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n\t&lt;div&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Latest Intel mobile architecture&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tPowered by the most advanced mobile processors from Intel, the new Core 2 Duo MacBook Pro is over 50% faster than the original Core Duo MacBook Pro and now supports up to 4GB of RAM.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Leading-edge graphics&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tThe NVIDIA GeForce 8600M GT delivers exceptional graphics processing power. For the ultimate creative canvas, you can even configure the 17-inch model with a 1920-by-1200 resolution display.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Designed for life on the road&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tInnovations such as a magnetic power connection and an illuminated keyboard with ambient light sensor put the MacBook Pro in a class by itself.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Connect. Create. Communicate.&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tQuickly set up a video conference with the built-in iSight camera. Control presentations and media from up to 30 feet away with the included Apple Remote. Connect to high-bandwidth peripherals with FireWire 800 and DVI.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;b&gt;Next-generation wireless&lt;/b&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tFeaturing 802.11n wireless technology, the MacBook Pro delivers up to five times the performance and up to twice the range of previous-generation technologies.&lt;/p&gt;\r\n\t&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;','','','','',''),
-  (46,1,'Sony VAIO','&lt;div&gt;\r\n\tUnprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel&amp;#39;s latest, most powerful innovation yet: Intel&amp;reg; Centrino&amp;reg; 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n','','','','',''),
-  (46,2,'Sony VAIO','&lt;div&gt;\r\n\tUnprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel&amp;#39;s latest, most powerful innovation yet: Intel&amp;reg; Centrino&amp;reg; 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n','','','','',''),
-  (47,1,'HP LP3065','&lt;p&gt;\r\n\tStop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you&amp;#39;re at the office&lt;/p&gt;\r\n','','','','',''),
-  (47,2,'HP LP3065','&lt;p&gt;\r\n\tStop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you&amp;#39;re at the office&lt;/p&gt;\r\n','','','','',''),
+  (46,1,'Sony VAIO','&lt;div&gt;\r\n\tUnprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel''s latest, most powerful innovation yet: Intel® Centrino® 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n','','','','',''),
+  (46,2,'Sony VAIO','&lt;div&gt;\r\n\tUnprecedented power. The next generation of processing technology has arrived. Built into the newest VAIO notebooks lies Intel''s latest, most powerful innovation yet: Intel® Centrino® 2 processor technology. Boasting incredible speed, expanded wireless connectivity, enhanced multimedia support and greater energy efficiency, all the high-performance essentials are seamlessly combined into a single chip.&lt;/div&gt;\r\n','','','','',''),
+  (47,1,'HP LP3065','&lt;p&gt;\r\n\tStop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you''re at the office&lt;/p&gt;\r\n','','','','',''),
+  (47,2,'HP LP3065','&lt;p&gt;\r\n\tStop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you''re at the office&lt;/p&gt;\r\n','','','','',''),
   (48,1,'iPod Classic','&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n\t&lt;div&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;More room to move.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tWith 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Cover Flow.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tBrowse through your music collection by flipping through album art. Select an album to turn it over and see the track list.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Enhanced interface.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tExperience a whole new way to browse and view your music and video.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Sleeker design.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tBeautiful, durable, and sleeker than ever, iPod classic now features an anodized aluminum and polished stainless steel enclosure with rounded edges.&lt;/p&gt;\r\n\t&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;','','','','',''),
   (48,2,'iPod Classic','&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n\t&lt;div&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;More room to move.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tWith 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Cover Flow.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tBrowse through your music collection by flipping through album art. Select an album to turn it over and see the track list.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Enhanced interface.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tExperience a whole new way to browse and view your music and video.&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\t&lt;strong&gt;Sleeker design.&lt;/strong&gt;&lt;/p&gt;\r\n\t\t&lt;p&gt;\r\n\t\t\tBeautiful, durable, and sleeker than ever, iPod classic now features an anodized aluminum and polished stainless steel enclosure with rounded edges.&lt;/p&gt;\r\n\t&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;','','','','',''),
-  (49,1,'Kinetic Sniper Disk 24','&lt;p&gt;\r\n\t&lt;span style=&quot;color: rgb(0, 0, 0); font-family: monospace; font-size: medium; white-space: pre-wrap;&quot;&gt;? ????????????? ?????????? ??????????? ?? 18 ???????, ?????????????? ?????, ??????? ??????? ??????? ???? ??????? ????? ??????????, ???????? ? ??????? ???????? ???????!&lt;/span&gt;&lt;/p&gt;\r\n','','','','',''),
+  (49,1,'Kinetic Sniper Disk 24','&lt;p&gt;\r\n\t&lt;span style=&quot;color: rgb(0, 0, 0); font-family: monospace; font-size: medium; white-space: pre-wrap;&quot;&gt;У подросткового велосипеда трансмиссия на 18 передач, амортизирующая вилка, которая поможет сделать езду намного более комфортной, надёжные и простых дисковые тормоза!&lt;/span&gt;&lt;/p&gt;\r\n','','','','',''),
   (49,2,'Samsung Galaxy Tab 10.1','&lt;p&gt;\r\n\tThe teenage bike has a transmission for 18 gears, a shock-absorbing fork that will make driving a lot more comfortable, reliable and simple disc brakes! &amp;lt;&lt;/p&gt;\r\n','','','','',''),
   (64,1,'HTC Touch HD','&lt;p&gt;\r\n\tHTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high definition clarity for a mobile experience you never thought possible. Seductively sleek, the HTC Touch HD provides the next generation of mobile functionality, all at a simple touch. Fully integrated with Windows Mobile Professional 6.1, ultrafast 3.5G, GPS, 5MP camera, plus lots more - all delivered on a breathtakingly crisp 3.8&amp;quot; WVGA touchscreen - you can take control of your mobile world with the HTC Touch HD.&lt;/p&gt;\r\n&lt;p&gt;\r\n\t&lt;strong&gt;Features&lt;/strong&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tProcessor Qualcomm&amp;reg; MSM 7201A&amp;trade; 528 MHz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows Mobile&amp;reg; 6.1 Professional Operating System&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMemory: 512 MB ROM, 288 MB RAM&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tQuad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDevice Control via HTC TouchFLO&amp;trade; 3D &amp;amp; Touch-sensitive front panel buttons&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tGPS and A-GPS ready&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBluetooth&amp;reg; 2.0 with Enhanced Data Rate and A2DP for wireless stereo headsets&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWi-Fi&amp;reg;: IEEE 802.11 b/g&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHTC ExtUSB&amp;trade; (11-pin mini-USB 2.0)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t5 megapixel color camera with auto focus&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVGA CMOS color camera&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in 3.5 mm audio jack, microphone, speaker, and FM radio&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRing tone formats: AAC, AAC+, eAAC+, AMR-NB, AMR-WB, QCP, MP3, WMA, WAV&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t40 polyphonic and standard MIDI format 0 and 1 (SMF)/SP MIDI&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRechargeable Lithium-ion or Lithium-ion polymer 1350 mAh battery&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tExpansion Slot: microSD&amp;trade; memory card (SD 2.0 compatible)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSpecial Features: FM Radio, G-Sensor&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
   (64,2,'HTC Touch HD','&lt;p&gt;\r\n\tHTC Touch - in High Definition. Watch music videos and streaming content in awe-inspiring high definition clarity for a mobile experience you never thought possible. Seductively sleek, the HTC Touch HD provides the next generation of mobile functionality, all at a simple touch. Fully integrated with Windows Mobile Professional 6.1, ultrafast 3.5G, GPS, 5MP camera, plus lots more - all delivered on a breathtakingly crisp 3.8&amp;quot; WVGA touchscreen - you can take control of your mobile world with the HTC Touch HD.&lt;/p&gt;\r\n&lt;p&gt;\r\n\t&lt;strong&gt;Features&lt;/strong&gt;&lt;/p&gt;\r\n&lt;ul&gt;\r\n\t&lt;li&gt;\r\n\t\tProcessor Qualcomm&amp;reg; MSM 7201A&amp;trade; 528 MHz&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWindows Mobile&amp;reg; 6.1 Professional Operating System&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tMemory: 512 MB ROM, 288 MB RAM&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDimensions: 115 mm x 62.8 mm x 12 mm / 146.4 grams&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t3.8-inch TFT-LCD flat touch-sensitive screen with 480 x 800 WVGA resolution&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHSDPA/WCDMA: Europe/Asia: 900/2100 MHz; Up to 2 Mbps up-link and 7.2 Mbps down-link speeds&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tQuad-band GSM/GPRS/EDGE: Europe/Asia: 850/900/1800/1900 MHz (Band frequency, HSUPA availability, and data speed are operator dependent.)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tDevice Control via HTC TouchFLO&amp;trade; 3D &amp;amp; Touch-sensitive front panel buttons&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tGPS and A-GPS ready&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBluetooth&amp;reg; 2.0 with Enhanced Data Rate and A2DP for wireless stereo headsets&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tWi-Fi&amp;reg;: IEEE 802.11 b/g&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tHTC ExtUSB&amp;trade; (11-pin mini-USB 2.0)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t5 megapixel color camera with auto focus&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tVGA CMOS color camera&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tBuilt-in 3.5 mm audio jack, microphone, speaker, and FM radio&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRing tone formats: AAC, AAC+, eAAC+, AMR-NB, AMR-WB, QCP, MP3, WMA, WAV&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\t40 polyphonic and standard MIDI format 0 and 1 (SMF)/SP MIDI&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tRechargeable Lithium-ion or Lithium-ion polymer 1350 mAh battery&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tExpansion Slot: microSD&amp;trade; memory card (SD 2.0 compatible)&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tAC Adapter Voltage range/frequency: 100 ~ 240V AC, 50/60 Hz DC output: 5V and 1A&lt;/li&gt;\r\n\t&lt;li&gt;\r\n\t\tSpecial Features: FM Radio, G-Sensor&lt;/li&gt;\r\n&lt;/ul&gt;\r\n','','','','',''),
-  (65,1,'?????? 1','','','','','',''),
+  (65,1,'Горный 1','','','','','',''),
   (65,2,'Mount 1','','','','','',''),
-  (66,1,'??????1','','','','','',''),
+  (66,1,'Горный1','','','','','',''),
   (66,2,'Mount1','','','','','','');
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_discount`: 
+# Структура для таблицы `product_discount`: 
 #
 
 CREATE TABLE `product_discount` (
@@ -2538,7 +2450,7 @@ INSERT INTO `product_discount` (`product_discount_id`, `product_id`, `customer_g
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_filter`: 
+# Структура для таблицы `product_filter`: 
 #
 
 CREATE TABLE `product_filter` (
@@ -2550,7 +2462,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `product_image`: 
+# Структура для таблицы `product_image`: 
 #
 
 CREATE TABLE `product_image` (
@@ -2559,7 +2471,7 @@ CREATE TABLE `product_image` (
   `image` VARCHAR(255) COLLATE utf8_general_ci DEFAULT NULL,
   `sort_order` INTEGER(3) NOT NULL DEFAULT 0
 )ENGINE=MyISAM
-AUTO_INCREMENT=2423 AVG_ROW_LENGTH=41 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=2435 AVG_ROW_LENGTH=41 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2568,10 +2480,6 @@ COMMENT=''
 #
 
 INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES 
-  (1968,43,'data/demo/macbook_3.jpg',0),
-  (1969,43,'data/demo/macbook_2.jpg',0),
-  (1970,43,'data/demo/macbook_4.jpg',0),
-  (1971,43,'data/demo/macbook_5.jpg',0),
   (1972,44,'data/demo/macbook_air_3.jpg',0),
   (1973,44,'data/demo/macbook_air_2.jpg',0),
   (1974,44,'data/demo/macbook_air_4.jpg',0),
@@ -2592,10 +2500,6 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
   (1989,48,'data/demo/ipod_classic_2.jpg',0),
   (1990,48,'data/demo/ipod_classic_3.jpg',0),
   (1991,48,'data/demo/ipod_classic_4.jpg',0),
-  (1992,46,'data/demo/sony_vaio_3.jpg',0),
-  (1993,46,'data/demo/sony_vaio_2.jpg',0),
-  (1994,46,'data/demo/sony_vaio_4.jpg',0),
-  (1995,46,'data/demo/sony_vaio_5.jpg',0),
   (1998,36,'data/demo/ipod_nano_3.jpg',0),
   (1999,36,'data/demo/ipod_nano_2.jpg',0),
   (2000,36,'data/demo/ipod_nano_4.jpg',0),
@@ -2614,10 +2518,6 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
   (2035,28,'data/demo/htc_touch_hd_2.jpg',0),
   (2275,64,'data/demo/htc_touch_hd_2.jpg',0),
   (2276,64,'data/demo/htc_touch_hd_3.jpg',0),
-  (2320,47,'data/demo/hp_2.jpg',0),
-  (2321,47,'data/demo/hp_3.jpg',0),
-  (2344,30,'data/demo/canon_eos_5d_3.jpg',0),
-  (2345,30,'data/demo/canon_eos_5d_2.jpg',0),
   (2350,41,'data/demo/imac_2.jpg',0),
   (2351,41,'data/demo/imac_3.jpg',0),
   (2352,42,'data/demo/canon_logo.jpg',0),
@@ -2630,11 +2530,23 @@ INSERT INTO `product_image` (`product_image_id`, `product_id`, `image`, `sort_or
   (2419,49,'data/demo/samsung_tab_5.jpg',0),
   (2420,49,'data/demo/samsung_tab_4.jpg',0),
   (2421,49,'data/demo/samsung_tab_3.jpg',0),
-  (2422,49,'data/demo/samsung_tab_2.jpg',0);
+  (2422,49,'data/demo/samsung_tab_2.jpg',0),
+  (2423,43,'data/demo/macbook_5.jpg',0),
+  (2424,43,'data/demo/macbook_4.jpg',0),
+  (2425,43,'data/demo/macbook_2.jpg',0),
+  (2426,43,'data/demo/macbook_3.jpg',0),
+  (2427,30,'data/demo/canon_eos_5d_2.jpg',0),
+  (2428,30,'data/demo/canon_eos_5d_3.jpg',0),
+  (2429,46,'data/demo/sony_vaio_5.jpg',0),
+  (2430,46,'data/demo/sony_vaio_4.jpg',0),
+  (2431,46,'data/demo/sony_vaio_2.jpg',0),
+  (2432,46,'data/demo/sony_vaio_3.jpg',0),
+  (2433,47,'data/demo/hp_3.jpg',0),
+  (2434,47,'data/demo/hp_2.jpg',0);
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_option`: 
+# Структура для таблицы `product_option`: 
 #
 
 CREATE TABLE `product_option` (
@@ -2669,7 +2581,7 @@ INSERT INTO `product_option` (`product_option_id`, `product_id`, `option_id`, `o
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_option_value`: 
+# Структура для таблицы `product_option_value`: 
 #
 
 CREATE TABLE `product_option_value` (
@@ -2716,7 +2628,7 @@ INSERT INTO `product_option_value` (`product_option_value_id`, `product_option_i
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_related`: 
+# Структура для таблицы `product_related`: 
 #
 
 CREATE TABLE `product_related` (
@@ -2739,7 +2651,7 @@ INSERT INTO `product_related` (`product_id`, `related_id`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_reward`: 
+# Структура для таблицы `product_reward`: 
 #
 
 CREATE TABLE `product_reward` (
@@ -2748,7 +2660,7 @@ CREATE TABLE `product_reward` (
   `customer_group_id` INTEGER(11) NOT NULL DEFAULT 0,
   `points` INTEGER(8) NOT NULL DEFAULT 0
 )ENGINE=MyISAM
-AUTO_INCREMENT=561 AVG_ROW_LENGTH=17 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=567 AVG_ROW_LENGTH=17 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2757,7 +2669,6 @@ COMMENT=''
 #
 
 INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES 
-  (329,43,1,600),
   (331,44,1,700),
   (333,45,1,800),
   (335,40,1,0),
@@ -2765,23 +2676,24 @@ INSERT INTO `product_reward` (`product_reward_id`, `product_id`, `customer_group
   (339,29,1,0),
   (343,48,1,0),
   (345,33,1,0),
-  (347,46,1,0),
   (351,36,1,0),
   (353,34,1,0),
   (355,32,1,0),
   (379,28,1,400),
   (425,35,1,0),
-  (519,47,1,300),
-  (539,30,1,200),
   (545,41,1,0),
   (546,42,1,100),
   (557,49,1,1000),
   (559,66,1,0),
-  (560,65,1,0);
+  (562,65,1,0),
+  (563,43,1,600),
+  (564,30,1,200),
+  (565,46,1,0),
+  (566,47,1,300);
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_special`: 
+# Структура для таблицы `product_special`: 
 #
 
 CREATE TABLE `product_special` (
@@ -2793,7 +2705,7 @@ CREATE TABLE `product_special` (
   `date_start` DATE NOT NULL DEFAULT '0000-00-00',
   `date_end` DATE NOT NULL DEFAULT '0000-00-00'
 )ENGINE=MyISAM
-AUTO_INCREMENT=446 AVG_ROW_LENGTH=30 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=448 AVG_ROW_LENGTH=30 ROW_FORMAT=FIXED CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -2802,14 +2714,14 @@ COMMENT=''
 #
 
 INSERT INTO `product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES 
-  (438,30,1,1,80.0000,'0000-00-00','0000-00-00'),
-  (439,30,1,2,90.0000,'0000-00-00','0000-00-00'),
   (440,42,1,1,90.0000,'0000-00-00','0000-00-00'),
-  (445,49,1,1,1500.0000,'2017-12-01','2018-01-29');
+  (445,49,1,1,1500.0000,'2017-12-01','2018-01-29'),
+  (446,30,1,1,80.0000,'0000-00-00','0000-00-00'),
+  (447,30,1,2,90.0000,'0000-00-00','0000-00-00');
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_to_category`: 
+# Структура для таблицы `product_to_category`: 
 #
 
 CREATE TABLE `product_to_category` (
@@ -2826,7 +2738,7 @@ COMMENT=''
 #
 
 INSERT INTO `product_to_category` (`product_id`, `category_id`, `main_category`) VALUES 
-  (30,33,0),
+  (30,33,1),
   (31,33,0),
   (32,34,0),
   (33,28,0),
@@ -2838,7 +2750,7 @@ INSERT INTO `product_to_category` (`product_id`, `category_id`, `main_category`)
 COMMIT;
 
 #
-# ????????? ??? ??????? `product_to_download`: 
+# Структура для таблицы `product_to_download`: 
 #
 
 CREATE TABLE `product_to_download` (
@@ -2850,7 +2762,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `product_to_layout`: 
+# Структура для таблицы `product_to_layout`: 
 #
 
 CREATE TABLE `product_to_layout` (
@@ -2863,7 +2775,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `product_to_store`: 
+# Структура для таблицы `product_to_store`: 
 #
 
 CREATE TABLE `product_to_store` (
@@ -2904,7 +2816,7 @@ INSERT INTO `product_to_store` (`product_id`, `store_id`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `return`: 
+# Структура для таблицы `return`: 
 #
 
 CREATE TABLE `return` (
@@ -2933,7 +2845,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `return_action`: 
+# Структура для таблицы `return_action`: 
 #
 
 CREATE TABLE `return_action` (
@@ -2950,16 +2862,16 @@ COMMENT=''
 #
 
 INSERT INTO `return_action` (`return_action_id`, `language_id`, `name`) VALUES 
-  (1,1,'?????????? ????????'),
+  (1,1,'Возвращены средства'),
   (1,2,'Refunded'),
-  (2,1,'????? ? ??????'),
+  (2,1,'Выдан в кредит'),
   (2,2,'Credit Issued'),
-  (3,1,'?????????? ?????? (????????? ?????? ????? ??? ??????)'),
+  (3,1,'Отправлена замена (отправлен другой товар для замены)'),
   (3,2,'Replacement Sent');
 COMMIT;
 
 #
-# ????????? ??? ??????? `return_history`: 
+# Структура для таблицы `return_history`: 
 #
 
 CREATE TABLE `return_history` (
@@ -2975,7 +2887,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `return_reason`: 
+# Структура для таблицы `return_reason`: 
 #
 
 CREATE TABLE `return_reason` (
@@ -2992,18 +2904,18 @@ COMMENT=''
 #
 
 INSERT INTO `return_reason` (`return_reason_id`, `language_id`, `name`) VALUES 
-  (1,1,'???????/????????? ??????????? (?????????)'),
+  (1,1,'Получен/доставлен неисправным (сломанным)'),
   (1,2,'Dead On Arrival'),
-  (2,1,'??????? ?? ??? (?????????) ?????'),
+  (2,1,'Получен не тот (ошибочный) товар'),
   (2,2,'Received Wrong Item'),
-  (4,1,'?????????, ?????????? ???????/????????? ???????????'),
+  (4,1,'Ошибочный, пожалуйста укажите/приложите подробности'),
   (4,2,'Faulty, please supply details'),
-  (5,1,'?????? (?????? ???????), ?????????? ???????/????????? ???????????'),
+  (5,1,'Другое (другая причина), пожалуйста укажите/приложите подробности'),
   (5,2,'Other, please supply details');
 COMMIT;
 
 #
-# ????????? ??? ??????? `return_status`: 
+# Структура для таблицы `return_status`: 
 #
 
 CREATE TABLE `return_status` (
@@ -3020,16 +2932,16 @@ COMMENT=''
 #
 
 INSERT INTO `return_status` (`return_status_id`, `language_id`, `name`) VALUES 
-  (1,1,'??????????????? / ??????????? ? '),
+  (1,1,'Рассматриваемый / находящийся в '),
   (1,2,'Pending'),
-  (2,1,'????? \"?????\" ? ???????? ???????'),
+  (2,1,'Заказ \"висит\" в ожидании поступл'),
   (2,2,'Awaiting Products'),
-  (3,1,'????? (? ????????) / ??? ???????'),
+  (3,1,'Готов (к отправке) / или Заверше'),
   (3,2,'Complete');
 COMMIT;
 
 #
-# ????????? ??? ??????? `review`: 
+# Структура для таблицы `review`: 
 #
 
 CREATE TABLE `review` (
@@ -3043,23 +2955,26 @@ CREATE TABLE `review` (
   `date_added` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_modified` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00'
 )ENGINE=MyISAM
-AUTO_INCREMENT=5 AVG_ROW_LENGTH=100 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=8 AVG_ROW_LENGTH=88 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `review` table  (LIMIT -495,500)
+# Data for the `review` table  (LIMIT -492,500)
 #
 
 INSERT INTO `review` (`review_id`, `product_id`, `customer_id`, `author`, `text`, `rating`, `status`, `date_added`, `date_modified`) VALUES 
-  (1,33,0,'????','??????????wewewewexdwedwedwedxwedxwedxwexdwxewedxwed',5,0,'2017-12-27 16:04:14','0000-00-00 00:00:00'),
+  (1,33,0,'гшгш','гшгшгшгшгшwewewewexdwedwedwedxwedxwedxwexdwxewedxwed',5,0,'2017-12-27 16:04:14','0000-00-00 00:00:00'),
   (2,33,0,'edwdewed','edwedwedwedwedwededddddddddddddddddddddddddddddddwewe',3,0,'2017-12-27 16:04:52','0000-00-00 00:00:00'),
   (3,42,0,'uikuikuik','uikuikuikuikuikuikuikurrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',3,0,'2017-12-27 16:06:06','0000-00-00 00:00:00'),
-  (4,49,0,'rtgtrg','rtgrtcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',2,0,'2017-12-28 16:42:26','0000-00-00 00:00:00');
+  (4,49,0,'rtgtrg','rtgrtcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',2,0,'2017-12-28 16:42:26','0000-00-00 00:00:00'),
+  (5,49,0,'12576890','купукпйукпй',4,1,'2018-01-03 15:15:41','0000-00-00 00:00:00'),
+  (6,65,0,'Автор1','цувцув',4,1,'2018-01-03 15:16:21','0000-00-00 00:00:00'),
+  (7,65,0,'Автор2','мамывамывамывам\r\nыва\r\nмывамывам',5,1,'2018-01-03 15:17:07','0000-00-00 00:00:00');
 COMMIT;
 
 #
-# ????????? ??? ??????? `setting`: 
+# Структура для таблицы `setting`: 
 #
 
 CREATE TABLE `setting` (
@@ -3070,12 +2985,12 @@ CREATE TABLE `setting` (
   `value` TEXT COLLATE utf8_general_ci NOT NULL,
   `serialized` TINYINT(1) NOT NULL
 )ENGINE=MyISAM
-AUTO_INCREMENT=310 AVG_ROW_LENGTH=95 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=433 AVG_ROW_LENGTH=96 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `setting` table  (LIMIT -343,500)
+# Data for the `setting` table  (LIMIT -342,500)
 #
 
 INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `serialized`) VALUES 
@@ -3105,140 +3020,141 @@ INSERT INTO `setting` (`setting_id`, `store_id`, `group`, `key`, `value`, `seria
   (94,0,'voucher','voucher_status','1',0),
   (102,0,'free_checkout','free_checkout_status','1',0),
   (103,0,'free_checkout','free_checkout_order_status_id','1',0),
-  (145,0,'config','config_name','?????????',0),
-  (146,0,'config','config_owner','??? ???',0),
-  (147,0,'config','config_address','?????',0),
-  (148,0,'config','config_email','test205@mail.ru',0),
-  (149,0,'config','config_telephone','123456789',0),
-  (150,0,'config','config_fax','',0),
-  (151,0,'config','config_title','??? ???????',0),
-  (152,0,'config','config_meta_description','??? ???????',0),
-  (153,0,'config','config_template','default',0),
-  (154,0,'config','config_layout_id','4',0),
-  (155,0,'config','config_country_id','176',0),
-  (156,0,'config','config_zone_id','2761',0),
-  (157,0,'config','config_language','ru',0),
-  (158,0,'config','config_admin_language','ru',0),
-  (159,0,'config','config_currency','USD',0),
-  (160,0,'config','config_currency_auto','1',0),
-  (161,0,'config','config_length_class_id','1',0),
-  (162,0,'config','config_weight_class_id','1',0),
-  (163,0,'config','config_catalog_limit','15',0),
-  (164,0,'config','config_admin_limit','20',0),
-  (165,0,'config','config_product_count','1',0),
-  (166,0,'config','config_review_status','1',0),
-  (167,0,'config','config_download','1',0),
-  (168,0,'config','config_voucher_min','1',0),
-  (169,0,'config','config_voucher_max','1000',0),
-  (170,0,'config','config_tax','1',0),
-  (171,0,'config','config_vat','0',0),
-  (172,0,'config','config_tax_default','shipping',0),
-  (173,0,'config','config_tax_customer','shipping',0),
-  (174,0,'config','config_customer_online','0',0),
-  (175,0,'config','config_customer_group_id','1',0),
-  (176,0,'config','config_customer_group_display','a:1:{i:0;s:1:\"1\";}',1),
-  (177,0,'config','config_customer_price','0',0),
-  (178,0,'config','config_account_id','3',0),
-  (179,0,'config','config_cart_weight','1',0),
-  (180,0,'config','config_guest_checkout','1',0),
-  (181,0,'config','config_checkout_id','5',0),
-  (182,0,'config','config_order_edit','100',0),
-  (183,0,'config','config_invoice_prefix','INV-2013-00',0),
-  (184,0,'config','config_order_status_id','1',0),
-  (185,0,'config','config_complete_status_id','5',0),
-  (186,0,'config','config_stock_display','0',0),
-  (187,0,'config','config_stock_warning','0',0),
-  (188,0,'config','config_stock_checkout','0',0),
-  (189,0,'config','config_stock_status_id','5',0),
-  (190,0,'config','config_affiliate_id','4',0),
-  (191,0,'config','config_commission','5',0),
-  (192,0,'config','config_return_id','0',0),
-  (193,0,'config','config_return_status_id','2',0),
-  (194,0,'config','config_logo','data/logo.png',0),
-  (195,0,'config','config_icon','data/cart.png',0),
-  (196,0,'config','config_image_category_width','80',0),
-  (197,0,'config','config_image_category_height','80',0),
-  (198,0,'config','config_image_thumb_width','228',0),
-  (199,0,'config','config_image_thumb_height','228',0),
-  (200,0,'config','config_image_popup_width','500',0),
-  (201,0,'config','config_image_popup_height','500',0),
-  (202,0,'config','config_image_product_width','120',0),
-  (203,0,'config','config_image_product_height','120',0),
-  (204,0,'config','config_image_additional_width','74',0),
-  (205,0,'config','config_image_additional_height','74',0),
-  (206,0,'config','config_image_related_width','80',0),
-  (207,0,'config','config_image_related_height','80',0),
-  (208,0,'config','config_image_compare_width','90',0),
-  (209,0,'config','config_image_compare_height','90',0),
-  (210,0,'config','config_image_wishlist_width','47',0),
-  (211,0,'config','config_image_wishlist_height','47',0),
-  (212,0,'config','config_image_cart_width','47',0),
-  (213,0,'config','config_image_cart_height','47',0),
-  (214,0,'config','config_ftp_host','localhost',0),
-  (215,0,'config','config_ftp_port','21',0),
-  (216,0,'config','config_ftp_username','',0),
-  (217,0,'config','config_ftp_password','',0),
-  (218,0,'config','config_ftp_root','',0),
-  (219,0,'config','config_ftp_status','0',0),
-  (220,0,'config','config_mail_protocol','mail',0),
-  (221,0,'config','config_mail_parameter','',0),
-  (222,0,'config','config_smtp_host','',0),
-  (223,0,'config','config_smtp_username','',0),
-  (224,0,'config','config_smtp_password','',0),
-  (225,0,'config','config_smtp_port','25',0),
-  (226,0,'config','config_smtp_timeout','5',0),
-  (227,0,'config','config_alert_mail','0',0),
-  (228,0,'config','config_account_mail','0',0),
-  (229,0,'config','config_alert_emails','',0),
-  (230,0,'config','config_fraud_detection','0',0),
-  (231,0,'config','config_fraud_key','',0),
-  (232,0,'config','config_fraud_score','',0),
-  (233,0,'config','config_fraud_status_id','2',0),
-  (234,0,'config','config_secure','0',0),
-  (235,0,'config','config_shared','0',0),
-  (236,0,'config','config_robots','abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg',0),
-  (237,0,'config','config_seo_url','0',0),
-  (238,0,'config','config_seo_url_type','seo_url',0),
-  (239,0,'config','config_seo_url_include_path','0',0),
-  (240,0,'config','config_seo_url_postfix','',0),
-  (241,0,'config','config_file_extension_allowed','txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods',0),
-  (242,0,'config','config_file_mime_allowed','text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet',0),
-  (243,0,'config','config_maintenance','0',0),
-  (244,0,'config','config_password','1',0),
-  (245,0,'config','config_encryption','62d2909eed7f8d28994136ce1076fb47',0),
-  (246,0,'config','config_compression','0',0),
-  (247,0,'config','config_error_display','1',0),
-  (248,0,'config','config_error_log','1',0),
-  (249,0,'config','config_error_filename','my_mego_log.log',0),
-  (250,0,'config','config_google_analytics','',0),
-  (251,0,'config','config_google_api_key','',0),
-  (252,0,'config','config_sms_alert','0',0),
-  (253,0,'config','config_sms_gatename','testsms',0),
-  (254,0,'config','config_sms_from','',0),
-  (255,0,'config','config_sms_to','',0),
-  (256,0,'config','config_sms_copy','',0),
-  (257,0,'config','config_sms_message','',0),
-  (258,0,'config','config_sms_gate_username','',0),
-  (259,0,'config','config_sms_gate_password','',0),
   (260,0,'flat','flat_cost','5.00',0),
   (261,0,'flat','flat_tax_class_id','9',0),
   (262,0,'flat','flat_geo_zone_id','0',0),
   (263,0,'flat','flat_status','1',0),
   (264,0,'flat','flat_sort_order','1',0),
   (272,0,'slideshow','slideshow_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"980\";s:6:\"height\";s:3:\"280\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
-  (286,0,'information','information_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"10\";}}',1),
   (290,0,'special','special_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:2:\"80\";s:12:\"image_height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"4\";}}',1),
   (292,0,'featured','product','',0),
   (293,0,'featured','featured_product','43,40,42,49,46,47,28',0),
   (294,0,'featured','featured_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:3:\"160\";s:12:\"image_height\";s:3:\"160\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"2\";}}',1),
   (298,0,'carousel','carousel_module','a:1:{i:0;a:9:{s:9:\"banner_id\";s:1:\"8\";s:5:\"limit\";s:1:\"5\";s:6:\"scroll\";s:1:\"3\";s:5:\"width\";s:2:\"80\";s:6:\"height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"0\";}}',1),
   (299,0,'banner','banner_module','a:1:{i:0;a:7:{s:9:\"banner_id\";s:1:\"7\";s:5:\"width\";s:3:\"182\";s:6:\"height\";s:3:\"182\";s:9:\"layout_id\";s:1:\"3\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"0\";}}',1),
-  (300,0,'category','category_module','a:1:{i:1;a:4:{s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"1\";}}',1),
-  (309,0,'maincategory','maincategory_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"-2\";}}',1);
+  (309,0,'maincategory','maincategory_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"1\";s:8:\"position\";s:11:\"content_top\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"-2\";}}',1),
+  (314,0,'category','category_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:11:\"column_left\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:1:\"1\";}}',1),
+  (315,0,'information','information_module','a:1:{i:0;a:4:{s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:12:\"column_right\";s:6:\"status\";s:1:\"0\";s:10:\"sort_order\";s:2:\"10\";}}',1),
+  (316,0,'config','config_name','Велосклад',0),
+  (317,0,'config','config_owner','Мое Имя',0),
+  (318,0,'config','config_address','Адрес',0),
+  (319,0,'config','config_email','test205@mail.ru',0),
+  (320,0,'config','config_telephone','123456789',0),
+  (321,0,'config','config_fax','',0),
+  (322,0,'config','config_title','Мой Магазин',0),
+  (323,0,'config','config_meta_description','Мой Магазин',0),
+  (324,0,'config','config_template','default',0),
+  (325,0,'config','config_layout_id','4',0),
+  (326,0,'config','config_country_id','176',0),
+  (327,0,'config','config_zone_id','2761',0),
+  (328,0,'config','config_language','ru',0),
+  (329,0,'config','config_admin_language','ru',0),
+  (330,0,'config','config_currency','RUB',0),
+  (331,0,'config','config_currency_auto','1',0),
+  (332,0,'config','config_length_class_id','1',0),
+  (333,0,'config','config_weight_class_id','1',0),
+  (334,0,'config','config_catalog_limit','15',0),
+  (335,0,'config','config_admin_limit','20',0),
+  (336,0,'config','config_product_count','1',0),
+  (337,0,'config','config_review_status','1',0),
+  (338,0,'config','config_download','1',0),
+  (339,0,'config','config_voucher_min','1',0),
+  (340,0,'config','config_voucher_max','1000',0),
+  (341,0,'config','config_tax','1',0),
+  (342,0,'config','config_vat','0',0),
+  (343,0,'config','config_tax_default','shipping',0),
+  (344,0,'config','config_tax_customer','shipping',0),
+  (345,0,'config','config_customer_online','0',0),
+  (346,0,'config','config_customer_group_id','1',0),
+  (347,0,'config','config_customer_group_display','a:1:{i:0;s:1:\"1\";}',1),
+  (348,0,'config','config_customer_price','0',0),
+  (349,0,'config','config_account_id','3',0),
+  (350,0,'config','config_cart_weight','1',0),
+  (351,0,'config','config_guest_checkout','1',0),
+  (352,0,'config','config_checkout_id','5',0),
+  (353,0,'config','config_order_edit','100',0),
+  (354,0,'config','config_invoice_prefix','INV-2013-00',0),
+  (355,0,'config','config_order_status_id','1',0),
+  (356,0,'config','config_complete_status_id','5',0),
+  (357,0,'config','config_stock_display','0',0),
+  (358,0,'config','config_stock_warning','0',0),
+  (359,0,'config','config_stock_checkout','0',0),
+  (360,0,'config','config_stock_status_id','5',0),
+  (361,0,'config','config_affiliate_id','4',0),
+  (362,0,'config','config_commission','5',0),
+  (363,0,'config','config_return_id','0',0),
+  (364,0,'config','config_return_status_id','2',0),
+  (365,0,'config','config_logo','data/logo.png',0),
+  (366,0,'config','config_icon','data/cart.png',0),
+  (367,0,'config','config_image_category_width','80',0),
+  (368,0,'config','config_image_category_height','80',0),
+  (369,0,'config','config_image_thumb_width','228',0),
+  (370,0,'config','config_image_thumb_height','228',0),
+  (371,0,'config','config_image_popup_width','500',0),
+  (372,0,'config','config_image_popup_height','500',0),
+  (373,0,'config','config_image_product_width','120',0),
+  (374,0,'config','config_image_product_height','120',0),
+  (375,0,'config','config_image_additional_width','74',0),
+  (376,0,'config','config_image_additional_height','74',0),
+  (377,0,'config','config_image_related_width','80',0),
+  (378,0,'config','config_image_related_height','80',0),
+  (379,0,'config','config_image_compare_width','90',0),
+  (380,0,'config','config_image_compare_height','90',0),
+  (381,0,'config','config_image_wishlist_width','47',0),
+  (382,0,'config','config_image_wishlist_height','47',0),
+  (383,0,'config','config_image_cart_width','47',0),
+  (384,0,'config','config_image_cart_height','47',0),
+  (385,0,'config','config_ftp_host','localhost',0),
+  (386,0,'config','config_ftp_port','21',0),
+  (387,0,'config','config_ftp_username','',0),
+  (388,0,'config','config_ftp_password','',0),
+  (389,0,'config','config_ftp_root','',0),
+  (390,0,'config','config_ftp_status','0',0),
+  (391,0,'config','config_mail_protocol','mail',0),
+  (392,0,'config','config_mail_parameter','',0),
+  (393,0,'config','config_smtp_host','',0),
+  (394,0,'config','config_smtp_username','',0),
+  (395,0,'config','config_smtp_password','',0),
+  (396,0,'config','config_smtp_port','25',0),
+  (397,0,'config','config_smtp_timeout','5',0),
+  (398,0,'config','config_alert_mail','0',0),
+  (399,0,'config','config_account_mail','0',0),
+  (400,0,'config','config_alert_emails','',0),
+  (401,0,'config','config_fraud_detection','0',0),
+  (402,0,'config','config_fraud_key','',0),
+  (403,0,'config','config_fraud_score','',0),
+  (404,0,'config','config_fraud_status_id','2',0),
+  (405,0,'config','config_secure','0',0),
+  (406,0,'config','config_shared','0',0),
+  (407,0,'config','config_robots','abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg',0),
+  (408,0,'config','config_seo_url','0',0),
+  (409,0,'config','config_seo_url_type','seo_url',0),
+  (410,0,'config','config_seo_url_include_path','0',0),
+  (411,0,'config','config_seo_url_postfix','',0),
+  (412,0,'config','config_file_extension_allowed','txt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc\r\nrtf\r\nxls\r\nppt\r\nodt\r\nods',0),
+  (413,0,'config','config_file_mime_allowed','text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/jpeg\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/vnd.microsoft.icon\r\nimage/tiff\r\nimage/tiff\r\nimage/svg+xml\r\nimage/svg+xml\r\napplication/zip\r\napplication/x-rar-compressed\r\napplication/x-msdownload\r\napplication/vnd.ms-cab-compressed\r\naudio/mpeg\r\nvideo/quicktime\r\nvideo/quicktime\r\napplication/pdf\r\nimage/vnd.adobe.photoshop\r\napplication/postscript\r\napplication/postscript\r\napplication/postscript\r\napplication/msword\r\napplication/rtf\r\napplication/vnd.ms-excel\r\napplication/vnd.ms-powerpoint\r\napplication/vnd.oasis.opendocument.text\r\napplication/vnd.oasis.opendocument.spreadsheet',0),
+  (414,0,'config','config_maintenance','0',0),
+  (415,0,'config','config_password','1',0),
+  (416,0,'config','config_encryption','62d2909eed7f8d28994136ce1076fb47',0),
+  (417,0,'config','config_compression','0',0),
+  (418,0,'config','config_error_display','1',0),
+  (419,0,'config','config_error_log','1',0),
+  (420,0,'config','config_error_filename','my_mego_log.log',0),
+  (421,0,'config','config_google_analytics','',0),
+  (422,0,'config','config_google_api_key','',0),
+  (423,0,'config','config_sms_alert','0',0),
+  (424,0,'config','config_sms_gatename','testsms',0),
+  (425,0,'config','config_sms_from','',0),
+  (426,0,'config','config_sms_to','',0),
+  (427,0,'config','config_sms_copy','',0),
+  (428,0,'config','config_sms_message','',0),
+  (429,0,'config','config_sms_gate_username','',0),
+  (430,0,'config','config_sms_gate_password','',0),
+  (432,0,'latest','latest_module','a:1:{i:0;a:7:{s:5:\"limit\";s:1:\"5\";s:11:\"image_width\";s:2:\"80\";s:12:\"image_height\";s:2:\"80\";s:9:\"layout_id\";s:1:\"2\";s:8:\"position\";s:14:\"content_bottom\";s:6:\"status\";s:1:\"1\";s:10:\"sort_order\";s:1:\"3\";}}',1);
 COMMIT;
 
 #
-# ????????? ??? ??????? `stock_status`: 
+# Структура для таблицы `stock_status`: 
 #
 
 CREATE TABLE `stock_status` (
@@ -3255,18 +3171,18 @@ COMMENT=''
 #
 
 INSERT INTO `stock_status` (`stock_status_id`, `language_id`, `name`) VALUES 
-  (5,1,'??? ? ???????'),
+  (5,1,'Нет в наличии'),
   (5,2,'Out Of Stock'),
-  (6,1,'???????? 2-3 ???'),
+  (6,1,'Ожидание 2-3 дня'),
   (6,2,'2 - 3 Days'),
-  (7,1,'? ???????'),
+  (7,1,'В наличии'),
   (7,2,'In Stock'),
-  (8,1,'?????????'),
+  (8,1,'Предзаказ'),
   (8,2,'Pre-Order');
 COMMIT;
 
 #
-# ????????? ??? ??????? `store`: 
+# Структура для таблицы `store`: 
 #
 
 CREATE TABLE `store` (
@@ -3280,7 +3196,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `tax_class`: 
+# Структура для таблицы `tax_class`: 
 #
 
 CREATE TABLE `tax_class` (
@@ -3299,11 +3215,11 @@ COMMENT=''
 #
 
 INSERT INTO `tax_class` (`tax_class_id`, `title`, `description`, `date_added`, `date_modified`) VALUES 
-  (9,'??????','?????????? ???????','2009-01-06 23:21:53','2011-03-09 21:17:10');
+  (9,'Налоги','Облагаемые налогом','2009-01-06 23:21:53','2011-03-09 21:17:10');
 COMMIT;
 
 #
-# ????????? ??? ??????? `tax_rate`: 
+# Структура для таблицы `tax_rate`: 
 #
 
 CREATE TABLE `tax_rate` (
@@ -3324,12 +3240,12 @@ COMMENT=''
 #
 
 INSERT INTO `tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `date_added`, `date_modified`) VALUES 
-  (86,3,'??? 18%',18.0000,'P','2011-03-09 21:17:10','2011-09-22 22:24:29'),
+  (86,3,'НДС 18%',18.0000,'P','2011-03-09 21:17:10','2011-09-22 22:24:29'),
   (87,3,'Eco Tax (-2.00)',2.0000,'F','2011-09-21 21:49:23','2011-09-23 00:40:19');
 COMMIT;
 
 #
-# ????????? ??? ??????? `tax_rate_to_customer_group`: 
+# Структура для таблицы `tax_rate_to_customer_group`: 
 #
 
 CREATE TABLE `tax_rate_to_customer_group` (
@@ -3350,7 +3266,7 @@ INSERT INTO `tax_rate_to_customer_group` (`tax_rate_id`, `customer_group_id`) VA
 COMMIT;
 
 #
-# ????????? ??? ??????? `tax_rule`: 
+# Структура для таблицы `tax_rule`: 
 #
 
 CREATE TABLE `tax_rule` (
@@ -3376,7 +3292,7 @@ INSERT INTO `tax_rule` (`tax_rule_id`, `tax_class_id`, `tax_rate_id`, `based`, `
 COMMIT;
 
 #
-# ????????? ??? ??????? `url_alias`: 
+# Структура для таблицы `url_alias`: 
 #
 
 CREATE TABLE `url_alias` (
@@ -3384,12 +3300,12 @@ CREATE TABLE `url_alias` (
   `query` VARCHAR(255) COLLATE utf8_general_ci NOT NULL,
   `keyword` VARCHAR(255) COLLATE utf8_general_ci NOT NULL
 )ENGINE=MyISAM
-AUTO_INCREMENT=818 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=825 AVG_ROW_LENGTH=40 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
 #
-# Data for the `url_alias` table  (LIMIT -456,500)
+# Data for the `url_alias` table  (LIMIT -452,500)
 #
 
 INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES 
@@ -3435,11 +3351,15 @@ INSERT INTO `url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
   (811,'product_id=35','about_us'),
   (813,'category_id=34','mp3-players'),
   (816,'information_id=4','about_us'),
-  (817,'product_id=42','test');
+  (817,'product_id=42','test'),
+  (821,'information_id=7','bycicle'),
+  (822,'information_id=8','mauntain'),
+  (823,'information_id=9','parts'),
+  (824,'information_id=10','helmet');
 COMMIT;
 
 #
-# ????????? ??? ??????? `user`: 
+# Структура для таблицы `user`: 
 #
 
 CREATE TABLE `user` (
@@ -3469,7 +3389,7 @@ INSERT INTO `user` (`user_id`, `user_group_id`, `username`, `password`, `salt`, 
 COMMIT;
 
 #
-# ????????? ??? ??????? `user_group`: 
+# Структура для таблицы `user_group`: 
 #
 
 CREATE TABLE `user_group` (
@@ -3477,7 +3397,7 @@ CREATE TABLE `user_group` (
   `name` VARCHAR(64) COLLATE utf8_general_ci NOT NULL,
   `permission` TEXT COLLATE utf8_general_ci NOT NULL
 )ENGINE=MyISAM
-AUTO_INCREMENT=11 AVG_ROW_LENGTH=4212 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
+AUTO_INCREMENT=11 AVG_ROW_LENGTH=4238 CHARACTER SET 'utf8' COLLATE 'utf8_general_ci'
 COMMENT=''
 ;
 
@@ -3486,12 +3406,12 @@ COMMENT=''
 #
 
 INSERT INTO `user_group` (`user_group_id`, `name`, `permission`) VALUES 
-  (1,'??????? ?????????????','a:2:{s:6:\"access\";a:137:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";}s:6:\"modify\";a:137:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";}}'),
-  (10,'????????????','');
+  (1,'Главный администратор','a:2:{s:6:\"access\";a:138:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";i:137;s:13:\"module/latest\";}s:6:\"modify\";a:138:{i:0;s:17:\"catalog/attribute\";i:1;s:23:\"catalog/attribute_group\";i:2;s:16:\"catalog/category\";i:3;s:16:\"catalog/download\";i:4;s:14:\"catalog/filter\";i:5;s:19:\"catalog/information\";i:6;s:20:\"catalog/manufacturer\";i:7;s:14:\"catalog/option\";i:8;s:15:\"catalog/product\";i:9;s:14:\"catalog/review\";i:10;s:18:\"common/filemanager\";i:11;s:13:\"design/banner\";i:12;s:19:\"design/custom_field\";i:13;s:13:\"design/layout\";i:14;s:14:\"extension/feed\";i:15;s:17:\"extension/manager\";i:16;s:16:\"extension/module\";i:17;s:17:\"extension/payment\";i:18;s:18:\"extension/shipping\";i:19;s:15:\"extension/total\";i:20;s:16:\"feed/google_base\";i:21;s:19:\"feed/google_sitemap\";i:22;s:20:\"localisation/country\";i:23;s:21:\"localisation/currency\";i:24;s:21:\"localisation/geo_zone\";i:25;s:21:\"localisation/language\";i:26;s:25:\"localisation/length_class\";i:27;s:25:\"localisation/order_status\";i:28;s:26:\"localisation/return_action\";i:29;s:26:\"localisation/return_reason\";i:30;s:26:\"localisation/return_status\";i:31;s:25:\"localisation/stock_status\";i:32;s:22:\"localisation/tax_class\";i:33;s:21:\"localisation/tax_rate\";i:34;s:25:\"localisation/weight_class\";i:35;s:17:\"localisation/zone\";i:36;s:14:\"module/account\";i:37;s:16:\"module/affiliate\";i:38;s:13:\"module/banner\";i:39;s:17:\"module/bestseller\";i:40;s:15:\"module/carousel\";i:41;s:15:\"module/category\";i:42;s:15:\"module/featured\";i:43;s:13:\"module/filter\";i:44;s:18:\"module/google_talk\";i:45;s:18:\"module/information\";i:46;s:13:\"module/latest\";i:47;s:16:\"module/slideshow\";i:48;s:14:\"module/special\";i:49;s:12:\"module/store\";i:50;s:14:\"module/welcome\";i:51;s:14:\"octeam/toolset\";i:52;s:18:\"octeam_tools/dummy\";i:53;s:32:\"octeam_tools/seo_keyword_checker\";i:54;s:24:\"payment/authorizenet_aim\";i:55;s:21:\"payment/bank_transfer\";i:56;s:14:\"payment/cheque\";i:57;s:11:\"payment/cod\";i:58;s:21:\"payment/free_checkout\";i:59;s:22:\"payment/klarna_account\";i:60;s:22:\"payment/klarna_invoice\";i:61;s:14:\"payment/liqpay\";i:62;s:20:\"payment/moneybookers\";i:63;s:14:\"payment/nochex\";i:64;s:15:\"payment/paymate\";i:65;s:16:\"payment/paypoint\";i:66;s:13:\"payment/payza\";i:67;s:26:\"payment/perpetual_payments\";i:68;s:14:\"payment/pp_pro\";i:69;s:17:\"payment/pp_pro_uk\";i:70;s:19:\"payment/pp_standard\";i:71;s:15:\"payment/sagepay\";i:72;s:22:\"payment/sagepay_direct\";i:73;s:18:\"payment/sagepay_us\";i:74;s:19:\"payment/twocheckout\";i:75;s:28:\"payment/web_payment_software\";i:76;s:16:\"payment/worldpay\";i:77;s:27:\"report/affiliate_commission\";i:78;s:22:\"report/customer_credit\";i:79;s:22:\"report/customer_online\";i:80;s:21:\"report/customer_order\";i:81;s:22:\"report/customer_reward\";i:82;s:24:\"report/product_purchased\";i:83;s:21:\"report/product_viewed\";i:84;s:18:\"report/sale_coupon\";i:85;s:17:\"report/sale_order\";i:86;s:18:\"report/sale_return\";i:87;s:20:\"report/sale_shipping\";i:88;s:15:\"report/sale_tax\";i:89;s:14:\"sale/affiliate\";i:90;s:12:\"sale/contact\";i:91;s:11:\"sale/coupon\";i:92;s:13:\"sale/customer\";i:93;s:20:\"sale/customer_ban_ip\";i:94;s:19:\"sale/customer_group\";i:95;s:10:\"sale/order\";i:96;s:11:\"sale/return\";i:97;s:12:\"sale/voucher\";i:98;s:18:\"sale/voucher_theme\";i:99;s:15:\"setting/setting\";i:100;s:13:\"setting/store\";i:101;s:16:\"shipping/auspost\";i:102;s:17:\"shipping/citylink\";i:103;s:14:\"shipping/fedex\";i:104;s:13:\"shipping/flat\";i:105;s:13:\"shipping/free\";i:106;s:13:\"shipping/item\";i:107;s:23:\"shipping/parcelforce_48\";i:108;s:15:\"shipping/pickup\";i:109;s:19:\"shipping/royal_mail\";i:110;s:12:\"shipping/ups\";i:111;s:13:\"shipping/usps\";i:112;s:15:\"shipping/weight\";i:113;s:11:\"tool/backup\";i:114;s:14:\"tool/error_log\";i:115;s:12:\"total/coupon\";i:116;s:12:\"total/credit\";i:117;s:14:\"total/handling\";i:118;s:16:\"total/klarna_fee\";i:119;s:19:\"total/low_order_fee\";i:120;s:12:\"total/reward\";i:121;s:14:\"total/shipping\";i:122;s:15:\"total/sub_total\";i:123;s:9:\"total/tax\";i:124;s:11:\"total/total\";i:125;s:13:\"total/voucher\";i:126;s:9:\"user/user\";i:127;s:20:\"user/user_permission\";i:128;s:17:\"module/bestseller\";i:129;s:18:\"module/information\";i:130;s:13:\"module/filter\";i:131;s:13:\"module/latest\";i:132;s:14:\"module/special\";i:133;s:12:\"module/store\";i:134;s:14:\"module/welcome\";i:135;s:19:\"module/maincategory\";i:136;s:19:\"module/maincategory\";i:137;s:13:\"module/latest\";}}'),
+  (10,'Демонстрация','');
 COMMIT;
 
 #
-# ????????? ??? ??????? `voucher`: 
+# Структура для таблицы `voucher`: 
 #
 
 CREATE TABLE `voucher` (
@@ -3513,7 +3433,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `voucher_history`: 
+# Структура для таблицы `voucher_history`: 
 #
 
 CREATE TABLE `voucher_history` (
@@ -3528,7 +3448,7 @@ COMMENT=''
 ;
 
 #
-# ????????? ??? ??????? `voucher_theme`: 
+# Структура для таблицы `voucher_theme`: 
 #
 
 CREATE TABLE `voucher_theme` (
@@ -3550,7 +3470,7 @@ INSERT INTO `voucher_theme` (`voucher_theme_id`, `image`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `voucher_theme_description`: 
+# Структура для таблицы `voucher_theme_description`: 
 #
 
 CREATE TABLE `voucher_theme_description` (
@@ -3567,16 +3487,16 @@ COMMENT=''
 #
 
 INSERT INTO `voucher_theme_description` (`voucher_theme_id`, `language_id`, `name`) VALUES 
-  (6,1,'?????????'),
+  (6,1,'Рождество'),
   (6,2,'Christmas'),
-  (7,1,'???? ????????'),
+  (7,1,'День рождения'),
   (7,2,'Birthday'),
-  (8,1,'????????'),
+  (8,1,'Основной'),
   (8,2,'General');
 COMMIT;
 
 #
-# ????????? ??? ??????? `weight_class`: 
+# Структура для таблицы `weight_class`: 
 #
 
 CREATE TABLE `weight_class` (
@@ -3597,7 +3517,7 @@ INSERT INTO `weight_class` (`weight_class_id`, `value`) VALUES
 COMMIT;
 
 #
-# ????????? ??? ??????? `weight_class_description`: 
+# Структура для таблицы `weight_class_description`: 
 #
 
 CREATE TABLE `weight_class_description` (
@@ -3615,14 +3535,14 @@ COMMENT=''
 #
 
 INSERT INTO `weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES 
-  (1,1,'??????????','??'),
+  (1,1,'Килограммы','кг'),
   (1,2,'Kilogram','kg'),
-  (2,1,'??????','?'),
+  (2,1,'Граммы','г'),
   (2,2,'Gram','g');
 COMMIT;
 
 #
-# ????????? ??? ??????? `zone`: 
+# Структура для таблицы `zone`: 
 #
 
 CREATE TABLE `zone` (
@@ -3641,213 +3561,213 @@ COMMENT=''
 #
 
 INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES 
-  (1,1,'????????','BDS',1),
-  (2,1,'??????','BDG',1),
-  (3,1,'??????','BGL',1),
-  (4,1,'????','BAL',1),
-  (5,1,'??????','BAM',1),
-  (6,1,'?????','FRA',1),
-  (7,1,'??????','FYB',1),
-  (8,1,'?????','GHA',1),
-  (9,1,'???','GHO',1),
-  (10,1,'????????','HEL',1),
-  (11,1,'?????','HER',1),
-  (12,1,'?????????','JOW',1),
-  (13,1,'?????','KAB',1),
-  (14,1,'????????','KAN',1),
-  (15,1,'??????','KAP',1),
-  (16,1,'????','KHO',1),
-  (17,1,'?????','KNR',1),
-  (18,1,'??????','KDZ',1),
-  (19,1,'??????','LAG',1),
-  (20,1,'?????','LOW',1),
-  (21,1,'?????????','NAN',1),
-  (22,1,'??????','NIM',1),
-  (23,1,'????????','NUR',1),
-  (24,1,'???????','ORU',1),
-  (25,1,'??????','PIA',1),
-  (26,1,'???????','PKA',1),
-  (27,1,'??????','PAR',1),
-  (28,1,'????????','SAM',1),
-  (29,1,'????-????','SAR',1),
-  (30,1,'?????','TAK',1),
-  (31,1,'??????','WAR',1),
-  (32,1,'??????','ZAB',1),
-  (33,2,'?????','BR',1),
-  (34,2,'????????','BU',1),
-  (35,2,'????????','DL',1),
-  (36,2,'?????','DV',1),
-  (37,2,'?????','DI',1),
-  (38,2,'??????','DR',1),
-  (39,2,'????????','EL',1),
-  (40,2,'??????','ER',1),
-  (41,2,'?????','FR',1),
-  (42,2,'??????????','GJ',1),
-  (43,2,'??????','GR',1),
-  (44,2,'???','HA',1),
-  (45,2,'?????','KA',1),
-  (46,2,'??????','KB',1),
-  (47,2,'??????','KC',1),
-  (48,2,'?????','KO',1),
-  (49,2,'????','KR',1),
-  (50,2,'?????','KU',1),
-  (51,2,'????????','LB',1),
-  (52,2,'????','LE',1),
-  (53,2,'?????','LU',1),
-  (54,2,'??????-?-????','MM',1),
-  (55,2,'??????????','MK',1),
-  (56,2,'????','MT',1),
-  (57,2,'???????','MR',1),
-  (58,2,'??????','PQ',1),
-  (59,2,'???????','PR',1),
-  (60,2,'????????','PG',1),
-  (61,2,'????','PU',1),
-  (62,2,'??????','SH',1),
-  (63,2,'????????','SK',1),
-  (64,2,'???????','SR',1),
-  (65,2,'????????','TE',1),
-  (66,2,'??????','TP',1),
-  (67,2,'??????','TR',1),
-  (68,2,'?????','VL',1),
-  (69,3,'?????','ADR',1),
-  (70,3,'???-?????','ADE',1),
-  (71,3,'???-????????','ATE',1),
-  (72,3,'?????','ALG',1),
-  (73,3,'??????','ANN',1),
-  (74,3,'?????','BAT',1),
-  (75,3,'?????','BEC',1),
-  (76,3,'??????','BEJ',1),
-  (77,3,'??????','BIS',1),
-  (78,3,'?????','BLI',1),
-  (79,3,'?????-??-????????','BBA',1),
-  (80,3,'?????','BOA',1),
-  (81,3,'????????','BMD',1),
-  (82,3,'????','CHL',1),
-  (83,3,'???????????','CON',1),
-  (84,3,'???????','DJE',1),
-  (85,3,'???-????','EBA',1),
-  (86,3,'???-???','EOU',1),
-  (87,3,'???-????','ETA',1),
-  (88,3,'??????','GHA',1),
-  (89,3,'???????','GUE',1),
-  (90,3,'??????','ILL',1),
-  (91,3,'????????','JIJ',1),
-  (92,3,'???????','KHE',1),
-  (93,3,'??????','LAG',1),
-  (94,3,'???????','MUA',1),
-  (95,3,'?????','MED',1),
-  (96,3,'????','MIL',1),
-  (97,3,'??????????','MOS',1),
-  (98,3,'?????','MSI',1),
-  (99,3,'?????','NAA',1),
-  (100,3,'????','ORA',1),
-  (101,3,'??????','OUA',1),
-  (102,3,'?? ???-?????','OEB',1),
-  (103,3,'???????','REL',1),
-  (104,3,'?????','SAI',1),
-  (105,3,'?????','SET',1),
-  (106,3,'????-????-?????','SBA',1),
-  (107,3,'??????','SKI',1),
-  (108,3,'???-?????','SAH',1),
-  (109,3,'???????????','TAM',1),
-  (110,3,'???????','TEB',1),
-  (111,3,'??????','TIA',1),
-  (112,3,'??????','TIN',1),
-  (113,3,'??????','TIP',1),
-  (114,3,'??????????','TIS',1),
-  (115,3,'????-???','TOU',1),
-  (116,3,'???????','TLE',1),
-  (117,4,'????????? ?????','E',1),
-  (118,4,'?????','M',1),
-  (119,4,'?????? ???','R',1),
-  (120,4,'?????? ??????','S',1),
-  (121,4,'???????? ?????','W',1),
-  (122,5,'???????-??-?????','ALV',1),
-  (123,5,'???????','CAN',1),
-  (124,5,'??????','ENC',1),
-  (125,5,'?????????-?????????','ESE',1),
-  (126,5,'??-???????','LMA',1),
-  (127,5,'??????','ORD',1),
-  (128,5,'????-?????-??-?????','SJL',1),
-  (129,6,'?????','BGO',1),
-  (130,6,'???????','BGU',1),
-  (131,6,'???','BIE',1),
-  (132,6,'???????','CAB',1),
-  (133,6,'??????-???????','CCU',1),
-  (134,6,'???????? ??????','CNO',1),
-  (135,6,'????? ??????','CUS',1),
-  (136,6,'??????','CNN',1),
-  (137,6,'?????','HUA',1),
-  (138,6,'????','HUI',1),
-  (139,6,'??????','LUA',1),
-  (140,6,'???????? ?????','LNO',1),
-  (141,6,'????? ?????','LSU',1),
-  (142,6,'???????','MAL',1),
-  (143,6,'??????','MOX',1),
-  (144,6,'??????','NAM',1),
-  (145,6,'????','UIG',1),
-  (146,6,'?????','ZAI',1),
-  (147,9,'????-??????','ASG',1),
-  (148,9,'????-????','ASJ',1),
-  (149,9,'????-????','ASM',1),
-  (150,9,'????-???','ASL',1),
-  (151,9,'????-?????','ASR',1),
-  (152,9,'????-?????','ASH',1),
-  (153,9,'???????','BAR',1),
-  (154,9,'???????','RED',1),
-  (155,10,'?????????? ? ??????? ????? ?????????','AN',1),
-  (156,10,'??????-?????','BA',1),
-  (157,10,'?????????','CA',1),
-  (158,10,'????','CH',1),
-  (159,10,'?????','CU',1),
-  (160,10,'???????','CO',1),
-  (161,10,'??????????','CR',1),
-  (162,10,'??????????? ?????','DF',1),
-  (163,10,'?????-????','ER',1),
-  (164,10,'???????','FO',1),
-  (165,10,'?????','JU',1),
-  (166,10,'??-?????','LP',1),
-  (167,10,'??-?????','LR',1),
-  (168,10,'???????','ME',1),
-  (169,10,'????????','MI',1),
-  (170,10,'??????','NE',1),
-  (171,10,'???-?????','RN',1),
-  (172,10,'??????','SA',1),
-  (173,10,'???-????','SJ',1),
-  (174,10,'???-????','SL',1),
-  (175,10,'?????-????','SC',1),
-  (176,10,'?????-??','SF',1),
-  (177,10,'????????-????-??????','SD',1),
-  (178,10,'??????-????-?????','TF',1),
-  (179,10,'???????','TU',1),
-  (180,11,'?????????','AGT',1),
-  (181,11,'??????','ARR',1),
-  (182,11,'???????','ARM',1),
-  (183,11,'??????????','GEG',1),
-  (184,11,'??????','KOT',1),
-  (185,11,'????','LOR',1),
-  (186,11,'?????','SHI',1),
-  (187,11,'?????','SYU',1),
-  (188,11,'?????','TAV',1),
-  (189,11,'????? ????','VAY',1),
-  (190,11,'??????','YER',1),
-  (191,13,'????????????? ????????? ??????????','ACT',1),
-  (192,13,'????? ????? ?????','NSW',1),
-  (193,13,'???????? ??????????','NT',1),
-  (194,13,'?????????','QLD',1),
-  (195,13,'????? ?????????','SA',1),
-  (196,13,'????????','TAS',1),
-  (197,13,'????????','VIC',1),
-  (198,13,'???????? ?????????','WA',1),
-  (199,14,'??????????','BUR',1),
-  (200,14,'????????','KAR',1),
-  (201,14,'?????? ???????','NOS',1),
-  (202,14,'??????? ???????','OOS',1),
-  (203,14,'?????????','SAL',1),
-  (204,14,'??????','STE',1),
-  (205,14,'??????','TIR',1),
-  (206,14,'???????????','VOR',1),
-  (207,14,'????','WIE',1),
+  (1,1,'Бадахшан','BDS',1),
+  (2,1,'Бадгис','BDG',1),
+  (3,1,'Баглан','BGL',1),
+  (4,1,'Балх','BAL',1),
+  (5,1,'Бамиан','BAM',1),
+  (6,1,'Фарах','FRA',1),
+  (7,1,'Фарьяб','FYB',1),
+  (8,1,'Газни','GHA',1),
+  (9,1,'Гор','GHO',1),
+  (10,1,'Гильменд','HEL',1),
+  (11,1,'Герат','HER',1),
+  (12,1,'Джаузджан','JOW',1),
+  (13,1,'Кабул','KAB',1),
+  (14,1,'Кандагар','KAN',1),
+  (15,1,'Каписа','KAP',1),
+  (16,1,'Хост','KHO',1),
+  (17,1,'Кунар','KNR',1),
+  (18,1,'Кундуз','KDZ',1),
+  (19,1,'Лагман','LAG',1),
+  (20,1,'Логар','LOW',1),
+  (21,1,'Нангархар','NAN',1),
+  (22,1,'Нимроз','NIM',1),
+  (23,1,'Нуристан','NUR',1),
+  (24,1,'Урузган','ORU',1),
+  (25,1,'Пактия','PIA',1),
+  (26,1,'Пактика','PKA',1),
+  (27,1,'Парван','PAR',1),
+  (28,1,'Саманган','SAM',1),
+  (29,1,'Сари-Пуль','SAR',1),
+  (30,1,'Тахар','TAK',1),
+  (31,1,'Вардак','WAR',1),
+  (32,1,'Забуль','ZAB',1),
+  (33,2,'Берат','BR',1),
+  (34,2,'Булькиза','BU',1),
+  (35,2,'Дельвина','DL',1),
+  (36,2,'Девол','DV',1),
+  (37,2,'Дибра','DI',1),
+  (38,2,'Дуррес','DR',1),
+  (39,2,'Эльбасан','EL',1),
+  (40,2,'Колёня','ER',1),
+  (41,2,'Фиери','FR',1),
+  (42,2,'Гирокастра','GJ',1),
+  (43,2,'Грамши','GR',1),
+  (44,2,'Хас','HA',1),
+  (45,2,'Кавая','KA',1),
+  (46,2,'Курбин','KB',1),
+  (47,2,'Кучова','KC',1),
+  (48,2,'Корча','KO',1),
+  (49,2,'Круя','KR',1),
+  (50,2,'Кукес','KU',1),
+  (51,2,'Либражди','LB',1),
+  (52,2,'Лежа','LE',1),
+  (53,2,'Люшня','LU',1),
+  (54,2,'Мальси-э-Мади','MM',1),
+  (55,2,'Малакастра','MK',1),
+  (56,2,'Мати','MT',1),
+  (57,2,'Мирдита','MR',1),
+  (58,2,'Пекини','PQ',1),
+  (59,2,'Пермети','PR',1),
+  (60,2,'Поградец','PG',1),
+  (61,2,'Пука','PU',1),
+  (62,2,'Шкодер','SH',1),
+  (63,2,'Скрапари','SK',1),
+  (64,2,'Саранда','SR',1),
+  (65,2,'Тепелена','TE',1),
+  (66,2,'Тропоя','TP',1),
+  (67,2,'Тирана','TR',1),
+  (68,2,'Влёра','VL',1),
+  (69,3,'Адрар','ADR',1),
+  (70,3,'Айн-Дефла','ADE',1),
+  (71,3,'Айн-Темухент','ATE',1),
+  (72,3,'Алжир','ALG',1),
+  (73,3,'Аннаба','ANN',1),
+  (74,3,'Батна','BAT',1),
+  (75,3,'Бешар','BEC',1),
+  (76,3,'Беджая','BEJ',1),
+  (77,3,'Бискра','BIS',1),
+  (78,3,'Блида','BLI',1),
+  (79,3,'Бордж-Бу-Арреридж','BBA',1),
+  (80,3,'Буйра','BOA',1),
+  (81,3,'Бумердес','BMD',1),
+  (82,3,'Шлеф','CHL',1),
+  (83,3,'Константина','CON',1),
+  (84,3,'Джельфа','DJE',1),
+  (85,3,'Эль-Баяд','EBA',1),
+  (86,3,'Эль-Уэд','EOU',1),
+  (87,3,'Эль-Тарф','ETA',1),
+  (88,3,'Гардая','GHA',1),
+  (89,3,'Гуэльма','GUE',1),
+  (90,3,'Иллизи','ILL',1),
+  (91,3,'Джиджель','JIJ',1),
+  (92,3,'Хеншела','KHE',1),
+  (93,3,'Лагуат','LAG',1),
+  (94,3,'Маскара','MUA',1),
+  (95,3,'Медеа','MED',1),
+  (96,3,'Мила','MIL',1),
+  (97,3,'Мостаганем','MOS',1),
+  (98,3,'Мсила','MSI',1),
+  (99,3,'Наама','NAA',1),
+  (100,3,'Оран','ORA',1),
+  (101,3,'Уаргла','OUA',1),
+  (102,3,'Ум Эль-Буахи','OEB',1),
+  (103,3,'Релизан','REL',1),
+  (104,3,'Саида','SAI',1),
+  (105,3,'Сетиф','SET',1),
+  (106,3,'Сиди-Бель-Аббес','SBA',1),
+  (107,3,'Скикда','SKI',1),
+  (108,3,'Сук-Ахрас','SAH',1),
+  (109,3,'Таменрассет','TAM',1),
+  (110,3,'Тебесса','TEB',1),
+  (111,3,'Тиарет','TIA',1),
+  (112,3,'Тиндуф','TIN',1),
+  (113,3,'Типаза','TIP',1),
+  (114,3,'Тиссемсилт','TIS',1),
+  (115,3,'Тизи-Узу','TOU',1),
+  (116,3,'Тлемсен','TLE',1),
+  (117,4,'Восточный округ','E',1),
+  (118,4,'Мануа','M',1),
+  (119,4,'Остров Роз','R',1),
+  (120,4,'Остров Суэйнс','S',1),
+  (121,4,'Западный округ','W',1),
+  (122,5,'Андорра-ла-Велья','ALV',1),
+  (123,5,'Канильо','CAN',1),
+  (124,5,'Энкамп','ENC',1),
+  (125,5,'Эскальдес-Энгордань','ESE',1),
+  (126,5,'Ла-Массана','LMA',1),
+  (127,5,'Ордино','ORD',1),
+  (128,5,'Сант-Жулия-де-Лория','SJL',1),
+  (129,6,'Бенго','BGO',1),
+  (130,6,'Бенгела','BGU',1),
+  (131,6,'Бие','BIE',1),
+  (132,6,'Кабинда','CAB',1),
+  (133,6,'Квандо-Кубанго','CCU',1),
+  (134,6,'Северная Кванза','CNO',1),
+  (135,6,'Южная Кванза','CUS',1),
+  (136,6,'Кунене','CNN',1),
+  (137,6,'Уамбо','HUA',1),
+  (138,6,'Уила','HUI',1),
+  (139,6,'Луанда','LUA',1),
+  (140,6,'Северная Лунда','LNO',1),
+  (141,6,'Южная Лунда','LSU',1),
+  (142,6,'Маланже','MAL',1),
+  (143,6,'Мошико','MOX',1),
+  (144,6,'Намибе','NAM',1),
+  (145,6,'Уиже','UIG',1),
+  (146,6,'Заире','ZAI',1),
+  (147,9,'Сент-Джордж','ASG',1),
+  (148,9,'Сент-Джон','ASJ',1),
+  (149,9,'Сент-Мери','ASM',1),
+  (150,9,'Сент-Пол','ASL',1),
+  (151,9,'Сент-Петер','ASR',1),
+  (152,9,'Сент-Филип','ASH',1),
+  (153,9,'Барбуда','BAR',1),
+  (154,9,'Редонда','RED',1),
+  (155,10,'Антарктида и острова Южной Атлантики','AN',1),
+  (156,10,'Буэнос-Айрес','BA',1),
+  (157,10,'Катамарка','CA',1),
+  (158,10,'Чако','CH',1),
+  (159,10,'Чубут','CU',1),
+  (160,10,'Кордова','CO',1),
+  (161,10,'Корриентес','CR',1),
+  (162,10,'Федеральный округ','DF',1),
+  (163,10,'Энтре-Риос','ER',1),
+  (164,10,'Формоса','FO',1),
+  (165,10,'Жужуй','JU',1),
+  (166,10,'Ла-Пампа','LP',1),
+  (167,10,'Ла-Риоха','LR',1),
+  (168,10,'Мендоса','ME',1),
+  (169,10,'Мисьонес','MI',1),
+  (170,10,'Неукен','NE',1),
+  (171,10,'Рио-Негро','RN',1),
+  (172,10,'Сальта','SA',1),
+  (173,10,'Сан-Хуан','SJ',1),
+  (174,10,'Сан-Луис','SL',1),
+  (175,10,'Санта-Крус','SC',1),
+  (176,10,'Санта-Фе','SF',1),
+  (177,10,'Сантьяго-дель-Эстеро','SD',1),
+  (178,10,'Тьерра-дель-Фуэго','TF',1),
+  (179,10,'Тукуман','TU',1),
+  (180,11,'Арагацотн','AGT',1),
+  (181,11,'Арарат','ARR',1),
+  (182,11,'Армавир','ARM',1),
+  (183,11,'Гегаркуник','GEG',1),
+  (184,11,'Котайк','KOT',1),
+  (185,11,'Лори','LOR',1),
+  (186,11,'Ширак','SHI',1),
+  (187,11,'Сюник','SYU',1),
+  (188,11,'Тавуш','TAV',1),
+  (189,11,'Вайоц Дзор','VAY',1),
+  (190,11,'Ереван','YER',1),
+  (191,13,'Австралийская столичная территория','ACT',1),
+  (192,13,'Новый Южный Уэльс','NSW',1),
+  (193,13,'Северная территория','NT',1),
+  (194,13,'Квинсленд','QLD',1),
+  (195,13,'Южная Австралия','SA',1),
+  (196,13,'Тасмания','TAS',1),
+  (197,13,'Виктория','VIC',1),
+  (198,13,'Западная Австралия','WA',1),
+  (199,14,'Бургенланд','BUR',1),
+  (200,14,'Каринтия','KAR',1),
+  (201,14,'Нижняя Австрия','NOS',1),
+  (202,14,'Верхняя Австрия','OOS',1),
+  (203,14,'Зальцбург','SAL',1),
+  (204,14,'Штирия','STE',1),
+  (205,14,'Тироль','TIR',1),
+  (206,14,'Форарльберг','VOR',1),
+  (207,14,'Вена','WIE',1),
   (208,15,'Ali Bayramli','AB',1),
   (209,15,'Abseron','ABS',1),
   (210,15,'AgcabAdi','AGC',1),
@@ -3977,13 +3897,13 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (334,19,'Saint Peter','PET',1),
   (335,19,'Saint Philip','PHI',1),
   (336,19,'Saint Thomas','THO',1),
-  (337,20,'?????','BR',1),
-  (338,20,'??????','HO',1),
-  (339,20,'?????','HM',1),
-  (340,20,'??????','HR',1),
-  (341,20,'???????','MA',1),
-  (342,20,'??????? ???????','MI',1),
-  (343,20,'???????','VI',1),
+  (337,20,'Брест','BR',1),
+  (338,20,'Гомель','HO',1),
+  (339,20,'Минск','HM',1),
+  (340,20,'Гродно','HR',1),
+  (341,20,'Могилев','MA',1),
+  (342,20,'Минская область','MI',1),
+  (343,20,'Витебск','VI',1),
   (344,21,'Antwerpen','VAN',1),
   (345,21,'Brabant Wallon','WBR',1),
   (346,21,'Hainaut','WHT',1),
@@ -4293,7 +4213,7 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (643,41,'Haut-Mbomou','HMB',1),
   (644,41,'Kemo','KEM',1),
   (645,41,'Lobaye','LOB',1),
-  (646,41,'Mambere-Kade�','MKD',1),
+  (646,41,'Mambere-KadeÔ','MKD',1),
   (647,41,'Mbomou','MBO',1),
   (648,41,'Nana-Mambere','NMM',1),
   (649,41,'Ombella-M''Poko','OMP',1),
@@ -4536,20 +4456,20 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (886,55,'Limassol','I',1),
   (887,55,'Nicosia','N',1),
   (888,55,'Paphos','P',1),
-  (889,56,'�steck�','U',1),
-  (890,56,'Jiho?esk�','C',1),
-  (891,56,'Jihomoravsk�','B',1),
-  (892,56,'Karlovarsk�','K',1),
-  (893,56,'Kr�lovehradeck�','H',1),
-  (894,56,'Libereck�','L',1),
-  (895,56,'Moravskoslezsk�','T',1),
-  (896,56,'Olomouck�','M',1),
-  (897,56,'Pardubick�','E',1),
-  (898,56,'Plze?sk�','P',1),
+  (889,56,'Ústecký','U',1),
+  (890,56,'Jihočeský','C',1),
+  (891,56,'Jihomoravský','B',1),
+  (892,56,'Karlovarský','K',1),
+  (893,56,'Královehradecký','H',1),
+  (894,56,'Liberecký','L',1),
+  (895,56,'Moravskoslezský','T',1),
+  (896,56,'Olomoucký','M',1),
+  (897,56,'Pardubický','E',1),
+  (898,56,'Plzeňský','P',1),
   (899,56,'Praha','A',1),
-  (900,56,'St?edo?esk�','S',1),
-  (901,56,'Vyso?ina','J',1),
-  (902,56,'Zl�nsk�','Z',1),
+  (900,56,'Středočeský','S',1),
+  (901,56,'Vysočina','J',1),
+  (902,56,'Zlínský','Z',1),
   (903,57,'Arhus','AR',1),
   (904,57,'Bornholm','BH',1),
   (905,57,'Copenhagen','CO',1),
@@ -5357,23 +5277,23 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (1713,108,'Jarash','JA',1),
   (1714,108,'Ma''an','MA',1),
   (1715,108,'Madaba','MD',1),
-  (1716,109,'??????????? ???????','AL',1),
-  (1717,109,'?????? - ????? ???????-?? ????????','AC',1),
-  (1718,109,'??????????? ???????','AM',1),
-  (1719,109,'??????????? ???????','AQ',1),
-  (1720,109,'?????? - ????? ???????-?? ????????','AS',1),
-  (1721,109,'?????????? ???????','AT',1),
-  (1722,109,'???????-????????????? ???????','BA',1),
-  (1723,109,'???????? - ????? ???????-?? ????????','BY',1),
-  (1724,109,'????????????? ???????','MA',1),
-  (1725,109,'????-????????????? ???????','ON',1),
-  (1726,109,'???????????? ???????','PA',1),
-  (1727,109,'?????????????? ???????','QA',1),
-  (1728,109,'???????????? ???????','QO',1),
-  (1729,109,'?????????????? ???????','QY',1),
-  (1730,109,'????????-????????????? ???????','SH',1),
-  (1731,109,'??????-????????????? ???????','SO',1),
-  (1732,109,'?????????? ???????','ZH',1),
+  (1716,109,'Алматинская область','AL',1),
+  (1717,109,'Алматы - город республ-го значения','AC',1),
+  (1718,109,'Акмолинская область','AM',1),
+  (1719,109,'Актюбинская область','AQ',1),
+  (1720,109,'Астана - город республ-го значения','AS',1),
+  (1721,109,'Атырауская область','AT',1),
+  (1722,109,'Западно-Казахстанская область','BA',1),
+  (1723,109,'Байконур - город республ-го значения','BY',1),
+  (1724,109,'Мангистауская область','MA',1),
+  (1725,109,'Южно-Казахстанская область','ON',1),
+  (1726,109,'Павлодарская область','PA',1),
+  (1727,109,'Карагандинская область','QA',1),
+  (1728,109,'Костанайская область','QO',1),
+  (1729,109,'Кызылординская область','QY',1),
+  (1730,109,'Восточно-Казахстанская область','SH',1),
+  (1731,109,'Северо-Казахстанская область','SO',1),
+  (1732,109,'Жамбылская область','ZH',1),
   (1733,110,'Central','CE',1),
   (1734,110,'Coast','CO',1),
   (1735,110,'Eastern','EA',1),
@@ -5839,7 +5759,7 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (2188,140,'Soroca','SO',1),
   (2189,140,'Tighina','TI',1),
   (2190,140,'Ungheni','UN',1),
-  (2191,140,'St?nga Nistrului','SN',1),
+  (2191,140,'St‚nga Nistrului','SN',1),
   (2192,141,'Fontvieille','FV',1),
   (2193,141,'La Condamine','LC',1),
   (2194,141,'Monaco-Ville','MV',1),
@@ -6376,89 +6296,89 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (2718,175,'Vaslui','VS',1),
   (2719,175,'Valcea','VL',1),
   (2720,175,'Vrancea','VN',1),
-  (2721,176,'?????????? ???????','KK',1),
-  (2722,176,'?????????? ???????','MOS',1),
-  (2723,176,'????????? ??','CHU',1),
-  (2724,176,'????????????? ???????','ARK',1),
-  (2725,176,'???????????? ???????','AST',1),
-  (2726,176,'????????? ????','ALT',1),
-  (2727,176,'???????????? ???????','BEL',1),
-  (2728,176,'????????? ??','YEV',1),
-  (2729,176,'???????? ???????','AMU',1),
-  (2730,176,'???????? ???????','BRY',1),
-  (2731,176,'????????? ??????????','CU',1),
-  (2732,176,'??????????? ???????','CHE',1),
-  (2733,176,'?????????-?????c???','KC',1),
-  (2734,176,'????????????? ????','ZAB',1),
-  (2735,176,'????????????? ???????','LEN',1),
-  (2736,176,'?????????? ????????','KL',1),
-  (2737,176,'??????????? ???????','SAK',1),
-  (2738,176,'?????????? ?????','AL',1),
-  (2739,176,'????????? ??????????','CE',1),
-  (2740,176,'????????? ???????','IRK',1),
-  (2741,176,'?????????? ???????','IVA',1),
-  (2742,176,'?????????? ??????????','UD',1),
-  (2743,176,'??????????????? ???????','KGD',1),
-  (2744,176,'????????? ???????','KLU',1),
-  (2746,176,'?????????? ?????????','TA',1),
-  (2747,176,'??????????? ???????','KEM',1),
-  (2748,176,'??????????? ????','KHA',1),
-  (2749,176,'?????-?????????? ?? - ????','KHM',1),
-  (2750,176,'??????????? ???????','KOS',1),
-  (2751,176,'????????????? ????','KDA',1),
-  (2752,176,'???????????? ????','KYA',1),
-  (2754,176,'?????????? ???????','KGN',1),
-  (2755,176,'??????? ???????','KRS',1),
-  (2756,176,'?????????? ????','TY',1),
-  (2757,176,'???????? ???????','LIP',1),
-  (2758,176,'??????????? ???????','MAG',1),
-  (2759,176,'?????????? ????????','DA',1),
-  (2760,176,'?????????? ??????','AD',1),
-  (2761,176,'??????','MOW',1),
-  (2762,176,'?????????? ???????','MUR',1),
-  (2763,176,'?????????? ?????????-????????','KB',1),
-  (2764,176,'???????? ??','NEN',1),
-  (2765,176,'?????????? ?????????','IN',1),
-  (2766,176,'????????????? ???????','NIZ',1),
-  (2767,176,'???????????? ???????','NGR',1),
-  (2768,176,'????????????? ???????','NVS',1),
-  (2769,176,'?????? ???????','OMS',1),
-  (2770,176,'????????? ???????','ORL',1),
-  (2771,176,'???????????? ???????','ORE',1),
-  (2773,176,'?????????? ???????','PNZ',1),
-  (2774,176,'???????? ????','PER',1),
-  (2775,176,'?????????? ????','KAM',1),
-  (2776,176,'?????????? ???????','KR',1),
-  (2777,176,'????????? ???????','PSK',1),
-  (2778,176,'?????????? ???????','ROS',1),
-  (2779,176,'????????? ???????','RYA',1),
-  (2780,176,'?????-???????? ??','YAN',1),
-  (2781,176,'????????? ???????','SAM',1),
-  (2782,176,'?????????? ????????','MO',1),
-  (2783,176,'??????????? ???????','SAR',1),
-  (2784,176,'?????????? ???????','SMO',1),
-  (2785,176,'?????-?????????','SPE',1),
-  (2786,176,'?????????????? ????','STA',1),
-  (2787,176,'?????????? ????','KO',1),
-  (2788,176,'?????????? ???????','TAM',1),
-  (2789,176,'??????? ???????','TOM',1),
-  (2790,176,'???????? ???????','TUL',1),
-  (2792,176,'???????? ???????','TVE',1),
-  (2793,176,'????????? ???????','TYU',1),
-  (2794,176,'?????????? ????????????','BA',1),
-  (2795,176,'??????????? ???????','ULY',1),
-  (2796,176,'?????????? ???????','BU',1),
-  (2798,176,'?????????? ???????? ??????','SE',1),
-  (2799,176,'???????????? ???????','VLA',1),
-  (2800,176,'?????????? ????','PRI',1),
-  (2801,176,'????????????? ???????','VGG',1),
-  (2802,176,'??????????? ???????','VLG',1),
-  (2803,176,'??????????? ???????','VOR',1),
-  (2804,176,'????????? ???????','KIR',1),
-  (2805,176,'?????????? ????','SA',1),
-  (2806,176,'??????????? ???????','YAR',1),
-  (2807,176,'???????????? ???????','SVE',1),
-  (2808,176,'?????????? ????? ??','ME',1),
+  (2721,176,'Республика Хакасия','KK',1),
+  (2722,176,'Московская область','MOS',1),
+  (2723,176,'Чукотский АО','CHU',1),
+  (2724,176,'Архангельская область','ARK',1),
+  (2725,176,'Астраханская область','AST',1),
+  (2726,176,'Алтайский край','ALT',1),
+  (2727,176,'Белгородская область','BEL',1),
+  (2728,176,'Еврейская АО','YEV',1),
+  (2729,176,'Амурская область','AMU',1),
+  (2730,176,'Брянская область','BRY',1),
+  (2731,176,'Чувашская Республика','CU',1),
+  (2732,176,'Челябинская область','CHE',1),
+  (2733,176,'Карачаево-Черкеcсия','KC',1),
+  (2734,176,'Забайкальский край','ZAB',1),
+  (2735,176,'Ленинградская область','LEN',1),
+  (2736,176,'Республика Калмыкия','KL',1),
+  (2737,176,'Сахалинская область','SAK',1),
+  (2738,176,'Республика Алтай','AL',1),
+  (2739,176,'Чеченская Республика','CE',1),
+  (2740,176,'Иркутская область','IRK',1),
+  (2741,176,'Ивановская область','IVA',1),
+  (2742,176,'Удмуртская Республика','UD',1),
+  (2743,176,'Калининградская область','KGD',1),
+  (2744,176,'Калужская область','KLU',1),
+  (2746,176,'Республика Татарстан','TA',1),
+  (2747,176,'Кемеровская область','KEM',1),
+  (2748,176,'Хабаровский край','KHA',1),
+  (2749,176,'Ханты-Мансийский АО - Югра','KHM',1),
+  (2750,176,'Костромская область','KOS',1),
+  (2751,176,'Краснодарский край','KDA',1),
+  (2752,176,'Красноярский край','KYA',1),
+  (2754,176,'Курганская область','KGN',1),
+  (2755,176,'Курская область','KRS',1),
+  (2756,176,'Республика Тыва','TY',1),
+  (2757,176,'Липецкая область','LIP',1),
+  (2758,176,'Магаданская область','MAG',1),
+  (2759,176,'Республика Дагестан','DA',1),
+  (2760,176,'Республика Адыгея','AD',1),
+  (2761,176,'Москва','MOW',1),
+  (2762,176,'Мурманская область','MUR',1),
+  (2763,176,'Республика Кабардино-Балкария','KB',1),
+  (2764,176,'Ненецкий АО','NEN',1),
+  (2765,176,'Республика Ингушетия','IN',1),
+  (2766,176,'Нижегородская область','NIZ',1),
+  (2767,176,'Новгородская область','NGR',1),
+  (2768,176,'Новосибирская область','NVS',1),
+  (2769,176,'Омская область','OMS',1),
+  (2770,176,'Орловская область','ORL',1),
+  (2771,176,'Оренбургская область','ORE',1),
+  (2773,176,'Пензенская область','PNZ',1),
+  (2774,176,'Пермский край','PER',1),
+  (2775,176,'Камчатский край','KAM',1),
+  (2776,176,'Республика Карелия','KR',1),
+  (2777,176,'Псковская область','PSK',1),
+  (2778,176,'Ростовская область','ROS',1),
+  (2779,176,'Рязанская область','RYA',1),
+  (2780,176,'Ямало-Ненецкий АО','YAN',1),
+  (2781,176,'Самарская область','SAM',1),
+  (2782,176,'Республика Мордовия','MO',1),
+  (2783,176,'Саратовская область','SAR',1),
+  (2784,176,'Смоленская область','SMO',1),
+  (2785,176,'Санкт-Петербург','SPE',1),
+  (2786,176,'Ставропольский край','STA',1),
+  (2787,176,'Республика Коми','KO',1),
+  (2788,176,'Тамбовская область','TAM',1),
+  (2789,176,'Томская область','TOM',1),
+  (2790,176,'Тульская область','TUL',1),
+  (2792,176,'Тверская область','TVE',1),
+  (2793,176,'Тюменская область','TYU',1),
+  (2794,176,'Республика Башкортостан','BA',1),
+  (2795,176,'Ульяновская область','ULY',1),
+  (2796,176,'Республика Бурятия','BU',1),
+  (2798,176,'Республика Северная Осетия','SE',1),
+  (2799,176,'Владимирская область','VLA',1),
+  (2800,176,'Приморский край','PRI',1),
+  (2801,176,'Волгоградская область','VGG',1),
+  (2802,176,'Вологодская область','VLG',1),
+  (2803,176,'Воронежская область','VOR',1),
+  (2804,176,'Кировская область','KIR',1),
+  (2805,176,'Республика Саха','SA',1),
+  (2806,176,'Ярославская область','YAR',1),
+  (2807,176,'Свердловская область','SVE',1),
+  (2808,176,'Республика Марий Эл','ME',1),
   (2809,177,'Butare','BU',1),
   (2810,177,'Byumba','BY',1),
   (2811,177,'Cyangugu','CY',1),
@@ -6575,14 +6495,14 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (2922,187,'Northern','N',1),
   (2923,187,'Southern','S',1),
   (2924,187,'Western','W',1),
-  (2925,189,'Banskobystrick�','BA',1),
-  (2926,189,'Bratislavsk�','BR',1),
-  (2927,189,'Ko?ick�','KO',1),
+  (2925,189,'Banskobystrický','BA',1),
+  (2926,189,'Bratislavský','BR',1),
+  (2927,189,'Košický','KO',1),
   (2928,189,'Nitriansky','NI',1),
-  (2929,189,'Pre?ovsk�','PR',1),
-  (2930,189,'Tren?iansky','TC',1),
-  (2931,189,'Trnavsk�','TV',1),
-  (2932,189,'?ilinsk�','ZI',1),
+  (2929,189,'Prešovský','PR',1),
+  (2930,189,'Trenčiansky','TC',1),
+  (2931,189,'Trnavský','TV',1),
+  (2932,189,'Žilinský','ZI',1),
   (2933,191,'Central','CE',1),
   (2934,191,'Choiseul','CH',1),
   (2935,191,'Guadalcanal','GC',1),
@@ -6973,48 +6893,48 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (3313,214,'Tunis','TU',1),
   (3314,214,'Zaghouan','ZA',1),
   (3315,215,'Adana','ADA',1),
-  (3316,215,'Ad?yaman','ADI',1),
+  (3316,215,'Adıyaman','ADI',1),
   (3317,215,'Afyonkarahisar','AFY',1),
-  (3318,215,'A?r?','AGR',1),
+  (3318,215,'Ağrı','AGR',1),
   (3319,215,'Aksaray','AKS',1),
   (3320,215,'Amasya','AMA',1),
   (3321,215,'Ankara','ANK',1),
   (3322,215,'Antalya','ANT',1),
   (3323,215,'Ardahan','ARD',1),
   (3324,215,'Artvin','ART',1),
-  (3325,215,'Ayd?n','AYI',1),
-  (3326,215,'Bal?kesir','BAL',1),
-  (3327,215,'Bart?n','BAR',1),
+  (3325,215,'Aydın','AYI',1),
+  (3326,215,'Balıkesir','BAL',1),
+  (3327,215,'Bartın','BAR',1),
   (3328,215,'Batman','BAT',1),
   (3329,215,'Bayburt','BAY',1),
   (3330,215,'Bilecik','BIL',1),
-  (3331,215,'Bing�l','BIN',1),
+  (3331,215,'Bingöl','BIN',1),
   (3332,215,'Bitlis','BIT',1),
   (3333,215,'Bolu','BOL',1),
   (3334,215,'Burdur','BRD',1),
   (3335,215,'Bursa','BRS',1),
-  (3336,215,'�anakkale','CKL',1),
-  (3337,215,'�ank?r?','CKR',1),
-  (3338,215,'�orum','COR',1),
+  (3336,215,'Çanakkale','CKL',1),
+  (3337,215,'Çankırı','CKR',1),
+  (3338,215,'Çorum','COR',1),
   (3339,215,'Denizli','DEN',1),
   (3340,215,'Diyarbakir','DIY',1),
-  (3341,215,'D�zce','DUZ',1),
+  (3341,215,'Düzce','DUZ',1),
   (3342,215,'Edirne','EDI',1),
   (3343,215,'Elazig','ELA',1),
   (3344,215,'Erzincan','EZC',1),
   (3345,215,'Erzurum','EZR',1),
-  (3346,215,'Eski?ehir','ESK',1),
+  (3346,215,'Eskişehir','ESK',1),
   (3347,215,'Gaziantep','GAZ',1),
   (3348,215,'Giresun','GIR',1),
-  (3349,215,'G�m�?hane','GMS',1),
+  (3349,215,'Gümüşhane','GMS',1),
   (3350,215,'Hakkari','HKR',1),
   (3351,215,'Hatay','HTY',1),
-  (3352,215,'I?d?r','IGD',1),
+  (3352,215,'Iğdır','IGD',1),
   (3353,215,'Isparta','ISP',1),
-  (3354,215,'?stanbul','IST',1),
-  (3355,215,'?zmir','IZM',1),
-  (3356,215,'Kahramanmara?','KAH',1),
-  (3357,215,'Karab�k','KRB',1),
+  (3354,215,'İstanbul','IST',1),
+  (3355,215,'İzmir','IZM',1),
+  (3356,215,'Kahramanmaraş','KAH',1),
+  (3357,215,'Karabük','KRB',1),
   (3358,215,'Karaman','KRM',1),
   (3359,215,'Kars','KRS',1),
   (3360,215,'Kastamonu','KAS',1),
@@ -7025,30 +6945,30 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (3365,215,'Kirsehir','KRH',1),
   (3366,215,'Kocaeli','KOC',1),
   (3367,215,'Konya','KON',1),
-  (3368,215,'K�tahya','KUT',1),
+  (3368,215,'Kütahya','KUT',1),
   (3369,215,'Malatya','MAL',1),
   (3370,215,'Manisa','MAN',1),
   (3371,215,'Mardin','MAR',1),
   (3372,215,'Mersin','MER',1),
-  (3373,215,'Mu?la','MUG',1),
-  (3374,215,'Mu?','MUS',1),
-  (3375,215,'Nev?ehir','NEV',1),
-  (3376,215,'Ni?de','NIG',1),
+  (3373,215,'Muğla','MUG',1),
+  (3374,215,'Muş','MUS',1),
+  (3375,215,'Nevşehir','NEV',1),
+  (3376,215,'Niğde','NIG',1),
   (3377,215,'Ordu','ORD',1),
   (3378,215,'Osmaniye','OSM',1),
   (3379,215,'Rize','RIZ',1),
   (3380,215,'Sakarya','SAK',1),
   (3381,215,'Samsun','SAM',1),
-  (3382,215,'?anl?urfa','SAN',1),
+  (3382,215,'Şanlıurfa','SAN',1),
   (3383,215,'Siirt','SII',1),
   (3384,215,'Sinop','SIN',1),
-  (3385,215,'??rnak','SIR',1),
+  (3385,215,'Şırnak','SIR',1),
   (3386,215,'Sivas','SIV',1),
-  (3387,215,'Tekirda?','TEL',1),
+  (3387,215,'Tekirdağ','TEL',1),
   (3388,215,'Tokat','TOK',1),
   (3389,215,'Trabzon','TRA',1),
   (3390,215,'Tunceli','TUN',1),
-  (3391,215,'U?ak','USK',1),
+  (3391,215,'Uşak','USK',1),
   (3392,215,'Van','VAN',1),
   (3393,215,'Yalova','YAL',1),
   (3394,215,'Yozgat','YOZ',1),
@@ -7137,32 +7057,32 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (3477,219,'Mbarara','MBR',1),
   (3478,219,'Ntungamo','NTU',1),
   (3479,219,'Rukungiri','RUK',1),
-  (3480,220,'????????','CK',1),
-  (3481,220,'????????','CH',1),
-  (3482,220,'????????','CV',1),
-  (3483,220,'????','CR',1),
-  (3484,220,'??????????????','DN',1),
-  (3485,220,'??????','DO',1),
-  (3486,220,'?????-?????????','IV',1),
-  (3487,220,'???????','KH',1),
-  (3488,220,'???????????','KM',1),
-  (3489,220,'??????????','KR',1),
-  (3490,220,'???????? ???????','KV',1),
-  (3491,220,'????','KY',1),
-  (3492,220,'???????','LU',1),
-  (3493,220,'?????','LV',1),
-  (3494,220,'????????','MY',1),
-  (3495,220,'??????','OD',1),
-  (3496,220,'???????','PO',1),
-  (3497,220,'?????','RI',1),
-  (3498,220,'???????????','SE',1),
-  (3499,220,'????','SU',1),
-  (3500,220,'?????????','TE',1),
-  (3501,220,'???????','VI',1),
-  (3502,220,'????','VO',1),
-  (3503,220,'???????','ZK',1),
-  (3504,220,'?????????','ZA',1),
-  (3505,220,'???????','ZH',1),
+  (3480,220,'Черкассы','CK',1),
+  (3481,220,'Чернигов','CH',1),
+  (3482,220,'Черновцы','CV',1),
+  (3483,220,'Крым','CR',1),
+  (3484,220,'Днепропетровск','DN',1),
+  (3485,220,'Донецк','DO',1),
+  (3486,220,'Ивано-Франковск','IV',1),
+  (3487,220,'Харьков','KH',1),
+  (3488,220,'Хмельницкий','KM',1),
+  (3489,220,'Кировоград','KR',1),
+  (3490,220,'Киевская область','KV',1),
+  (3491,220,'Киев','KY',1),
+  (3492,220,'Луганск','LU',1),
+  (3493,220,'Львов','LV',1),
+  (3494,220,'Николаев','MY',1),
+  (3495,220,'Одесса','OD',1),
+  (3496,220,'Полтава','PO',1),
+  (3497,220,'Ровно','RI',1),
+  (3498,220,'Севастополь','SE',1),
+  (3499,220,'Сумы','SU',1),
+  (3500,220,'Тернополь','TE',1),
+  (3501,220,'Винница','VI',1),
+  (3502,220,'Луцк','VO',1),
+  (3503,220,'Ужгород','ZK',1),
+  (3504,220,'Запорожье','ZA',1),
+  (3505,220,'Житомир','ZH',1),
   (3506,221,'Abu Zaby','AZ',1),
   (3507,221,'''Ajman','AJ',1),
   (3508,221,'Al Fujayrah','FU',1),
@@ -7622,23 +7542,23 @@ INSERT INTO `zone` (`zone_id`, `country_id`, `name`, `code`, `status`) VALUES
   (3955,222,'Cumbria','CMA',1),
   (3956,190,'Pomurska','1',1),
   (3957,190,'Podravska','2',1),
-  (3958,190,'Koro?ka','3',1),
+  (3958,190,'Koroška','3',1),
   (3959,190,'Savinjska','4',1),
   (3960,190,'Zasavska','5',1),
   (3961,190,'Spodnjeposavska','6',1),
   (3962,190,'Jugovzhodna Slovenija','7',1),
   (3963,190,'Osrednjeslovenska','8',1),
   (3964,190,'Gorenjska','9',1),
-  (3965,190,'Notranjsko-kra?ka','10',1),
-  (3966,190,'Gori?ka','11',1),
-  (3967,190,'Obalno-kra?ka','12',1),
+  (3965,190,'Notranjsko-kraška','10',1),
+  (3966,190,'Goriška','11',1),
+  (3967,190,'Obalno-kraška','12',1),
   (3968,33,'Ruse','',1),
   (3969,101,'Alborz','ALB',1),
-  (3970,220,'??????','KE',1);
+  (3970,220,'Херсон','KE',1);
 COMMIT;
 
 #
-# ????????? ??? ??????? `zone_to_geo_zone`: 
+# Структура для таблицы `zone_to_geo_zone`: 
 #
 
 CREATE TABLE `zone_to_geo_zone` (
