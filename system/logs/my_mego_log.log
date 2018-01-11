@@ -305,3 +305,183 @@
 2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
 2018-01-09 11:53:41 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 4
 2018-01-09 13:03:04 - PHP Notice:  Undefined variable: language in D:\usr\www\bycicles\catalog\view\theme\default\template\module\language.tpl on line 5
+2018-01-11 8:47:44 - PHP Notice:  Undefined variable: cart in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 390
+2018-01-11 8:49:13 - PHP Notice:  Undefined variable: cart in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 390
+2018-01-11 8:51:35 - PHP Notice:  Undefined variable: cart in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 390
+2018-01-11 8:52:18 - PHP Notice:  Undefined variable: cart in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 390
+2018-01-11 10:49:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:49:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:49:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:49:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:50:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:50:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:50:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:50:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:51:34 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 10:51:34 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:36:41 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:36:41 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:38:43 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:38:43 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:42:19 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:42:19 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:42:19 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 11:42:19 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:42:19 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:43:24 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:43:24 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:43:24 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 11:43:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:43:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:43:54 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:43:54 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 11:43:54 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 11:43:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 11:43:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:05:36 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:05:36 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:05:36 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:05:38 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:05:38 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:05:49 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:05:49 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:05:49 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:05:49 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:05:49 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:06:13 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:06:13 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:06:13 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:06:13 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:06:13 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:06:19 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:06:19 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:06:19 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:06:19 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:06:19 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:07:42 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:07:42 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:07:42 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:07:42 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:07:42 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:11:29 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:29 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:29 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:11:29 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:11:29 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:11:40 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:40 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:40 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:11:40 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:11:40 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:11:52 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:52 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:11:52 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:02 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:02 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:02 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:08 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:08 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:08 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:15 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:15 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:15 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:24 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:24 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:24 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:12:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:12:47 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:47 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:47 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:47 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:12:47 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:12:52 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:52 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:12:52 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:12:52 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:12:52 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:00 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:00 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:00 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:17:00 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:00 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:07 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:07 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:07 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:17:07 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:07 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:11 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:11 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:17:11 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:17:11 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:17:11 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:23 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:23 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:23 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:24 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:34 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:34 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:34 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:34 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:34 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:39 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:39 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:39 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:39 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:39 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:44 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:44 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:44 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:44 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:44 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:46 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:46 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:46 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:46 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:46 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:50 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:50 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:50 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:50 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:50 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:55 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:55 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:55 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:59 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:59 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:20:59 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:20:59 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:20:59 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:22:03 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:03 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:03 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:22:03 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:22:03 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:22:16 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:16 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:16 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:22:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:22:16 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 145
+2018-01-11 12:22:55 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:55 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:22:55 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:22:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:22:55 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:10 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:10 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:10 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:23:10 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:10 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:17 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:17 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:17 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:23:17 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:17 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:33 - PHP Notice:  Undefined variable: scripts in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:33 - PHP Warning:  Invalid argument supplied for foreach() in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 198
+2018-01-11 12:23:33 - PHP Notice:  Undefined variable: stores in D:\usr\www\bycicles\catalog\view\theme\default\template\common\footer.tpl on line 204
+2018-01-11 12:23:33 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81
+2018-01-11 12:23:33 - PHP Notice:  Undefined variable: voucher in D:\usr\www\bycicles\catalog\view\theme\default\template\module\cart.tpl on line 81

@@ -1,3 +1,4 @@
+<h1>checkout.cart</h1>
 <?php echo $header; ?>
 <?php if ($attention) { ?>
 <div class="attention"><?php echo $attention; ?><img src="catalog/view/theme/default/image/close.png" alt="" class="close" /></div>
@@ -20,6 +21,7 @@
     &nbsp;(<?php echo $weight; ?>)
     <?php } ?>
   </h1>
+  <h1>checkout_.cart</h1>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <div class="cart-info">
       <table>
